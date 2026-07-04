@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Mastery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        h1 {
+            color: #1a1a2e;
+            margin-bottom: 0.5rem;
+        }
+        .subtitle {
+            color: #666;
+            margin-bottom: 2rem;
+        }
+        .category-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border: 1px solid #eee;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .category-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+        }
+        .category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .category-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1a1a2e;
+        }
+        .category-progress {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .progress-bar {
+            height: 6px;
+            background: #eee;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+        .topics-list {
+            list-style: none;
+        }
+        .topic-item {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .topic-item:last-child {
+            border-bottom: none;
+        }
+        .checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            margin-right: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        .checkbox.checked {
+            background: #667eea;
+            border-color: #667eea;
+        }
+        .checkbox.checked::after {
+            content: '✓';
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .topic-name {
+            flex: 1;
+            color: #333;
+        }
+        .topic-status {
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+        .status-done {
+            background: #d4edda;
+            color: #155724;
+        }
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+        .btn-secondary:hover {
+            background: #e0e0e0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .category-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>DSA Mastery</h1>
+        <p class="subtitle">Master Data Structures & Algorithms for interviews</p>
+
+        <div class="category-card">
+            <div class="category-header">
+                <span class="category-title">Data Structures</span>
+                <span class="category-progress">0/10 - 0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 0%"></div>
+            </div>
+            <ul class="topics-list">
+                <li class="topic-item">
+                    <div class="checkbox" data-topic="arrays"></div>
+                    <span class="topic-name">Arrays (1D & 2D)</span>
+                    <span class="topic-status status-pending">Pending</span>
+                </li>
+                <li class="topic-item">
+                    <div class="checkbox" data-topic="strings"></div>
+                    <span class="topic-name">Strings & StringBuilders</span>
+                    <span class="topic-status status-pending">Pending</span>
+                </li>
+                <li class="topic-item">
+                    <div class="checkbox" data-topic="linkedlists"></div>
+                    <span class="topic-name">Linked Lists (Singly, Doubly, Circular)</span>
+                    <span class="topic-status status-pending">Pending</span>
+                </li>
+                <li class="topic-item">
+                    <div class="checkbox" data-topic="stacks"></div>
+                    <span class="topic-name">Stacks</span>
+                    <span class="topic-status status-pending">Pending</span>
+                </li>
+                <li class="topic-item">
+                    <div class="checkbox" data-topic="queues"></div>
+                    <span class="topic-name">Queues (Simple, Circular, Deque)</span>
+                    <span class="topic-status status-pending">Pending</span>
+                </li>
+                <li class="topic-item">
+                    <div class="checkbox" data-topic="priorityqueue"></div>
+                    <span class="topic-name">PriorityQueue (Heaps)</span>
+                    <span class="topic-status status-pending">Pending</span>
+                </li>
+                <li class="topic-item">
+                    <div class="checkbox" data-topic="hashmaps"></div>
+                    <span class="topic-name">HashMaps & HashSets</span>
+                    <span class="topic-status status-pending">Pending</span>
+                </li>
+                <li class="topic-item">
+                    <div class="checkbox" data-topic="trees"></div>
+                    <span class="topic-name">Trees (Binary Tree, BST, AVL)</span>
+                    <span class="topic-status status-pending">Pending</span>
+                </li>
+                <li class="topic-item">
+                    <div class="checkbox" data-topic="trie"></div>
+                    <span class="topic-name">Trie</span>
+                    <span class="topic-status status-pending">Pending</span>
+                </li>
+                <li class="topic-item">
+                    <div class="checkbox" data-topic="graphs"></div>
+                    <span class="topic-name">Graphs (Adjacency Matrix/List)</span>
+                    <span class="topic-status status-pending">Pending</span>
+                </li>
+            </ul>
+            <div class="category-actions">
+                <a href="datastructures.html" class="btn">Open</a>
+            </div>
+        </div>
+
+        <div class="category-card">
+            <div class="category-header">
+                <span class="category-title">Algorithms</span>
+                <span class="category-progress">0/12 - 0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 0%"></div>
+            </div>
+            <ul class="topics-list">
+                <li class="topic-item">
+                    <div class="checkbox" data-topic="complexity"></div>
+                    <span class="topic-name">Time & Space Complexity (Big O)</span>
+                    <span class="topic-status status-pending">Pending</span>
+                </li>
+                <li class="topic-item">
+                    <div class="checkbox" data-topic="sorting-basic"></div>
+                    <span class="topic-name">Sorting (Bubble, Insertion, Selection)</span>
+                    <span class="topic-status status-pending">Pending</span>
+                </li>
+                <li class="topic-item">
+                    <div class="checkbox" data-topic="sorting-advanced"></div>
+                    <span class="topic-name">Sorting (Merge, Quick, Heap)</span>
+                    <span class="topic-status status-pending">Pending</span>
+                </li>
+                <li class="topic-item">
+                    <div class="checkbox" data-topic="searching"></div>
+                    <span class="topic-name">Searching (Linear, Binary)</span>
+                    <span class="topic-status status-pending">Pending</span>
+                </li>
+                <li class="topic-item">
+                    <div class="checkbox" data-topic="twopointers"></div>
+                    <span class="topic-name">Two Pointers & Sliding Window</span>
+                    <span class="topic-status status-pending">Pending</span>
+                </li>
+                <li class="topic-item">
+                    <div class="checkbox" data-topic="recursion"></div>
+                    <span class="topic-name">Recursion & Backtracking</span>
+                    <span class="topic-status status-pending">Pending</span>
+                </li>
+                <li class="topic-item">
+                    <div class="checkbox" data-topic="graphtraversal"></div>
+                    <span class="topic-name">Graph Traversal (BFS, DFS)</span>
+                    <span class="topic-status status-pending">Pending</span>
+                </li>
+                <li class="topic-item">
+                    <div class="checkbox" data-topic="shortestpath"></div>
+                    <span class="topic-name">Shortest Path (Dijkstra, Bellman-Ford)</span>
+                    <span class="topic-status status-pending">Pending</span>
+                </li>
+                <li class="topic-item">
+                    <div class="checkbox" data-topic="mst"></div>
+                    <span class="topic-name">Minimum Spanning Tree (Kruskal, Prim)</span>
+                    <span class="topic-status status-pending">Pending</span>
+                </li>
+                <li class="topic-item">
+                    <div class="checkbox" data-topic="dp"></div>
+                    <span class="topic-name">Dynamic Programming (Memoization, Tabulation)</span>
+                    <span class="topic-status status-pending">Pending</span>
+                </li>
+                <li class="topic-item">
+                    <div class="checkbox" data-topic="greedy"></div>
+                    <span class="topic-name">Greedy Algorithms</span>
+                    <span class="topic-status status-pending">Pending</span>
+                </li>
+                <li class="topic-item">
+                    <div class="checkbox" data-topic="bitmanipulation"></div>
+                    <span class="topic-name">Bit Manipulation</span>
+                    <span class="topic-status status-pending">Pending</span>
+                </li>
+            </ul>
+            <div class="category-actions">
+                <a href="algorithms.html" class="btn">Open</a>
+            </div>
+        </div>
+
+        <div class="category-card">
+            <div class="category-header">
+                <span class="category-title">Practice Problems</span>
+                <span class="category-progress">0/17 - 0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 0%"></div>
+            </div>
+            <p style="color: #666; margin-bottom: 1rem;">15+ curated problems across all topics</p>
+            <div class="category-actions">
+                <a href="practiceproblems.html" class="btn">Open</a>
+            </div>
+        </div>
+
+        <div class="category-card">
+            <div class="category-header">
+                <span class="category-title">Interview Questions</span>
+                <span class="category-progress">0/42 - 0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 0%"></div>
+            </div>
+            <p style="color: #666; margin-bottom: 1rem;">40+ frequently asked interview questions</p>
+            <div class="category-actions">
+                <a href="interviewquestions.html" class="btn">Open</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.checkbox').forEach(cb => {
+            cb.addEventListener('click', function() {
+                this.classList.toggle('checked');
+                const status = this.nextElementSibling.nextElementSibling;
+                if (this.classList.contains('checked')) {
+                    status.textContent = 'Done';
+                    status.className = 'topic-status status-done';
+                } else {
+                    status.textContent = 'Pending';
+                    status.className = 'topic-status status-pending';
+                }
+                updateProgress(this.closest('.category-card'));
+            });
+        });
+
+        function updateProgress(card) {
+            const checkboxes = card.querySelectorAll('.checkbox');
+            const checked = card.querySelectorAll('.checkbox.checked').length;
+            const total = checkboxes.length;
+            const percent = total > 0 ? Math.round((checked / total) * 100) : 0;
+            
+            card.querySelector('.category-progress').textContent = `${checked}/${total} - ${percent}%`;
+            card.querySelector('.progress-fill').style.width = `${percent}%`;
+        }
+    </script>
+    <script type="module">
+        import { initSync } from './dsa_sync.js';
+        initSync();
+    </script>
+</body>
+</html>

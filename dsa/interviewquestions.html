@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Questions - DSA Mastery</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; min-height: 100vh; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 2rem; }
+        .back-link { display: inline-block; margin-bottom: 1.5rem; color: #667eea; text-decoration: none; font-weight: 500; }
+        .back-link:hover { text-decoration: underline; }
+        h1 { color: #1a1a2e; margin-bottom: 0.5rem; }
+        .subtitle { color: #666; margin-bottom: 2rem; }
+        .topic-card { background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid #eee; }
+        .topic-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 1rem; }
+        .topic-title { font-size: 1.1rem; font-weight: 600; color: #1a1a2e; }
+        .topic-meta { display: flex; gap: 1rem; align-items: center; }
+        .progress-badge { padding: 0.2rem 0.8rem; border-radius: 12px; font-size: 0.8rem; font-weight: 500; }
+        .progress-0 { background: #fff3cd; color: #856404; }
+        .progress-100 { background: #d4edda; color: #155724; }
+        .checkbox { width: 22px; height: 22px; border: 2px solid #ddd; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; flex-shrink: 0; }
+        .checkbox.checked { background: #667eea; border-color: #667eea; }
+        .checkbox.checked::after { content: '✓'; color: white; font-size: 14px; font-weight: bold; }
+        .topic-actions { display: flex; gap: 0.5rem; margin-top: 1rem; }
+        .btn { padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 500; text-decoration: none; text-align: center; transition: all 0.2s; border: none; cursor: pointer; font-size: 0.9rem; }
+        .btn-primary { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+        .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="dsa.html" class="back-link">← Back to DSA Mastery</a>
+        <h1>Interview Questions</h1>
+        <p class="subtitle">42 frequently asked interview questions</p>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">Q1. How does a HashMap work internally in Java?</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">Q2. Array vs LinkedList?</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">Q3. ArrayList vs Vector?</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">Q4. Difference between HashSet and TreeSet?</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">Q5. Explain collision resolution in HashMaps.</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">Q6. How does PriorityQueue work?</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">Q7. What is a balanced tree (AVL/Red-Black)?</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">Q8. How to find a cycle in a Linked List?</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">Q9. BFS vs DFS - when to use which?</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">Q10. Explain Dijkstra's algorithm.</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">Q11. Tail recursion vs Normal recursion?</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">Q12. What is topological sorting?</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">Q13. Difference between Memoization and Tabulation?</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">Q14. How does QuickSort partition work?</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">Q15. MergeSort vs QuickSort?</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">Q16. What is a Trie and its use cases?</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">Q17. Explain Binary Search Time Complexity.</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">Q18. What is the Master Theorem?</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">Q19. How to reverse a string in place?</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">Q20. Explain the sliding window technique.</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">Q21. How to find the middle of a Linked List in one pass?</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">Q22. Can you implement a Stack using Queues?</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">Q23. Can you implement a Queue using Stacks?</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">Q24. What is a Disjoint Set (Union-Find)?</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">Q25. Explain Kadane's Algorithm.</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">Q26. What is Floyd's Cycle-Finding Algorithm?</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">Q27. How does a Min-Heap differ from a Max-Heap?</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">Q28. What is a sparse matrix?</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">Q29. Difference between B-Tree and B+ Tree?</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">Q30. Explain Bellman-Ford algorithm.</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">Q31. How to detect negative weight cycles?</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">Q32. What is an articulation point in a graph?</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">Q33. What are strongly connected components?</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">Q34. Explain the Knapsack Problem.</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">Q35. Longest Common Subsequence vs Longest Increasing Subsequence?</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">Q36. What is a bloom filter?</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">Q37. What is LRU Cache and how to implement it?</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">Q38. Explain Bit Masking.</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">Q39. What is the XOR trick for finding missing numbers?</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">Q40. How do you serialize and deserialize a binary tree?</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">Q41. What is the difference between NP-Hard and NP-Complete?</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">Q42. How does A* search algorithm work?</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        document.querySelectorAll('.checkbox').forEach(cb => {
+            cb.addEventListener('click', function() {
+                this.classList.toggle('checked');
+                const card = this.closest('.topic-card');
+                const badge = card.querySelector('.progress-badge');
+                if (this.classList.contains('checked')) {
+                    badge.textContent = '100%';
+                    badge.className = 'progress-badge progress-100';
+                } else {
+                    badge.textContent = '0%';
+                    badge.className = 'progress-badge progress-0';
+                }
+            });
+        });
+        window.updateProgress = function(card) {
+            const cb = card.querySelector('.checkbox');
+            const badge = card.querySelector('.progress-badge');
+            if (cb && cb.classList.contains('checked')) {
+                badge.textContent = '100%';
+                badge.className = 'progress-badge progress-100';
+            } else if (badge) {
+                badge.textContent = '0%';
+                badge.className = 'progress-badge progress-0';
+            }
+        };
+    </script>
+    <script type="module">
+        import { initSync } from './dsa_sync.js';
+        initSync("Interview Questions (40+ Items)");
+    </script>
+</body>
+</html>

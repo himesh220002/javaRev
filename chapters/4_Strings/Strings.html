@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strings</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'dark', fontFamily: 'Inter, sans-serif' });
+    </script>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            850: '#151e2e',
+                            900: '#0f172a',
+                            950: '#020617',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #f9fafb;
+            color: #1f2937;
+            margin: 0;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+
+        .mermaid {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #334155;
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="sidebar-container" style="display:flex; height:100%;"></div>
+    <div
+        class="flex-1 p-8 md:p-14 overflow-y-auto bg-gray-50 text-gray-800 prose prose-indigo prose-headings:text-gray-900 max-w-none prose-a:text-gray-600 prose-pre:bg-gray-100 prose-pre:text-gray-900 prose-pre:border prose-pre:border-gray-200">
+        <h1>Strings</h1>
+        <a href="https://www.geeksforgeeks.org/java/java" target="_blank">Resource link -
+            GeeksforGeeks</a>
+        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20250826125835154112/str.webp" alt="string" />
+        <div class="bg-gray-50 text-gray-800 p-4 rounded-lg shadow space-y-4">
+            <h2 class="text-center text-xl font-bold">Java Strings Overview</h2>
+
+            <!-- Definition -->
+            <div class="bg-gray-100 p-3 rounded">
+                <strong>String:</strong> Immutable sequence of characters, represented by <code>java.lang.String</code>.
+            </div>
+
+            <!-- Ways of Creating -->
+            <div class="bg-gray-100 p-3 rounded">
+                <strong>Ways of Creating:</strong>
+                <ul class="list-disc ml-6">
+                    <li><code>String s = "Hello";</code> → String literal (stogray in String Pool)</li>
+                    <li><code>String s = new String("Hello");</code> → New object in Heap</li>
+                    <li><code>String.valueOf(123);</code> → Conversion from other types</li>
+                    <li><code>new StringBuilder().append("Hi").toString();</code> → From mutable classes</li>
+                </ul>
+                <img src="https://media.geeksforgeeks.org/wp-content/uploads/20260616110755512897/string.jpg"
+                    alt="immutableString" />
+            </div>
+
+            <!-- Memory Storage -->
+            <div class="bg-gray-50 p-3 rounded">
+                <strong>Memory Storage:</strong>
+                <ul class="list-disc ml-6">
+                    <li>Literals → Stogray in <em>String Pool</em></li>
+                    <li>Objects via <code>new</code> → Stogray in Heap</li>
+                    <li>Strings are <em>immutable</em>, so modifications create new objects</li>
+                </ul>
+            </div>
+
+            <!-- String Pool Migration -->
+            <div class="bg-gray-50 p-3 rounded">
+                <strong>String Pool Migration:</strong>
+                <ul class="list-disc ml-6">
+                    <li>Before Java 7 → String Pool in <em>PermGen</em> (fixed size, OutOfMemoryError risk)</li>
+                    <li>Java 7+ → String Pool moved to <em>Heap</em> (dynamic size, better GC handling)</li>
+                    <li>Java 8 → PermGen removed, replaced by <em>Metaspace</em></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="bg-gray-50 text-gray-800 p-4 rounded-lg shadow space-y-6">
+            <h2 class="text-center text-xl font-bold">Java String & StringBuffer Overview</h2>
+
+            <!-- String Concatenation -->
+            <div class="bg-gray-50 p-3 rounded">
+                <strong>String Concatenation:</strong> Strings are immutable, so concatenation creates new objects.
+                <ul class="list-disc ml-6">
+                    <li><code>String s = "Hello" + "World";</code></li>
+                    <li><code>s.concat("!");</code></li>
+                    <li>For performance in loops → use <code>StringBuilder</code> or <code>StringBuffer</code></li>
+                </ul>
+            </div>
+
+            <div class="bg-gray-100 text-gray-800 p-4 rounded-lg shadow space-y-4">
+                <h2 class="text-center text-xl font-bold">StringBuffer Class in Java</h2>
+
+                <!-- Explanation -->
+                <div class="bg-gray-50 p-3 rounded">
+                    <strong>Explanation:</strong>
+                    <p>
+                        The <code>StringBuffer</code> class represents a mutable sequence of characters. Unlike
+                        <code>String</code> (immutable), it allows modifications such as <em>append</em>,
+                        <em>insert</em>,
+                        <em>delete</em>, <em>replace</em>, and <em>reverse</em> without creating new objects.
+                        All methods are synchronized, making it thread‑safe for use in multithreaded environments.
+                    </p>
+                </div>
+
+                <!-- Advantages -->
+                <div class="bg-gray-200 p-3 rounded">
+                    <strong>Advantages:</strong>
+                    <ul class="list-disc ml-6">
+                        <li>Mutable → efficient for frequent string modifications.</li>
+                        <li>Thread‑safe → synchronized methods ensure safe use in concurrent programs.</li>
+                        <li>Rich API → supports powerful operations like <code>append</code>, <code>insert</code>,
+                            <code>delete</code>, <code>reverse</code>.
+                        </li>
+                        <li>Automatic capacity expansion → grows dynamically as needed.</li>
+                        <li>Easy conversion → can be converted back to <code>String</code> using
+                            <code>toString()</code>.
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Limitations -->
+                <div class="bg-yellow-100 p-3 rounded">
+                    <strong>Limitations:</strong>
+                    <ul class="list-disc ml-6">
+                        <li>Slower than <code>StringBuilder</code> due to synchronization overhead.</li>
+                        <li>Not immutable → less secure for sensitive data compagray to <code>String</code>.</li>
+                        <li>Less commonly used today → modern apps prefer <code>StringBuilder</code> unless thread
+                            safety is requigray.</li>
+                        <li>Memory usage → large buffers may consume more memory if not trimmed with
+                            <code>trimToSize()</code>.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <!-- Common String Methods -->
+            <div class="bg-gray-50 p-3 rounded">
+                <strong>Common String Methods:</strong>
+                <table class="table-auto border-collapse border border-gray-500 w-full text-sm">
+                    <thead>
+                        <tr class="bg-gray-50">
+                            <th class="border border-gray-500 p-2">Method</th>
+                            <th class="border border-gray-500 p-2">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border p-2"><code>int length()</code></td>
+                            <td class="border p-2">Returns number of characters</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>char charAt(int i)</code></td>
+                            <td class="border p-2">Character at index i</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>String substring(int i)</code></td>
+                            <td class="border p-2">Substring from i to end</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>String substring(int i, int j)</code></td>
+                            <td class="border p-2">Substring from i to j-1</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>String concat(String str)</code></td>
+                            <td class="border p-2">Concatenates str</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>int indexOf(String s)</code></td>
+                            <td class="border p-2">First occurrence index</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>int lastIndexOf(String s)</code></td>
+                            <td class="border p-2">Last occurrence index</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>boolean equals(Object o)</code></td>
+                            <td class="border p-2">Compares strings</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>boolean equalsIgnoreCase(String s)</code></td>
+                            <td class="border p-2">Compares ignoring case</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>int compareTo(String s)</code></td>
+                            <td class="border p-2">Lexicographic comparison</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>String toLowerCase()</code></td>
+                            <td class="border p-2">Convert to lowercase</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>String toUpperCase()</code></td>
+                            <td class="border p-2">Convert to uppercase</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>String trim()</code></td>
+                            <td class="border p-2">Remove leading/trailing spaces</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>String replace(char old, char new)</code></td>
+                            <td class="border p-2">Replace characters</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>boolean contains(CharSequence s)</code></td>
+                            <td class="border p-2">Check substring presence</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>char[] toCharArray()</code></td>
+                            <td class="border p-2">Convert to char array</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>boolean startsWith(String prefix)</code></td>
+                            <td class="border p-2">Check prefix</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- StringBuffer Methods -->
+            <div class="bg-gray-50 p-3 rounded">
+                <strong>StringBuffer Methods:</strong>
+                <table class="table-auto border-collapse border border-gray-500 w-full text-sm">
+                    <thead>
+                        <tr class="bg-gray-50">
+                            <th class="border border-gray-500 p-2">Method</th>
+                            <th class="border border-gray-500 p-2">Description</th>
+                            <th class="border border-gray-500 p-2">Syntax</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border p-2"><code>append()</code></td>
+                            <td class="border p-2">Add text at end</td>
+                            <td class="border p-2">sb.append("str");</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>appendCodePoint()</code></td>
+                            <td class="border p-2">Append Unicode code point</td>
+                            <td class="border p-2">sb.appendCodePoint(int cp);</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>length()</code></td>
+                            <td class="border p-2">Length of buffer</td>
+                            <td class="border p-2">sb.length();</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>capacity()</code></td>
+                            <td class="border p-2">Allocated capacity</td>
+                            <td class="border p-2">sb.capacity();</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>ensureCapacity()</code></td>
+                            <td class="border p-2">Ensure minimum capacity</td>
+                            <td class="border p-2">sb.ensureCapacity(n);</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>trimToSize()</code></td>
+                            <td class="border p-2">Minimize storage</td>
+                            <td class="border p-2">sb.trimToSize();</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>charAt()</code></td>
+                            <td class="border p-2">Char at index</td>
+                            <td class="border p-2">sb.charAt(i);</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>codePointAt()</code></td>
+                            <td class="border p-2">Unicode code point at index</td>
+                            <td class="border p-2">sb.codePointAt(i);</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>codePointBefore()</code></td>
+                            <td class="border p-2">Code point before index</td>
+                            <td class="border p-2">sb.codePointBefore(i);</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>codePointCount()</code></td>
+                            <td class="border p-2">Count code points in range</td>
+                            <td class="border p-2">sb.codePointCount(start,end);</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>delete()</code></td>
+                            <td class="border p-2">Delete range</td>
+                            <td class="border p-2">sb.delete(start,end);</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>deleteCharAt()</code></td>
+                            <td class="border p-2">Delete char at index</td>
+                            <td class="border p-2">sb.deleteCharAt(i);</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>insert()</code></td>
+                            <td class="border p-2">Insert text</td>
+                            <td class="border p-2">sb.insert(pos,"str");</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>replace()</code></td>
+                            <td class="border p-2">Replace range</td>
+                            <td class="border p-2">sb.replace(start,end,"str");</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>reverse()</code></td>
+                            <td class="border p-2">Reverse buffer</td>
+                            <td class="border p-2">sb.reverse();</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>setCharAt()</code></td>
+                            <td class="border p-2">Set char at index</td>
+                            <td class="border p-2">sb.setCharAt(i,'c');</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>setLength()</code></td>
+                            <td class="border p-2">Set buffer length</td>
+                            <td class="border p-2">sb.setLength(n);</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>substring()</code></td>
+                            <td class="border p-2">Return substring</td>
+                            <td class="border p-2">sb.substring(start,end);</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>subSequence()</code></td>
+                            <td class="border p-2">Return subsequence</td>
+                            <td class="border p-2">sb.subSequence(start,end);</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>toString()</code></td>
+                            <td class="border p-2">Convert to String</td>
+                            <td class="border p-2">sb.toString();</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>indexOf()</code></td>
+                            <td class="border p-2">First occurrence index</td>
+                            <td class="border p-2">sb.indexOf("str");</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>lastIndexOf()</code></td>
+                            <td class="border p-2">Last occurrence index</td>
+                            <td class="border p-2">sb.lastIndexOf("str");</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>getChars()</code></td>
+                            <td class="border p-2">Copy chars to array</td>
+                            <td class="border p-2">sb.getChars(srcStart,srcEnd,dst,dstStart);</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>offsetByCodePoints()</code></td>
+                            <td class="border p-2">Index offset by code points</td>
+                            <td class="border p-2">sb.offsetByCodePoints(i,offset);</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>chars()</code></td>
+                            <td class="border p-2">Stream of chars</td>
+                            <td class="border p-2">sb.chars();</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>codePoints()</code></td>
+                            <td class="border p-2">Stream of code points</td>
+                            <td class="border p-2">sb.codePoints();</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="bg-gray-50 text-gray-800 mt-4 p-4 rounded-lg shadow space-y-6">
+            <h2 class="text-center text-xl font-bold">StringBuilder Class in Java</h2>
+
+            <!-- Explanation -->
+            <div class="bg-gray-50 p-3 rounded">
+                <strong>Explanation:</strong>
+                <p>
+                    The <code>StringBuilder</code> class represents a mutable sequence of characters.
+                    It is similar to <code>StringBuffer</code> but is <em>not synchronized</em>, making it faster in
+                    single‑threaded contexts.
+                    It supports dynamic modifications like <em>append</em>, <em>insert</em>, <em>delete</em>,
+                    <em>replace</em>, and <em>reverse</em>.
+                </p>
+            </div>
+
+            <!-- Constructors -->
+            <div class="bg-gray-50 p-3 rounded">
+                <strong>Constructors:</strong>
+                <ul class="list-disc ml-6">
+                    <li><code>StringBuilder()</code> → Creates empty builder with default capacity (16).</li>
+                    <li><code>StringBuilder(int capacity)</code> → Creates builder with specified capacity.</li>
+                    <li><code>StringBuilder(String str)</code> → Creates builder initialized with given string.</li>
+                    <li><code>StringBuilder(CharSequence seq)</code> → Creates builder from character sequence.</li>
+                </ul>
+            </div>
+
+            <!-- Important Methods -->
+            <div class="bg-gray-50 p-3 rounded">
+                <strong>Important Methods:</strong>
+                <table class="table-auto border-collapse border border-gray-500 w-full text-sm">
+                    <thead>
+                        <tr class="bg-gray-50">
+                            <th class="border border-gray-500 p-2">Method</th>
+                            <th class="border border-gray-500 p-2">Description</th>
+                            <th class="border border-gray-500 p-2">Syntax</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border p-2"><code>append()</code></td>
+                            <td class="border p-2">Add text at end</td>
+                            <td class="border p-2">sb.append("str");</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>insert()</code></td>
+                            <td class="border p-2">Insert text</td>
+                            <td class="border p-2">sb.insert(pos,"str");</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>delete()</code></td>
+                            <td class="border p-2">Delete range</td>
+                            <td class="border p-2">sb.delete(start,end);</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>deleteCharAt()</code></td>
+                            <td class="border p-2">Delete char at index</td>
+                            <td class="border p-2">sb.deleteCharAt(i);</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>replace()</code></td>
+                            <td class="border p-2">Replace range</td>
+                            <td class="border p-2">sb.replace(start,end,"str");</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>reverse()</code></td>
+                            <td class="border p-2">Reverse buffer</td>
+                            <td class="border p-2">sb.reverse();</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>length()</code></td>
+                            <td class="border p-2">Length of buffer</td>
+                            <td class="border p-2">sb.length();</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>capacity()</code></td>
+                            <td class="border p-2">Allocated capacity</td>
+                            <td class="border p-2">sb.capacity();</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>ensureCapacity()</code></td>
+                            <td class="border p-2">Ensure minimum capacity</td>
+                            <td class="border p-2">sb.ensureCapacity(n);</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>trimToSize()</code></td>
+                            <td class="border p-2">Minimize storage</td>
+                            <td class="border p-2">sb.trimToSize();</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>charAt()</code></td>
+                            <td class="border p-2">Char at index</td>
+                            <td class="border p-2">sb.charAt(i);</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>setCharAt()</code></td>
+                            <td class="border p-2">Set char at index</td>
+                            <td class="border p-2">sb.setCharAt(i,'c');</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>setLength()</code></td>
+                            <td class="border p-2">Set buffer length</td>
+                            <td class="border p-2">sb.setLength(n);</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>substring()</code></td>
+                            <td class="border p-2">Return substring</td>
+                            <td class="border p-2">sb.substring(start,end);</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>subSequence()</code></td>
+                            <td class="border p-2">Return subsequence</td>
+                            <td class="border p-2">sb.subSequence(start,end);</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>toString()</code></td>
+                            <td class="border p-2">Convert to String</td>
+                            <td class="border p-2">sb.toString();</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>indexOf()</code></td>
+                            <td class="border p-2">First occurrence index</td>
+                            <td class="border p-2">sb.indexOf("str");</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2"><code>lastIndexOf()</code></td>
+                            <td class="border p-2">Last occurrence index</td>
+                            <td class="border p-2">sb.lastIndexOf("str");</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Comparison Table -->
+            <div class="bg-gray-50 p-3 rounded">
+                <strong>String vs StringBuilder vs StringBuffer:</strong>
+                <table class="table-auto border-collapse border border-gray-500 w-full text-sm">
+                    <thead>
+                        <tr class="bg-gray-50">
+                            <th class="border border-gray-500 p-2">Features</th>
+                            <th class="border border-gray-500 p-2">String</th>
+                            <th class="border border-gray-500 p-2">StringBuilder</th>
+                            <th class="border border-gray-500 p-2">StringBuffer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border p-2">Mutability</td>
+                            <td class="border p-2">Immutable</td>
+                            <td class="border p-2">Mutable</td>
+                            <td class="border p-2">Mutable</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2">Thread-Safe</td>
+                            <td class="border p-2">Yes</td>
+                            <td class="border p-2">No</td>
+                            <td class="border p-2">Yes</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2">Performance</td>
+                            <td class="border p-2">Slow (new object each time)</td>
+                            <td class="border p-2">Fast (no sync overhead)</td>
+                            <td class="border p-2">Slower (synchronized)</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2">Use Case</td>
+                            <td class="border p-2">Fixed strings</td>
+                            <td class="border p-2">Single-threaded manipulation</td>
+                            <td class="border p-2">Multi-threaded manipulation</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Advantages & Limitations -->
+            <div class="bg-gray-200 p-3 rounded">
+                <strong>Advantages of StringBuilder:</strong>
+                <ul class="list-disc ml-6">
+                    <li>Faster string manipulations in single-threaded environments.</li>
+                    <li>grayuces memory overhead by modifying in place.</li>
+                    <li>Automatically increases capacity when needed.</li>
+                    <li>Ideal for loops with frequent string changes.</li>
+                </ul>
+                <strong>Limitations:</strong>
+                <ul class="list-disc ml-6">
+                    <li>Not thread-safe (no synchronization).</li>
+                    <li>Extra memory usage if capacity is large and unused.</li>
+                    <li>Requires manual synchronization in multi-threaded apps.</li>
+                </ul>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <script>
+        function toggleSubtopics(id) {
+            const el = document.getElementById(id);
+            if (el) el.classList.toggle('open');
+        }
+
+        const sidebar = document.getElementById('sidebar');
+        const resizer = document.getElementById('dragMe');
+        let isResizing = false;
+
+        resizer.addEventListener('mousedown', (e) => {
+            isResizing = true;
+            resizer.classList.add('resizing');
+            document.body.style.cursor = 'col-resize';
+            // Prevent text selection during drag
+            e.preventDefault();
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isResizing) return;
+            let newWidth = e.clientX;
+            const minWidth = window.innerWidth * 0.05;
+            const maxWidth = window.innerWidth * 0.50;
+            if (newWidth < minWidth) newWidth = minWidth;
+            if (newWidth > maxWidth) newWidth = maxWidth;
+            sidebar.style.width = newWidth + 'px';
+        });
+
+        document.addEventListener('mouseup', () => {
+            if (isResizing) {
+                isResizing = false;
+                resizer.classList.remove('resizing');
+                document.body.style.cursor = 'default';
+            }
+        });
+    </script>
+
+    <script type="module">
+        import { initSidebar } from '../../sidebar.js';
+        initSidebar();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiniBank - Premium Web Banking</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="glass-container">
+
+        <!-- Auth View -->
+        <div id="auth-view" class="view active">
+            <div class="logo">
+                <div class="logo-icon"></div>
+                <h1>MiniBank</h1>
+            </div>
+
+            <div class="tabs">
+                <button class="tab active" onclick="switchTab('login')">Login</button>
+                <button class="tab" onclick="switchTab('register')">Register</button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="login-form" onsubmit="handleLogin(event)">
+                <div class="input-group">
+                    <label>Account Number</label>
+                    <input type="number" id="login-acno" required placeholder="Enter Account No">
+                </div>
+                <div class="input-group">
+                    <label>Passcode</label>
+                    <input type="password" id="login-pass" required placeholder="Enter passcode">
+                </div>
+                <button type="submit" class="btn primary">Secure Login</button>
+                <div class="error" id="login-error"></div>
+            </form>
+
+            <!-- Register Form -->
+            <form id="register-form" onsubmit="handleRegister(event)" class="hidden">
+                <div class="input-group">
+                    <label>Full Name</label>
+                    <input type="text" id="reg-name" required placeholder="Choose a username">
+                </div>
+                <div class="input-group">
+                    <label>Set Passcode</label>
+                    <input type="password" id="reg-pass" required placeholder="Create passcode (numbers only)">
+                </div>
+                <button type="submit" class="btn primary">Create Account</button>
+                <div class="error" id="reg-error"></div>
+                <div class="success" id="reg-success"></div>
+            </form>
+        </div>
+
+        <!-- Dashboard View -->
+        <div id="dashboard-view" class="view">
+            <div class="header">
+                <h2>Welcome, <span id="dash-name">User</span></h2>
+                <div class="badge">Acc No: <span id="dash-acno">0</span></div>
+            </div>
+
+            <div class="balance-card">
+                <h3>Current Balance</h3>
+                <h1 id="dash-balance">Rs. 0</h1>
+            </div>
+
+            <div class="actions">
+                <button class="btn action-btn" onclick="showModal('deposit-modal')">Deposit</button>
+                <button class="btn action-btn" onclick="showModal('withdraw-modal')">Withdraw</button>
+                <button class="btn action-btn" onclick="showModal('transfer-modal')">Transfer</button>
+            </div>
+
+            <div class="transactions-section">
+                <h3>Transaction History (Last 7 Days)</h3>
+                <div id="tx-graph-container" class="graph-box overflow-x-none">
+                    <div class="no-tx-msg hidden" id="no-tx-msg">No recent transactions.</div>
+                    
+                    <div id="grid-lines" class="grid-lines"></div>
+                    <div id="y-axis-labels" class="y-axis-labels"></div>
+                    <div id="x-axis-labels" class="x-axis-labels"></div>
+
+                    <svg id="tx-svg-lines" class="tx-svg-lines"></svg>
+                    <div id="tx-nodes" class="tx-nodes"></div>
+                </div>
+            </div>
+
+            <button class="btn secondary logout-btn" onclick="logout()">Logout / Exit</button>
+            <div class="error" id="dash-error"></div>
+            <div class="success" id="dash-success"></div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div id="deposit-modal" class="modal">
+        <div class="modal-content glass-card">
+            <h3>Deposit Money</h3>
+            <input type="number" id="deposit-amount" placeholder="Amount (Rs.)" min="1">
+            <div class="modal-actions">
+                <button class="btn secondary" onclick="closeModal('deposit-modal')">Cancel</button>
+                <button class="btn primary" onclick="handleDeposit()">Deposit</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="withdraw-modal" class="modal">
+        <div class="modal-content glass-card">
+            <h3>Withdraw Money</h3>
+            <input type="number" id="withdraw-amount" placeholder="Amount (Rs.)" min="1">
+            <div class="modal-actions">
+                <button class="btn secondary" onclick="closeModal('withdraw-modal')">Cancel</button>
+                <button class="btn primary" onclick="handleWithdraw()">Withdraw</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="transfer-modal" class="modal">
+        <div class="modal-content glass-card">
+            <h3>Transfer Money</h3>
+            <input type="number" id="transfer-acno" placeholder="Recipient Acc No">
+            <input type="number" id="transfer-amount" placeholder="Amount (Rs.)" min="1">
+            <div class="modal-actions">
+                <button class="btn secondary" onclick="closeModal('transfer-modal')">Cancel</button>
+                <button class="btn primary" onclick="handleTransfer()">Transfer</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

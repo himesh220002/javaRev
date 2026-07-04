@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Context Tracker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            850: '#151e2e',
+                            900: '#0f172a',
+                            950: '#020617',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+
+        .mermaid svg {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body class="m-0 p-0 bg-slate-950 text-slate-100 flex h-screen overflow-hidden">
+    <div class="w-[450px] bg-slate-900 border-r border-slate-800 flex flex-col h-full shrink-0">
+        <div class="p-6 border-b border-slate-800/80">
+            <h1 class="m-0 text-xl font-semibold text-white">Java Mastery Tracker</h1>
+            <p class="mt-2 text-sm text-slate-400">Track your comprehensive Java learning journey</p>
+            <div class="mt-5 flex gap-3">
+                <button
+                    class="flex-1 bg-transparent border border-slate-700 hover:bg-white/5 hover:border-slate-500 text-slate-200 py-2 px-4 rounded-lg text-sm font-medium transition-colors"
+                    onclick="resetProgress()">Reset All</button>
+            </div>
+        </div>
+        <div class="flex-1 overflow-y-auto p-6" id="tree-container">
+            <!-- Tree dynamically generated here -->
+        </div>
+    </div>
+    <div class="flex-1 flex flex-col bg-slate-950 relative">
+        <div
+            class="p-6 px-8 flex justify-between items-center bg-slate-950/80 backdrop-blur-md border-b border-slate-800/80 sticky top-0 z-10">
+            <h2 class="m-0 text-lg font-medium text-white">Learning Graphs</h2>
+            <button
+                class="bg-blue-600 hover:bg-blue-500 text-white py-2 px-5 rounded-lg text-sm font-medium transition-colors shadow-lg shadow-blue-500/20"
+                onclick="exportData()">Export JSON</button>
+        </div>
+        <div class="flex-1 overflow-auto p-10 flex flex-col items-center" id="diagram-container">
+            <div class="text-slate-500 mt-10">Rendering Diagrams...</div>
+        </div>
+    </div>
+
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+
+        mermaid.initialize({
+            startOnLoad: false,
+            theme: 'dark',
+            securityLevel: 'loose',
+            fontFamily: 'Inter, sans-serif'
+        });
+
+        import { defaultState as staticState } from './data.js';
+
+        let state;
+        if (window.location.protocol.startsWith('http')) {
+            try {
+                // Fetch fresh data bypassing cache if using the local server
+                const module = await import('./data.js?t=' + Date.now());
+                state = module.defaultState;
+                // Update local storage so it stays in sync
+                localStorage.setItem('learningTrackerState_v3', JSON.stringify(state));
+            } catch(e) {
+                state = JSON.parse(localStorage.getItem('learningTrackerState_v3')) || staticState;
+            }
+        } else {
+            // If opened as a local file (file://), data.js cannot be updated, so rely on localStorage
+            state = JSON.parse(localStorage.getItem('learningTrackerState_v3')) || staticState;
+        }
+
+        window.saveState = async function () {
+            localStorage.setItem('learningTrackerState_v3', JSON.stringify(state));
+            try {
+                await fetch('/save', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(state)
+                });
+            } catch (e) {
+                console.log('Saved to local storage. Run node server.js to save directly to data.js');
+            }
+        };
+
+        window.resetProgress = function () {
+            if (confirm('Are you sure you want to reset all progress?')) {
+                localStorage.removeItem('learningTrackerState_v3');
+                state = JSON.parse(JSON.stringify(staticState));
+                saveState();
+                renderTree();
+            }
+        };
+
+        window.exportData = function () {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(state, null, 2));
+            const dlAnchorElem = document.createElement('a');
+            dlAnchorElem.setAttribute("href", dataStr);
+            dlAnchorElem.setAttribute("download", "java_mastery_context.json");
+            dlAnchorElem.click();
+        };
+
+        let zoomLevels = {};
+        window.zoomGraph = function (id, direction) {
+            if (!zoomLevels[id]) zoomLevels[id] = 100;
+            if (direction === 'in') zoomLevels[id] += 20;
+            if (direction === 'out') zoomLevels[id] -= 20;
+            if (direction === 'reset') zoomLevels[id] = 60;
+
+            if (zoomLevels[id] < 20) zoomLevels[id] = 20;
+            if (zoomLevels[id] > 500) zoomLevels[id] = 500;
+
+            const svg = document.querySelector(`#${id}-container svg`);
+            const container = document.getElementById(`${id}-container`);
+            if (svg) {
+                svg.style.maxWidth = 'none';
+                svg.style.width = `${zoomLevels[id]}%`;
+                svg.style.height = 'auto';
+                svg.style.transition = 'width 0.2s ease-in-out';
+            }
+            if (container) {
+                if (zoomLevels[id] > 60) {
+                    container.classList.add('cursor-grab');
+                } else {
+                    container.classList.remove('cursor-grab');
+                    container.classList.remove('cursor-grabbing');
+                }
+            }
+        };
+
+        function calculateProgress(node) {
+            if (node.completed !== undefined) {
+                return { total: 1, completed: node.completed ? 1 : 0 };
+            }
+            let total = 0;
+            let completed = 0;
+
+            const childrenKey = node.children ? 'children' : 'grandchildren';
+            if (node[childrenKey]) {
+                for (const key in node[childrenKey]) {
+                    const res = calculateProgress(node[childrenKey][key]);
+                    total += res.total;
+                    completed += res.completed;
+                }
+            }
+
+            return { total, completed, percentage: total === 0 ? 0 : Math.round((completed / total) * 100) };
+        }
+
+        let expandedState = {};
+
+        window.toggleExpand = function (el, id) {
+            const isCollapsed = expandedState[id] !== undefined ? expandedState[id] : (id.startsWith('mod_') ? false : true);
+            expandedState[id] = !isCollapsed; // Invert it
+
+            const chevron = el.querySelector('.chevron');
+            if (chevron) chevron.classList.toggle('-rotate-90');
+
+            const content = el.nextElementSibling;
+            if (content) content.classList.toggle('hidden');
+        };
+
+        window.toggleCheckbox = function (mod, child, grand, isChecked) {
+            state[mod].children[child].grandchildren[grand].completed = isChecked;
+            saveState();
+            renderTree();
+        };
+
+        window.updateNotes = function (mod, child, grand, note) {
+            state[mod].children[child].grandchildren[grand].notes = note;
+            saveState();
+            renderMermaid();
+        };
+
+        window.renderTree = function () {
+            const container = document.getElementById('tree-container');
+            container.innerHTML = '';
+
+            for (const moduleName in state) {
+                const mod = state[moduleName];
+                const prog = calculateProgress(mod);
+
+                const modEl = document.createElement('div');
+                const mId = 'mod_' + moduleName.replace(/[^a-zA-Z0-9]/g, '');
+                const isModExpanded = expandedState[mId] !== false; // default true
+
+                const modHeader = document.createElement('div');
+                modHeader.className = 'flex items-center p-3 bg-white/5 rounded-lg cursor-pointer mb-2 hover:bg-white/10 transition-colors select-none border border-transparent hover:border-slate-700/50';
+                modHeader.onclick = function () { toggleExpand(this, mId); };
+                modHeader.innerHTML = `
+                   <span class="chevron mr-3 text-[10px] text-slate-400 transition-transform duration-200 ${!isModExpanded ? '-rotate-90' : ''}">▼</span>
+                   <strong class="text-slate-200">${moduleName}</strong>
+                   <span class="ml-auto bg-blue-600/90 text-white px-2.5 py-0.5 rounded-full text-xs font-semibold whitespace-nowrap shadow-sm shadow-blue-900/50">${prog.completed}/${prog.total} (${prog.percentage}%)</span>
+                `;
+
+                const modContent = document.createElement('div');
+                modContent.className = 'ml-4 pl-3 border-l border-slate-800 mb-5 overflow-hidden transition-all';
+                if (!isModExpanded) modContent.classList.add('hidden');
+
+                for (const childName in mod.children) {
+                    const child = mod.children[childName];
+                    const childProg = calculateProgress(child);
+
+                    const childEl = document.createElement('div');
+                    const cId = 'child_' + moduleName.replace(/[^a-zA-Z0-9]/g, '') + '_' + childName.replace(/[^a-zA-Z0-9]/g, '');
+                    const isChildExpanded = expandedState[cId] === true; // default false
+
+                    const childHeader = document.createElement('div');
+                    childHeader.className = 'flex items-center py-2 px-3 bg-transparent rounded-lg cursor-pointer mb-1 hover:bg-white/5 transition-colors select-none group';
+                    childHeader.onclick = function () { toggleExpand(this, cId); };
+                    childHeader.innerHTML = `
+                       <span class="chevron mr-3 text-[10px] text-slate-500 transition-transform duration-200 ${!isChildExpanded ? '-rotate-90' : ''}">▼</span>
+                       <span class="text-slate-300 text-sm font-medium group-hover:text-slate-100 transition-colors">${childName}</span>
+                       <span class="ml-auto bg-slate-800 text-slate-300 px-2 py-0.5 rounded-full text-[10px] font-semibold whitespace-nowrap border border-slate-700">${childProg.completed}/${childProg.total} (${childProg.percentage}%)</span>
+                   `;
+
+                    const childContent = document.createElement('div');
+                    childContent.className = 'ml-6 mb-4 overflow-hidden';
+                    if (!isChildExpanded) childContent.classList.add('hidden');
+
+                    for (const grandName in child.grandchildren) {
+                        const grand = child.grandchildren[grandName];
+
+                        const grandEl = document.createElement('div');
+                        grandEl.className = 'flex flex-col p-3.5 bg-black/20 rounded-xl mb-2.5 border border-slate-800/80 hover:border-blue-500/30 transition-colors group/item shadow-sm shadow-black/10';
+                        grandEl.innerHTML = `
+                           <label class="flex items-center cursor-pointer mb-3 group/label">
+                               <input type="checkbox" class="mr-3 w-4 h-4 accent-green-500 cursor-pointer rounded bg-slate-800 border-slate-700 focus:ring-green-500 focus:ring-offset-slate-950" ${grand.completed ? 'checked' : ''} onchange="toggleCheckbox('${moduleName}', '${childName}', '${grandName}', this.checked)">
+                               <span class="text-sm font-medium transition-colors group-hover/label:text-white ${grand.completed ? 'text-green-500 line-through opacity-75' : 'text-slate-300'}">${grandName}</span>
+                           </label>
+                           <input type="text" class="bg-slate-900/50 border border-slate-700/60 rounded-lg text-slate-200 px-3 py-2 text-xs w-full box-border transition-all focus:outline-none focus:border-blue-500 focus:bg-slate-800 focus:ring-1 focus:ring-blue-500/50 placeholder:text-slate-600" placeholder="Add notes..." value="${grand.notes.replace(/"/g, '&quot;')}" onchange="updateNotes('${moduleName}', '${childName}', '${grandName}', this.value)">
+                       `;
+                        childContent.appendChild(grandEl);
+                    }
+                    childEl.appendChild(childHeader);
+                    childEl.appendChild(childContent);
+                    modContent.appendChild(childEl);
+                }
+
+                modEl.appendChild(modHeader);
+                modEl.appendChild(modContent);
+                container.appendChild(modEl);
+            }
+
+            renderMermaid();
+        };
+
+        async function renderMermaid() {
+            const container = document.getElementById('diagram-container');
+            container.innerHTML = '<div class="text-slate-500 mt-10 flex flex-col items-center"><svg class="animate-spin -ml-1 mr-3 h-8 w-8 text-blue-500 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>Rendering Diagrams...</div>';
+
+            const diagrams = [];
+
+            // 1. Overview Diagrams for all root modules
+            let globalChildIdx = 1;
+            for (const rootName in state) {
+                let overviewText = 'flowchart LR\n';
+                overviewText += `    Main["${rootName} Mastery"]:::module\n`;
+                let localChildIdx = globalChildIdx;
+                for (const childName in state[rootName].children) {
+                    const child = state[rootName].children[childName];
+                    const cProg = calculateProgress(child);
+                    const cleanName = childName.replace(/[^a-zA-Z0-9]/g, '');
+                    let fileUrl = `chapters/${localChildIdx}_${cleanName}/${cleanName}.html`;
+                    if (rootName === "DSA") {
+                        if (childName === "Data Structures") fileUrl = "dsa/datastructures.html";
+                        else if (childName === "Algorithms") fileUrl = "dsa/algorithms.html";
+                        else if (childName.includes("Practice Problems")) fileUrl = "dsa/practiceproblems.html";
+                        else if (childName.includes("Interview Questions")) fileUrl = "dsa/interviewquestions.html";
+                    }
+                    overviewText += `    Main --> ${cleanName}["${childName} (${cProg.completed}/${cProg.total} - ${cProg.percentage}%) <br/> <a href='${fileUrl}' style='color:#60a5fa;text-decoration:underline;'>[Open]</a>"]:::child\n`;
+                    localChildIdx++;
+                }
+                overviewText += `
+                classDef module fill:#1e40af,stroke:#000,stroke-width:2px,color:#fff;
+                classDef child fill:#3b82f6,stroke:#000,stroke-width:1px,color:#fff;
+                `;
+                diagrams.push({ id: `overview_${rootName.replace(/[^a-zA-Z0-9]/g, '')}`, text: overviewText, title: `${rootName} High-Level Overview` });
+                globalChildIdx = localChildIdx; // Update global counter for next root node
+            }
+
+            // 2. Diagrams for each child module across all roots
+            let diagramCounter = 1;
+            for (const rootName in state) {
+                for (const childName in state[rootName].children) {
+                    const child = state[rootName].children[childName];
+                    let nodeText = 'flowchart LR\n';
+                    const cProg = calculateProgress(child);
+                    const rootId = 'Root' + diagramCounter;
+                    const cleanName = childName.replace(/[^a-zA-Z0-9]/g, '');
+                    let fileUrl = `chapters/${diagramCounter}_${cleanName}/${cleanName}.html`;
+                    if (rootName === "DSA") {
+                        if (childName === "Data Structures") fileUrl = "dsa/datastructures.html";
+                        else if (childName === "Algorithms") fileUrl = "dsa/algorithms.html";
+                        else if (childName.includes("Practice Problems")) fileUrl = "dsa/practiceproblems.html";
+                        else if (childName.includes("Interview Questions")) fileUrl = "dsa/interviewquestions.html";
+                    }
+                    nodeText += `    ${rootId}["${childName} (${cProg.completed}/${cProg.total} - ${cProg.percentage}%) <br/> <a href='${fileUrl}' style='color:#60a5fa;text-decoration:underline;'>[Open]</a>"]:::child\n`;
+
+                    let gCounter = 1;
+                    for (const grandName in child.grandchildren) {
+                        const grand = child.grandchildren[grandName];
+                        const gId = 'G' + diagramCounter + '_' + gCounter;
+
+                        const statusStr = grand.completed ? '☑ Completed' : '☐ Pending';
+                        const classStr = grand.completed ? 'completed' : 'pending';
+
+                        let label = `${grandName} <br/> ${statusStr}`;
+                        if (grand.notes) {
+                            const safeNotes = grand.notes.replace(/"/g, "'").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                            label += `<br/> 📝 ${safeNotes}`;
+                        }
+
+                        nodeText += `    ${rootId} --> ${gId}["${label}"]:::${classStr}\n`;
+                        gCounter++;
+                    }
+
+                    nodeText += `
+                    classDef child fill:#3b82f6,stroke:#000,stroke-width:1px,color:#fff;
+                    classDef completed fill:#166534,stroke:#000,stroke-width:1px,color:#fff;
+                    classDef pending fill:#ca8a04,stroke:#000,stroke-width:1px,color:#fff;
+                    `;
+                    diagrams.push({ id: 'diag' + diagramCounter, text: nodeText, title: `${rootName} - ${childName}` });
+                    diagramCounter++;
+                }
+            }
+
+            container.innerHTML = '';
+
+            for (const d of diagrams) {
+                const wrapper = document.createElement('div');
+                wrapper.className = 'w-full max-w-5xl mb-12 bg-slate-900/50 rounded-2xl p-8 border border-slate-800 shadow-xl relative';
+                wrapper.innerHTML = `
+                    <div class="absolute top-6 right-6 flex gap-1.5 bg-slate-950 p-1.5 rounded-xl border border-slate-800 z-10 shadow-lg">
+                        <button class="bg-slate-800 hover:bg-blue-600 text-slate-300 hover:text-white w-9 h-9 rounded-lg flex items-center justify-center font-bold transition-colors" onclick="zoomGraph('${d.id}', 'in')" title="Zoom In">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                        </button>
+                        <button class="bg-slate-800 hover:bg-blue-600 text-slate-300 hover:text-white w-9 h-9 rounded-lg flex items-center justify-center font-bold transition-colors" onclick="zoomGraph('${d.id}', 'out')" title="Zoom Out">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path></svg>
+                        </button>
+                        <button class="bg-slate-800 hover:bg-blue-600 text-slate-300 hover:text-white w-9 h-9 rounded-lg flex items-center justify-center font-bold transition-colors" onclick="zoomGraph('${d.id}', 'reset')" title="Reset Zoom">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                        </button>
+                    </div>
+                    <h3 class="mt-0 mb-8 text-center text-xl text-slate-100 font-semibold tracking-tight">${d.title}</h3>
+                    <div class="w-full overflow-auto rounded-xl pb-3 mermaid" id="${d.id}-container"></div>
+                `;
+                container.appendChild(wrapper);
+
+                try {
+                    const { svg } = await mermaid.render(d.id, d.text);
+                    const containerElem = document.getElementById(d.id + '-container');
+                    containerElem.innerHTML = svg;
+                    if (zoomLevels[d.id] && zoomLevels[d.id] !== 100) {
+                        const svgEl = containerElem.querySelector('svg');
+                        if (svgEl) {
+                            svgEl.style.maxWidth = 'none';
+                            svgEl.style.width = `${zoomLevels[d.id]}%`;
+                            svgEl.style.height = 'auto';
+                        }
+                    }
+                } catch (e) {
+                    console.error("Mermaid parsing error for", d.title, e);
+                    document.getElementById(d.id + '-container').innerHTML = '<div class="text-red-500 text-center p-4 bg-red-500/10 rounded-lg border border-red-500/20">Failed to render diagram</div>';
+                }
+            }
+        }
+
+        // Drag to scroll logic for mermaid diagrams
+        let isDragging = false;
+        let startX, startY, scrollLeft, scrollTop;
+        let activeContainer = null;
+
+        document.addEventListener('mousedown', (e) => {
+            const container = e.target.closest('.mermaid');
+            if (!container) return;
+
+            // Only allow dragging if zoomed in or scrollable
+            if (container.scrollWidth > container.clientWidth || container.scrollHeight > container.clientHeight) {
+                isDragging = true;
+                activeContainer = container;
+                container.classList.add('cursor-grabbing');
+                container.classList.remove('cursor-grab');
+                startX = e.pageX - container.offsetLeft;
+                startY = e.pageY - container.offsetTop;
+                scrollLeft = container.scrollLeft;
+                scrollTop = container.scrollTop;
+            }
+        });
+
+        document.addEventListener('mouseleave', () => {
+            if (!isDragging || !activeContainer) return;
+            isDragging = false;
+            activeContainer.classList.remove('cursor-grabbing');
+            activeContainer.classList.add('cursor-grab');
+            activeContainer = null;
+        });
+
+        document.addEventListener('mouseup', () => {
+            if (!isDragging || !activeContainer) return;
+            isDragging = false;
+            activeContainer.classList.remove('cursor-grabbing');
+            activeContainer.classList.add('cursor-grab');
+            activeContainer = null;
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging || !activeContainer) return;
+            e.preventDefault();
+            const x = e.pageX - activeContainer.offsetLeft;
+            const y = e.pageY - activeContainer.offsetTop;
+            const walkX = (x - startX) * 1.5; // Multiply for faster scrolling
+            const walkY = (y - startY) * 1.5;
+            activeContainer.scrollLeft = scrollLeft - walkX;
+            activeContainer.scrollTop = scrollTop - walkY;
+        });
+
+        renderTree();
+    </script>
+</body>
+
+</html>

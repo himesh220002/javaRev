@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JDBC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'dark', fontFamily: 'Inter, sans-serif' });
+    </script>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            850: '#151e2e',
+                            900: '#0f172a',
+                            950: '#020617',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #f9fafb;
+            color: #1f2937;
+            margin: 0;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+        .mermaid {
+            background: rgba(255,255,255,0.02);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #334155;
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="sidebar-container" style="display:flex; height:100%;"></div>
+    <div class="flex-1 p-8 md:p-14 overflow-y-auto bg-gray-50 text-gray-800 prose prose-indigo prose-headings:text-gray-900 max-w-none prose-a:text-blue-600 prose-pre:bg-gray-100 prose-pre:text-gray-900 prose-pre:border prose-pre:border-gray-200">
+        <h1>JDBC</h1>
+        <p>Content for JDBC will go here.</p>
+    </div>
+    
+    <script>
+        function toggleSubtopics(id) {
+            const el = document.getElementById(id);
+            if (el) el.classList.toggle('open');
+        }
+
+        const sidebar = document.getElementById('sidebar');
+        const resizer = document.getElementById('dragMe');
+        let isResizing = false;
+
+        resizer.addEventListener('mousedown', (e) => {
+            isResizing = true;
+            resizer.classList.add('resizing');
+            document.body.style.cursor = 'col-resize';
+            // Prevent text selection during drag
+            e.preventDefault();
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isResizing) return;
+            let newWidth = e.clientX;
+            const minWidth = window.innerWidth * 0.05;
+            const maxWidth = window.innerWidth * 0.50;
+            if (newWidth < minWidth) newWidth = minWidth;
+            if (newWidth > maxWidth) newWidth = maxWidth;
+            sidebar.style.width = newWidth + 'px';
+        });
+
+        document.addEventListener('mouseup', () => {
+            if (isResizing) {
+                isResizing = false;
+                resizer.classList.remove('resizing');
+                document.body.style.cursor = 'default';
+            }
+        });
+    </script>
+
+    <script type="module">
+        import { initSidebar } from '../../sidebar.js';
+        initSidebar();
+    </script>
+</body>
+</html>

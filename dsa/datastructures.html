@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Structures - DSA Mastery</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; min-height: 100vh; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 2rem; }
+        .back-link { display: inline-block; margin-bottom: 1.5rem; color: #667eea; text-decoration: none; font-weight: 500; }
+        .back-link:hover { text-decoration: underline; }
+        h1 { color: #1a1a2e; margin-bottom: 0.5rem; }
+        .subtitle { color: #666; margin-bottom: 2rem; }
+        .topic-card { background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid #eee; }
+        .topic-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 1rem; }
+        .topic-title { font-size: 1.1rem; font-weight: 600; color: #1a1a2e; }
+        .topic-meta { display: flex; gap: 1rem; align-items: center; }
+        .progress-badge { padding: 0.2rem 0.8rem; border-radius: 12px; font-size: 0.8rem; font-weight: 500; }
+        .progress-0 { background: #fff3cd; color: #856404; }
+        .progress-100 { background: #d4edda; color: #155724; }
+        .difficulty { padding: 0.2rem 0.6rem; border-radius: 8px; font-size: 0.75rem; font-weight: 500; }
+        .diff-easy { background: #d4edda; color: #155724; }
+        .diff-medium { background: #fff3cd; color: #856404; }
+        .diff-hard { background: #f8d7da; color: #721c24; }
+        .checkbox { width: 22px; height: 22px; border: 2px solid #ddd; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; flex-shrink: 0; }
+        .checkbox.checked { background: #667eea; border-color: #667eea; }
+        .checkbox.checked::after { content: '✓'; color: white; font-size: 14px; font-weight: bold; }
+        .topic-content { display: grid; grid-template-columns: 1fr 200px; gap: 1rem; align-items: start; }
+        .topic-details { display: flex; flex-direction: column; gap: 0.5rem; }
+        .detail-row { display: flex; gap: 1rem; font-size: 0.9rem; color: #555; }
+        .detail-label { font-weight: 500; color: #333; min-width: 100px; }
+        .topic-actions { display: flex; flex-direction: column; gap: 0.5rem; }
+        .btn { padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 500; text-decoration: none; text-align: center; transition: all 0.2s; border: none; cursor: pointer; font-size: 0.9rem; }
+        .btn-primary { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+        .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4); }
+        .btn-secondary { background: #f0f0f0; color: #333; }
+        .btn-secondary:hover { background: #e0e0e0; }
+        .btn-outline { background: transparent; border: 1px solid #667eea; color: #667eea; }
+        .btn-outline:hover { background: #667eea; color: white; }
+        .subtopics { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #f0f0f0; }
+        .subtopic { display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0; font-size: 0.9rem; color: #555; }
+        .subtopic input[type="checkbox"] { width: 16px; height: 16px; accent-color: #667eea; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to DSA Mastery</a>
+        <h1>Data Structures</h1>
+        <p class="subtitle">Master fundamental data structures for coding interviews</p>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic="arrays"></div>
+                    <span class="topic-title">Arrays (1D & 2D)</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                    <span class="difficulty diff-easy">Easy</span>
+                </div>
+            </div>
+            <div class="topic-content">
+                <div class="topic-details">
+                    <div class="detail-row">
+                        <span class="detail-label">Key Concepts:</span>
+                        <span>Indexing, Traversal, Insertion, Deletion, Searching, Sorting, Prefix Sum, Sliding Window</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Time Complexity:</span>
+                        <span>Access O(1), Search O(n), Insert/Delete O(n)</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Space Complexity:</span>
+                        <span>O(n)</span>
+                    </div>
+                    <div class="subtopics">
+                        <label class="subtopic"><input type="checkbox"> 1D Array Basics & Operations</label>
+                        <label class="subtopic"><input type="checkbox"> 2D Matrix Traversal (Row/Column/Diagonal/Spiral)</label>
+                        <label class="subtopic"><input type="checkbox"> Prefix Sum & Difference Array</label>
+                        <label class="subtopic"><input type="checkbox"> Sliding Window Technique</label>
+                        <label class="subtopic"><input type="checkbox"> Two Pointers on Arrays</label>
+                        <label class="subtopic"><input type="checkbox"> Kadane's Algorithm (Max Subarray)</label>
+                        <label class="subtopic"><input type="checkbox"> Dutch National Flag (Sort 0,1,2)</label>
+                        <label class="subtopic"><input type="checkbox"> Array Rotation & Reversal</label>
+                    </div>
+                </div>
+                <div class="topic-actions">
+                    <a href="#" class="btn btn-primary">Learn</a>
+                    <a href="#" class="btn btn-secondary">Practice</a>
+                    <a href="#" class="btn btn-outline">Problems</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic="strings"></div>
+                    <span class="topic-title">Strings & StringBuilders</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                    <span class="difficulty diff-easy">Easy</span>
+                </div>
+            </div>
+            <div class="topic-content">
+                <div class="topic-details">
+                    <div class="detail-row">
+                        <span class="detail-label">Key Concepts:</span>
+                        <span>Immutability, StringBuilder vs String, Char Arrays, Pattern Matching, Anagrams, Palindromes</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Time Complexity:</span>
+                        <span>Concat O(n), Search O(n*m), KMP O(n+m)</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Space Complexity:</span>
+                        <span>O(n)</span>
+                    </div>
+                    <div class="subtopics">
+                        <label class="subtopic"><input type="checkbox"> String Basics & Immutability</label>
+                        <label class="subtopic"><input type="checkbox"> StringBuilder vs StringBuffer</label>
+                        <label class="subtopic"><input type="checkbox"> Palindrome & Anagram Checks</label>
+                        <label class="subtopic"><input type="checkbox"> Pattern Matching (KMP, Rabin-Karp)</label>
+                        <label class="subtopic"><input type="checkbox"> String Compression & Encoding</label>
+                        <label class="subtopic"><input type="checkbox"> Regular Expressions Basics</label>
+                    </div>
+                </div>
+                <div class="topic-actions">
+                    <a href="#" class="btn btn-primary">Learn</a>
+                    <a href="#" class="btn btn-secondary">Practice</a>
+                    <a href="#" class="btn btn-outline">Problems</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic="linkedlists"></div>
+                    <span class="topic-title">Linked Lists (Singly, Doubly, Circular)</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                    <span class="difficulty diff-medium">Medium</span>
+                </div>
+            </div>
+            <div class="topic-content">
+                <div class="topic-details">
+                    <div class="detail-row">
+                        <span class="detail-label">Key Concepts:</span>
+                        <span>Node Structure, Traversal, Insertion, Deletion, Reversal, Cycle Detection, Merge, Fast/Slow Pointers</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Time Complexity:</span>
+                        <span>Access O(n), Insert/Delete O(1) at head</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Space Complexity:</span>
+                        <span>O(n)</span>
+                    </div>
+                    <div class="subtopics">
+                        <label class="subtopic"><input type="checkbox"> Singly Linked List Operations</label>
+                        <label class="subtopic"><input type="checkbox"> Doubly Linked List</label>
+                        <label class="subtopic"><input type="checkbox"> Circular Linked List</label>
+                        <label class="subtopic"><input type="checkbox"> Reverse Linked List (Iterative & Recursive)</label>
+                        <label class="subtopic"><input type="checkbox"> Cycle Detection (Floyd's Algorithm)</label>
+                        <label class="subtopic"><input type="checkbox"> Merge Two Sorted Lists</label>
+                        <label class="subtopic"><input type="checkbox"> Remove Nth Node from End</label>
+                        <label class="subtopic"><input type="checkbox"> Intersection of Two Lists</label>
+                        <label class="subtopic"><input type="checkbox"> LRU Cache Design</label>
+                    </div>
+                </div>
+                <div class="topic-actions">
+                    <a href="#" class="btn btn-primary">Learn</a>
+                    <a href="#" class="btn btn-secondary">Practice</a>
+                    <a href="#" class="btn btn-outline">Problems</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic="stacks"></div>
+                    <span class="topic-title">Stacks</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                    <span class="difficulty diff-easy">Easy</span>
+                </div>
+            </div>
+            <div class="topic-content">
+                <div class="topic-details">
+                    <div class="detail-row">
+                        <span class="detail-label">Key Concepts:</span>
+                        <span>LIFO, Push/Pop/Peek, Monotonic Stack, Expression Evaluation, Next Greater Element</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Time Complexity:</span>
+                        <span>All operations O(1)</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Space Complexity:</span>
+                        <span>O(n)</span>
+                    </div>
+                    <div class="subtopics">
+                        <label class="subtopic"><input type="checkbox"> Stack Implementation (Array & Linked List)</label>
+                        <label class="subtopic"><input type="checkbox"> Balanced Parentheses</label>
+                        <label class="subtopic"><input type="checkbox"> Next Greater/Smaller Element</label>
+                        <label class="subtopic"><input type="checkbox"> Monotonic Stack Patterns</label>
+                        <label class="subtopic"><input type="checkbox"> Expression Evaluation (Infix/Postfix/Prefix)</label>
+                        <label class="subtopic"><input type="checkbox"> Largest Rectangle in Histogram</label>
+                        <label class="subtopic"><input type="checkbox"> Daily Temperatures</label>
+                    </div>
+                </div>
+                <div class="topic-actions">
+                    <a href="#" class="btn btn-primary">Learn</a>
+                    <a href="#" class="btn btn-secondary">Practice</a>
+                    <a href="#" class="btn btn-outline">Problems</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic="queues"></div>
+                    <span class="topic-title">Queues (Simple, Circular, Deque)</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                    <span class="difficulty diff-easy">Easy</span>
+                </div>
+            </div>
+            <div class="topic-content">
+                <div class="topic-details">
+                    <div class="detail-row">
+                        <span class="detail-label">Key Concepts:</span>
+                        <span>FIFO, Enqueue/Dequeue, Circular Queue, Deque (Double-ended), Priority Queue, Sliding Window Max</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Time Complexity:</span>
+                        <span>All operations O(1) amortized</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Space Complexity:</span>
+                        <span>O(n)</span>
+                    </div>
+                    <div class="subtopics">
+                        <label class="subtopic"><input type="checkbox"> Queue Implementation (Array & Linked List)</label>
+                        <label class="subtopic"><input type="checkbox"> Circular Queue</label>
+                        <label class="subtopic"><input type="checkbox"> Deque (Double-ended Queue)</label>
+                        <label class="subtopic"><input type="checkbox"> Sliding Window Maximum</label>
+                        <label class="subtopic"><input type="checkbox"> Queue using Two Stacks</label>
+                        <label class="subtopic"><input type="checkbox"> First Non-repeating Character in Stream</label>
+                    </div>
+                </div>
+                <div class="topic-actions">
+                    <a href="#" class="btn btn-primary">Learn</a>
+                    <a href="#" class="btn btn-secondary">Practice</a>
+                    <a href="#" class="btn btn-outline">Problems</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic="priorityqueue"></div>
+                    <span class="topic-title">PriorityQueue (Heaps)</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                    <span class="difficulty diff-medium">Medium</span>
+                </div>
+            </div>
+            <div class="topic-content">
+                <div class="topic-details">
+                    <div class="detail-row">
+                        <span class="detail-label">Key Concepts:</span>
+                        <span>Min/Max Heap, Heapify, Heap Sort, K Largest/Smallest, Median of Stream, Huffman Coding</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Time Complexity:</span>
+                        <span>Insert/Extract O(log n), Peek O(1), Heapify O(n)</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Space Complexity:</span>
+                        <span>O(n)</span>
+                    </div>
+                    <div class="subtopics">
+                        <label class="subtopic"><input type="checkbox"> Min Heap & Max Heap Implementation</label>
+                        <label class="subtopic"><input type="checkbox"> Heapify & Build Heap</label>
+                        <label class="subtopic"><input type="checkbox"> Heap Sort</label>
+                        <label class="subtopic"><input type="checkbox"> K Largest/Smallest Elements</label>
+                        <label class="subtopic"><input type="checkbox"> Median of Data Stream</label>
+                        <label class="subtopic"><input type="checkbox"> Merge K Sorted Lists</label>
+                        <label class="subtopic"><input type="checkbox"> Huffman Coding</label>
+                    </div>
+                </div>
+                <div class="topic-actions">
+                    <a href="#" class="btn btn-primary">Learn</a>
+                    <a href="#" class="btn btn-secondary">Practice</a>
+                    <a href="#" class="btn btn-outline">Problems</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic="hashmaps"></div>
+                    <span class="topic-title">HashMaps & HashSets</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                    <span class="difficulty diff-easy">Easy</span>
+                </div>
+            </div>
+            <div class="topic-content">
+                <div class="topic-details">
+                    <div class="detail-row">
+                        <span class="detail-label">Key Concepts:</span>
+                        <span>Hashing, Collision Resolution, Load Factor, Rehashing, Frequency Count, Two Sum, Subarray Sum</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Time Complexity:</span>
+                        <span>Average O(1), Worst O(n)</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Space Complexity:</span>
+                        <span>O(n)</span>
+                    </div>
+                    <div class="subtopics">
+                        <label class="subtopic"><input type="checkbox"> HashMap/HashSet Internals</label>
+                        <label class="subtopic"><input type="checkbox"> Collision Handling (Chaining, Open Addressing)</label>
+                        <label class="subtopic"><input type="checkbox"> Two Sum & Variants</label>
+                        <label class="subtopic"><input type="checkbox"> Subarray Sum Equals K</label>
+                        <label class="subtopic"><input type="checkbox"> Group Anagrams</label>
+                        <label class="subtopic"><input type="checkbox"> Longest Consecutive Sequence</label>
+                        <label class="subtopic"><input type="checkbox"> LRU Cache with HashMap + DLL</label>
+                    </div>
+                </div>
+                <div class="topic-actions">
+                    <a href="#" class="btn btn-primary">Learn</a>
+                    <a href="#" class="btn btn-secondary">Practice</a>
+                    <a href="#" class="btn btn-outline">Problems</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic="trees"></div>
+                    <span class="topic-title">Trees (Binary Tree, BST, AVL)</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                    <span class="difficulty diff-hard">Hard</span>
+                </div>
+            </div>
+            <div class="topic-content">
+                <div class="topic-details">
+                    <div class="detail-row">
+                        <span class="detail-label">Key Concepts:</span>
+                        <span>Traversals (DFS/BFS), BST Properties, Balanced Trees, Rotations, LCA, Diameter, Serialization</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Time Complexity:</span>
+                        <span>BST O(log n) avg, O(n) worst; AVL O(log n) guaranteed</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Space Complexity:</span>
+                        <span>O(n) / O(h) recursion stack</span>
+                    </div>
+                    <div class="subtopics">
+                        <label class="subtopic"><input type="checkbox"> Binary Tree Traversals (Pre/In/Post/Level Order)</label>
+                        <label class="subtopic"><input type="checkbox"> Binary Search Tree Operations</label>
+                        <label class="subtopic"><input type="checkbox"> Validate BST</label>
+                        <label class="subtopic"><input type="checkbox"> Lowest Common Ancestor</label>
+                        <label class="subtopic"><input type="checkbox"> Diameter of Binary Tree</label>
+                        <label class="subtopic"><input type="checkbox"> Serialize & Deserialize Tree</label>
+                        <label class="subtopic"><input type="checkbox"> AVL Tree Rotations</label>
+                        <label class="subtopic"><input type="checkbox"> Tree Construction from Traversals</label>
+                    </div>
+                </div>
+                <div class="topic-actions">
+                    <a href="#" class="btn btn-primary">Learn</a>
+                    <a href="#" class="btn btn-secondary">Practice</a>
+                    <a href="#" class="btn btn-outline">Problems</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic="trie"></div>
+                    <span class="topic-title">Trie (Prefix Tree)</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                    <span class="difficulty diff-medium">Medium</span>
+                </div>
+            </div>
+            <div class="topic-content">
+                <div class="topic-details">
+                    <div class="detail-row">
+                        <span class="detail-label">Key Concepts:</span>
+                        <span>Trie Node, Insert/Search/Delete, Prefix Match, Auto-complete, Word Search, XOR Trie</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Time Complexity:</span>
+                        <span>Insert/Search O(L) where L = word length</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Space Complexity:</span>
+                        <span>O(ALPHABET_SIZE * N * L)</span>
+                    </div>
+                    <div class="subtopics">
+                        <label class="subtopic"><input type="checkbox"> Trie Implementation</label>
+                        <label class="subtopic"><input type="checkbox"> Insert, Search, StartsWith</label>
+                        <label class="subtopic"><input type="checkbox"> Auto-complete / Suggestions</label>
+                        <label class="subtopic"><input type="checkbox"> Word Search II (Board + Trie)</label>
+                        <label class="subtopic"><input type="checkbox"> Maximum XOR of Two Numbers</label>
+                        <label class="subtopic"><input type="checkbox"> Replace Words (Prefix Dictionary)</label>
+                    </div>
+                </div>
+                <div class="topic-actions">
+                    <a href="#" class="btn btn-primary">Learn</a>
+                    <a href="#" class="btn btn-secondary">Practice</a>
+                    <a href="#" class="btn btn-outline">Problems</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic="graphs"></div>
+                    <span class="topic-title">Graphs (Adjacency Matrix/List)</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                    <span class="difficulty diff-hard">Hard</span>
+                </div>
+            </div>
+            <div class="topic-content">
+                <div class="topic-details">
+                    <div class="detail-row">
+                        <span class="detail-label">Key Concepts:</span>
+                        <span>Representation, BFS/DFS, Topological Sort, Cycle Detection, Union Find, Shortest Path, MST</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Time Complexity:</span>
+                        <span>BFS/DFS O(V+E), Dijkstra O(E log V)</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Space Complexity:</span>
+                        <span>O(V+E) adjacency list, O(V²) matrix</span>
+                    </div>
+                    <div class="subtopics">
+                        <label class="subtopic"><input type="checkbox"> Graph Representations (Matrix vs List)</label>
+                        <label class="subtopic"><input type="checkbox"> BFS & DFS Traversals</label>
+                        <label class="subtopic"><input type="checkbox"> Cycle Detection (Directed/Undirected)</label>
+                        <label class="subtopic"><input type="checkbox"> Topological Sort (Kahn's & DFS)</label>
+                        <label class="subtopic"><input type="checkbox"> Union Find / Disjoint Set</label>
+                        <label class="subtopic"><input type="checkbox"> Number of Islands / Connected Components</label>
+                        <label class="subtopic"><input type="checkbox"> Bipartite Graph Check</label>
+                        <label class="subtopic"><input type="checkbox"> Clone Graph</label>
+                    </div>
+                </div>
+                <div class="topic-actions">
+                    <a href="#" class="btn btn-primary">Learn</a>
+                    <a href="#" class="btn btn-secondary">Practice</a>
+                    <a href="#" class="btn btn-outline">Problems</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.checkbox').forEach(cb => {
+            cb.addEventListener('click', function() {
+                this.classList.toggle('checked');
+            });
+        });
+        document.querySelectorAll('.subtopic input').forEach(cb => {
+            cb.addEventListener('change', function() {
+                const card = this.closest('.topic-card');
+                const subs = card.querySelectorAll('.subtopic input');
+                const checked = card.querySelectorAll('.subtopic input:checked').length;
+                const total = subs.length;
+                const percent = total > 0 ? Math.round((checked / total) * 100) : 0;
+                const badge = card.querySelector('.progress-badge');
+                badge.textContent = `${percent}%`;
+                badge.className = 'progress-badge ' + (percent === 100 ? 'progress-100' : percent > 0 ? 'progress-0' : 'progress-0');
+                if (percent === 100) {
+                    card.querySelector('.checkbox').classList.add('checked');
+                } else {
+                    card.querySelector('.checkbox').classList.remove('checked');
+                }
+            });
+        });
+    </script>
+    <script type="module">
+        import { initSync } from './dsa_sync.js';
+        initSync("Data Structures");
+    </script>
+</body>
+</html>

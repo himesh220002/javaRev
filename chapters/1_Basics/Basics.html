@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'dark', fontFamily: 'Inter, sans-serif' });
+    </script>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            850: '#151e2e',
+                            900: '#0f172a',
+                            950: '#020617',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #f9fafb;
+            color: #1f2937;
+            margin: 0;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+
+        .mermaid {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #334155;
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="sidebar-container" style="display:flex; height:100%;"></div>
+    <div
+        class="flex-1 p-8 md:p-14 overflow-y-auto bg-gray-50 text-gray-800 prose prose-indigo prose-headings:text-gray-900 max-w-none prose-a:text-blue-600 prose-pre:bg-gray-100 prose-pre:text-gray-900 prose-pre:border prose-pre:border-gray-200">
+        <h1>Basics</h1>
+
+        <h2>🔑 Java </h2>
+        <a href="https://www.geeksforgeeks.org/java/java" target="_blank">Resource link -
+            GeeksforGeeks</a>
+        <p>Java is a widely used programming language for building web, desktop, mobile, and enterprise applications. It
+            is known for its simple syntax, portability, and powerful features that make development easier and more
+            secure.</p>
+
+        <h2>Key Features of Java</h2>
+        <ul>
+            <li><strong>OOP Concepts</strong> → Classes, Objects, Inheritance, Polymorphism</li>
+            <li><strong>Platform Independent</strong> → JVM enables "write once, run anywhere"</li>
+            <li><strong>Secure & Robust</strong> → Strong memory management, exception handling</li>
+        </ul>
+
+        <h2>📊 Overview Architecture</h2>
+        <div class="mermaid">
+            flowchart TD
+            A[Java Overview] --> B[OOP Concepts]
+            A --> C[Platform Independent]
+            A --> D[Secure & Robust]
+
+            B --> B1[Classes & Objects]
+            B --> B2[Inheritance]
+            B --> B3[Polymorphism]
+
+            C --> C1[JVM Support]
+            C --> C2[Write Once Run Anywhere]
+
+            D --> D1[Memory Management]
+            D --> D2[Exception Handling]
+        </div>
+
+        <h2>🛠️ Features of Java</h2>
+        <ul>
+            <li><strong>OOP</strong> → Modular, reusable code (classes, objects, inheritance, polymorphism)</li>
+            <li><strong>Platform Independent</strong> → JVM enables cross-OS execution</li>
+            <li><strong>Secure & Robust</strong> → Memory management + exception handling</li>
+            <li><strong>Multithreading</strong> → Concurrent task execution for efficiency</li>
+            <li><strong>Rich API</strong> → Built-in libraries for diverse needs</li>
+            <li><strong>Frameworks</strong> → Spring, Hibernate, etc. for enterprise/web apps</li>
+            <li><strong>Open-Source Libraries</strong> → Extend functionality, speed up dev</li>
+            <li><strong>Maintainability</strong> → Structured design supports scaling</li>
+        </ul>
+
+        <h2>📊 Features Architecture</h2>
+        <div class="mermaid">
+            flowchart TD
+            A[Java Features] --> B[OOP]
+            A --> C[Platform Independent]
+            A --> D[Secure & Robust]
+            A --> E[Multithreading]
+            A --> F[Rich API]
+            A --> G[Frameworks]
+            A --> H[Open-Source Libraries]
+            A --> I[Maintainability & Scalability]
+
+            B --> B1[Classes & Objects]
+            B --> B2[Inheritance]
+            B --> B3[Polymorphism]
+
+            C --> C1[JVM Support]
+            D --> D1[Memory Management]
+            D --> D2[Exception Handling]
+            E --> E1[Concurrency]
+            F --> F1[Standard Libraries]
+            G --> G1[Spring/Hibernate]
+            H --> H1[Community Packages]
+            I --> I1[Structured Design]
+        </div>
+
+        <h2>☕ JDK / JRE / JVM Architecture</h2>
+        <div class="mermaid">
+            flowchart TD
+            A[JDK - Java Development Kit] --> B[JRE - Java Runtime Environment]
+            A --> C[Development Tools]
+
+            B --> D[JVM - Java Virtual Machine]
+            B --> E[Core Libraries]
+
+            D --> D1[Class Loader]
+            D --> D2[Runtime Data Areas]
+            D --> D3[Execution Engine]
+
+            C --> C1[Java Compiler]
+            C --> C2[Java Debugger]
+            C --> C3[Other Tools]
+
+            E --> E1[Collections]
+            E --> E2[Networking]
+            E --> E3[IO]
+
+        </div>
+
+        <h3>🔑 Keywords (minimal explanations)</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div
+                class="bg-gray-100 p-5 rounded-xl border border-slate-700/50 hover:border-blue-500/50 transition-colors">
+                <ul class="!mb-0 !leading-loose">
+                    <li><strong>JDK</strong> → Full kit (JRE + tools)</li>
+                    <li><strong>JRE</strong> → Runtime (JVM + libraries)</li>
+                    <li><strong>JVM</strong> → Executes bytecode</li>
+                </ul>
+            </div>
+            <div
+                class="bg-gray-100 p-5 rounded-xl border border-slate-700/50 hover:border-blue-500/50 transition-colors">
+                <ul class="!mb-0 !leading-loose">
+                    <li><strong>Class Loader</strong> → Loads classes</li>
+                    <li><strong>Runtime Data Areas</strong> → Memory (heap, stack)</li>
+                    <li><strong>Execution Engine</strong> → Interprets/compiles bytecode</li>
+                </ul>
+            </div>
+            <div
+                class="bg-gray-100 p-5 rounded-xl border border-slate-700/50 hover:border-blue-500/50 transition-colors">
+                <ul class="!mb-0 !leading-loose">
+                    <li><strong>Development Tools</strong> → Compiler, debugger, utilities</li>
+                    <li><strong>Core Libraries</strong> → Collections, IO, Networking</li>
+                </ul>
+            </div>
+        </div>
+
+        <img src="images/JVMdiag.png" alt="JMV" class="w-auto h-[400px]" />
+
+        <h2>🧮 Simple Java Program (Calculator)</h2>
+        <p>Write code in a file like <code>Calculator.java</code>.</p>
+        <pre
+            style="background: rgba(207, 195, 195, 0.1); padding: 15px; border-radius: 8px; border: 1px solid var(--border); overflow-x: auto;"><code>import java.util.Scanner;
+
+public class Calculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("--- Simple Java Calculator ---");
+        System.out.print("Enter first number: ");
+        double num1 = scanner.nextDouble();
+        
+        System.out.print("Enter an operator (+, -, *, /): ");
+        char operator = scanner.next().charAt(0);
+        
+        System.out.print("Enter second number: ");
+        double num2 = scanner.nextDouble();
+        
+        double result = 0;
+        switch(operator) {
+            case '+': result = num1 + num2; break;
+            case '-': result = num1 - num2; break;
+            case '*': result = num1 * num2; break;
+            case '/': result = num1 / num2; break;
+            default: System.out.println("Invalid operator"); return;
+        }
+        
+        System.out.println("Result: " + num1 + " " + operator + " " + num2 + " = " + result);
+    }
+}</code></pre>
+
+        <h3>How it runs</h3>
+        <ul>
+            <li><strong>Java Compiler</strong> <code>javac</code> compiles it into bytecode (e.g.,
+                <code>Calculator.class</code>).
+            </li>
+            <li><strong>JVM (Java Virtual Machine)</strong> reads the <code>.class</code> file and interprets the
+                bytecode.</li>
+            <li>The JVM initially interprets bytecode and uses <strong>JIT (Just-In-Time) compilation</strong> to
+                convert frequently executed code into native machine code for better performance.</li>
+        </ul>
+
+        <h4>Terminal Output:</h4>
+        <pre
+            style="background: #000; color: #4ade80; padding: 15px; border-radius: 8px; border: 1px solid var(--border); overflow-x: auto; font-family: monospace;"><code>$ javac Calculator.java
+$ java Calculator
+--- Simple Java Calculator ---
+Enter first number: 15.5
+Enter an operator (+, -, *, /): *
+Enter second number: 4.0
+Result: 15.5 * 4.0 = 62.0</code></pre>
+
+        <h2>🌟 Famous Applications Built Using Java</h2>
+        <ul>
+            <li><strong>Android Apps:</strong> Most of the Android mobile apps are built using Java.</li>
+            <li><strong>Netflix:</strong> Uses Java for content delivery and backend services.</li>
+            <li><strong>Amazon:</strong> Java language is used for its backend systems.</li>
+            <li><strong>LinkedIn:</strong> Uses Java for handling high traffic and scalability.</li>
+            <li><strong>Minecraft:</strong> One of the world’s most popular games that is built in Java.</li>
+            <li><strong>Spotify:</strong> Uses Java in parts of its server-side infrastructure.</li>
+            <li><strong>Uber:</strong> Java is used for backend services like trip management.</li>
+            <li><strong>NASA WorldWind:</strong> This is a virtual globe software built using Java.</li>
+        </ul>
+
+        <h2>💼 Uses of Java</h2>
+        <ul>
+            <li><strong>Mobile App Development:</strong> Android development using Android Studio.</li>
+            <li><strong>Web Development:</strong> Using frameworks like Spring, Spring Boot, Struts, Hibernate.</li>
+            <li><strong>Desktop GUI Applications:</strong> With libraries like JavaFX and Swing.</li>
+            <li><strong>Enterprise Applications:</strong> Backbone of banking, ERP and large-scale business software.
+            </li>
+            <li><strong>Game Development:</strong> With engines like LibGDX and jMonkeyEngine.</li>
+            <li><strong>Big Data Technologies:</strong> Like Hadoop and Apache Kafka.</li>
+            <li><strong>Internet of Things (IoT):</strong> Java can run on embedded systems and devices.</li>
+            <li><strong>Cloud-based Applications:</strong> Java is used in services on AWS, Azure and Google Cloud.</li>
+            <li><strong>Scientific Applications:</strong> Java is used in tools that process large amounts of scientific
+                data.</li>
+        </ul>
+
+
+        <p>print Hello, World! using java </p>
+        <p>System.out.println("Hello, World!");</p>
+        <p>Output- <span style="color: rgb(0, 255, 17);">Hello, World!</span></p>
+
+        <div class="bg-gray-50 text-gray-800 border border-gray-200 p-6 rounded-lg space-y-8">
+
+            <!-- Title -->
+            <h2 class="text-2xl font-bold text-center mb-4">Steps of Using Scanner in Our Code</h2>
+
+            <!-- Steps -->
+            <ol class="list-decimal list-inside space-y-2">
+                <li>Import the Scanner class using <code
+                        class="bg-gray-100 text-gray-900 border border-gray-200 px-2 py-1 rounded">import java.util.Scanner;</code>
+                </li>
+                <li>Create a Scanner object → <code
+                        class="bg-gray-100 text-gray-900 border border-gray-200 px-2 py-1 rounded">Scanner sc = new Scanner(System.in);</code>
+                </li>
+                <li>Print a prompt message, then use Scanner methods:
+                    <ul class="list-disc list-inside ml-6">
+                        <li><code>nextInt()</code> → whole numbers</li>
+                        <li><code>nextLine()</code> → full text lines</li>
+                        <li><code>nextDouble()</code> → decimal numbers</li>
+                        <li><code>next()</code> → single words</li>
+                    </ul>
+                </li>
+                <li>Close the Scanner using <code
+                        class="bg-gray-100 text-gray-900 border border-gray-200 px-2 py-1 rounded">sc.close();</code>
+                </li>
+            </ol>
+
+            <!-- Example Code -->
+            <div class="text-gray-900 rounded-lg">
+                <pre><code>
+import java.util.Scanner;
+
+public class Geeks {
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+
+        // Reading a single line string
+        System.out.print("Enter a sentence: ");
+        String sentence = scn.nextLine();
+        System.out.println("Entered Sentence: " + sentence);
+
+        // Reading an integer
+        System.out.print("Enter an integer: ");
+        int x = Integer.parseInt(scn.nextLine());
+        System.out.println("Entered Integer: " + x);
+
+        // Reading a float value
+        System.out.print("Enter a float value: ");
+        float f = Float.parseFloat(scn.nextLine());
+        System.out.println("Entered Float Value: " + f);
+
+        scn.close();
+    }
+}
+    </code></pre>
+            </div>
+
+            <!-- Output -->
+            <div class="bg-gray-50 text-gray-900 border border-gray-200 p-4 rounded-lg">
+                <p class="font-semibold">Output:</p>
+                <pre class="text-yellow-300">
+Enter a sentence: Java is easy
+Entered Sentence: Java is easy
+Enter an integer: 10
+Entered Integer: 10
+Enter a float value: 3.5
+Entered Float Value: 3.5
+    </pre>
+                <p class="text-sm text-gray-600 mt-2">Note: Using <code>nextLine()</code> consistently helps avoid
+                    newline issues.</p>
+            </div>
+
+            <!-- Common Methods Table -->
+            <h3 class="text-xl font-bold">Common Methods of Scanner Class</h3>
+            <table class="table-auto w-full text-left border-collapse">
+                <thead>
+                    <tr class="bg-gray-200 text-gray-900">
+                        <th class="px-4 py-2">Method</th>
+                        <th class="px-4 py-2">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="border px-4 py-2">nextBoolean()</td>
+                        <td class="border px-4 py-2">Reads Boolean value</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">nextByte()</td>
+                        <td class="border px-4 py-2">Reads Byte value</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">nextDouble()</td>
+                        <td class="border px-4 py-2">Reads Double value</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">nextFloat()</td>
+                        <td class="border px-4 py-2">Reads Float value</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">nextInt()</td>
+                        <td class="border px-4 py-2">Reads Int value</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">nextLine()</td>
+                        <td class="border px-4 py-2">Reads Line value</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">nextLong()</td>
+                        <td class="border px-4 py-2">Reads Long value</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">nextShort()</td>
+                        <td class="border px-4 py-2">Reads Short value</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">next()</td>
+                        <td class="border px-4 py-2">Reads single word</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- BufferedReader vs Scanner -->
+            <h3 class="text-xl font-bold mt-6">BufferedReader vs Scanner Class</h3>
+            <table class="table-auto w-full text-left border-collapse">
+                <thead>
+                    <tr class="bg-gray-200 text-gray-900">
+                        <th class="px-4 py-2">Aspects</th>
+                        <th class="px-4 py-2">BufferedReader</th>
+                        <th class="px-4 py-2">Scanner</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="border px-4 py-2">Primary Use</td>
+                        <td class="border px-4 py-2">Efficient reading of character streams</td>
+                        <td class="border px-4 py-2">Reading formatted input</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">Speed</td>
+                        <td class="border px-4 py-2">Faster for large input</td>
+                        <td class="border px-4 py-2">Slower due to parsing</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">Exception Handling</td>
+                        <td class="border px-4 py-2">Throws checked exceptions</td>
+                        <td class="border px-4 py-2">No checked exceptions</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">Flexibility</td>
+                        <td class="border px-4 py-2">Efficient for large input</td>
+                        <td class="border px-4 py-2">Best for simple data types</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">Thread Safety</td>
+                        <td class="border px-4 py-2">Synchronized</td>
+                        <td class="border px-4 py-2">Not thread-safe</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">Common Use</td>
+                        <td class="border px-4 py-2">Large input streams</td>
+                        <td class="border px-4 py-2">Smaller, formatted input</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+            <img src="images/identifiers.png" alt="identifiers">
+            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20260511111150599829/2056957972.webp"
+                alt="keywords">
+        </div>
+
+        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20230405112914/Variables-Syntax-in-Java.webp"
+            alt="variable" class="my-4">
+
+        <div class="bg-gray-50 text-gray-800 border border-gray-200 p-6 rounded-lg space-y-8">
+
+            <!-- Title -->
+            <h2 class="text-2xl font-bold text-center mb-4">Types of Data Types in Java</h2>
+            <p>Data types in Java define the kind of data a variable can hold and the memory required to store it. They
+                are broadly divided into two categories:</p>
+            <ul class="list-disc list-inside ml-6">
+                <li><span class="font-semibold">Primitive Data Types</span>: Store simple values directly in memory.
+                </li>
+                <li><span class="font-semibold">Non-Primitive (Reference) Data Types</span>: Store memory references to
+                    objects.</li>
+            </ul>
+
+            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20250619155321977504/data_types_in_java.webp"
+                alt="primitive vs non primitive">
+
+            <!-- Primitive Data Types Table -->
+            <h3 class="text-xl font-bold">1. Primitive Data Types</h3>
+            <table class="table-auto w-full text-left border-collapse">
+                <thead>
+                    <tr class="bg-gray-200 text-gray-900">
+                        <th class="px-4 py-2">Type</th>
+                        <th class="px-4 py-2">Description</th>
+                        <th class="px-4 py-2">Default</th>
+                        <th class="px-4 py-2">Size</th>
+                        <th class="px-4 py-2">Example</th>
+                        <th class="px-4 py-2">Range</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="border px-4 py-2">boolean</td>
+                        <td class="border px-4 py-2">Logical values</td>
+                        <td class="border px-4 py-2">false</td>
+                        <td class="border px-4 py-2">JVM-defined</td>
+                        <td class="border px-4 py-2">true, false</td>
+                        <td class="border px-4 py-2">true/false</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">byte</td>
+                        <td class="border px-4 py-2">8-bit signed integer</td>
+                        <td class="border px-4 py-2">0</td>
+                        <td class="border px-4 py-2">1 byte</td>
+                        <td class="border px-4 py-2">10</td>
+                        <td class="border px-4 py-2">-128 to 127</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">char</td>
+                        <td class="border px-4 py-2">16-bit Unicode character</td>
+                        <td class="border px-4 py-2">\u0000</td>
+                        <td class="border px-4 py-2">2 bytes</td>
+                        <td class="border px-4 py-2">'A'</td>
+                        <td class="border px-4 py-2">0 to 65,535</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">short</td>
+                        <td class="border px-4 py-2">16-bit signed integer</td>
+                        <td class="border px-4 py-2">0</td>
+                        <td class="border px-4 py-2">2 bytes</td>
+                        <td class="border px-4 py-2">2000</td>
+                        <td class="border px-4 py-2">-32,768 to 32,767</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">int</td>
+                        <td class="border px-4 py-2">32-bit signed integer</td>
+                        <td class="border px-4 py-2">0</td>
+                        <td class="border px-4 py-2">4 bytes</td>
+                        <td class="border px-4 py-2">1000</td>
+                        <td class="border px-4 py-2">-2,147,483,648 to 2,147,483,647</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">long</td>
+                        <td class="border px-4 py-2">64-bit signed integer</td>
+                        <td class="border px-4 py-2">0L</td>
+                        <td class="border px-4 py-2">8 bytes</td>
+                        <td class="border px-4 py-2">123456789L</td>
+                        <td class="border px-4 py-2">±9.22e18</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">float</td>
+                        <td class="border px-4 py-2">32-bit floating point</td>
+                        <td class="border px-4 py-2">0.0f</td>
+                        <td class="border px-4 py-2">4 bytes</td>
+                        <td class="border px-4 py-2">3.14f</td>
+                        <td class="border px-4 py-2">~6–7 digits precision</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">double</td>
+                        <td class="border px-4 py-2">64-bit floating point</td>
+                        <td class="border px-4 py-2">0.0d</td>
+                        <td class="border px-4 py-2">8 bytes</td>
+                        <td class="border px-4 py-2">3.14159d</td>
+                        <td class="border px-4 py-2">~15–16 digits precision</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Non-Primitive Data Types -->
+            <h3 class="text-xl font-bold">2. Non-Primitive (Reference) Data Types</h3>
+            <p>Non-primitive data types store references (memory addresses) rather than actual values. They include
+                <span class="font-semibold">String, Class, Object, Interface, and Array</span>.
+            </p>
+
+            <!-- Examples -->
+            <div class="bg-gray-100 text-gray-900 border border-gray-200 p-4 rounded-lg space-y-4">
+                <pre><code>
+// String
+String name = "Himesh";
+System.out.println(name);
+
+// Class
+class Student {
+    String name;
+    int age;
+}
+Student s1 = new Student();
+s1.name = "Himesh";
+s1.age = 22;
+
+// Object
+Object obj = new String("Hello");
+System.out.println(obj.toString());
+
+// Interface
+interface Animal {
+    void sound();
+}
+class Dog implements Animal {
+    public void sound() {
+        System.out.println("Bark");
+    }
+}
+Animal a = new Dog();
+a.sound();
+
+// Array
+int[] numbers = {1, 2, 3, 4};
+System.out.println(numbers[2]); // Output: 3
+    </code></pre>
+            </div>
+
+            <!-- Comparison Table -->
+            <h3 class="text-xl font-bold">Quick Comparison</h3>
+            <table class="table-auto w-full text-left border-collapse">
+                <thead>
+                    <tr class="bg-gray-200 text-gray-900">
+                        <th class="px-4 py-2">Aspect</th>
+                        <th class="px-4 py-2">Primitive</th>
+                        <th class="px-4 py-2">Non-Primitive</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="border px-4 py-2">Stored Value</td>
+                        <td class="border px-4 py-2">Actual value</td>
+                        <td class="border px-4 py-2">Reference (address)</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">Size</td>
+                        <td class="border px-4 py-2">Fixed</td>
+                        <td class="border px-4 py-2">Variable</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">Examples</td>
+                        <td class="border px-4 py-2">int, char, boolean</td>
+                        <td class="border px-4 py-2">String, Array, Class</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">Default Values</td>
+                        <td class="border px-4 py-2">Predefined (0, false)</td>
+                        <td class="border px-4 py-2">null</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">Flexibility</td>
+                        <td class="border px-4 py-2">Limited</td>
+                        <td class="border px-4 py-2">Highly flexible</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="bg-gray-50 text-gray-800 border border-gray-200 p-6 rounded-lg space-y-8 mt-8">
+            <h2 class="text-2xl font-bold text-center mb-4">Wrapper Classes in Java</h2>
+            <p class="text-sm text-gray-500 text-center">Last Updated : 6 Apr, 2026</p>
+
+            <p>In Java, wrapper classes allow primitive data types to be represented as objects. This enables primitives
+                to be used in object-oriented features such as collections, generics, and APIs that require objects.</p>
+
+            <ul class="list-disc list-inside ml-6">
+                <li>Each wrapper class encapsulates a corresponding primitive value inside an object (e.g., Integer for
+                    int, Double for double).</li>
+                <li>Java provides wrapper classes for all eight primitive data types to support object-based operations.
+                </li>
+            </ul>
+
+            <h3 class="text-xl font-bold mt-6">Example: Converting Primitive to Wrapper (Autoboxing)</h3>
+            <div class="bg-gray-100 text-gray-900 border border-gray-200 p-4 rounded-lg">
+                <pre><code>class Geeks {
+    public static void main(String[] args) {
+        int b = 357;
+        
+        // Autoboxing: primitive int -> Integer object
+        Integer a = b;
+
+        System.out.println("The primitive int b is: " + b);
+        System.out.println("The Integer object a is: " + a);
+    }
+}</code></pre>
+            </div>
+
+            <div class="bg-gray-50 text-gray-900 border border-gray-200 p-4 rounded-lg">
+                <p class="font-semibold">Output:</p>
+                <pre class="text-yellow-300">The primitive int b is: 357
+The Integer object a is: 357</pre>
+                <p class="text-sm text-gray-600 mt-2"><strong>Explanation:</strong> Here, the primitive int value is
+                    automatically converted into an Integer object by Java. This automatic conversion is called
+                    autoboxing.</p>
+            </div>
+
+            <h3 class="text-xl font-bold mt-6">Why Wrapper Classes Are Needed</h3>
+            <p>Wrapper classes are required in Java for the following reasons:</p>
+            <ol class="list-decimal list-inside ml-6 space-y-2">
+                <li>Java collections (ArrayList, HashMap, etc.) store only objects, not primitives.</li>
+                <li>Wrapper objects allow primitives to be used in object-oriented features like methods,
+                    synchronization, and serialization.</li>
+                <li>Objects support null values, while primitives do not.</li>
+                <li>Wrapper classes provide utility methods such as compareTo(), equals(), and toString().</li>
+            </ol>
+
+            <h2 class="text-2xl font-bold mt-8">Autoboxing and Unboxing</h2>
+
+            <h3 class="text-xl font-bold mt-4">1. Autoboxing</h3>
+            <p>The automatic conversion of primitive types to the object of their corresponding wrapper classes is known
+                as autoboxing. For example: conversion of int to Integer, long to Long, double to Double, etc.</p>
+
+            <p>Java program to demonstrate the automatic conversion of primitive to wrapper class (Autoboxing):</p>
+            <div class="bg-gray-100 text-gray-900 border border-gray-200 p-4 rounded-lg">
+                <pre><code>import java.util.ArrayList;
+
+class Geeks {
+    public static void main(String[] args) {
+        char ch = 'a';
+
+        // Autoboxing: char -> Character
+        Character c = ch;
+
+        ArrayList&lt;Integer&gt; list = new ArrayList&lt;&gt;();
+        // Autoboxing: int -> Integer
+        list.add(25);
+        System.out.println(list.get(0));
+    }
+}</code></pre>
+            </div>
+            <div class="bg-gray-50 text-gray-900 border border-gray-200 p-4 rounded-lg">
+                <p class="font-semibold">Output:</p>
+                <pre class="text-yellow-300">25</pre>
+            </div>
+
+            <h3 class="text-xl font-bold mt-6">2. Unboxing</h3>
+            <p>Unboxing is the automatic conversion of a wrapper class object back into its corresponding primitive
+                type.</p>
+            <div class="bg-gray-100 text-gray-900 border border-gray-200 p-4 rounded-lg">
+                <pre><code>import java.util.ArrayList;
+
+class Geeks {
+    public static void main(String[] args) {
+
+        Character ch = 'a';
+        // Unboxing: Character -> char
+        char c = ch;
+
+        ArrayList&lt;Integer&gt; list = new ArrayList&lt;&gt;();
+        list.add(24);
+        // Unboxing: Integer -> int
+        int num = list.get(0);
+
+        System.out.println(num);
+    }
+}</code></pre>
+            </div>
+            <div class="bg-gray-50 text-gray-900 border border-gray-200 p-4 rounded-lg">
+                <p class="font-semibold">Output:</p>
+                <pre class="text-yellow-300">24</pre>
+            </div>
+
+            <h2 class="text-2xl font-bold mt-8">Java Wrapper Classes Example</h2>
+            <div class="bg-gray-100 text-gray-900 border border-gray-200 p-4 rounded-lg">
+                <pre><code>class Geeks {
+    public static void main(String[] args) {
+
+        byte b = 1;
+        Byte byteObj = Byte.valueOf(b);
+
+        int i = 10;
+        Integer intObj = Integer.valueOf(i);
+
+        float f = 18.6f;
+        Float floatObj = Float.valueOf(f);
+
+        double d = 250.5;
+        Double doubleObj = Double.valueOf(d);
+
+        char c = 'a';
+        Character charObj = c; // autoboxing
+
+        System.out.println("Wrapper Objects:");
+        System.out.println(byteObj);
+        System.out.println(intObj);
+        System.out.println(floatObj);
+        System.out.println(doubleObj);
+        System.out.println(charObj);
+
+        // Unboxing
+        byte bv = byteObj;
+        int iv = intObj;
+        float fv = floatObj;
+        double dv = doubleObj;
+        char cv = charObj;
+
+        System.out.println("\\nUnwrapped values:");
+        System.out.println(bv);
+        System.out.println(iv);
+        System.out.println(fv);
+        System.out.println(dv);
+        System.out.println(cv);
+    }
+}</code></pre>
+            </div>
+
+            <h3 class="text-xl font-bold mt-8">Primitive Data Types & Wrapper Classes</h3>
+            <table class="table-auto w-full text-left border-collapse mt-4">
+                <thead>
+                    <tr class="bg-gray-200 text-gray-900">
+                        <th class="px-4 py-2 border border-gray-300">Primitive Data Type</th>
+                        <th class="px-4 py-2 border border-gray-300">Wrapper Class</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="border border-gray-300 px-4 py-2">byte</td>
+                        <td class="border border-gray-300 px-4 py-2">Byte</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-300 px-4 py-2">short</td>
+                        <td class="border border-gray-300 px-4 py-2">Short</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-300 px-4 py-2">int</td>
+                        <td class="border border-gray-300 px-4 py-2">Integer</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-300 px-4 py-2">long</td>
+                        <td class="border border-gray-300 px-4 py-2">Long</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-300 px-4 py-2">float</td>
+                        <td class="border border-gray-300 px-4 py-2">Float</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-300 px-4 py-2">double</td>
+                        <td class="border border-gray-300 px-4 py-2">Double</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-300 px-4 py-2">char</td>
+                        <td class="border border-gray-300 px-4 py-2">Character</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-300 px-4 py-2">boolean</td>
+                        <td class="border border-gray-300 px-4 py-2">Boolean</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 class="text-xl font-bold mt-8">Common Methods of Wrapper Classes</h3>
+            <div class="overflow-x-auto">
+                <table class="table-auto w-full text-left border-collapse mt-4 text-sm whitespace-nowrap">
+                    <thead>
+                        <tr class="bg-gray-200 text-gray-900">
+                            <th class="px-4 py-2 border border-gray-300">Method</th>
+                            <th class="px-4 py-2 border border-gray-300">Description</th>
+                            <th class="px-4 py-2 border border-gray-300">Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-300 px-4 py-2"><code>parseXxx(String s)</code></td>
+                            <td class="border border-gray-300 px-4 py-2">Converts a String into its corresponding
+                                primitive type</td>
+                            <td class="border border-gray-300 px-4 py-2"><code
+                                    class="text-green-700">int a = Integer.parseInt("100");</code></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-4 py-2"><code>valueOf(String s)</code></td>
+                            <td class="border border-gray-300 px-4 py-2">Converts a String into a wrapper object</td>
+                            <td class="border border-gray-300 px-4 py-2"><code
+                                    class="text-green-700">Integer a = Integer.valueOf("100");</code></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-4 py-2"><code>valueOf(primitive)</code></td>
+                            <td class="border border-gray-300 px-4 py-2">Converts a primitive value into a wrapper
+                                object</td>
+                            <td class="border border-gray-300 px-4 py-2"><code
+                                    class="text-green-700">Integer a = Integer.valueOf(10);</code></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-4 py-2"><code>xxxValue()</code></td>
+                            <td class="border border-gray-300 px-4 py-2">Converts a wrapper object into its primitive
+                                type</td>
+                            <td class="border border-gray-300 px-4 py-2"><code
+                                    class="text-green-700">int a = obj.intValue();</code></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-4 py-2"><code>toString()</code></td>
+                            <td class="border border-gray-300 px-4 py-2">Converts wrapper object into a String</td>
+                            <td class="border border-gray-300 px-4 py-2"><code
+                                    class="text-green-700">String s = Integer.toString(10);</code></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-4 py-2"><code>compareTo(Xxx obj)</code></td>
+                            <td class="border border-gray-300 px-4 py-2">Compares two wrapper objects</td>
+                            <td class="border border-gray-300 px-4 py-2"><code
+                                    class="text-green-700">a.compareTo(b);</code></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-4 py-2"><code>equals(Object obj)</code></td>
+                            <td class="border border-gray-300 px-4 py-2">Compares values, not references</td>
+                            <td class="border border-gray-300 px-4 py-2"><code
+                                    class="text-green-700">a.equals(b);</code></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-4 py-2"><code>hashCode()</code></td>
+                            <td class="border border-gray-300 px-4 py-2">Returns hash code of the object</td>
+                            <td class="border border-gray-300 px-4 py-2"><code
+                                    class="text-green-700">obj.hashCode();</code></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-4 py-2"><code>min(x, y)</code></td>
+                            <td class="border border-gray-300 px-4 py-2">Returns minimum of two values</td>
+                            <td class="border border-gray-300 px-4 py-2"><code
+                                    class="text-green-700">Integer.min(10, 20);</code></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-4 py-2"><code>max(x, y)</code></td>
+                            <td class="border border-gray-300 px-4 py-2">Returns maximum of two values</td>
+                            <td class="border border-gray-300 px-4 py-2"><code
+                                    class="text-green-700">Integer.max(10, 20);</code></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-4 py-2"><code>sum(x, y)</code></td>
+                            <td class="border border-gray-300 px-4 py-2">Returns sum of two values</td>
+                            <td class="border border-gray-300 px-4 py-2"><code
+                                    class="text-green-700">Integer.sum(10, 20);</code></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-4 py-2"><code>compare(x, y)</code></td>
+                            <td class="border border-gray-300 px-4 py-2">Compares two primitive values</td>
+                            <td class="border border-gray-300 px-4 py-2"><code
+                                    class="text-green-700">Integer.compare(10, 20);</code></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-4 py-2"><code>isNaN()</code></td>
+                            <td class="border border-gray-300 px-4 py-2">Checks if value is Not a Number (Float/Double
+                                only)</td>
+                            <td class="border border-gray-300 px-4 py-2"><code
+                                    class="text-green-700">Double.isNaN(val);</code></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-4 py-2"><code>isInfinite()</code></td>
+                            <td class="border border-gray-300 px-4 py-2">Checks infinite value (Float/Double only)</td>
+                            <td class="border border-gray-300 px-4 py-2"><code
+                                    class="text-green-700">Double.isInfinite(val);</code></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-4 py-2"><code>decode(String s)</code></td>
+                            <td class="border border-gray-300 px-4 py-2">Decodes decimal, hex, or octal string</td>
+                            <td class="border border-gray-300 px-4 py-2"><code
+                                    class="text-green-700">Integer.decode("0xA");</code></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-4 py-2"><code>parseBoolean(String s)</code></td>
+                            <td class="border border-gray-300 px-4 py-2">Converts string to boolean</td>
+                            <td class="border border-gray-300 px-4 py-2"><code
+                                    class="text-green-700">Boolean.parseBoolean("true");</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <script type="module">
+        import { initSidebar } from '../../sidebar.js';
+        initSidebar();
+    </script>
+</body>
+
+</html>

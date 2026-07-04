@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interfaces</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'dark', fontFamily: 'Inter, sans-serif' });
+    </script>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            850: '#151e2e',
+                            900: '#0f172a',
+                            950: '#020617',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #f9fafb;
+            color: #1f2937;
+            margin: 0;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+
+        .mermaid {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #334155;
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="sidebar-container" style="display:flex; height:100%;"></div>
+    <div
+        class="flex-1 p-8 md:p-14 overflow-y-auto bg-gray-50 text-gray-800 prose prose-indigo prose-headings:text-gray-900 max-w-none prose-a:text-blue-600 prose-pre:bg-gray-100 prose-pre:text-gray-900 prose-pre:border prose-pre:border-gray-200">
+        <h1>Interfaces</h1>
+        <a href="https://www.geeksforgeeks.org/java/java" target="_blank">Resource link -
+            GeeksforGeeks</a>
+        <div class="p-4 border border-gray-200 rounded-lg">
+            <h2>Java Interface</h2>
+            <p>An interface in Java is a blueprint that defines a set of methods a class must implement without
+                providing full implementation details</p>
+            <div class="flex gap-4 justify-between">
+
+                <div>
+                    <pre class="p-3"><code class="language-java">
+import java.io.*;
+
+// Interface Declared
+interface testInterface {
+  
+    // public, static and final
+    final int a = 10;
+
+    // public and abstract
+    void display();
+}
+
+// Class implementing interface
+class TestClass implements testInterface {
+  
+    // Implementing the capabilities of Interface
+    public void display(){ 
+      System.out.println("Geek"); 
+    }
+}
+
+class Geeks{
+    
+    public static void main(String[] args){
+        
+        TestClass t = new TestClass();
+        t.display();
+        System.out.println(t.a);
+    }
+}
+            </code></pre>
+                    <pre class="w-fit"><code>Geek
+10</code></pre>
+
+                    <h4>Multiple Inheritance in Java Using Interface</h4>
+                    <p>Java does not support multiple inheritance with classes to avoid ambiguity, but it supports
+                        multiple inheritance using interfaces.</p>
+                    <img src="https://media.geeksforgeeks.org/wp-content/uploads/20240401180847/Intefaces-in-Java-2-.webp"
+                        alt="">
+                    <pre class="p-3"><code class="language-java">
+import java.io.*;
+
+// Add interface
+interface Add{
+    int add(int a,int b);
+}
+
+// Sub interface
+interface Sub{
+  	int sub(int a,int b);
+}
+
+// Calculator class implementing Add and Sub 
+class Cal implements Add , Sub
+{
+  	// Method to add two numbers
+  	public int add(int a,int b){
+      	return a+b;
+    }
+  
+  	// Method to sub two numbers
+  	public int sub(int a,int b){
+    	return a-b;
+    }
+}
+class GFG{
+    // Main Method
+    public static void main (String[] args){
+        
+      	// instance of Cal class
+      	Cal x = new Cal();
+      	System.out.println("Addition : " + x.add(2,1));
+      	System.out.println("Substraction : " + x.sub(2,1));
+    }
+}
+</code></pre>
+                    <pre><code>Addition : 3
+Substraction : 1</code></pre>
+                </div>
+                <div>
+                    <h4>Relationship Between Class and Interface</h4>
+                    <p>A class can extend another class and similarly, an interface can extend another interface.
+                        However, only a class can implement an interface and the reverse (an interface implementing a
+                        class) is not allowed.</p>
+                    <img src="https://media.geeksforgeeks.org/wp-content/uploads/20230419112343/Intefaces-in-Java-1.webp"
+                        alt="class&interface" class="mt-2">
+                    <pre class="p-3"><code class="language-java">
+import java.io.*;
+
+interface Vehicle {
+    
+    // Abstract methods defined
+    void changeGear(int a);
+    void speedUp(int a);
+    void applyBrakes(int a);
+}
+
+// Class implementing vehicle interface
+class Bicycle implements Vehicle{
+    
+    int speed;
+    int gear;
+    
+    // Change gear
+    @Override
+    public void changeGear(int newGear){
+        gear = newGear;
+    }
+    
+    // Increase speed
+    @Override
+    public void speedUp(int increment){
+        speed = speed + increment;
+    }
+    
+    // Decrease speed
+    @Override
+    public void applyBrakes(int decrement){
+        speed = speed - decrement;
+    }
+    
+    public void printStates() {
+        System.out.println("speed: " + speed
+            + " gear: " + gear);
+    }
+}
+
+// Class implementing vehicle interface
+class Bike implements Vehicle {
+    
+    int speed;
+    int gear;
+    
+    // Change gear
+    @Override
+    public void changeGear(int newGear){
+        gear = newGear;
+    }
+    
+    // Increase speed
+    @Override
+    public void speedUp(int increment){
+        speed = speed + increment;
+    }
+    
+    // Decrease speed
+    @Override
+    public void applyBrakes(int decrement){
+        speed = speed - decrement;
+    }
+    
+    public void printStates() {
+        System.out.println("speed: " + speed
+            + " gear: " + gear);
+    }
+    
+}
+
+class Main
+{    
+    public static void main (String[] args) 
+    {
+    
+        // Instance of Bicycle(Object)
+        Bicycle bicycle = new Bicycle();
+        
+      	bicycle.changeGear(2);
+        bicycle.speedUp(3);
+        bicycle.applyBrakes(1);
+        
+        System.out.print("Bicycle present state : ");
+        bicycle.printStates();
+        
+        // Instance of Bike (Object)
+        Bike bike = new Bike();
+        bike.changeGear(1);
+        bike.speedUp(4);
+        bike.applyBrakes(3);
+        
+        System.out.print("Bike present state : ");
+        bike.printStates();
+    }
+}
+                        </code></pre>
+                    <pre><code>Bicycle present state : speed: 2 gear: 2
+Bike present state : speed: 1 gear: 1</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-4 rounded-lg mt-4 border border-gray-200">
+
+            <table class="w-full border-collapse border border-gray-400">
+                <caption class="text-xl font-bold mb-4">Class vs Interface in Java</caption>
+                <thead class="text-white">
+                    <tr class="bg-blue-100 text-white">
+                        <th class="border border-gray-400 p-3 text-left">Features</th>
+                        <th class="border border-gray-400 p-3 text-left">Class</th>
+                        <th class="border border-gray-400 p-3 text-left">Interface</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="bg-white">
+                        <td class="border border-gray-400 p-3">Keyword</td>
+                        <td class="border border-gray-400 p-3">The keyword used to create a class is <b>class</b>.</td>
+                        <td class="border border-gray-400 p-3">The keyword used to create an interface is
+                            <b>interface</b>.
+                        </td>
+                    </tr>
+                    <tr class="bg-gray-100">
+                        <td class="border border-gray-400 p-3">Instantiation</td>
+                        <td class="border border-gray-400 p-3">A class can be instantiated, i.e., objects of a class can
+                            be created.</td>
+                        <td class="border border-gray-400 p-3">An interface cannot be instantiated directly, instead, it
+                            is implemented by a class or a struct.</td>
+                    </tr>
+                    <tr class="bg-white">
+                        <td class="border border-gray-400 p-3">Inheritance</td>
+                        <td class="border border-gray-400 p-3">Classes do not support multiple inheritance.</td>
+                        <td class="border border-gray-400 p-3">Interface supports multiple inheritance.</td>
+                    </tr>
+                    <tr class="bg-gray-100">
+                        <td class="border border-gray-400 p-3">Inheritance Mechanism</td>
+                        <td class="border border-gray-400 p-3">A class can inherit another class using the keyword
+                            <b>extends</b>.
+                        </td>
+                        <td class="border border-gray-400 p-3">A class uses <b>implements</b> to adopt an interface,
+                            while an interface uses <b>extends</b> to inherit another interface.</td>
+                    </tr>
+                    <tr class="bg-white">
+                        <td class="border border-gray-400 p-3">Constructors</td>
+                        <td class="border border-gray-400 p-3">It can contain constructors.</td>
+                        <td class="border border-gray-400 p-3">It cannot contain constructors.</td>
+                    </tr>
+                    <tr class="bg-gray-100">
+                        <td class="border border-gray-400 p-3">Methods</td>
+                        <td class="border border-gray-400 p-3">Methods in a class can be abstract, concrete, or both.
+                        </td>
+                        <td class="border border-gray-400 p-3">An interface contains abstract methods by default (before
+                            Java 8) or default/static methods (from Java 8 onward).</td>
+                    </tr>
+                    <tr class="bg-white">
+                        <td class="border border-gray-400 p-3">Access Specifiers</td>
+                        <td class="border border-gray-400 p-3">Variables and methods in a class can be declared using
+                            any access specifier (public, private, default, protected).</td>
+                        <td class="border border-gray-400 p-3">Interface variables are public static final, and methods
+                            are public by default.</td>
+                    </tr>
+                    <tr class="bg-gray-100">
+                        <td class="border border-gray-400 p-3">Variables</td>
+                        <td class="border border-gray-400 p-3">Variables in a class can be static, final, or neither.
+                        </td>
+                        <td class="border border-gray-400 p-3">All variables are static and final.</td>
+                    </tr>
+                    <tr class="bg-white">
+                        <td class="border border-gray-400 p-3">Purpose</td>
+                        <td class="border border-gray-400 p-3">A class is a blueprint for creating objects and
+                            encapsulates data and behaviour.</td>
+                        <td class="border border-gray-400 p-3">An interface specifies a contract for classes to
+                            implement by focusing on capabilities rather than implementation.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="p-6 bg-gray-100 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold mb-2">Java Functional Interfaces</h2>
+            <p class="text-sm text-gray-600 mb-4">Last Updated : 20 Nov, 2025</p>
+
+            <p class="text-gray-700 mb-4">
+                A functional interface in Java is an interface that has only one abstract method, making it suitable for
+                <b>lambda expressions</b> and <b>method references</b> (introduced in Java 8).
+                Use <code>@FunctionalInterface</code> to ensure only one abstract method (annotation is optional).
+                Enables clean, concise code using lambdas and method references.
+            </p>
+
+            <h3 class="text-lg font-semibold mb-2">Example: Runnable with Lambda</h3>
+            <pre class="p-3 bg-gray-800 text-green-200 rounded-md overflow-x-auto">
+<code class="language-java">
+public class Geeks {
+    public static void main(String[] args) {
+        // Using lambda expression to implement Runnable
+        new Thread(() -> System.out.println("New thread created")).start();
+    }
+}
+</code>
+  </pre>
+            <p class="mt-2 text-gray-700">Output: <b>New thread created</b></p>
+            <p class="text-gray-600 text-sm mb-4">
+                Runnable has one abstract method <code>run()</code>, so it qualifies as a functional interface.
+                The lambda defines the run() method, executed when <code>new Thread().start()</code> is called.
+            </p>
+
+            <h3 class="text-lg font-semibold mb-2">@FunctionalInterface Annotation</h3>
+            <pre class="p-3 bg-gray-800 text-green-200 rounded-md overflow-x-auto">
+<code class="language-java">
+@FunctionalInterface
+interface Square {
+    int calculate(int x);
+}
+
+class Geeks {
+    public static void main(String[] args) {
+        int a = 5;
+        Square s = (int x) -> x * x;
+        int ans = s.calculate(a);
+        System.out.println(ans);
+    }
+}
+</code>
+  </pre>
+            <p class="mt-2 text-gray-700">Output: <b>25</b></p>
+            <p class="text-gray-600 text-sm mb-4">
+                Square is a functional interface with a single method <code>calculate(int x)</code>.
+                The annotation ensures only one abstract method exists. Lambdas provide concise implementations.
+            </p>
+
+            <h3 class="text-lg font-semibold mb-2">Before Java 8</h3>
+            <p class="text-gray-700 mb-2">
+                Developers had to use anonymous inner classes to provide interface implementations:
+            </p>
+            <pre class="p-3 bg-gray-800 text-green-200 rounded-md overflow-x-auto">
+<code class="language-java">
+class Geeks {
+    public static void main(String args[]) {
+        // create anonymous inner class object
+        new Thread(new Runnable() {
+            @Override public void run() {
+                System.out.println("New thread created");
+            }
+        }).start();
+    }
+}
+</code>
+  </pre>
+            <p class="mt-2 text-gray-700">Output: <b>New thread created</b></p>
+        </div>
+
+
+        <div class="p-6 bg-gray-100 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold mb-2">Types of Functional Interfaces in Java</h2>
+            <p class="text-gray-700 mb-4">
+                Java 8 introduced four main functional interface types under the package
+                <code>java.util.function</code>.
+                These are widely used in Stream API, collections, and lambda-based operations.
+            </p>
+
+            <h3 class="text-lg font-semibold mb-2">1. Consumer</h3>
+            <p class="text-gray-700 mb-2">
+                Accepts one argument and performs an action (e.g., printing/logging). Variants: DoubleConsumer,
+                IntConsumer, LongConsumer.
+            </p>
+            <pre class="p-3 bg-gray-800 text-green-200 rounded-md overflow-x-auto">
+<code class="language-java">
+Consumer&lt;Integer&gt; consumer = (value) -> System.out.println(value);
+</code>
+  </pre>
+
+            <h3 class="text-lg font-semibold mb-2">2. Predicate</h3>
+            <p class="text-gray-700 mb-2">
+                Represents a boolean-valued function of one argument. Commonly used for filtering. Variants:
+                IntPredicate, DoublePredicate, LongPredicate.
+            </p>
+            <pre class="p-3 bg-gray-800 text-green-200 rounded-md overflow-x-auto">
+<code class="language-java">
+public interface Predicate&lt;T&gt; {
+    boolean test(T t);
+}
+
+Predicate&lt;Integer&gt; predicate = (value) -> value != null;
+</code>
+  </pre>
+
+            <h3 class="text-lg font-semibold mb-2">3. Function</h3>
+            <p class="text-gray-700 mb-2">
+                Takes one argument and returns a result. Variations: BiFunction, UnaryOperator, BinaryOperator.
+            </p>
+            <pre class="p-3 bg-gray-800 text-green-200 rounded-md overflow-x-auto">
+<code class="language-java">
+Function&lt;Integer, Integer&gt; function = (value) -> value * value;
+</code>
+  </pre>
+
+            <h3 class="text-lg font-semibold mb-2">4. Supplier</h3>
+            <p class="text-gray-700 mb-2">
+                Provides a result without taking any input. Variants: BooleanSupplier, DoubleSupplier, LongSupplier,
+                IntSupplier.
+            </p>
+            <pre class="p-3 bg-gray-800 text-green-200 rounded-md overflow-x-auto">
+<code class="language-java">
+Supplier&lt;String&gt; supplier = () -> "Hello, World!";
+</code>
+  </pre>
+
+            <h3 class="text-lg font-semibold mb-2">Example: Predicate to Filter Strings</h3>
+            <pre class="p-3 bg-gray-800 text-green-200 rounded-md overflow-x-auto">
+<code class="language-java">
+import java.util.*;
+import java.util.function.Predicate;
+
+class Geeks {
+    public static void main(String args[]) {
+        List&lt;String&gt; n = Arrays.asList("Geek", "GeeksQuiz", "g1", "QA", "Geek2");
+
+        Predicate&lt;String&gt; p = (s) -> s.startsWith("G");
+
+        for (String st : n) {
+            if (p.test(st))
+                System.out.println(st);
+        }
+    }
+}
+</code>
+  </pre>
+            <p class="mt-2 text-gray-700">Output:</p>
+            <pre class="p-3 bg-gray-200 text-gray-800 rounded-md">
+Geek
+GeeksQuiz
+Geek2
+  </pre>
+        </div>
+
+        <div class="p-6 bg-gray-100 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold mb-4">Functional Interfaces Table</h2>
+            <table class="w-full border-collapse border border-gray-400">
+                <thead>
+                    <tr class="bg-blue-200 text-white">
+                        <th class="border border-gray-400 p-3 text-left">Functional Interface</th>
+                        <th class="border border-gray-400 p-3 text-left">Description</th>
+                        <th class="border border-gray-400 p-3 text-left">Method</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="bg-white">
+                        <td class="border border-gray-400 p-3">Runnable</td>
+                        <td class="border border-gray-400 p-3">Represents a task that can be executed by a thread.</td>
+                        <td class="border border-gray-400 p-3"><code>void run()</code></td>
+                    </tr>
+                    <tr class="bg-gray-100">
+                        <td class="border border-gray-400 p-3">Comparable</td>
+                        <td class="border border-gray-400 p-3">Compares two objects for ordering.</td>
+                        <td class="border border-gray-400 p-3"><code>int compareTo(T o)</code></td>
+                    </tr>
+                    <tr class="bg-white">
+                        <td class="border border-gray-400 p-3">ActionListener</td>
+                        <td class="border border-gray-400 p-3">Handles an action event in event-driven programming.</td>
+                        <td class="border border-gray-400 p-3"><code>void actionPerformed(ActionEvent e)</code></td>
+                    </tr>
+                    <tr class="bg-gray-100">
+                        <td class="border border-gray-400 p-3">Callable</td>
+                        <td class="border border-gray-400 p-3">Represents a task that can return a result or throw an
+                            exception.</td>
+                        <td class="border border-gray-400 p-3"><code>V call() throws Exception</code></td>
+                    </tr>
+                    <tr class="bg-white">
+                        <td class="border border-gray-400 p-3">Consumer</td>
+                        <td class="border border-gray-400 p-3">Accepts a single input argument and returns no result.
+                        </td>
+                        <td class="border border-gray-400 p-3"><code>void accept(T t)</code></td>
+                    </tr>
+                    <tr class="bg-gray-100">
+                        <td class="border border-gray-400 p-3">Predicate</td>
+                        <td class="border border-gray-400 p-3">Accepts a single argument and returns a boolean result.
+                        </td>
+                        <td class="border border-gray-400 p-3"><code>boolean test(T t)</code></td>
+                    </tr>
+                    <tr class="bg-white">
+                        <td class="border border-gray-400 p-3">Function</td>
+                        <td class="border border-gray-400 p-3">Accepts a single argument and returns a result.</td>
+                        <td class="border border-gray-400 p-3"><code>R apply(T t)</code></td>
+                    </tr>
+                    <tr class="bg-gray-100">
+                        <td class="border border-gray-400 p-3">Supplier</td>
+                        <td class="border border-gray-400 p-3">Provides a result without taking any arguments.</td>
+                        <td class="border border-gray-400 p-3"><code>T get()</code></td>
+                    </tr>
+                    <tr class="bg-white">
+                        <td class="border border-gray-400 p-3">BiConsumer</td>
+                        <td class="border border-gray-400 p-3">Accepts two arguments and returns no result.</td>
+                        <td class="border border-gray-400 p-3"><code>void accept(T t, U u)</code></td>
+                    </tr>
+                    <tr class="bg-gray-100">
+                        <td class="border border-gray-400 p-3">BiPredicate</td>
+                        <td class="border border-gray-400 p-3">Accepts two arguments and returns a boolean result.</td>
+                        <td class="border border-gray-400 p-3"><code>boolean test(T t, U u)</code></td>
+                    </tr>
+                    <tr class="bg-white">
+                        <td class="border border-gray-400 p-3">BiFunction</td>
+                        <td class="border border-gray-400 p-3">Accepts two arguments and returns a result.</td>
+                        <td class="border border-gray-400 p-3"><code>R apply(T t, U u)</code></td>
+                    </tr>
+                    <tr class="bg-gray-100">
+                        <td class="border border-gray-400 p-3">UnaryOperator</td>
+                        <td class="border border-gray-400 p-3">Special case of Function, input and output types are the
+                            same.</td>
+                        <td class="border border-gray-400 p-3"><code>T apply(T t)</code></td>
+                    </tr>
+                    <tr class="bg-white">
+                        <td class="border border-gray-400 p-3">BinaryOperator</td>
+                        <td class="border border-gray-400 p-3">Special case of BiFunction, input and output types are
+                            the same.</td>
+                        <td class="border border-gray-400 p-3"><code>T apply(T t1, T t2)</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <div class="p-4 rounded-lg border border-gray-200 shadow mt-4">
+            <h2 class="font-bold mb-4">Nested Interfaces</h2>
+            <p>Nested Interface is an interface declared inside a class or another interface. In Java,
+                nested interfaces can be declared with the public, protected, package-private (default), or private
+                access specifiers.
+            </p>
+            <ul>
+                <li>Inside a class, it can be public, protected, default, or private.</li>
+                <li>Inside another interface, it is implicitly public and static.</li>
+                <li>A top-level interface can only be public or default (package-private).</li>
+            </ul>
+            <p>Two types-
+                1. Nested Interface declared inside a class &nbsp;&nbsp;
+                2. Nested Interface declared inside another interface</p>
+        </div>
+
+        <div class="p-6 bg-gray-100 mt-4 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold mb-4">Nested Interface Inside a Class</h2>
+
+            <p class="text-gray-700 mb-4">
+                A nested interface is an interface declared inside a class. It helps group related contracts together.
+                In this example, <code>Department</code> is a nested interface inside <code>Company</code>, and
+                <code>Employee</code> implements it.
+            </p>
+
+            <pre class="p-3">
+<code class="language-java">
+class Company {
+    // Nested interface inside Company
+    interface Department {
+        void work();
+    }
+}
+
+// A class that implements the nested interface
+class Employee implements Company.Department {
+    @Override
+    public void work() {
+        System.out.println("Employee is working in the IT Department.");
+    }
+
+    public static void main(String[] args) {
+        // Reference type is Company.Department (the interface)
+        Company.Department dept = new Employee();
+
+        // Calls the overridden method in Employee
+        dept.work();
+    }
+}
+</code>
+  </pre>
+
+            <p class="mt-4 text-gray-700 font-semibold">Output:</p>
+            <pre class="p-2 bg-gray-200 text-gray-800 rounded-md">
+Employee is working in the IT Department.
+  </pre>
+
+            <p class="text-gray-700 mt-4">
+                Here, <code>Company.Department</code> is the reference type, and <code>new Employee()</code>
+                creates the object. Since <code>Employee</code> implements <code>Company.Department</code>,
+                the assignment is valid. When <code>dept.work()</code> is called, the overridden method in
+                <code>Employee</code> executes, producing the output shown above.
+            </p>
+        </div>
+
+        <div class="p-6 bg-gray-100 mt-4 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold mb-4">Nested Interface Inside an Interface</h2>
+
+            <p class="text-gray-700 mb-4">
+                In Java, an interface can itself contain another interface. This is useful for grouping related
+                contracts.
+                For example, a <code>Bank</code> interface may contain a nested <code>Account</code> interface, which
+                itself
+                defines operations like <code>Transaction</code>. A class implementing the nested interface must provide
+                the actual logic for those operations.
+            </p>
+
+            <pre class="p-3">
+<code class="language-java">
+interface Bank {
+    // Nested interface inside an interface
+    interface Account {
+        void transaction(String type, double amount);
+    }
+}
+
+// A class that implements the nested interface
+class SavingsAccount implements Bank.Account {
+    private double balance = 1000.0;
+
+    @Override
+    public void transaction(String type, double amount) {
+        if (type.equalsIgnoreCase("deposit")) {
+            balance += amount;
+            System.out.println("Deposited: " + amount + ", New Balance: " + balance);
+        } else if (type.equalsIgnoreCase("withdraw")) {
+            if (balance >= amount) {
+                balance -= amount;
+                System.out.println("Withdrawn: " + amount + ", New Balance: " + balance);
+            } else {
+                System.out.println("Insufficient funds!");
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        // Reference type is Bank.Account (the nested interface)
+        Bank.Account acc = new SavingsAccount();
+
+        // Calls the overridden method in SavingsAccount
+        acc.transaction("deposit", 500);
+        acc.transaction("withdraw", 300);
+        acc.transaction("withdraw", 1500);
+    }
+}
+</code>
+  </pre>
+
+            <p class="mt-4 text-gray-700 font-semibold">Output:</p>
+            <pre class="p-2 bg-gray-200 text-gray-800 rounded-md">
+Deposited: 500.0, New Balance: 1500.0
+Withdrawn: 300.0, New Balance: 1200.0
+Insufficient funds!
+  </pre>
+
+            <p class="text-gray-700 mt-4">
+                Here, <code>Bank.Account</code> is the reference type, and <code>new SavingsAccount()</code> creates the
+                object.
+                Since <code>SavingsAccount</code> implements <code>Bank.Account</code>, the assignment is valid. When
+                <code>acc.transaction()</code> is called, the overridden method in <code>SavingsAccount</code> executes,
+                performing deposit and withdrawal operations and printing the results.
+            </p>
+        </div>
+
+        <div class="p-6 bg-gray-100 mt-4 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold mb-4">Key Rules of Nested Interfaces</h2>
+            <ul>
+                <li><strong>Inside a Class:</strong> A nested interface can be public, protected, package-private
+                    (default), or private.</li>
+                <li><strong>Inside an Interface:</strong> It is implicitly public and static, even if not explicitly
+                    mentioned.</li>
+                <li><strong>Top-Level Interfaces:</strong> A top-level interface (not nested) can only be public or
+                    package-private (default), it cannot be protected or private.</li>
+            </ul>
+        </div>
+
+
+
+    </div>
+
+    <script>
+        function toggleSubtopics(id) {
+            const el = document.getElementById(id);
+            if (el) el.classList.toggle('open');
+        }
+
+        const sidebar = document.getElementById('sidebar');
+        const resizer = document.getElementById('dragMe');
+        let isResizing = false;
+
+        resizer.addEventListener('mousedown', (e) => {
+            isResizing = true;
+            resizer.classList.add('resizing');
+            document.body.style.cursor = 'col-resize';
+            // Prevent text selection during drag
+            e.preventDefault();
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isResizing) return;
+            let newWidth = e.clientX;
+            const minWidth = window.innerWidth * 0.05;
+            const maxWidth = window.innerWidth * 0.50;
+            if (newWidth < minWidth) newWidth = minWidth;
+            if (newWidth > maxWidth) newWidth = maxWidth;
+            sidebar.style.width = newWidth + 'px';
+        });
+
+        document.addEventListener('mouseup', () => {
+            if (isResizing) {
+                isResizing = false;
+                resizer.classList.remove('resizing');
+                document.body.style.cursor = 'default';
+            }
+        });
+    </script>
+
+    <script type="module">
+        import { initSidebar } from '../../sidebar.js';
+        initSidebar();
+    </script>
+</body>
+
+</html>

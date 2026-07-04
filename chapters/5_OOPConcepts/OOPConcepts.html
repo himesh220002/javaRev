@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOP Concepts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css" rel="stylesheet" /> -->
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-coy.min.css" rel="stylesheet" /> -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'dark', fontFamily: 'Inter, sans-serif' });
+    </script>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            850: '#151e2e',
+                            900: '#0f172a',
+                            950: '#020617',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #f9fafb;
+            color: #1f2937;
+            margin: 0;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+
+        .mermaid {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #334155;
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="sidebar-container" style="display:flex; height:100%;"></div>
+    <div
+        class="flex-1 p-8 md:p-14 overflow-y-auto bg-gray-50 text-gray-800 prose prose-indigo prose-headings:text-gray-900 max-w-none prose-a:text-blue-600 prose-pre:bg-gray-100 prose-pre:text-gray-900 prose-pre:border prose-pre:border-gray-200">
+        <h1>OOP Concepts</h1>
+        <a href="https://www.geeksforgeeks.org/java/java" target="_blank">Resource link -
+            GeeksforGeeks</a>
+
+
+        <div class="bg-gray-50 text-gray-800 p-4 rounded-lg shadow space-y-6">
+            <h2 class="text-2xl font-bold mb-2">Object-Oriented Programming</h2>
+            <p class="text-gray-600 mb-6">Object-Oriented Programming (OOP) is a programming paradigm based on the
+                concept of objects that contain data (fields) and behavior (methods). It focuses on designing software
+                that closely represents real-world entities. It is used to:</p>
+            <ul class="list-disc pl-6 mb-6">
+                <li>Improves code reusability</li>
+                <li>Enhances maintainability and scalability</li>
+                <li>Makes programs easier to understand and manage</li>
+                <li>Closely models real-world entities</li>
+            </ul>
+        </div>
+        <img src="https://www.wikitechy.com/interview-questions/wp-content/uploads/2021/07/oops-concepts-in-java.png"
+            alt="oops" class="h-[400px] w-[600px]">
+
+        <div class="bg-gray-50 text-gray-800 mt-4 p-4 rounded-lg shadow space-y-6">
+            <h2 class="text-center text-xl font-bold">Class</h2>
+            <p>A Class in Java is a blueprint or template used to create objects. It defines the properties (data) and
+                behaviors (methods) that objects of that class will have.</p>
+            <ul class="list-disc pl-6 mb-6">
+                <li>A class is a user-defined data type.</li>
+                <li>It contains variables (fields) and methods.</li>
+                <li>Multiple objects can be created from a single class.</li>
+            </ul>
+            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20260122164735278794/Class.webp" alt="class"
+                class="">
+
+            <pre class="p-3 rounded"><code class="language-java">
+public class Dog {
+
+    String name;
+    String breed;
+    int age;
+    String color;
+
+    public Dog(String name, String breed, int age, String color) {
+        this.name = name;
+        this.breed = breed;
+        this.age = age;
+        this.color = color;
+    }
+
+    public String getName() { return name; }
+    public String getBreed() { return breed; }
+    public int getAge() { return age; }
+    public String getColor() { return color; }
+
+    @Override
+    public String toString() {
+        return "Name is: " + name
+             + "\nBreed age and color are: "
+             + breed + " " + age + " " + color;
+    }
+
+    public static void main(String[] args) {
+        Dog tuffy = new Dog("tuffy", "papillon", 5, "white");
+        System.out.println(tuffy);
+    }
+}
+            </code></pre>
+            <div>
+                Output:
+                <pre class="p-3 rounded"><code class="language-java">
+Name is: tuffy
+Breed age and color are: papillon 5 white
+</code></pre>
+            </div>
+
+        </div>
+
+        <!-- object -->
+        <div class="bg-gray-50 text-gray-800 mt-4 p-4 rounded-lg shadow space-y-6">
+            <h2 class="text-center text-xl font-bold">Object</h2>
+            <p>An Object in Java is an instance of a class. It represents a real-world entity with properties (data) and
+                behaviors (methods). Multiple objects can be created from a single class.</p>
+            <ul class="list-disc pl-6 mb-6">
+                <li>An object is a runtime entity.</li>
+                <li>It has state (variables) and behavior (methods).</li>
+                <li>Multiple objects can be created from a single class.</li>
+            </ul>
+            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20260408165148397036/Object.webp" alt="class"
+                class="">
+
+            <pre class="p-3"><code class="language-java">
+class Product {
+
+    String name;
+    float price;
+
+    // Constructor to initialize object state
+    public Product(String name, float price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    // Setter methods (optional)
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    // Getter methods
+    public String getName() {
+        return name;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Product p1 = new Product("Visual Studio", 0.0f);
+        Product p2 = new Product("IntelliJ IDEA", 4999.0f);
+
+        System.out.println(p1.getName() + " - " + p1.getPrice());
+        System.out.println(p2.getName() + " - " + p2.getPrice());
+    }
+}
+            </code></pre>
+            <div>
+                Output:
+                <pre class="p-3"><code class="language-java">
+Visual Studio - 0.0
+IntelliJ IDEA - 4999.0
+</code></pre>
+            </div>
+
+        </div>
+
+        <!-- Constructor -->
+        <div class="bg-gray-50 text-gray-800 mt-4 p-4 rounded-lg shadow space-y-6">
+            <h2 class="text-center text-xl font-bold">Constructor</h2>
+            <p>A Constructor in Java is a special type of method that is used to initialize objects of a class. It has
+                the same name as the class and does not return any value.</p>
+            <ul class="list-disc pl-6 mb-6">
+                <li>A constructor is a special type of method.</li>
+                <li>It has the same name as the class.</li>
+                <li>It does not return any value.</li>
+            </ul>
+            <h3>Types of constructor</h3>
+            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20260606221559068736/constructors_in_java.webp"
+                alt="class" class="">
+            <ol class="list-decimal pl-6 mb-6">
+                <li><strong>Default Constructor:</strong> A constructor that does not accept any parameters and
+                    initializes an object
+                    with default values.</li>
+                <li><strong>Parameterized Constructor:</strong> A constructor that accepts parameters to initialize an
+                    object with
+                    specific values.</li>
+                <li><strong>Copy Constructor:</strong> A user-defined constructor that creates a new object by copying
+                    the data of
+                    another object of the same class.</li>
+                <li><strong>Constructor:</strong> A constructor declared with the private access modifier that prevents
+                    object
+                    creation from outside the class.</li>
+            </ol>
+
+
+        </div>
+
+        <!-- Abstraction -->
+        <div class="bg-gray-50 text-gray-800 mt-4 p-4 rounded-lg shadow space-y-6">
+            <h2>Abstraction</h2>
+            <p>Abstraction in Java is the process of hiding the implementation details and showing only the essential
+                features of an object. It allows you to focus on what an object does rather than how it does it.
+            </p>
+            <ul class="list-disc pl-6 mb-6">
+                <li><strong>Hides complexity:</strong>Internal implementation details are hidden from the user.</li>
+                <li><strong>Improves maintainability:</strong>Changes in implementation do not affect the user code.
+                </li>
+                <li><strong>Enhances flexibility:</strong>Supports loose coupling through abstract classes and
+                    interfaces.</li>
+            </ul>
+            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20260408144744735541/Abstraction.webp"
+                alt="abstraction">
+            <h3>how to achieve abstraction?</h3>
+            <ol class="list-decimal pl-6 mb-6">
+                <li><strong>Abstract Class:</strong> A class that is declared with the abstract keyword. It can have
+                    both
+                    abstract (without
+                    implementation) and concrete (with implementation) methods.</li>
+                <li><strong>Interface:</strong> A blueprint of a class that contains only abstract methods. It is used
+                    to
+                    achieve
+                    multiple inheritance.</li>
+            </ol>
+        </div>
+
+        <!-- Encapsulation -->
+        <div class="bg-gray-50 text-gray-800 mt-4 p-4 rounded-lg shadow space-y-6">
+            <h2>Encapsulation</h2>
+            <p>Encapsulation in Java is the process of bundling data (variables) and methods (functions) that operate on
+                the data into a single unit, called a class. It also involves restricting direct access to some of the
+                object's components, which is known as data hiding.</p>
+            <ul class="list-disc pl-6 mb-6">
+                <li><strong>Hides complexity:</strong>Internal implementation details are hidden from the user.</li>
+                <li>Access to data is provided through public getter and setter methods.</li>
+                <li>Improves data security, maintainability, and controlled access.</li>
+            </ul>
+            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20250729105432133992/Encapsulation.webp"
+                alt="encapsulation">
+
+            <pre class="p-3"><code class="language-java">
+                class Programmer {
+
+    private String name;
+
+    // Getter method used to get the data
+    public String getName() { return name; }
+
+    // Setter method is used to set or modify the data
+    public void setName(String name) {
+        
+        this.name = name;
+    }
+}
+
+public class Geeks {
+
+    public static void main(String[] args){
+        
+        Programmer p = new Programmer();
+        p.setName("Geek");
+        System.out.println("Name=> " + p.getName());
+    }
+}
+            </code></pre>
+
+
+        </div>
+
+        <!-- Association -->
+        <div class="bg-gray-50 text-gray-800 mt-4 p-4 rounded-lg shadow space-y-6">
+            <h2>Association</h2>
+            <p>Association is an OOP concept that defines a relationship between two or more classes that are connected
+                to each other. It represents how objects interact with each other and communicate. In association,
+                objects of one class are related to objects of another class, but they can exist independently.</p>
+            <ul class="list-disc pl-6 mb-6">
+                <li>Represents a relationship between objects</li>
+                <li>Does not imply ownership</li>
+                <li>Objects are independent of each other</li>
+            </ul>
+
+
+
+            <!-- weak assocaiation -->
+            <div class="bg-gray-50 text-gray-800 mt-4 p-4 rounded-lg shadow space-y-6">
+                <h3>Weak Association</h3>
+                <p>Aggregation represents a “has-a” relationship where one <strong>class contains a reference to another
+                        class</strong>,
+                    but both can exist independently.</p>
+                <ul class="list-disc pl-6 mb-6">
+                    <li>It is a weak relationship</li>
+                    <li>Objects have independent lifecycles</li>
+                    <li>One object can exist without the other</li>
+                </ul>
+                <img src="https://media.geeksforgeeks.org/wp-content/uploads/20260408152934559255/aggregation_relationship.webp"
+                    alt="association">
+
+
+            </div>
+            <!-- strong association -->
+            <div class="bg-gray-50 text-gray-800 mt-4 p-4 rounded-lg shadow space-y-6">
+                <h3>Strong Association</h3>
+                <p>Composition is a strong form of association where <strong> one class owns another class</strong>. If
+                    the parent object
+                    is destroyed, the child object also gets destroyed.</p>
+                <ul class="list-disc pl-6 mb-6">
+                    <li>It is a strong relationship</li>
+                    <li>Objects have dependent lifecycles</li>
+                    <li>Child object cannot exist without the parent</li>
+                </ul>
+                <img src="https://media.geeksforgeeks.org/wp-content/uploads/20260408153112222008/composition_relationship.webp"
+                    alt="association">
+
+
+            </div>
+        </div>
+
+        <!-- Inheritance -->
+        <div class="bg-gray-50 text-gray-800 mt-4 p-4 rounded-lg shadow space-y-6">
+            <h2>Inheritance</h2>
+            <p>Inheritance is a core OOP concept in Java that allows one class to acquire the fields and methods of
+                another class using the extends keyword. It represents an “is-a” relationship between classes.</p>
+            <ul class="list-disc pl-6 mb-6">
+                <li>The class being inherited is called the superclass, and the inheriting class is the
+                    subclass.</li>
+                <li>A subclass can use existing features of the superclass and also add its own.</li>
+                <li>Inheritance promotes code reusability and reduces redundancy.</li>
+            </ul>
+
+            <div class="grid grid-cols-2 gap-2">
+                <img src="https://media.geeksforgeeks.org/wp-content/uploads/20250722182112048071/inheritance-660x454.png"
+                    alt="inheritance" class="">
+                <div class="">
+                    <pre class="p-3"><code class="language-java">
+// Parent class
+class Animal {
+    void sound() { System.out.println("Animal makes a sound"); }
+}
+// Child class
+class Dog extends Animal {
+    void sound() { System.out.println("Dog barks"); }
+}
+class Cat extends Animal {
+    void sound() { System.out.println("Cat meows"); }
+}
+
+class Cow extends Animal {
+    void sound() { System.out.println("Cow moos"); }
+}
+
+// Main class
+public class Geeks {
+    public static void main(String[] args) {
+        Animal a;
+        a = new Dog();
+        a.sound();  
+
+        a = new Cat();
+        a.sound(); 
+
+        a = new Cow();
+        a.sound();  
+    }
+}
+                    </code></pre>
+                </div>
+            </div>
+
+            <!-- types of inharatince -->
+            <div class="bg-gray-50 text-gray-800 mt-4 p-4 rounded-lg shadow space-y-6">
+                <h3>Types of inheritance</h3>
+                <img src="https://media.geeksforgeeks.org/wp-content/uploads/20260122170656569199/inheritance_in_java.webp"
+                    alt="types of inheritance">
+
+                <div class="flex gap-2">
+
+                    <div class="text-center">
+                        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20251009191325181262/inheritence.webp"
+                            alt="single inheritance" class="h-[300px] w-full">
+                        <p>single inheritance</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20251009191256460092/inheritence2.webp"
+                            alt="multilevel inheritance" class="h-[300px] w-full">
+                        <p>multilevel inheritance</p>
+                    </div>
+
+                    <div class="text-center">
+                        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20251009191256684903/inheritence_4.webp"
+                            alt="Hierarchical" class="h-[300px] w-full">
+                        <p>Hierarchical inheritance</p>
+                    </div>
+
+                    <div class="text-center">
+                        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20251009191256161710/inheritence3.webp"
+                            alt="Multiple inharatince" class="h-[300px] w-full">
+                        <p>Multiple inharatince</p>
+                    </div>
+
+
+
+                </div>
+                <div class="grid grid-cols-5 gap-2">
+                    <div class="text-center col-span-2">
+                        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20251114151430531977/inheritence_5.webp"
+                            alt="hybrid inheritance" class="h-[400px] w-[500px]">
+                        <p>hybrid inheritance</p>
+                    </div>
+                    <div class="col-span-3">
+                        <pre class="p-3"><code class="language-java">
+// Superclass
+class Vehicle {
+    void vehicleType() {
+        System.out.println("This is a Vehicle");
+    }
+}
+
+// Interface for fare
+interface Fare {
+    default void fareInfo() {
+        System.out.println("Fare information");
+    }
+}
+
+// Subclass 1: Single inheritance + multilevel
+class Car extends Vehicle {
+    void carType() {
+        System.out.println("This is a Car");
+    }
+}
+
+// Subclass 2: Hybrid inheritance (extends class + implements interface)
+class Bus extends Vehicle implements Fare {
+    void busType() {
+        System.out.println("This is a Bus");
+    }
+}
+
+public class GFG{
+    public static void main(String[] args) {
+        Car car = new Car();
+        car.vehicleType(); // inherited from Vehicle
+        car.carType();     // specific to Car
+
+        Bus bus = new Bus();
+        bus.vehicleType(); // inherited from Vehicle
+        bus.busType();     // specific to Bus
+        bus.fareInfo();    // from Fare interface
+    }
+}    
+                    </code></pre>
+                        <pre class="p-3"><code class="language-java">
+This is a Vehicle
+This is a Car
+This is a Vehicle
+This is a Bus
+Fare information
+                    </code></pre>
+                    </div>
+                </div>
+
+                <ol>
+                    <li><strong>Single Inheritance:</strong> One subclass inherits from one superclass.</li>
+                    <li><strong>Multilevel Inheritance:</strong> A class is derived from another derived class, forming
+                        a chain.</li>
+                    <li><strong>Hierarchical Inheritance:</strong> Multiple subclasses inherit from a single superclass.
+                    </li>
+                    <li><strong>Multiple Inheritance (through Interface):</strong> A class inherits from multiple
+                        interfaces since Java does not support multiple inheritance using classes.</li>
+                    <li><strong>Hybrid Inheritance (through Interface):</strong> A combination of two or more types of
+                        inheritance, achievable using interfaces.</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Polymorphism -->
+        <div class="">
+            <h2>Polymorphism</h2>
+            <p>Polymorphism means “many forms”, where a single entity can behave differently in different situations. In
+                Java, it allows the same method or object to show different behavior based on context.</p>
+            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20260408152359005018/Polymorphysm.webp"
+                alt="polymorphism">
+            <ul>
+                <li>Same method, different behavior depending on the object</li>
+                <li>Achieved through method overloading and method overriding</li>
+            </ul>
+
+            <h3>Types of Polymorphism</h3>
+            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20250924130221954344/polymorphism_in_java.webp"
+                alt="polymorphism">
+            <p><strong>Polymorphism</strong> is classified into two types: <strong>Compile-time Polymorphism</strong>
+                (Static Polymorphism) and <strong>Runtime Polymorphism</strong> (Dynamic Polymorphism).</p>
+            <ul>
+                <li><strong>Compile-time Polymorphism:</strong> Determined at compile time by the compiler. Achieved
+                    through method overloading and operator overloading.</li>
+                <li><strong>Runtime Polymorphism:</strong> Determined at runtime by the JVM. Achieved through method
+                    overriding and dynamic method dispatch.</li>
+            </ul>
+
+            <div>
+                <h3 class="text-xl font-semibold">Method Overloading</h3>
+                <pre class="p-3"><code class="language-java">
+class Helper {
+
+    // Method with 2 integer parameters
+    static int Multiply(int a, int b)
+    {
+        // Returns product of integer numbers
+        return a * b;
+    }
+
+    // Method 2
+    // With same name but with 2 double parameters
+    static double Multiply(double a, double b)
+    {
+        // Returns product of double numbers
+        return a * b;
+    }
+}
+
+
+// Main class
+class Geeks {
+    // Main driver method
+    public static void main(String[] args)
+    {
+
+        // Calling method by passing
+        // input as in arguments
+        System.out.println(Helper.Multiply(2, 4));
+        System.out.println(Helper.Multiply(5.5, 6.3));
+    }
+}
+                </code></pre>
+                <pre><code>8
+34.65</code></pre>
+            </div>
+            <div>
+                <h3 class="text-xl font-semibold">Method Overriding</h3>
+                <pre class="p-3"><code class="language-java">
+// Class 1
+// Helper class
+class Parent {
+
+    // Method of parent class
+    void Print() { System.out.println("parent class"); }
+}
+
+// Class 2
+// Helper class
+class Subclass1 extends Parent {
+
+    // Method
+    void Print() { System.out.println("subclass1 is printing"); }
+}
+
+// Class 3
+// Helper class
+class Subclass2 extends Parent {
+
+    // Method
+    void Print() { System.out.println("subclass2 is printing"); }
+}
+
+// Class 4
+// Main class
+class Geeks {
+
+    // Main driver method
+    public static void main(String[] args)
+    {
+
+        // Creating object of class 1
+        Parent a;
+
+        // Now we will be calling print methods
+        // inside main() method
+        a = new Subclass1();
+        a.Print();
+
+        a = new Subclass2();
+        a.Print();
+    }
+}
+                </code></pre>
+                <pre><code>
+subclass1 is printing
+subclass2 is printing
+                </code></pre>
+
+            </div>
+        </div>
+
+        <div class="bg-gray-100 text-gray-900 p-6 rounded-lg shadow space-y-6">
+            <h2 class="text-center text-xl font-bold">Advantages of OOP over Procedural Programming</h2>
+
+            <!-- Advantages -->
+            <div class="p-3 rounded bg-green-100">
+                <strong>Advantages:</strong>
+                <ul class="list-disc ml-6">
+                    <li><strong>[Code Reusability]</strong> → Classes and objects allow
+                        reuse of existing code, reducing duplication.</li>
+                    <li><strong>[Better Structure]</strong> → Programs are
+                        organized into logical units, easier to debug and maintain.</li>
+                    <li><strong>[Supports DRY Principle]</strong> → Common functionality
+                        written once and reused.</li>
+                    <li><strong>[Faster Development]</strong> → Modular, reusable
+                        components enable scalable application development.</li>
+                </ul>
+            </div>
+
+            <!-- Limitations -->
+            <div class="p-3 rounded bg-red-100">
+                <strong>Limitations:</strong>
+                <ul class="list-disc ml-6">
+                    <li><strong>[Steeper Learning Curve]</strong> → Concepts like
+                        inheritance, polymorphism, abstraction can be challenging for beginners.</li>
+                    <li><strong>[Overhead for Small Programs]</strong> → Extra
+                        classes and structure may be unnecessary.</li>
+                    <li><strong>[Design Complexity]</strong> → Requires careful planning
+                        of class hierarchy and relationships.</li>
+                    <li><strong>[Higher Memory Consumption]</strong> → Large number of
+                        objects can consume more memory compared to procedural approaches.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="bg-gray-50 text-gray-800 mt-4 p-4 rounded-lg shadow space-y-6">
+            <h3 class="text-xl font-semibold">Packages</h3>
+            <p>In Java, a <b>package</b> is a collection of related classes, interfaces, enumerations, and annotations.
+                Packages help in organizing code, preventing naming conflicts, and controlling access to members
+                (public, protected, private, default). </p>
+            <p><b>Key Points:</b></p>
+            <ul>
+                <li><b>Declaring a Package:</b> Use the <code>package</code> keyword at the beginning of a Java file.
+                </li>
+                <li><b>Access Control:</b> Packages enable access control using access modifiers (public, protected,
+                    private, default).</li>
+                <li><b>Built-in Packages:</b> Java provides many built-in packages such as <code>java.util</code>,
+                    <code>java.io</code>, <code>java.lang</code>, etc.
+                </li>
+                <li><b>User-Defined Packages:</b> Developers can create their own packages to organize related classes.
+                </li>
+            </ul>
+            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20251120150753370536/packages_.webp">
+        </div>
+
+
+    </div>
+
+
+
+    <script>
+        function toggleSubtopics(id) {
+            const el = document.getElementById(id);
+            if (el) el.classList.toggle('open');
+        }
+
+        const sidebar = document.getElementById('sidebar');
+        const resizer = document.getElementById('dragMe');
+        let isResizing = false;
+
+        resizer.addEventListener('mousedown', (e) => {
+            isResizing = true;
+            resizer.classList.add('resizing');
+            document.body.style.cursor = 'col-resize';
+            // Prevent text selection during drag
+            e.preventDefault();
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isResizing) return;
+            let newWidth = e.clientX;
+            const minWidth = window.innerWidth * 0.05;
+            const maxWidth = window.innerWidth * 0.50;
+            if (newWidth < minWidth) newWidth = minWidth;
+            if (newWidth > maxWidth) newWidth = maxWidth;
+            sidebar.style.width = newWidth + 'px';
+        });
+
+        document.addEventListener('mouseup', () => {
+            if (isResizing) {
+                isResizing = false;
+                resizer.classList.remove('resizing');
+                document.body.style.cursor = 'default';
+            }
+        });
+    </script>
+
+    <script type="module">
+        import { initSidebar } from '../../sidebar.js';
+        initSidebar();
+    </script>
+</body>
+
+</html>

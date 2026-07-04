@@ -1,0 +1,116 @@
+import fs from 'fs';
+import path from 'path';
+
+// Using a dynamic import for data.js
+import { defaultState } from './data.js';
+
+const htmlTemplateStart = (title, subtitle) => `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${title} - DSA Mastery</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; min-height: 100vh; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 2rem; }
+        .back-link { display: inline-block; margin-bottom: 1.5rem; color: #667eea; text-decoration: none; font-weight: 500; }
+        .back-link:hover { text-decoration: underline; }
+        h1 { color: #1a1a2e; margin-bottom: 0.5rem; }
+        .subtitle { color: #666; margin-bottom: 2rem; }
+        .topic-card { background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid #eee; }
+        .topic-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 1rem; }
+        .topic-title { font-size: 1.1rem; font-weight: 600; color: #1a1a2e; }
+        .topic-meta { display: flex; gap: 1rem; align-items: center; }
+        .progress-badge { padding: 0.2rem 0.8rem; border-radius: 12px; font-size: 0.8rem; font-weight: 500; }
+        .progress-0 { background: #fff3cd; color: #856404; }
+        .progress-100 { background: #d4edda; color: #155724; }
+        .checkbox { width: 22px; height: 22px; border: 2px solid #ddd; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; flex-shrink: 0; }
+        .checkbox.checked { background: #667eea; border-color: #667eea; }
+        .checkbox.checked::after { content: '✓'; color: white; font-size: 14px; font-weight: bold; }
+        .topic-actions { display: flex; gap: 0.5rem; margin-top: 1rem; }
+        .btn { padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 500; text-decoration: none; text-align: center; transition: all 0.2s; border: none; cursor: pointer; font-size: 0.9rem; }
+        .btn-primary { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+        .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="dsa.html" class="back-link">← Back to DSA Mastery</a>
+        <h1>${title}</h1>
+        <p class="subtitle">${subtitle}</p>
+`;
+
+const htmlTemplateEnd = (moduleName) => `
+    </div>
+    <script>
+        document.querySelectorAll('.checkbox').forEach(cb => {
+            cb.addEventListener('click', function() {
+                this.classList.toggle('checked');
+                const card = this.closest('.topic-card');
+                const badge = card.querySelector('.progress-badge');
+                if (this.classList.contains('checked')) {
+                    badge.textContent = '100%';
+                    badge.className = 'progress-badge progress-100';
+                } else {
+                    badge.textContent = '0%';
+                    badge.className = 'progress-badge progress-0';
+                }
+            });
+        });
+        window.updateProgress = function(card) {
+            const cb = card.querySelector('.checkbox');
+            const badge = card.querySelector('.progress-badge');
+            if (cb && cb.classList.contains('checked')) {
+                badge.textContent = '100%';
+                badge.className = 'progress-badge progress-100';
+            } else if (badge) {
+                badge.textContent = '0%';
+                badge.className = 'progress-badge progress-0';
+            }
+        };
+    </script>
+    <script type="module">
+        import { initSync } from './dsa_sync.js';
+        initSync("${moduleName}");
+    </script>
+</body>
+</html>
+`;
+
+function generateCard(title) {
+    return `
+        <div class="topic-card">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="checkbox" data-topic=""></div>
+                    <span class="topic-title">${title}</span>
+                </div>
+                <div class="topic-meta">
+                    <span class="progress-badge progress-0">0%</span>
+                </div>
+            </div>
+            <div class="topic-actions">
+                <a href="#" class="btn btn-primary">Solve</a>
+            </div>
+        </div>
+`;
+}
+
+function generatePage(moduleName, filename, title, subtitle) {
+    let content = htmlTemplateStart(title, subtitle);
+    const items = defaultState.DSA.children[moduleName].grandchildren;
+    
+    for (const itemName in items) {
+        content += generateCard(itemName);
+    }
+    
+    content += htmlTemplateEnd(moduleName);
+    
+    fs.writeFileSync(path.join('dsa', filename), content, 'utf8');
+    console.log(`Generated dsa/${filename}`);
+}
+
+generatePage('Algorithms', 'algorithms.html', 'Algorithms', 'Master key algorithms and patterns');
+generatePage('Practice Problems (15+ Items)', 'practiceproblems.html', 'Practice Problems', '17 curated practice problems');
+generatePage('Interview Questions (40+ Items)', 'interviewquestions.html', 'Interview Questions', '42 frequently asked interview questions');
