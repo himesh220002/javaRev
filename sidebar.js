@@ -105,4 +105,69 @@ export function initSidebar() {
             document.body.style.cursor = 'default';
         }
     });
+
+    // Initialize Reading Progress Marker
+    initReadingMarker(htmlFile);
+}
+
+function initReadingMarker(pageId) {
+    const scrollContainer = document.querySelector('.flex-1.overflow-y-auto');
+    if (!scrollContainer) return;
+
+    scrollContainer.style.position = 'relative';
+
+    const storageKey = 'reading_marker_' + pageId;
+    const marker = document.createElement('div');
+    marker.id = 'reading-marker';
+    // Small arrow pointing left
+    marker.innerHTML = `<svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"></path></svg>`;
+    
+    // Tailwind classes for the blue sticky tab
+    marker.className = 'absolute right-0 w-8 h-8 bg-blue-500 text-white flex items-center justify-center cursor-grab rounded-l-md shadow-md z-50 transition-colors hover:bg-blue-600';
+    
+    scrollContainer.appendChild(marker);
+
+    const savedTop = localStorage.getItem(storageKey);
+    if (savedTop) {
+        marker.style.top = savedTop;
+        // Optionally scroll down to it if it's far down the page
+        setTimeout(() => {
+            const topVal = parseFloat(savedTop);
+            if (topVal > window.innerHeight) {
+                scrollContainer.scrollTo({ top: topVal - window.innerHeight / 3, behavior: 'smooth' });
+            }
+        }, 500);
+    } else {
+        marker.style.top = '100px';
+    }
+
+    let isDraggingMarker = false;
+    let offsetY = 0;
+
+    marker.addEventListener('mousedown', (e) => {
+        isDraggingMarker = true;
+        marker.style.cursor = 'grabbing';
+        const markerRect = marker.getBoundingClientRect();
+        offsetY = e.clientY - markerRect.top;
+        e.preventDefault();
+    });
+
+    document.addEventListener('mousemove', (e) => {
+        if (!isDraggingMarker) return;
+        const containerRect = scrollContainer.getBoundingClientRect();
+        // Calculate new top based on mouse position relative to container + scroll offset
+        let newTop = (e.clientY - containerRect.top) + scrollContainer.scrollTop - offsetY;
+        
+        if (newTop < 0) newTop = 0;
+        
+        marker.style.top = newTop + 'px';
+    });
+
+    document.addEventListener('mouseup', () => {
+        if (isDraggingMarker) {
+            isDraggingMarker = false;
+            marker.style.cursor = 'grab';
+            localStorage.setItem(storageKey, marker.style.top);
+        }
+    });
 }
