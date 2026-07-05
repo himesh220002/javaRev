@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Methods</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
     <script type="module">
         import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
         mermaid.initialize({ startOnLoad: true, theme: 'dark', fontFamily: 'Inter, sans-serif' });
@@ -87,7 +91,7 @@
 
             <!-- Syntax -->
             <h3 class="text-xl font-semibold">Syntax</h3>
-            <pre class="bg-gray-100 text-gray-900 p-3 rounded border border-gray-200"><code>returnType methodName(parameters) {
+            <pre class="p-3"><code class="language-java">returnType methodName(parameters) {
    // method body
    return value; // optional
 }</code></pre>
@@ -114,7 +118,7 @@
 
             <!-- Examples -->
             <h3 class="text-xl font-semibold">Examples</h3>
-            <pre class="bg-gray-100 text-gray-900 p-3 rounded border border-gray-200"><code>// User-defined Instance Method
+            <pre class="p-3"><code class="language-java">// User-defined Instance Method
 class Geeks {
     void hello() { System.out.println("Hello!"); }
     public static void main(String[] args) {
@@ -151,7 +155,7 @@ public class Demo {
             <h3 class="text-xl font-semibold">Method Call Stack</h3>
             <p>Java manages method calls using a <b>LIFO stack</b>. Each call adds a frame, executes, then removes it.
             </p>
-            <pre class="bg-gray-100 text-gray-900 p-3 rounded border border-gray-200"><code>public class CallStackExample {
+            <pre class="p-3"><code class="language-java">public class CallStackExample {
     static void A(){ B(); System.out.println("In A"); }
     static void B(){ C(); System.out.println("In B"); }
     static void C(){ System.out.println("In C"); }
@@ -208,7 +212,7 @@ public class Demo {
 
             <!-- Examples -->
             <h3 class="text-xl font-semibold mt-4">Examples</h3>
-            <pre class="bg-gray-100 text-gray-900 p-3 rounded border border-gray-200"><code>// Static Method Example
+            <pre class="p-3"><code class="language-java">// Static Method Example
 class Test {
     static void greet() {
         System.out.println("Hello from Static Method");
@@ -278,7 +282,7 @@ class Demo {
 
             <!-- Example -->
             <h3 class="text-xl font-semibold mt-4">Example</h3>
-            <pre class="bg-gray-100 text-gray-900 p-3 rounded border border-gray-200"><code>class Demo {
+            <pre class="p-3"><code class="language-java">class Demo {
     public int a = 10;        // accessible everywhere
     protected int b = 20;     // package + subclasses
     int c = 30;               // default, package only
@@ -294,7 +298,7 @@ class Demo {
 
             <!-- Private -->
             <h3 class="text-xl font-semibold">Private</h3>
-            <pre class="bg-gray-100 text-gray-900 p-3 rounded border border-gray-200"><code>// File: p1/Person.java
+            <pre class="p-3"><code class="language-java">// File: p1/Person.java
 package p1;
 
 public class Person {
@@ -319,7 +323,7 @@ public class TestPrivate {
 
             <!-- Default -->
             <h3 class="text-xl font-semibold">Default (Package-Private)</h3>
-            <pre class="bg-gray-100 text-gray-900 p-3 rounded border border-gray-200"><code>// File: p1/Demo.java
+            <pre class="p-3"><code class="language-java">// File: p1/Demo.java
 package p1;
 
 class Demo { // default class
@@ -348,7 +352,7 @@ public class TestDefault {
 
             <!-- Protected -->
             <h3 class="text-xl font-semibold">Protected</h3>
-            <pre class="bg-gray-100 text-gray-900 p-3 rounded border border-gray-200"><code>// File: p1/Base.java
+            <pre class="p-3"><code class="language-java">// File: p1/Base.java
 package p1;
 
 public class Base {
@@ -370,7 +374,7 @@ public class Child extends Base {
 
             <!-- Public -->
             <h3 class="text-xl font-semibold">Public</h3>
-            <pre class="bg-gray-100 text-gray-900 p-3 rounded border border-gray-200"><code>// File: p1/PublicDemo.java
+            <pre class="p-3"><code class="language-java">// File: p1/PublicDemo.java
 package p1;
 
 public class PublicDemo {
@@ -413,7 +417,7 @@ public class TestPublic {
 
             <!-- Syntax -->
             <h3 class="text-xl font-semibold">Syntax</h3>
-            <pre class="bg-gray-100 text-gray-900 p-3 rounded border border-gray-200"><code>public static void main(String[] args) {
+            <pre class="p-3"><code class="language-java">public static void main(String[] args) {
     // args is an array of Strings
 }</code></pre>
 
@@ -430,7 +434,7 @@ public class TestPublic {
 
             <!-- Example 1 -->
             <h3 class="text-xl font-semibold">Example: Printing Arguments</h3>
-            <pre class="bg-gray-100 text-gray-900 p-3 rounded border border-gray-200"><code>public class CommandLineExample {
+            <pre class="p-3"><code class="language-java">public class CommandLineExample {
     public static void main(String[] args) {
         for (int i = 0; i < args.length; i++) {
             System.out.println("Argument " + i + ": " + args[i]);
@@ -446,7 +450,7 @@ public class TestPublic {
 
             <!-- Example 2 -->
             <h3 class="text-xl font-semibold">Example: Using Arguments</h3>
-            <pre class="bg-gray-100 text-gray-900 p-3 rounded border border-gray-200"><code>public class SumExample {
+            <pre class="p-3"><code class="language-java">public class SumExample {
     public static void main(String[] args) {
         int a = Integer.parseInt(args[0]);
         int b = Integer.parseInt(args[1]);
@@ -477,7 +481,7 @@ public class TestPublic {
 
             <!-- Syntax -->
             <h3 class="text-xl font-semibold">Syntax</h3>
-            <pre class="bg-gray-100 text-gray-900 p-3 rounded border border-gray-200"><code>returnType methodName(Type... variableName) {
+            <pre class="p-3"><code class="language-java">returnType methodName(Type... variableName) {
     // method body
 }</code></pre>
 
@@ -492,7 +496,7 @@ public class TestPublic {
 
             <!-- Example 1 -->
             <h3 class="text-xl font-semibold">Example: Sum of Numbers</h3>
-            <pre class="bg-gray-100 text-gray-900 p-3 rounded border border-gray-200"><code>class VarargsExample {
+            <pre class="p-3"><code class="language-java">class VarargsExample {
     static int sum(int... numbers) {
         int total = 0;
         for (int n : numbers) total += n;
@@ -507,7 +511,7 @@ public class TestPublic {
 
             <!-- Example 2 -->
             <h3 class="text-xl font-semibold">Example: Mixed Parameters</h3>
-            <pre class="bg-gray-100 text-gray-900 p-3 rounded border border-gray-200"><code>class MixedVarargs {
+            <pre class="p-3"><code class="language-java">class MixedVarargs {
     static void greet(String msg, String... names) {
         for (String n : names) {
             System.out.println(msg + " " + n);

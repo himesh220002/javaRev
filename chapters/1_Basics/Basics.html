@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Basics</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
     <script type="module">
         import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
         mermaid.initialize({ startOnLoad: true, theme: 'dark', fontFamily: 'Inter, sans-serif' });
@@ -200,8 +204,7 @@
 
         <h2>🧮 Simple Java Program (Calculator)</h2>
         <p>Write code in a file like <code>Calculator.java</code>.</p>
-        <pre
-            style="background: rgba(207, 195, 195, 0.1); padding: 15px; border-radius: 8px; border: 1px solid var(--border); overflow-x: auto;"><code>import java.util.Scanner;
+        <pre class="p-3"><code class="language-java">import java.util.Scanner;
 
 public class Calculator {
     public static void main(String[] args) {
@@ -242,8 +245,7 @@ public class Calculator {
         </ul>
 
         <h4>Terminal Output:</h4>
-        <pre
-            style="background: #000; color: #4ade80; padding: 15px; border-radius: 8px; border: 1px solid var(--border); overflow-x: auto; font-family: monospace;"><code>$ javac Calculator.java
+        <pre class="p-3"><code class="language-java">$ javac Calculator.java
 $ java Calculator
 --- Simple Java Calculator ---
 Enter first number: 15.5
@@ -311,7 +313,7 @@ Result: 15.5 * 4.0 = 62.0</code></pre>
 
             <!-- Example Code -->
             <div class="text-gray-900 rounded-lg">
-                <pre><code>
+                <pre class="p-3"><code class="language-java">
 import java.util.Scanner;
 
 public class Geeks {
@@ -563,7 +565,7 @@ Entered Float Value: 3.5
 
             <!-- Examples -->
             <div class="bg-gray-100 text-gray-900 border border-gray-200 p-4 rounded-lg space-y-4">
-                <pre><code>
+                <pre class="p-3"><code class="language-java">
 // String
 String name = "Himesh";
 System.out.println(name);
@@ -656,7 +658,7 @@ System.out.println(numbers[2]); // Output: 3
 
             <h3 class="text-xl font-bold mt-6">Example: Converting Primitive to Wrapper (Autoboxing)</h3>
             <div class="bg-gray-100 text-gray-900 border border-gray-200 p-4 rounded-lg">
-                <pre><code>class Geeks {
+                <pre class="p-3"><code class="language-java">class Geeks {
     public static void main(String[] args) {
         int b = 357;
         
@@ -696,7 +698,7 @@ The Integer object a is: 357</pre>
 
             <p>Java program to demonstrate the automatic conversion of primitive to wrapper class (Autoboxing):</p>
             <div class="bg-gray-100 text-gray-900 border border-gray-200 p-4 rounded-lg">
-                <pre><code>import java.util.ArrayList;
+                <pre class="p-3"><code class="language-java">import java.util.ArrayList;
 
 class Geeks {
     public static void main(String[] args) {
@@ -721,7 +723,7 @@ class Geeks {
             <p>Unboxing is the automatic conversion of a wrapper class object back into its corresponding primitive
                 type.</p>
             <div class="bg-gray-100 text-gray-900 border border-gray-200 p-4 rounded-lg">
-                <pre><code>import java.util.ArrayList;
+                <pre class="p-3"><code class="language-java">import java.util.ArrayList;
 
 class Geeks {
     public static void main(String[] args) {
@@ -746,7 +748,7 @@ class Geeks {
 
             <h2 class="text-2xl font-bold mt-8">Java Wrapper Classes Example</h2>
             <div class="bg-gray-100 text-gray-900 border border-gray-200 p-4 rounded-lg">
-                <pre><code>class Geeks {
+                <pre class="p-3"><code class="language-java">class Geeks {
     public static void main(String[] args) {
 
         byte b = 1;

@@ -220,11 +220,11 @@ export const defaultState = {
                         "notes": ""
                     },
                     "Marker Interface": {
-                        "completed": false,
+                        "completed": true,
                         "notes": ""
                     },
                     "Project: Employee Management System": {
-                        "completed": false,
+                        "completed": true,
                         "notes": ""
                     }
                 }

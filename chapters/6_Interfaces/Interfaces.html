@@ -756,45 +756,36 @@ Insufficient funds!
 
             <pre class="p-1 bg-gray-800 text-green-200 rounded-md overflow-x-auto">
 <code class="language-java">
-import java.io.*;
+interface Serializable {
+    // Marker interface (no methods)
+}
 
-// Student class marked as Serializable
-class Student implements Serializable {
-    private static final long serialVersionUID = 1L;
-    String name;
-    int age;
+class Person implements Serializable {
+    public Person() {
+        System.out.println("Person object created");
+    }
+}
 
-    Student(String name, int age) {
-        this.name = name;
-        this.age = age;
+class Animal {
+    public Animal() {
+        System.out.println("Animal object created");
     }
 }
 
 public class Demo {
     public static void main(String[] args) {
-        Student s1 = new Student("Cypher", 22);
+        Person p = new Person();
+        Animal a = new Animal();
 
-        try {
-            // Serialize: write object to file
-            FileOutputStream fos = new FileOutputStream("student.ser");
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(s1);
-            oos.close();
-            fos.close();
-            System.out.println("Student object serialized.");
+        if (p instanceof Serializable)
+            System.out.println("Person is serializable");
+        else
+            System.out.println("Person is not serializable");
 
-            // Deserialize: read object back
-            FileInputStream fis = new FileInputStream("student.ser");
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            Student s2 = (Student) ois.readObject();
-            ois.close();
-            fis.close();
-
-            System.out.println("Deserialized Student: " + s2.name + ", Age: " + s2.age);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        if (a instanceof Serializable)
+            System.out.println("Animal is serializable");
+        else
+            System.out.println("Animal is not serializable");
     }
 }
 </code>
@@ -802,17 +793,143 @@ public class Demo {
 
             <p class="mt-4 text-gray-700 font-semibold">Output:</p>
             <pre class="p-2 bg-gray-200 text-gray-800 rounded-md">
-Student object serialized.
-Deserialized Student: Cypher, Age: 22
+Person object created
+Animal object created
+Person is serializable
+Animal is not serializable
   </pre>
 
             <p class="text-gray-700 mt-4">
-                Here, the <code>Student</code> class implements <code>Serializable</code>,
-                which allows its objects to be written to a file and later reconstructed.
-                The marker interface itself has no methods — it simply signals to the JVM
-                and libraries that the class supports serialization. This is a practical
-                use case of marker interfaces in Java.
+                Here, <code>Person</code> implements <code>Serializable</code>, so the check
+                <code>p instanceof Serializable</code> returns true. <code>Animal</code> does not
+                implement it, so the check returns false. This shows how marker interfaces act as
+                "tags" to mark classes with special properties.
             </p>
+        </div>
+
+        <div class="p-6 bg-gray-100 mt-4 rounded-lg shadow-md">
+            <p>Common Marker Interfaces in Java</p>
+            <ul>
+                <li><code>Serializable</code></li>
+                <li><code>Cloneable</code></li>
+                <li><code>Remote</code></li>
+                <li><code>FunctionalInterface</code></li>
+                <li><code>Deprecated</code></li>
+                <li><code>Override</code></li>
+                <li><code>SuppressWarnings</code></li>
+            </ul>
+
+            <h4>Cloneable Interface</h4>
+            <p>There are some more real time examples of Marker Interface which are used in real-time applications. Like
+                Cloneable Interface, Serializable interface, etc</p>
+            <pre class="p-3"><code class="language-java">
+import java.lang.Cloneable;
+
+// Making class A cloneable using cloneable interface
+class A implements Cloneable
+{
+    int i;
+  
+    // A class constructor
+    public A(int i) {
+        this.i = i;
+    }
+
+    // Overriding clone() method by simply calling Object class clone() method.
+    @Override
+    protected Object clone() 
+      throws CloneNotSupportedException
+    {
+        return super.clone();
+    }
+}
+
+public class Geeks
+{
+    public static void main(String[] args)
+        throws CloneNotSupportedException
+    {
+        A a = new A(20);
+
+        // cloning 'a' and holding new cloned object reference in b
+
+        // down-casting as clone() return type is Object
+        A b = (A)a.clone();
+
+        System.out.println(b.i);
+    }
+}                
+
+            </code></pre>
+            <div class="p-2 border border-gray-200">
+                <p>20</p>
+            </div>
+
+            <h4>Serializable Interface</h4>
+            <p>Serializable interface is present in java.io package. It is used to make an object eligible for saving
+                its state into a file. This is called Serialization. Classes that do not implement serializable will not
+                have their state serialized or deserialized. All subtypes of a serializable class are themselves
+                serializable.</p>
+            <pre class="p-3"><code class="language-java">
+import java.io.*;
+
+class A implements Serializable
+{
+    int i;
+    String s;
+
+    // A class constructor
+    public A(int i,String s)
+    {
+        this.i = i;
+        this.s = s;
+    }
+}
+
+public class Geeks
+{
+    public static void main(String[] args)
+      throws IOException, ClassNotFoundException
+    {
+        A a = new A(20,"GeeksForGeeks");
+
+        // Serializing 'a'
+        FileOutputStream fos = new FileOutputStream("xyz.txt");
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(a);
+
+        // De-serializing 'a'
+        FileInputStream fis = new FileInputStream("xyz.txt");
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        A b = (A)ois.readObject(); // down-casting object
+
+        System.out.println(b.i+" "+b.s);
+
+        // closing streams
+        oos.close();
+        ois.close();
+    }
+}    
+</code></pre>
+            <p>Output: 20 GeeksForGeeks</p>
+
+            <h4>Remote Interface</h4>
+            <p>Remote interface (in java.rmi) is a marker interface that identifies objects whose methods can be invoked
+                remotely from another JVM. Any class implementing Remote is eligible to be used in Java RMI, allowing
+                distributed communication between systems.</p>
+            <pre class="p-3"><code class="language-java">
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+
+// Remote interface must extend Remote
+public interface Hello extends Remote{
+    
+    String sayHello() throws RemoteException;
+}                
+            </code></pre>
+            <p><strong> Extending Remote marks the interface as eligible for remote invocation. Each remote method must
+                    declare throws RemoteException.</p>
+
         </div>
 
 

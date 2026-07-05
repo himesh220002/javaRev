@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arrays</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
     <script type="module">
         import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
         mermaid.initialize({ startOnLoad: true, theme: 'dark', fontFamily: 'Inter, sans-serif' });
@@ -86,7 +90,7 @@
 
             <!-- Syntax -->
             <h3 class="text-xl font-semibold">Syntax</h3>
-            <pre class="bg-gray-100 text-gray-900 p-3 rounded border border-gray-200"><code>dataType[] arrayName = new dataType[size];
+            <pre class="p-3"><code class="language-java">dataType[] arrayName = new dataType[size];
 dataType[] arrayName = {value1, value2, value3};</code></pre>
 
             <!-- Key Points -->
@@ -100,7 +104,7 @@ dataType[] arrayName = {value1, value2, value3};</code></pre>
 
             <!-- Example 1 -->
             <h3 class="text-xl font-semibold">Example: Declaring and Accessing</h3>
-            <pre class="bg-gray-100 text-gray-900 p-3 rounded border border-gray-200"><code>public class ArrayExample {
+            <pre class="p-3"><code class="language-java">public class ArrayExample {
     public static void main(String[] args) {
         int[] numbers = {10, 20, 30, 40};
         System.out.println("First: " + numbers[0]); // 10
@@ -110,7 +114,7 @@ dataType[] arrayName = {value1, value2, value3};</code></pre>
 
             <!-- Example 2 -->
             <h3 class="text-xl font-semibold">Example: Iterating with Loop</h3>
-            <pre class="bg-gray-100 text-gray-900 p-3 rounded border border-gray-200"><code>public class LoopArray {
+            <pre class="p-3"><code class="language-java">public class LoopArray {
     public static void main(String[] args) {
         String[] names = {"Alice", "Bob", "Charlie"};
         for (int i = 0; i < names.length; i++) {
@@ -121,7 +125,7 @@ dataType[] arrayName = {value1, value2, value3};</code></pre>
 
             <!-- Example 3 -->
             <h3 class="text-xl font-semibold">Example: Enhanced For Loop</h3>
-            <pre class="bg-gray-100 text-gray-900 p-3 rounded border border-gray-200"><code>public class EnhancedLoop {
+            <pre class="p-3"><code class="language-java">public class EnhancedLoop {
     public static void main(String[] args) {
         double[] marks = {85.5, 90.0, 76.5};
         for (double m : marks) {
@@ -148,12 +152,12 @@ dataType[] arrayName = {value1, value2, value3};</code></pre>
 
             <!-- Syntax -->
             <h3 class="text-xl font-semibold">Syntax</h3>
-            <pre class="bg-gray-800 p-3 rounded"><code>int[][] matrix = new int[3][3]; // 2D
+            <pre class="p-3"><code class="language-java">int[][] matrix = new int[3][3]; // 2D
 int[][][] cube = new int[2][2][2]; // 3D</code></pre>
 
             <!-- Example -->
             <h3 class="text-xl font-semibold">Example</h3>
-            <pre class="bg-gray-800 p-3 rounded"><code>int[][] arr = { {1,2}, {3,4} };
+            <pre class="p-3"><code class="language-java">int[][] arr = { {1,2}, {3,4} };
 System.out.println(arr[0][1]); // 2</code></pre>
 
             <!-- Notes -->
@@ -172,7 +176,7 @@ System.out.println(arr[0][1]); // 2</code></pre>
                 </p>
 
                 <!-- Code -->
-                <pre class="bg-gray-800 p-3 rounded"><code>public class ThreeDArrayDemo {
+                <pre class="p-3"><code class="language-java">public class ThreeDArrayDemo {
     public static void main(String[] args) {
 
         // 1️⃣ Creation of 3D Array (2 × 2 × 2 cube)
@@ -231,7 +235,7 @@ System.out.println(arr[0][1]); // 2</code></pre>
 
                 <!-- Output -->
                 <h3 class="text-xl font-semibold">Output</h3>
-                <pre class="bg-gray-800 p-3 rounded"><code>Access arr[1][1][0] = 7
+                <pre class="p-3"><code class="language-java">Access arr[1][1][0] = 7
 Modified arr[1][1][1] = 99
 Block 0 slice:
 1 2 
@@ -273,14 +277,14 @@ Block 1:
 
             <!-- Syntax -->
             <h3 class="text-xl font-semibold">Syntax</h3>
-            <pre class="bg-gray-800 p-3 rounded"><code>int[][] jagged = new int[3][];
+            <pre class="p-3"><code class="language-java">int[][] jagged = new int[3][];
 jagged[0] = new int[2];
 jagged[1] = new int[4];
 jagged[2] = new int[3];</code></pre>
 
             <!-- Example -->
             <h3 class="text-xl font-semibold">Example</h3>
-            <pre class="bg-gray-800 p-3 rounded"><code>int[][] jagged = {
+            <pre class="p-3"><code class="language-java">int[][] jagged = {
     {1, 2},
     {3, 4, 5, 6},
     {7, 8, 9}
@@ -317,7 +321,7 @@ System.out.println(jagged[1][2]); // 5</code></pre>
 
             <!-- Example -->
             <h3 class="text-xl font-semibold">Example</h3>
-            <pre class="bg-gray-800 p-3 rounded"><code>import java.util.Arrays;
+            <pre class="p-3"><code class="language-java">import java.util.Arrays;
 
 public class Demo {
     public static void main(String[] args) {
@@ -338,13 +342,13 @@ public class Demo {
 
             <!-- Syntax -->
             <h3 class="text-xl font-semibold">Syntax</h3>
-            <pre class="bg-gray-800 p-3 rounded"><code>final int[] arr = new int[3];
+            <pre class="p-3"><code class="language-java">final int[] arr = new int[3];
 arr[0] = 10; // allowed
 arr = new int[5]; // ❌ not allowed</code></pre>
 
             <!-- Example -->
             <h3 class="text-xl font-semibold">Example</h3>
-            <pre class="bg-gray-800 p-3 rounded"><code>final int[] nums = {1,2,3};
+            <pre class="p-3"><code class="language-java">final int[] nums = {1,2,3};
 nums[1] = 99; // ✅ allowed
 System.out.println(Arrays.toString(nums)); // [1,99,3]</code></pre>
 
