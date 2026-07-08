@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Regex</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
     <script type="module">
         import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
         mermaid.initialize({ startOnLoad: true, theme: 'dark', fontFamily: 'Inter, sans-serif' });
@@ -36,14 +41,27 @@
             overflow: hidden;
             font-family: 'Inter', sans-serif;
         }
-        
-        ::-webkit-scrollbar { width: 8px; height: 8px; }
-        ::-webkit-scrollbar-track { background: #0f172a; }
-        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
 
         .mermaid {
-            background: rgba(255,255,255,0.02);
+            background: rgba(255, 255, 255, 0.02);
             padding: 20px;
             border-radius: 12px;
             border: 1px solid #334155;
@@ -55,53 +73,1210 @@
         }
     </style>
 </head>
+
 <body>
     <div id="sidebar-container" style="display:flex; height:100%;"></div>
-    <div class="flex-1 p-8 md:p-14 overflow-y-auto bg-gray-50 text-gray-800 prose prose-indigo prose-headings:text-gray-900 max-w-none prose-a:text-blue-600 prose-pre:bg-gray-100 prose-pre:text-gray-900 prose-pre:border prose-pre:border-gray-200">
+    <div
+        class="flex-1 p-8 md:p-14 overflow-y-auto bg-gray-50 text-gray-800 prose prose-indigo prose-headings:text-gray-900 max-w-none prose-a:text-blue-600 prose-pre:bg-gray-100 prose-pre:text-gray-900 prose-pre:border prose-pre:border-gray-200">
         <h1>Regex</h1>
-        <p>Content for Regex will go here.</p>
-    </div>
-    
-    <script>
-        function toggleSubtopics(id) {
-            const el = document.getElementById(id);
-            if (el) el.classList.toggle('open');
+        <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script> -->
+        <!-- <div class="p-4 mt-4 rounded-lg border border-gray-200">
+            <h3></h3>
+            <p></p>
+            <ul>
+                <li></li>
+            </ul>
+            <img src="" alt="">
+            <pre class="p-3"><code class="language-java"></code></pre>
+            <table>
+                <thead class="bg-blue-100">
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <th class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> -->
+        <div class="p-4 rounded-lg border border-gray-200">
+            <h2>Regular Expressions in Java</h2>
+            <p>Regular Expressions (Regex) in Java are a sequence of characters used to define a search pattern for text
+                processing tasks. They help in efficiently matching, searching, and manipulating strings based on
+                specific rules.</p>
+            <ul>
+                <li>Used for validating input formats like email, phone numbers, and passwords</li>
+                <li>Helps in searching and extracting specific patterns from large text data</li>
+                <li>Supports powerful text manipulation operations such as find and replace</li>
+
+            </ul>
+            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20251003111922094188/class_in_java_util_regex_package.webp"
+                alt="regex">
+            <!-- <pre class="p-3"><code class="language-java"></code></pre> -->
+        </div>
+
+        <div class="p-4 mt-4 rounded-lg border border-gray-200">
+            <h3>Pattern Class</h3>
+            <p>The Pattern class compiles regex strings into pattern objects.</p>
+            <h4>Methods</h4>
+            <ul>
+                <li><strong>compile(String regex):</strong> Compiles a regex.</li>
+                <li><strong>matcher(CharSequence input):</strong> Creates a matcher to search a string.</li>
+                <li><strong>matches(String regex, CharSequence input):</strong> Checks full-string match.</li>
+                <li><strong>split(CharSequence input):</strong> Splits input based on the pattern.</li>
+            </ul>
+            <!-- <img src="" alt=""> -->
+            <pre class="p-3"><code class="language-java">import java.util.regex.Pattern;
+
+class PatternExample {
+    public static void main(String[] args){
+        System.out.println(Pattern.matches("geeks.*", "geeksforgeeks")); // true
+        System.out.println(Pattern.matches("geeks[0-9]+", "geeks12s"));   // false
+    }
+}</code></pre>
+        </div>
+
+        <div class="p-4 mt-4 rounded-lg border border-gray-200">
+            <h3>Matcher Class</h3>
+            <p>The Matcher class performs matching operations for input strings.</p>
+            <h4>key Methods</h4>
+            <ul>
+                <li class="bg-blue-100"><strong>Matching and Finding (The Search Engine)</strong>
+                    <p>These methods scan your text to see if a regular expression pattern exists.</p>
+                    <ul>
+                        <li><code>matches()</code>: Checks if the entire input string matches the regex pattern
+                            perfectly.</li>
+                        <li><code>find()</code>: Searches the input string for the next subsequence that matches the
+                            pattern (used for finding multiple matches in a loop).</li>
+                    </ul>
+                </li>
+                <li class="bg-white"><strong>Extracting Match Details (The Inspection Tools)</strong>
+                    <p>Once <code>find()</code> or <code>matches()</code> returns true, you use these methods to pull
+                        out information about what was found and where it is.</p>
+                    <ul>
+                        <li><code>group()</code> / <code>groupCount()</code>: <code>group()</code> returns the actual
+                            text string that matched the pattern, while <code>groupCount()</code> tells you how many
+                            capturing groups (parentheses) are in the pattern.</li>
+                        <li><code>start()</code> / <code>end()</code>: Returns the exact starting and ending index
+                            positions of the matched text inside the original string.</li>
+                    </ul>
+                </li>
+                <li class="bg-blue-100"><strong>Modifying and Splitting (The Text Manipulators)</strong>
+                    <p>These methods are used when you want to change the input text based on your regular expression.
+                    </p>
+                    <ul>
+                        <li><code>replaceAll(String replacement)</code>: Replaces every single occurrence of the matched
+                            pattern with a new string.</li>
+                        <li><code>split(CharSequence input)</code>: Cuts the input string into an array of smaller
+                            strings, using the regex pattern as the boundary marker (delimiter).</li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- <img src="" alt=""> -->
+            <pre class="p-3"><code class="language-java">import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+class MatcherExample {
+    public static void main(String[] args) {
+        Pattern p = Pattern.compile("geeks");
+        Matcher m = p.matcher("geeksforgeeks.org");
+
+        while (m.find()) {
+            System.out.println("Pattern found from " + m.start() + " to " + (m.end() - 1));
+        }
+    }
+}</code></pre>
+            <pre><code>Pattern found from 0 to 4
+Pattern found from 8 to 12</code></pre>
+        </div>
+
+        <div class="p-4 mt-4 rounded-lg border border-gray-200">
+            <h3>Regex Character Classes</h3>
+            <p></p>
+            <ul>
+                <li>[xyz]: Matches x, y, or z </li>
+                <li>[^xyz]: Matches any character except x, y, or z </li>
+                <li>[a-zA-Z]: Matches any character in the specified range </li>
+                <li>[a-f[m-t]]: Union of ranges a&#x2D;f and m&#x2D;t </li>
+                <li>[a-z && [^m-p]]: Intersection of a&#x2D;z excluding m&#x2D;p </li>
+            </ul>
+            <!-- <img src="" alt=""> -->
+            <pre class="p-3"><code class="language-java">import java.util.regex.Pattern;
+
+class CharClassExample {
+    public static void main(String[] args) {
+        System.out.println(Pattern.matches("[a-z]", "g"));      // true
+        System.out.println(Pattern.matches("[a-zA-Z]", "Gfg")); // false
+    }
+}</code></pre>
+        </div>
+
+        <div class="p-4 mt-4 rounded-lg border border-gray-200">
+            <h3>Regex Table</h3>
+            <table
+                class="min-w-full text-left text-sm whitespace-nowrap border-collapse border border-gray-300 shadow-sm rounded-lg overflow-hidden">
+                <thead class="bg-blue-100">
+                    <tr class="hover:bg-gray-200 transition-colors">
+                        <th
+                            class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
+                            Symbol</th>
+                        <th
+                            class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
+                            Meaning</th>
+                        <th
+                            class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
+                            Example</th>
+                        <th
+                            class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
+                            Matches</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">^</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Start of string
+                        </td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">^Hello</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"Hello world"</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">$</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">End of string</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">world$</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"Hello world"</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">.</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Any single
+                            character
+                        </td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">h.t</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"hat", "hit"</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">*</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Zero or more
+                            repetitions</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">ab*</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"a", "ab", "abb"
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">+</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">One or more
+                            repetitions
+                        </td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">ab+</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"ab", "abb" (not
+                            "a")
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 border-t-2 border-t-green-400 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">?</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Zero or one
+                            (optional)
+                        </td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">colou?r</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"color", "colour"
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">{n}</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Exactly n times
+                        </td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">\d{3}</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"123"</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">{n,m}</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Between n and m
+                            times
+                        </td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">a{2,4}</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"aa", "aaa", "aaaa"
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">[]</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Character class
+                        </td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">[aeiou]</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"a", "e"</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">[^ ]</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Negated class</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">[^0-9]</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"A", "!" (not
+                            digits)✔
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 border-t-2 border-t-green-400 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">\d</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Digit (0-9)</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">\d+</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"123"</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">\w</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Word char (letters,
+                            digits, underscore)</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">\w+</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"Geek_123"</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">\s</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Whitespace</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">\s+</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">" "</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">\S</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Non-whitespace</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">\S+</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"Hello"</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">\W</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Non-word char</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">\W</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"!", " "</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">\b</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Word boundary
+                            (between
+                            word and non‑word)</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">\bcat\b</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"cat", "the cat
+                            sat" ✔, "concatenate"❌</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">\B</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Non-word boundary
+                            (inside words)</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">\Bcat\B</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"concatenate" ✔
+                            (matches "cat" inside), ❌ "cat" alone</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 border-t-2 border-t-green-400 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">\.</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Literal dot
+                            (escaped)
+                        </td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">\w+\.\w+</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"file.txt",
+                            "abc.def" ✔
+                        </td>
+                    </tr>
+
+                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">( )</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Grouping</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">(ab)+</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"ab", "abab"</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">|</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">OR operator</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">(cat|dog)</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"cat", "dog"</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">\1</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Backreference
+                            (repeat
+                            captured group)</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">(ab)\1</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"abab"</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 border-t-2 border-t-green-400 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">(?i)</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Case-insensitive
+                            flag
+                        </td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">(?i)java</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"java", "Java",
+                            "JAVA",
+                            "JaVa" ✔</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">(?m)</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Multiline mode (^
+                            and $
+                            match line boundaries)</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">(?m)^abc$</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Matches "abc" at
+                            start/end of each line</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">(?s)</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Dotall mode (dot
+                            matches newlines)</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">(?s)a.*b</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Matches "a...b"
+                            even
+                            across multiple lines</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">(?x)</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Verbose mode
+                            (allows
+                            whitespace and comments)</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">(?x)a \d+ # digits
+                        </td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Matches "a123" with
+                            inline comment</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 border-t-2 border-t-green-400 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">(?=.*\d)</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Positive lookahead
+                            for
+                            at least one digit</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">^(?=.*\d).+$</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"abc1" ✔, "abc" ✗
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">(?=.*[a-z])</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Positive lookahead
+                            for
+                            at least one lowercase letter</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">(?=.*[a-z]).+$
+                        </td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"ABCd" ✔, "ABC" ✗
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">(?=.*[A-Z])</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Positive lookahead
+                            for
+                            at least one uppercase letter</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">(?=.*[A-Z]).+$
+                        </td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"abcD" ✔, "abc" ✗
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">(?=.*[!@$%^&*()_-])
+                        </td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Positive lookahead
+                            for
+                            at least one special character</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">(?=.*[!@$%^&*()_-
+                            ]).+$</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"abc@" ✔, "abc" ✗
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="p-4 mt-4 rounded-lg border border-gray-200">
+            <h3>Common Regex patterns</h3>
+            <ul>
+                <li><strong>[a-z]+</strong> :Matches one or more lowercase letters.</li>
+                <li><strong>\d+</strong> : Matches one or more digits.</li>
+                <li><strong>[A-Z][a-z]*</strong> : Matches a word starting with an uppercase letter.</li>
+                <li><strong>[A-Za-z0-9]{8,}</strong> : Matches any string of 8 or more alphanumeric characters.</li>
+                <li><strong>^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$</strong> : Matches a valid email address.
+                </li>
+                <li><strong>^\d{3}-\d{2}-\d{4}$</strong> : Matches a Social Security Number (US).</li>
+                <li><strong>^\+?[0-9]{1,3}-?[0-9]{3}-?[0-9]{3}-?[0-9]{4}$</strong> : Matches a phone number.</li>
+                <li><strong>^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_-]).{8,18}$</strong> : Matches a valid
+                    password with at least one lowercase letter, one uppercase letter, one digit, and one special
+                    character.</li>
+                <li><strong>\bcat\b</strong> : Matches "cat" as a whole word.</li>
+            </ul>
+        </div>
+
+        <div class="p-4 mt-4 rounded-lg border border-gray-200">
+            <h3>Quantifiers Table</h3>
+            <table
+                class="min-w-full text-left text-sm whitespace-nowrap border-collapse border border-gray-300 shadow-sm rounded-lg overflow-hidden">
+                <thead class="bg-blue-100">
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <th
+                            class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
+                            Quantifier</th>
+                        <th
+                            class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
+                            Meaning</th>
+                        <th
+                            class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
+                            Example</th>
+                        <th
+                            class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
+                            Matches</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">*</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Zero or more</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">ab*</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"a", "ab", "abb",
+                            "abbbbb"</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">+</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">One or more</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">ab+</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"ab", "abb",
+                            "abbbbb"
+                            (not "a")</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">?</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Zero or one
+                            (optional)
+                        </td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">colou?r</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"color", "colour"
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">{n}</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Exactly n times
+                        </td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">\d{3}</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"123"</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">{n,}</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">At least n times
+                        </td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">a{2,}</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"aa", "aaa",
+                            "aaaa..."
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">{n,m}</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Between n and m
+                            times
+                        </td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">a{2,4}</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"aa", "aaa", "aaaa"
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="p-4 mt-4 rounded-lg border border-gray-200">
+            <h3>Matcher Class in Java</h3>
+            <p>Regular Expressions in Java provide a way to match, search, and manipulate text. The Matcher class is
+                part of the java.util.regex package is used to perform matching operations on an input string using a
+                compiled regular expression (Pattern). The Matcher class provides methods to:</p>
+            <ul>
+                <li>Check matches</li>
+                <li>Retrieve match positions</li>
+                <li>Study the matching state</li>
+                <li>Replace matched content</li>
+            </ul>
+            <!-- <img src="" alt=""> -->
+            <pre class="p-3"><code class="language-java">
+import java.util.regex.*;
+
+public class RegexExample{
+    public static void main(String[] args){
+
+        // 1. Pattern Compile (Define the rule)
+        // Example: Find "Java" (case-insensitive)
+        String regex = "(?i)java";
+        Pattern pattern = Pattern.compile(regex);
+
+        // 2. Create Matcher (Apply the rule to text)
+        String text = "I love Java. Java is powerful.";
+        Matcher matcher = pattern.matcher(text);
+
+        System.out.println("--- Using find() ---");
+        // 3. Find Matches (returns true if found, moves cursor)
+        while(matcher.find()){
+            // group() returns the actual matched text
+            // start() returns start index
+            // end() returns end index (exclusive)
+            System.out.println("Found: " + matcher.group() + 
+                               " at index " + matcher.start() + 
+                               " to " + matcher.end());
         }
 
-        const sidebar = document.getElementById('sidebar');
-        const resizer = document.getElementById('dragMe');
-        let isResizing = false;
+        System.out.println("\n--- Using replaceAll() ---");
+        // 4. Replace Matches
+        String newText = matcher.replaceAll("Python");
+        System.out.println("Replaced: " + newText);
 
-        resizer.addEventListener('mousedown', (e) => {
-            isResizing = true;
-            resizer.classList.add('resizing');
-            document.body.style.cursor = 'col-resize';
-            // Prevent text selection during drag
-            e.preventDefault();
-        });
+        System.out.println("\n--- Using matches() (Full String Match) ---");
+        // Note: For matches(), the entire string must match the regex
+        String text2 = "Java";
+        Pattern pattern2 = Pattern.compile("Java");
+        Matcher matcher2 = pattern2.matcher(text2);
+        System.out.println("Does 'Java' match 'Java'? " + matcher2.matches());
+    }
+}</code></pre>
+            <pre><code>Output
+--- Using find() ---
+Found: Java at index 7 to 11
+Found: Java at index 16 to 20
 
-        document.addEventListener('mousemove', (e) => {
-            if (!isResizing) return;
-            let newWidth = e.clientX;
-            const minWidth = window.innerWidth * 0.05;
-            const maxWidth = window.innerWidth * 0.50;
-            if (newWidth < minWidth) newWidth = minWidth;
-            if (newWidth > maxWidth) newWidth = maxWidth;
-            sidebar.style.width = newWidth + 'px';
-        });
+--- Using replaceAll() ---
+Replaced: I love Python. Python is powerful.
 
-        document.addEventListener('mouseup', () => {
-            if (isResizing) {
-                isResizing = false;
-                resizer.classList.remove('resizing');
-                document.body.style.cursor = 'default';
+--- Using matches() (Full String Match) ---
+Does 'Java' match 'Java'? true</code></pre>
+        </div>
+
+        <div class="p-4 mt-4 rounded-lg border border-gray-200">
+            <h3>1. Match Methods</h3>
+            <p> Java&OpenCurlyQuote;s Pattern class has three main methods for matching and searching:</p>
+            <table>
+                <thead class="bg-blue-100">
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <th
+                            class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
+                            Method</th>
+                        <th
+                            class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
+                            Description</th>
+                        <th
+                            class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
+                            Scope</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">boolean matches()
+                        </td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Tries to match the
+                            entire input string against the pattern.</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Entire String</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">boolean find()</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Scans the input
+                            sequence looking for the next subsequence that matches the pattern.</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Any Substring(s)
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">lookingAt()</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Attempts to match
+                            the input sequence, starting at the beginning, against the pattern.</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Prefix Match</td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <!-- <img src="" alt=""> -->
+            <pre class="p-3"><code class="language-java">
+import java.util.regex.*;
+public class RegexExample{
+    public static void main(String[] args){
+        String text = "Java is fun. java is powerful. Java is easy.";
+        Pattern p = Pattern.compile("java"); //Case-sensitive by default
+        Matcher m = p.matcher(text);
+
+        System.out.println("--- Using find() ---");
+        while(m.find()){
+            System.out.println("Found: " + m.group() + 
+                               " at index " + m.start() + 
+                               " to " + m.end());
+        }
+
+        System.out.println("\n--- Using replaceAll() ---");
+        String newText = m.replaceAll("Python");
+        System.out.println("Replaced: " + newText);
+    }
+}
+            </code></pre>
+            <pre><code>Output
+--- Using find() ---
+Found: java at index 13 to 17
+
+--- Using replaceAll() ---    
+Replaced: Java is fun. Python is powerful. Java is easy.</code></pre>
+        </div>
+
+        <div class="p-4 mt-4 rounded-lg border border-gray-200">
+            <h3>2. Index Methods</h3>
+            <p>Index methods return positional information about the current match in the input string.</p>
+            <table>
+                <thead class="bg-blue-100">
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <th
+                            class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
+                            Method Name</th>
+                        <th
+                            class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
+                            Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">start()</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">returns the start
+                            index of the previous match.</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">start(int group)
+                        </td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm"> returns the start
+                            index of the subsequence captured by the given group during the previous match operation.
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">end()</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">returns the offset
+                            after the last character is matched.</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">end(int group)</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">returns the offset
+                            after the last character of the subsequence captured by the given group during the previous
+                            match operation.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- <img src="" alt=""> -->
+            <pre class="p-3"><code class="language-java">import java.util.regex.*;
+
+public class IndexMethodExample {
+    public static void main(String[] args) {
+        // Regex to find words ending with 'Script'
+        // Group 1: captures the prefix (e.g., "Java", "Type")
+        // Group 2: captures the suffix ("Script")
+        String regex = "([a-zA-Z]+)(Script)";
+        Pattern pattern = Pattern.compile(regex);
+        
+        String text = "I love JavaScript and TypeScript!";
+        Matcher matcher = pattern.matcher(text);
+
+        System.out.println("Text: " + text);
+        System.out.println("Regex: " + regex + "\n");
+
+        // Loop through all matches in the text
+        while (matcher.find()) {
+            System.out.println("Match found: '" + matcher.group() + "'");
+            
+            // start() and end() for the whole match
+            System.out.println(" - Full match spans from index " + matcher.start() + " to " + matcher.end());
+            
+            // start(group) and end(group) for capturing groups
+            System.out.println(" - Group 1 ('" + matcher.group(1) + "') spans from index " + matcher.start(1) + " to " + matcher.end(1));
+            System.out.println(" - Group 2 ('" + matcher.group(2) + "') spans from index " + matcher.start(2) + " to " + matcher.end(2));
+            System.out.println("-------------------------------------------------");
+        }
+    }
+}</code></pre>
+            <pre><code>Output
+Text: I love JavaScript and TypeScript!
+Regex: ([a-zA-Z]+)(Script)
+
+Match found: 'JavaScript'
+ - Full match spans from index 7 to 17
+ - Group 1 ('Java') spans from index 7 to 11
+ - Group 2 ('Script') spans from index 11 to 17
+-------------------------------------------------
+Match found: 'TypeScript'
+ - Full match spans from index 22 to 32
+ - Group 1 ('Type') spans from index 22 to 26
+ - Group 2 ('Script') spans from index 26 to 32
+-------------------------------------------------</code></pre>
+            <div class="mt-4 text-gray-800">
+                <p><strong>Explanation :</strong></p>
+                <ul class="list-disc pl-5 mt-2 space-y-2">
+                    <li><strong>The Regex & Groups:</strong> The pattern <code>([a-zA-Z]+)(Script)</code> uses
+                        parentheses to define two <em>capturing groups</em>. Group 1 captures any letters before
+                        "Script" (like "Java" or "Type"), and Group 2 captures the literal word "Script".</li>
+                    <li><strong>The Search Loop:</strong> <code>while (matcher.find())</code> scans the entire text and
+                        runs the loop every time a match is found. For our text, it triggers twice (once for
+                        "JavaScript" and once for "TypeScript").</li>
+                    <li><strong>Full Match Indexing:</strong> Calling <code>start()</code> and <code>end()</code>
+                        without any arguments returns the starting position and the ending position (exclusive) of the
+                        entire matched word.</li>
+                    <li><strong>Group Indexing:</strong> Passing a number to the methods, like <code>start(1)</code> and
+                        <code>end(1)</code>, returns the exact starting and ending positions of only the text caught by
+                        that specific capturing group (e.g., just the "Java" part).
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="p-4 mt-4 rounded-lg border border-gray-200">
+            <h3>3. Study Methods</h3>
+            <p>Study methods are used to inspect the state and behavior of the matcher during pattern matching.</p>
+            <table>
+                <thead class="bg-blue-100">
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <th
+                            class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
+                            Method Name</th>
+                        <th
+                            class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
+                            Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">groupCount()</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">returns the number
+                            of capturing groups in the pattern.</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">group()</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Returns the matched
+                            substring</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">hitEnd()</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Checks if match
+                            reached end of input</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">requireEnd()</td>
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Checks if more
+                            input could change the result</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- <img src="" alt=""> -->
+            <pre class="p-3"><code class="language-java">import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class StudyMethods {
+    public static void main(String[] args) {
+        String text = "ababac";
+        Pattern pattern = Pattern.compile("(a.)*(a?)");
+        Matcher matcher = pattern.matcher(text);
+
+        while (matcher.find()) {
+            System.out.println("Match found: '" + matcher.group() + "'");
+            System.out.println(" - Group count: " + matcher.groupCount());
+            System.out.println(" - Hit end of input? " + matcher.hitEnd());
+            System.out.println(" - Require end? " + matcher.requireEnd());
+            System.out.println("-------------------------------------------------");
+        }
+    }
+}</code></pre>
+            <pre><code>Output
+Match found: 'ab' (Match 1)
+ - Group count: 1
+ - Hit end of input? false
+ - Require end? true
+-------------------------------------------------
+Match found: 'abab' (Match 2)
+ - Group count: 1
+ - Hit end of input? false
+ - Require end? true
+-------------------------------------------------
+Match found: 'ababac' (Match 3)
+ - Group count: 1
+ - Hit end of input? true
+ - Require end? true
+-------------------------------------------------</code></pre>
+            <div class="mt-4 text-gray-800">
+                <p><strong>Explanation:</strong></p>
+                <ul class="list-disc pl-5 mt-2 space-y-2">
+                    <li><strong>The Regex :</strong> <code>(a.)*(a?)</code></li>
+                    <li><strong>The Matches:</strong> The matcher finds 3 matches: 'ab', 'abab', and 'ababac'.</li>
+                    <li><strong>Group Count:</strong> It always reports 1 group (due to the outer parentheses).</li>
+                    <li><strong>Hit End?</strong> This is false for the first two matches because the regex engine
+                        wants to check if adding more characters (like the 'a' in 'ab') could create a longer match,
+                        which
+                        is possible.</li>
+                    <li><strong>Require End?</strong> This is true because the regex engine determines that no more
+                        characters can be added to make a longer valid match for this pattern at these positions.
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="p-4 mt-4 rounded-lg border border-gray-200">
+                <h3>4. Replacement Methods</h3>
+                <p>Replacement methods are used to modify the input string based on regex matches.</p>
+                <table>
+                    <thead class="bg-blue-100">
+                        <tr class="hover:bg-gray-50 transition-colors">
+                            <th
+                                class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
+                                Method Name</th>
+                            <th
+                                class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
+                                Description</th>
+                            <th
+                                class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
+                                Use Case</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
+                            <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-md">
+                                <code>appendReplacement(StringBuffer sb, String replacement)</code>
+                            </td>
+                            <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Appends the
+                                subsequence of the input sequence that matches the pattern and Performs a non-terminal
+                                append-and-replace operation. It appends text up to the first match.</td>
+                            <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Used when you
+                                want
+                                to process matches one by one and build a new string dynamically.</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
+                            <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-md">
+                                <code>appendTail(StringBuffer sb)</code>
+                            </td>
+                            <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Appends the
+                                remaining subsequence of the input sequence after the last match.</td>
+                            <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Used after all
+                                calls to appendReplacement() to append the rest of the string.</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
+                            <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-md">
+                                <code>replaceFirst(String replacement)</code>
+                            </td>
+                            <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Replaces the
+                                first
+                                subsequence of the input sequence that matches the pattern with the replacement string.
+                            </td>
+                            <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Replaces only
+                                the
+                                first occurrence of the pattern in the string with the replacement string.</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
+                            <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-md">
+                                <code>replaceAll(String replacement)</code>
+                            </td>
+                            <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Replaces every
+                                subsequence of the input sequence that matches the pattern with the replacement string.
+                            </td>
+                            <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Replaces all
+                                occurrences of the pattern in the string with the replacement string.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- <img src="" alt=""> -->
+                <pre class="p-3"><code class="language-java">import java.util.regex.*;
+
+public class ReplacementMethodsExample {
+    public static void main(String[] args) {
+        // Original input string
+        String text = "I have 2 apples, 5 bananas, and 12 oranges.";
+        
+        // 1. Using replaceFirst and replaceAll
+        // Compile regex to match one or more digits
+        Pattern p = Pattern.compile("\\d+"); 
+        Matcher m1 = p.matcher(text);
+        
+        System.out.println("Original Text: " + text);
+        
+        // replaceFirst: replaces only the first match (2 → "some")
+        System.out.println("replaceFirst: " + m1.replaceFirst("some"));
+        
+        // replaceAll: replaces all matches (2, 5, 12 → "many")
+        System.out.println("replaceAll:   " + m1.replaceAll("many"));
+        System.out.println("-------------------------------------------------");
+        
+        // 2. Using appendReplacement and appendTail for dynamic replacements
+        // Goal: Multiply every found number by 10
+        Matcher m2 = p.matcher(text);
+        StringBuffer sb = new StringBuffer();
+        
+        while (m2.find()) {
+            // Step 1: Extract the matched substring (digits only)
+            String matchedNumber = m2.group(); // e.g., "2", "5", "12"
+            
+            // Step 2: Convert string → integer
+            int number = Integer.parseInt(matchedNumber); // "2" → 2
+            
+            // Step 3: Perform arithmetic (multiply by 10)
+            int newNumber = number * 10; // 2 → 20, 5 → 50, 12 → 120
+            
+            // Step 4: Convert integer → string for replacement
+            String replacement = String.valueOf(newNumber); // 20 → "20"
+            
+            // Step 5: Append text before the match + replacement
+            m2.appendReplacement(sb, replacement);
+        }
+        
+        // Step 6: Append remaining text after the last match
+        m2.appendTail(sb);
+        
+        System.out.println("Dynamic Replacement (appendReplacement & appendTail):");
+        System.out.println(sb.toString());
+    }
+}
+</code></pre>
+                <pre><code>Output
+Original Text: I have 2 apples, 5 bananas, and 12 oranges.
+replaceFirst: I have some apples, 5 bananas, and 12 oranges.
+replaceAll:   I have many apples, many bananas, and many oranges.
+-------------------------------------------------
+Dynamic Replacement (appendReplacement & appendTail):
+I have 20 apples, 50 bananas, and 120 oranges.</code></pre>
+
+                <div class="mt-4 text-gray-800">
+                    <p><strong>Explanation:</strong></p>
+                    <ul class="list-disc pl-5 mt-2 space-y-2">
+                        <li>
+                            <strong><code>replaceFirst()</code> and <code>replaceAll()</code>:</strong>
+                            These are straightforward methods for static replacements.
+                            <code>replaceFirst()</code> only swapped out the "2" for <em>"some"</em>,
+                            while <code>replaceAll()</code> replaced every number with <em>"many"</em>.
+                        </li>
+                        <li>
+                            <strong><code>appendReplacement(StringBuffer, String)</code>:</strong>
+                            This is powerful for <em>dynamic</em> replacements. Inside the
+                            <code>while(find())</code> loop:
+                            <ul class="list-disc pl-5 mt-1 space-y-1">
+                                <li>Capture the matched number as a <strong>string</strong> (e.g., "2").</li>
+                                <li>Convert it to an <strong>integer</strong> (<code>Integer.parseInt("2") → 2</code>).
+                                </li>
+                                <li>Perform arithmetic (multiply by 10 → <code>20</code>).</li>
+                                <li>Convert back to a <strong>string</strong> (<code>String.valueOf(20) → "20"</code>).
+                                </li>
+                                <li>Replace the original match with this new string.</li>
+                            </ul>
+                            This method automatically copies the normal text between matches and injects your custom
+                            replacement.
+                        </li>
+                        <li>
+                            <strong><code>appendTail(StringBuffer)</code>:</strong>
+                            Must be called after the loop finishes. It appends all leftover text
+                            after the final match. Without it, the output would cut off early and
+                            lose the trailing part (like <em>" oranges."</em>).
+                        </li>
+                    </ul>
+                </div>
+
+
+            </div>
+
+            <div class="p-4 mt-4 rounded-lg border border-gray-200">
+                <h3>Types of Character Classes in Java Regex</h3>
+                <p></p>
+                <ul>
+                    <li>Simple Character Class - [abc] : Matches either 'a' or 'b' or 'c'.</li>
+                    <li>Range Character Class - [a-z] : Matches any lowercase letter from a to z.</li>
+                    <li>Negation Character Class - [^abc] : Matches any character except 'a' or 'b' or 'c'.</li>
+                    <li>Multiple Ranges in a Character Class - [a-zA-Z] : Matches any lowercase letter or any uppercase
+                        letter.</li>
+                    <li>Predefined Character Classes - \d, \w, \s, \D, \W, \S : Matches any digit, word character,
+                        whitespace character, non-digit character, non-word character, non-whitespace character
+                        respectively.</li>
+
+                </ul>
+                <!-- <img src="" alt=""> -->
+                <pre class="p-3"><code class="language-java">public class CharacterClassChecks {
+    public static void main(String[] args) {
+        // Input 1: lowercase check
+        String input = "abc123";
+        System.out.println("Contains lowercase? " + input.matches(".*[a-z]+.*"));
+        // true → "abc" has lowercase letters
+
+        // Input 2: uppercase check
+        String input1 = "ABC123";
+        System.out.println("Contains uppercase? " + input1.matches(".*[A-Z]+.*"));
+        // true → "ABC" has uppercase letters
+
+        // Input 3: digit check
+        String input2 = "Hello42";
+        System.out.println("Contains digit? " + input2.matches(".*\\d+.*"));
+        // true → "42" are digits
+
+        // Input 4: whitespace check
+        String input3 = "No SpaceHere";
+        System.out.println("Contains whitespace? " + input3.matches(".*\\s+.*"));
+        // true → space between "No" and "SpaceHere"
+
+        // Input 5: special character check
+        String input4 = "Pass@123";
+        System.out.println("Contains special? " + input4.matches(".*[!@#$%^&*]+.*"));
+        // true → '@' is a special character
+
+        // Input 6: vowel check
+        String input5 = "rhythm";
+        System.out.println("Contains vowel? " + input5.matches(".*[aeiou]+.*"));
+        // false → no vowels in "rhythm"
+    }
+}
+</code></pre>
+
+            </div>
+
+            <div class="p-4 mt-4 rounded-lg border border-gray-200">
+                <h3>Java Quantifiers</h3>
+                <p>
+                    Regular Expressions in Java allow matching, searching, and manipulating text.
+                    Quantifiers control how many times a character, class, or group can repeat.
+                    They make regex flexible and efficient, useful for validation like numbers, codes, and identifiers.
+                </p>
+                <ul class="list-disc pl-5 mt-2 space-y-2">
+                    <li><strong>X*</strong>: Zero or more occurrences of X</li>
+                    <li><strong>X?</strong>: Zero or one occurrence of X</li>
+                    <li><strong>X+</strong>: One or more occurrences of X</li>
+                    <li><strong>X{n}</strong>: Exactly n occurrences of X</li>
+                    <li><strong>X{n,}</strong>: At least n occurrences of X</li>
+                    <li><strong>X{n,m}</strong>: Between n and m occurrences of X</li>
+                </ul>
+
+                <!-- Greedy Quantifier -->
+                <h4 class="mt-4 font-semibold">1. Greedy Quantifier</h4>
+                <p>Greedy quantifiers try to match as much of the input as possible while still allowing the overall
+                    pattern to match. This is the default behavior.</p>
+                <pre class="p-3"><code class="language-java">
+public class GFG {
+    public static void main(String[] args) {
+        String regex = "a+";
+        System.out.println("aaaa".matches(regex));
+    }
+}
+// Output: true
+// Explanation: + is greedy by default, it matches the maximum possible number of 'a' characters.
+  </code></pre>
+
+                <!-- Reluctant Quantifier -->
+                <h4 class="mt-4 font-semibold">2. Reluctant Quantifier</h4>
+                <p>Reluctant quantifiers try to match as little of the input as possible. They are created by appending
+                    <code>?</code> to a quantifier symbol.
+                </p>
+                <pre class="p-3"><code class="language-java">
+public class GFG {
+    public static void main(String[] args) {
+        String regex = "a+?";
+        System.out.println("aaaa".matches(regex));
+    }
+}
+// Output: true
+// Explanation: +? makes the quantifier reluctant, it matches the minimum number of characters required.
+  </code></pre>
+
+                <!-- Possessive Quantifier -->
+                <h4 class="mt-4 font-semibold">3. Possessive Quantifier</h4>
+                <p>Possessive quantifiers match as much as possible and do not backtrack. They are created by appending
+                    <code>+</code> to a quantifier symbol.
+                </p>
+                <pre class="p-3"><code class="language-java">
+public class GFG {
+    public static void main(String[] args) {
+        String regex = "a++a";
+        System.out.println("aaaa".matches(regex));
+    }
+}
+// Output: false
+// Explanation: a++ consumes all 'a' characters and does not allow backtracking, 
+// so the remaining 'a' in the pattern cannot be matched.
+  </code></pre>
+
+                <!-- Comparison Table -->
+                <table>
+                    <thead class="bg-blue-100">
+                        <tr class="hover:bg-gray-50 transition-colors">
+                            <th
+                                class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
+                                Aspect</th>
+                            <th
+                                class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
+                                Greedy</th>
+                            <th
+                                class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
+                                Reluctant</th>
+                            <th
+                                class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
+                                Possessive</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
+                            <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Matching
+                                Behaviour</td>
+                            <td class="px-4 py-3 border border-gray-200">Matches as much as possible</td>
+                            <td class="px-4 py-3 border border-gray-200">Matches as little as possible</td>
+                            <td class="px-4 py-3 border border-gray-200">Matches as much as possible, no backtracking
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition-colors">
+                            <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Backtracking
+                            </td>
+                            <td class="px-4 py-3 border border-gray-200">Allows backtracking</td>
+                            <td class="px-4 py-3 border border-gray-200">Allows backtracking</td>
+                            <td class="px-4 py-3 border border-gray-200">No backtracking</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
+                            <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Syntax / Usage
+                            </td>
+                            <td class="px-4 py-3 border border-gray-200">Default (*, +, {m,n})</td>
+                            <td class="px-4 py-3 border border-gray-200">Append ? (*?, +?, {m,n}?)</td>
+                            <td class="px-4 py-3 border border-gray-200">Append + (*+, ++, {m,n}+)</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition-colors">
+                            <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Performance
+                            </td>
+                            <td class="px-4 py-3 border border-gray-200">Can be slower</td>
+                            <td class="px-4 py-3 border border-gray-200">Can be slower (frequent backtracking)</td>
+                            <td class="px-4 py-3 border border-gray-200">Often faster, but may fail</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
+                            <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Common Use Case
+                            </td>
+                            <td class="px-4 py-3 border border-gray-200">General-purpose matching</td>
+                            <td class="px-4 py-3 border border-gray-200">Precise/minimal matching</td>
+                            <td class="px-4 py-3 border border-gray-200">Performance-critical, avoid backtracking</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+
+        </div>
+
+        <script>
+            function toggleSubtopics(id) {
+                const el = document.getElementById(id);
+                if (el) el.classList.toggle('open');
             }
-        });
-    </script>
 
-    <script type="module">
-        import { initSidebar } from '../../sidebar.js';
-        initSidebar();
-    </script>
+            const sidebar = document.getElementById('sidebar');
+            const resizer = document.getElementById('dragMe');
+            let isResizing = false;
+
+            resizer.addEventListener('mousedown', (e) => {
+                isResizing = true;
+                resizer.classList.add('resizing');
+                document.body.style.cursor = 'col-resize';
+                // Prevent text selection during drag
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isResizing) return;
+                let newWidth = e.clientX;
+                const minWidth = window.innerWidth * 0.05;
+                const maxWidth = window.innerWidth * 0.50;
+                if (newWidth < minWidth) newWidth = minWidth;
+                if (newWidth > maxWidth) newWidth = maxWidth;
+                sidebar.style.width = newWidth + 'px';
+            });
+
+            document.addEventListener('mouseup', () => {
+                if (isResizing) {
+                    isResizing = false;
+                    resizer.classList.remove('resizing');
+                    document.body.style.cursor = 'default';
+                }
+            });
+        </script>
+
+        <script type="module">
+            import { initSidebar } from '../../sidebar.js';
+            initSidebar();
+        </script>
 </body>
+
 </html>

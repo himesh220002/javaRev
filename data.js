@@ -232,35 +232,35 @@ export const defaultState = {
             "Exception Handling": {
                 "grandchildren": {
                     "Introduction": {
-                        "completed": false,
+                        "completed": true,
                         "notes": ""
                     },
                     "Try-Catch Block": {
-                        "completed": false,
+                        "completed": true,
                         "notes": ""
                     },
                     "Final, Finally and Finalize": {
-                        "completed": false,
+                        "completed": true,
                         "notes": ""
                     },
                     "Throw and Throws": {
-                        "completed": false,
+                        "completed": true,
                         "notes": ""
                     },
                     "Customized Exception Handling": {
-                        "completed": false,
+                        "completed": true,
                         "notes": ""
                     },
                     "Chained Exceptions": {
-                        "completed": false,
+                        "completed": true,
                         "notes": ""
                     },
                     "Null Pointer Exceptions": {
-                        "completed": false,
+                        "completed": true,
                         "notes": ""
                     },
                     "Exception Handling with Method Overriding": {
-                        "completed": false,
+                        "completed": true,
                         "notes": ""
                     }
                 }
@@ -268,19 +268,19 @@ export const defaultState = {
             "Regex": {
                 "grandchildren": {
                     "Introduction": {
-                        "completed": false,
+                        "completed": true,
                         "notes": ""
                     },
                     "Matcher Class": {
-                        "completed": false,
+                        "completed": true,
                         "notes": ""
                     },
                     "Character Class": {
-                        "completed": false,
+                        "completed": true,
                         "notes": ""
                     },
                     "Quantifiers": {
-                        "completed": false,
+                        "completed": true,
                         "notes": ""
                     }
                 }
@@ -288,31 +288,31 @@ export const defaultState = {
             "Memory Allocation": {
                 "grandchildren": {
                     "Java Memory Management": {
-                        "completed": false,
+                        "completed": true,
                         "notes": ""
                     },
                     "How Java Objects Stored in Memory?": {
-                        "completed": false,
+                        "completed": true,
                         "notes": ""
                     },
                     "Types of Memory Areas Allocated by JVM": {
-                        "completed": false,
+                        "completed": true,
                         "notes": ""
                     },
                     "Stack vs Heap Memory Allocation": {
-                        "completed": false,
+                        "completed": true,
                         "notes": ""
                     },
                     "Garbage Collection": {
-                        "completed": false,
+                        "completed": true,
                         "notes": ""
                     },
                     "Types of JVM Garbage Collectors": {
-                        "completed": false,
+                        "completed": true,
                         "notes": ""
                     },
                     "Memory Leaks": {
-                        "completed": false,
+                        "completed": true,
                         "notes": ""
                     }
                 }

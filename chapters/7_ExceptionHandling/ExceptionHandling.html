@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,14 +37,27 @@
             overflow: hidden;
             font-family: 'Inter', sans-serif;
         }
-        
-        ::-webkit-scrollbar { width: 8px; height: 8px; }
-        ::-webkit-scrollbar-track { background: #0f172a; }
-        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
 
         .mermaid {
-            background: rgba(255,255,255,0.02);
+            background: rgba(255, 255, 255, 0.02);
             padding: 20px;
             border-radius: 12px;
             border: 1px solid #334155;
@@ -55,13 +69,31 @@
         }
     </style>
 </head>
+
 <body>
     <div id="sidebar-container" style="display:flex; height:100%;"></div>
-    <div class="flex-1 p-8 md:p-14 overflow-y-auto bg-gray-50 text-gray-800 prose prose-indigo prose-headings:text-gray-900 max-w-none prose-a:text-blue-600 prose-pre:bg-gray-100 prose-pre:text-gray-900 prose-pre:border prose-pre:border-gray-200">
+    <div
+        class="flex-1 p-8 md:p-14 overflow-y-auto bg-gray-50 text-gray-800 prose prose-indigo prose-headings:text-gray-900 max-w-none prose-a:text-blue-600 prose-pre:bg-gray-100 prose-pre:text-gray-900 prose-pre:border prose-pre:border-gray-200">
         <h1>Exception Handling</h1>
         <p>Content for Exception Handling will go here.</p>
+        <a href="https://www.geeksforgeeks.org/java/exceptions-in-java/">Exceptions</a><br>
+        <div class="grid grid-cols-2 gap-4">
+            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20251008124212466472/object.webp" alt="">
+            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20240730174225/Exceptions-in-Java-1-768.webp"
+                alt="">
+        </div>
+        <a href="https://www.geeksforgeeks.org/java/java-try-catch-block/">try catch</a><br>
+        <a href="https://www.geeksforgeeks.org/java/java-final-finally-and-finalize/">final finally finalize</a><br>
+        <a href="https://www.geeksforgeeks.org/java/throw-throws-java/">throw throws</a><br>
+        <a href="https://www.geeksforgeeks.org/java/user-defined-custom-exception-in-java/">custom exception</a><br>
+        <a href="https://www.geeksforgeeks.org/java/chained-exceptions-in-java/">chained exceptions</a><br>
+        <a href="https://www.geeksforgeeks.org/java/null-pointer-exception-in-java/">null pointer exception</a><br>
+        <a href="https://www.geeksforgeeks.org/java/exception-handling-with-method-overriding-in-java/">exception
+            handling with method overriding</a><br>
+
+
     </div>
-    
+
     <script>
         function toggleSubtopics(id) {
             const el = document.getElementById(id);
@@ -104,4 +136,5 @@
         initSidebar();
     </script>
 </body>
+
 </html>

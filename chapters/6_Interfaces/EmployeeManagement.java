@@ -204,8 +204,10 @@ class EmployeeManagement {
                 searchRecord();
             case 5 ->
                 showTable();
-            case 6 ->
+            case 6 -> {
+                sc.close();
                 System.exit(0);
+            }
             default -> {
                 System.out.println("Expected Options" + " are 1/2/3/4/5/6");
                 showMenu();
@@ -240,6 +242,12 @@ class EmployeeManagement {
     }
 
     public static void main(String[] args) {
+        // Handle Ctrl+C or unexpected termination
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            sc.close();
+            System.out.println("\nScanner closed during program termination.");
+        }));
+        
         showMenu();
     }
 }

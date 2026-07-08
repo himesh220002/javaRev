@@ -1,0 +1,27 @@
+<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script> -->
+
+    
+        <!-- <div class="p-4 mt-4 rounded-lg border border-gray-200">
+            <h3></h3>
+            <p></p>
+            <ul>
+                <li></li>
+            </ul>
+            <img src="" alt="">
+            <pre class="p-3"><code class="language-java"></code></pre>
+            <table>
+                <thead class="bg-blue-100">
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <th class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> -->

@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memory Allocation</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
     <script type="module">
         import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
         mermaid.initialize({ startOnLoad: true, theme: 'dark', fontFamily: 'Inter, sans-serif' });
@@ -36,14 +41,27 @@
             overflow: hidden;
             font-family: 'Inter', sans-serif;
         }
-        
-        ::-webkit-scrollbar { width: 8px; height: 8px; }
-        ::-webkit-scrollbar-track { background: #0f172a; }
-        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
 
         .mermaid {
-            background: rgba(255,255,255,0.02);
+            background: rgba(255, 255, 255, 0.02);
             padding: 20px;
             border-radius: 12px;
             border: 1px solid #334155;
@@ -55,13 +73,572 @@
         }
     </style>
 </head>
+
 <body>
     <div id="sidebar-container" style="display:flex; height:100%;"></div>
-    <div class="flex-1 p-8 md:p-14 overflow-y-auto bg-gray-50 text-gray-800 prose prose-indigo prose-headings:text-gray-900 max-w-none prose-a:text-blue-600 prose-pre:bg-gray-100 prose-pre:text-gray-900 prose-pre:border prose-pre:border-gray-200">
+    <div
+        class="flex-1 p-8 md:p-14 overflow-y-auto bg-gray-50 text-gray-800 prose prose-indigo prose-headings:text-gray-900 max-w-none prose-a:text-blue-600 prose-pre:bg-gray-100 prose-pre:text-gray-900 prose-pre:border prose-pre:border-gray-200">
         <h1>Memory Allocation</h1>
-        <p>Content for Memory Allocation will go here.</p>
+        <!-- <div class="p-4 mt-4 rounded-lg border border-gray-200">
+            <h3></h3>
+            <p></p>
+            <ul>
+                <li></li>
+            </ul>
+            <img src="" alt="">
+            <pre class="p-3"><code class="language-java"></code></pre>
+            <table>
+                <thead class="bg-blue-100">
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <th class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> -->
+        <div class="p-4 mt-4 rounded-lg border border-gray-200">
+            <h3>Java Memory Management</h3>
+            <p>Java Memory Management is the process by which the Java Virtual Machine (JVM) allocates and manages
+                memory during program execution. It automatically handles memory allocation and deallocation, reducing
+                the need for manual memory management.</p>
+            <ul>
+                <li>Prevents memory leaks and reduces manual memory handling.</li>
+                <li>Uses Garbage Collection to remove unused objects automatically.</li>
+                <li>Divides memory into different runtime areas for efficient execution.</li>
+            </ul>
+
+            <div class="flex gap-4 items-baseline justify-around bg-slate-100">
+
+                <div>
+                    <h3>Components of JVM Memory Structure</h3>
+
+                    <h4>Class Loader</h4>
+                    <p>Responsible for loading Java <code>.class</code> files into JVM memory.</p>
+                    <ul class="list-disc pl-5 mt-2 space-y-2">
+                        <li>Converts bytecode into a format understandable by JVM.</li>
+                        <li>Dynamically loads classes when required during execution.</li>
+                    </ul>
+
+
+                    <h3>JVM Memory Area</h3>
+                    <p>JVM memory is divided into different runtime areas:</p>
+                    <div class="p-3 my-2 rounded-md border-2 border-green-200">
+                        <h4>Method Area</h4>
+                        <ul class="list-disc pl-5 mt-2 space-y-2">
+                            <li>Stores class-level information such as metadata, methods, and static variables.</li>
+                            <li>Shared among all threads.</li>
+                            <li>Created when JVM starts.</li>
+                        </ul>
+
+                        <h4>Heap Memory</h4>
+                        <ul class="list-disc pl-5 mt-2 space-y-2">
+                            <li>Stores objects and instance variables.</li>
+                            <li>Shared by all threads in the application.</li>
+                            <li>Garbage Collector removes unused objects from heap memory.</li>
+                        </ul>
+
+                        <h4>JVM Stacks</h4>
+                        <ul class="list-disc pl-5 mt-2 space-y-2">
+                            <li>Each thread has its own stack memory.</li>
+                            <li>Stores local variables, method calls, and partial results.</li>
+                            <li>Memory is automatically released after method execution.</li>
+                        </ul>
+
+                        <h4>PC Registers (Program Counter Registers)</h4>
+                        <ul class="list-disc pl-5 mt-2 space-y-2">
+                            <li>Stores the address of the currently executing instruction.</li>
+                            <li>Each thread has a separate PC register.</li>
+                        </ul>
+
+                        <h4>Native Method Stacks</h4>
+                        <ul class="list-disc pl-5 mt-2 space-y-2">
+                            <li>Stores information for native methods written in languages like C or C++.</li>
+                            <li>Used when Java interacts with native libraries.</li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div>
+                    <h3 class="text-center">JVM Memory Structure</h3>
+                    <img src="https://media.geeksforgeeks.org/wp-content/uploads/20251122074618217466/jvm-memory.webp"
+                        alt="jvm">
+                    <div class="mt-4">
+                        <h4>Execution Engine</h4>
+                        <ul class="list-disc pl-5 mt-2 space-y-2">
+                            <li>Executes the bytecode loaded into memory.</li>
+                            <li>Converts bytecode into machine-level instructions.</li>
+                            <li>Includes components like Interpreter and JIT Compiler.</li>
+                        </ul>
+                        <h4>Native Method Interface (JNI)</h4>
+                        <ul class="list-disc pl-5 mt-2 space-y-2">
+                            <li>Acts as a bridge between Java code and native applications.</li>
+                            <li>Allows Java programs to call C/C++ libraries.</li>
+                        </ul>
+                        <h4>Native Method Libraries</h4>
+                        <ul class="list-disc pl-5 mt-2 space-y-2">
+                            <li>Contains native libraries (.dll or .so files).</li>
+                            <li>Used by JNI for executing native methods.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <pre class="p-3"><code class="language-java">import java.io.*;
+
+class Geeks {
+  
+    // static variables are stored in the Method Area
+    static int v = 100;
+
+    // instance variables are stored in the Heap
+    int i = 10;
+
+    public void Display()
+    {
+        // local variables are stored in the Stack
+        int s = 20;
+
+        System.out.println(v);
+        System.out.println(s);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Geeks g = new Geeks();
+      
+        // Calling the Display method
+        g.Display();
+    }
+}
+
+//output :
+//100
+//20</code></pre>
+
+            <table>
+                <thead class="bg-blue-100">
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <th
+                            class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
+                            Category</th>
+                        <th
+                            class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
+                            Stack</th>
+                        <th
+                            class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
+                            Heap</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 font-semibold">📐 Structure</td>
+                        <td class="px-4 py-3 border border-gray-200">Contiguous block, linear (LIFO).</td>
+                        <td class="px-4 py-3 border border-gray-200">Random order, hierarchical.</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 font-semibold">⚡ Performance</td>
+                        <td class="px-4 py-3 border border-gray-200">Fast access, low cost.</td>
+                        <td class="px-4 py-3 border border-gray-200">Slower access, higher cost.</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 font-semibold">🛠️ Management</td>
+                        <td class="px-4 py-3 border border-gray-200">Automatic allocation/deallocation by compiler.</td>
+                        <td class="px-4 py-3 border border-gray-200">Allocation via <code>new</code>, deallocation by
+                            Garbage Collector.</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 font-semibold">📏 Size & Lifetime</td>
+                        <td class="px-4 py-3 border border-gray-200">Smaller, short‑lived (method duration).</td>
+                        <td class="px-4 py-3 border border-gray-200">Larger, long‑lived objects.</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 font-semibold">🔒 Thread Safety</td>
+                        <td class="px-4 py-3 border border-gray-200">Thread‑safe, each thread has its own stack.</td>
+                        <td class="px-4 py-3 border border-gray-200">Shared among threads, needs synchronization.</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 font-semibold">🧩 Use Cases</td>
+                        <td class="px-4 py-3 border border-gray-200">Local variables, method calls, primitives.</td>
+                        <td class="px-4 py-3 border border-gray-200">Objects, instance variables, dynamic structures.
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
+                        <td class="px-4 py-3 border border-gray-200 font-semibold">⚖️ Efficiency</td>
+                        <td class="px-4 py-3 border border-gray-200">Excellent memory locality, predictable.</td>
+                        <td class="px-4 py-3 border border-gray-200">Can suffer fragmentation, less efficient locality.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+        </div>
+
+        <div class="p-4 mt-4 rounded-lg border border-gray-200">
+            <h3>How Java Objects are Stored in Memory</h3>
+            <div class="flex  items-start gap-4">
+                <div>
+                    <pre><code class="language-java w-fit">int age = 25;
+Person p = new Person();
+doSomething(John);
+</code></pre>
+                </div>
+                <img src="./memoryStorage.png" alt="memory storage" class="w-[300px] h-[400px]">
+            </div>
+            <p>
+                In Java, memory management is handled by the Java Virtual Machine (JVM).
+                Objects are dynamically stored in the heap memory, while references to these objects are stored in the
+                stack memory.
+                Declaring a variable of a class type only creates a reference; to allocate memory for the object in the
+                heap, the <code>new</code> keyword must be used.
+            </p>
+
+            <ul class="list-disc pl-5 mt-2 space-y-2">
+                <li>All Java objects are stored in <strong>Heap Memory</strong>.</li>
+                <li>References to objects are stored in <strong>Stack Memory</strong>.</li>
+                <li>Objects are created using the <code>new</code> keyword.</li>
+                <li>Garbage Collector manages unused objects automatically.</li>
+            </ul>
+
+            <h4 class="mt-4">1. Heap Memory</h4>
+            <p>
+                Heap memory stores actual objects. When an object is created using <code>new</code>, space is allocated
+                in the heap.
+                Garbage collection in the heap is mandatory for automatic memory management.
+            </p>
+            <ul class="list-disc pl-5 mt-2 space-y-2">
+                <li><strong>Young Generation</strong>: New objects are allocated here.</li>
+                <li><strong>Old Generation</strong>: Long-lived objects after multiple GC cycles.</li>
+                <li><strong>Permanent Generation</strong> (Java 7 and earlier): Stores class metadata. Replaced by
+                    <strong>Metaspace</strong> in Java 8.
+                </li>
+            </ul>
+            <pre class="p-3"><code class="language-java">
+// Example: Object stored in Heap, reference in Stack
+class Student {
+    String name;
+    int age;
+    Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+}
+public class Geeks {
+    public static void main(String[] args) {
+        Student s = new Student("bob", 20);
+    }
+}
+  </code></pre>
+            <p><em>Explanation:</em> The Student object is allocated in the heap, while the reference <code>s</code> is
+                stored in the stack.</p>
+
+            <h4 class="mt-4">2. Stack Memory</h4>
+            <p>
+                Stack memory stores local variables, method calls, and references to objects. Each method call creates a
+                new stack frame.
+                When the method finishes, the frame is removed and memory is released.
+            </p>
+            <ul class="list-disc pl-5 mt-2 space-y-2">
+                <li>Stores references to objects, not the objects themselves.</li>
+                <li>Primitive data types and local variables are stored directly in the stack.</li>
+                <li>Each thread has its own stack.</li>
+            </ul>
+            <pre class="p-3"><code class="language-java">
+// Example: Variables stored in Stack
+public class Geeks {
+    public static int calculate(int n) {
+        int ans = n * 10; // 'ans' stored in stack
+        return ans;
+    }
+    public static void main(String[] args) {
+        int n = 10;       // 'n' stored in stack
+        calculate(n);     // reference passed via stack
+    }
+}
+  </code></pre>
+
+            <h4 class="mt-4">3. Garbage Collector</h4>
+            <p>
+                The Garbage Collector reclaims memory by destroying objects that are no longer in use.
+                When an object becomes unreachable, it is eligible for garbage collection.
+            </p>
+            <ul class="list-disc pl-5 mt-2 space-y-2">
+                <li><strong>Serial GC</strong>: Single-threaded, simplest form.</li>
+                <li><strong>Parallel GC</strong>: Default in Java 8, uses multiple threads.</li>
+                <li><strong>Concurrent Mark-Sweep (CMS)</strong>: Minimizes pause times.</li>
+                <li><strong>G1 GC</strong>: Default in Java 9, optimized for large heaps.</li>
+                <li><strong>ZGC</strong>: Handles very large heaps with minimal pause times.</li>
+                <li><strong>Shenandoah GC</strong>: Low-pause collector introduced in Java 12.</li>
+            </ul>
+
+            <h4 class="mt-4">4. Memory Layout of an Object</h4>
+            <p>
+                In Java, an object consists of three main parts:
+            </p>
+            <ul class="list-disc pl-5 mt-2 space-y-2">
+                <li><strong>Object Header</strong>: Contains metadata like class pointer, lock info, and GC data.</li>
+                <li><strong>Instance Data</strong>: Actual fields/variables of the object.</li>
+                <li><strong>Padding</strong>: Extra memory for alignment to word size.</li>
+            </ul>
+
+            <pre class="p-3"><code class="language-java">
+public class GFG{
+
+    // Stored in Method Area (Class Area)
+    static int staticVar = 100;
+
+    public static void main(String[] args) {
+
+        // Stack Memory (local variables & method calls)
+        int localVar = 10;
+
+        // Heap Memory (object creation)
+        Student student = new Student("Jesse Pinkman", 23);
+
+        // Program Counter Register
+        // JVM keeps track of which instruction is executing here
+        display(student);
+
+        // Native Method Stack
+        // Native method call
+        System.gc(); // Calls native code internally
+    }
+
+    static void display(Student s) {
+        // Stack frame created for this method
+        System.out.println(s.name + " - " + s.age);
+    }
+}
+
+// Stored in Method Area
+class Student {
+
+    // Instance variables stored in Heap (inside object)
+    String name;
+    int age;
+
+    Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+}
+//Output: Jesse Pinkman - 23
+            </code></pre>
+        </div>
+
+        <div class="p-4 mt-4 rounded-lg border border-gray-200">
+            <h3>Java Stack vs Heap Memory Allocation</h3>
+            <pre class="p-3"><code class="language-java">class Employee {
+    int id;        // Primitive stored inside the object in Heap
+    String name;   // Reference points to String object in Heap
+    double salary; // Primitive stored inside the object in Heap
+
+    public Employee(int id, String name, double salary) {
+        this.id = id;
+        this.name = name;
+        this.salary = salary;
+    }
+
+    public void display() {
+        System.out.println("Employee ID: " + id);
+        System.out.println("Name: " + name);
+        System.out.println("Salary: " + salary);
+    }
+}
+
+public class Main {
+    // Reference variable 'emp' stored in Stack
+    public static void display(Employee emp) {
+        emp.display(); // Accesses Employee object in Heap
+    }
+
+    public static void main(String[] args) {
+        // 'emp1' and 'emp2' references in Stack, objects in Heap
+        Employee emp1 = new Employee(101, "Maddy", 50000.0);
+        Employee emp2 = new Employee(102, "Maddy", 60000.0);
+
+        display(emp1);
+        display(emp2);
+    }
+}</code></pre>
+            <pre class=""><code class="language-java">
+    Output:
+    Employee ID: 101
+    Name: Maddy
+    Salary: 50000.0
+    Employee ID: 102
+    Name: Maddy
+    Salary: 60000.0
+</code></pre>
+            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20250930170643154277/stack.webp"
+                alt="memoryRepresentation">
+            <div class="mt-4 text-gray-800">
+                <p><strong>Explanation:</strong></p>
+                <ul class="list-disc pl-5 mt-2 space-y-2">
+                    <li><strong><code>emp1</code> and <code>emp2</code>:</strong> These are reference variables and are
+                        stored on the <strong>Stack</strong>.</li>
+                    <li><strong><code>new Employee(...)</code>:</strong> The actual objects created by the
+                        <code>new</code> keyword are stored in the <strong>Heap</strong>.
+                    </li>
+                    <li><strong>String Pool:</strong> The literal string <code>"Maddy"</code> is stored only once in the
+                        String Pool (which is inside the Heap).</li>
+                    <li><strong>Shared Reference:</strong> Because <code>"Maddy"</code> is pooled, both
+                        <code>emp1.name</code> and <code>emp2.name</code> point to the exact same String object (so
+                        <code>emp1.name == emp2.name</code> would evaluate to true).
+                    </li>
+                    <li><strong>Method Calls:</strong> When <code>display(emp1)</code> is called, a new stack frame is
+                        created for the method, and its parameter points to the <code>emp1</code> object in the heap.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="p-4 mt-4 rounded-lg border border-gray-200">
+            <h2>Garbage Collection</h2>
+            <ul>
+                <li>Using System.gc(): This static method requests the JVM to perform garbage collection.</li>
+                <li>Using Runtime.getRuntime().gc(): This method also requests garbage collection through the Runtime
+                    class.</li>
+                <li>Using finalize() method: This method is called by the garbage collector before it reclaims the
+                    memory of an object.</li>
+            </ul>
+            <h3>Modern approach using cleanup api</h3>
+            <pre class="p-3"><code class="language-java">import java.lang.ref.Cleaner;
+
+class Employee {
+
+    private int ID;
+    private String name;
+    private int age;
+
+    private static int nextId = 1;
+    private static final Cleaner cleaner = Cleaner.create();
+
+    private final Cleaner.Cleanable cleanable;
+
+    // Cleanup task to run when employee becomes unreachable
+    private static class State implements Runnable {
+        @Override public void run() { Employee.nextId--; }
+    }
+
+    public Employee(String name, int age)
+    {
+        this.name = name;
+        this.age = age;
+        this.ID = nextId++;
+
+        // Register cleaner to decrement ID on GC
+        cleanable = cleaner.register(this, new State());
+    }
+
+    public void show()
+    {
+        System.out.println("Id = " + ID + "\nName = " + name
+                           + "\nAge = " + age);
+    }
+
+    public void showNextId()
+    {
+        System.out.println("Next employee id will be = "
+                           + nextId);
+    }
+}
+
+public class UseEmployee {
+
+    public static void main(String[] args)
+    {
+
+        Employee E = new Employee("GFG1", 56);
+        Employee F = new Employee("GFG2", 45);
+        Employee G = new Employee("GFG3", 25);
+
+        E.showNextId(); // 4
+
+        { // Interns block
+            Employee X = new Employee("GFG4", 23);
+            Employee Y = new Employee("GFG5", 21);
+
+            X = null;
+            Y = null;
+            System.gc(); // Request GC
+        }
+
+        // Let cleaner run
+        try {
+            Thread.sleep(10);
+        }
+        catch (Exception e) {
+        }
+
+        E.showNextId(); // Correct: 4
+    }
+}</code></pre>
+            <pre><code>Next employee id will be = 4
+Next employee id will be = 4</code></pre>
+        </div>
+
+
+        <div class="p-4 mt-4 rounded-lg border border-gray-200">
+            <h3>Memory Leaks in Java</h3>
+            <p>Memory leaks in Java occur when objects that are no longer needed remain referenced, preventing garbage
+                collection. Over time, this increases memory usage, degrades performance, and can eventually crash the
+                application.</p>
+            <ul>
+                <li>Java provides automatic garbage collection, but it cannot remove objects that are still referenced.
+                </li>
+                <li>Poor reference management is the main reason memory leaks occur in Java applications.</li>
+            </ul>
+            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20260131163200296510/unused_objects.webp"
+                alt="">
+            <pre class="p-3"><code class="language-java">import java.util.ArrayList;
+import java.util.List;
+
+public class MemoryLeakExample {
+    private static List<String> list = new ArrayList<>();
+
+    public static void main(String[] args) {
+        for (int i = 0; i < 1000000; i++) {
+            
+            // Items keep being added but never removed
+            list.add("Item " + i); 
+        }
+        System.out.println("Finished adding items!");
+    }
+}
+// Finished adding items!</code></pre>
+
+            <h3>Tools to Find Memory Leaks</h3>
+            <ul>
+                <li>VisualVM (comes with JDK)</li>
+                <li>Eclipse Memory Analyzer (MAT)</li>
+                <li>Java Mission Control</li>
+                <li>YourKit Java Profiler</li>
+            </ul>
+
+            <h4>What happens if memory keeps leaking</h4>
+            <p>program will use up all the memory as much as it can use, after some times the program will stop/crash
+                and an error shows up: </p>
+            <pre
+                class="p-3"><code class="language-java">Exception in thread "main" java.lang.OutOfMemoryError: Java heap space</code></pre>
+
+            <h4>How to avoide memory leaks</h4>
+            <ul>
+                <li>Stop keeing things that we do not need in our program do not initialize unnecessary variables and
+                    list items to null.</li>
+                <li>Do not let lists or caches keep growing forever without removing old stuff.</li>
+                <li>It is always recommended to close files and database connections when we are done with them.</li>
+            </ul>
+
+        </div>
+
+
     </div>
-    
+
     <script>
         function toggleSubtopics(id) {
             const el = document.getElementById(id);
@@ -104,4 +681,5 @@
         initSidebar();
     </script>
 </body>
+
 </html>
