@@ -31,47 +31,8 @@
             }
         }
     </script>
-    <style>
-        body {
-            background-color: #f9fafb;
-            color: #1f2937;
-            margin: 0;
-            display: flex;
-            height: 100vh;
-            overflow: hidden;
-            font-family: 'Inter', sans-serif;
-        }
-
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #0f172a;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #334155;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #475569;
-        }
-
-        .mermaid {
-            background: rgba(255, 255, 255, 0.02);
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid #334155;
-            display: flex;
-            justify-content: center;
-            margin-top: 2rem;
-            margin-bottom: 2rem;
-            overflow: auto;
-        }
-    </style>
+    
+    <link rel="stylesheet" href="../styles.css">
 </head>
 
 <body>
@@ -87,15 +48,15 @@
             </ul>
             <img src="" alt="">
             <pre class="p-3"><code class="language-java"></code></pre>
-            <table>
-                <thead class="bg-blue-100">
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <th class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs"></th>
+            <table class="tabledesign">
+                <thead>
+                    <tr>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm"></td>
+                    <tr>
+                        <td></td>
                     </tr>
                 </tbody>
             </table>
@@ -219,57 +180,54 @@ public class Main {
 //100
 //20</code></pre>
 
-            <table>
-                <thead class="bg-blue-100">
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <th
-                            class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
+            <table class="tabledesign">
+                <thead>
+                    <tr>
+                        <th>
                             Category</th>
-                        <th
-                            class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
+                        <th>
                             Stack</th>
-                        <th
-                            class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
+                        <th>
                             Heap</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 font-semibold">📐 Structure</td>
-                        <td class="px-4 py-3 border border-gray-200">Contiguous block, linear (LIFO).</td>
-                        <td class="px-4 py-3 border border-gray-200">Random order, hierarchical.</td>
+                    <tr>
+                        <td>📐 Structure</td>
+                        <td>Contiguous block, linear (LIFO).</td>
+                        <td>Random order, hierarchical.</td>
                     </tr>
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 font-semibold">⚡ Performance</td>
-                        <td class="px-4 py-3 border border-gray-200">Fast access, low cost.</td>
-                        <td class="px-4 py-3 border border-gray-200">Slower access, higher cost.</td>
+                    <tr>
+                        <td>⚡ Performance</td>
+                        <td>Fast access, low cost.</td>
+                        <td>Slower access, higher cost.</td>
                     </tr>
-                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 font-semibold">🛠️ Management</td>
-                        <td class="px-4 py-3 border border-gray-200">Automatic allocation/deallocation by compiler.</td>
-                        <td class="px-4 py-3 border border-gray-200">Allocation via <code>new</code>, deallocation by
+                    <tr>
+                        <td>🛠️ Management</td>
+                        <td>Automatic allocation/deallocation by compiler.</td>
+                        <td>Allocation via <code>new</code>, deallocation by
                             Garbage Collector.</td>
                     </tr>
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 font-semibold">📏 Size & Lifetime</td>
-                        <td class="px-4 py-3 border border-gray-200">Smaller, short‑lived (method duration).</td>
-                        <td class="px-4 py-3 border border-gray-200">Larger, long‑lived objects.</td>
+                    <tr>
+                        <td>📏 Size & Lifetime</td>
+                        <td>Smaller, short‑lived (method duration).</td>
+                        <td>Larger, long‑lived objects.</td>
                     </tr>
-                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 font-semibold">🔒 Thread Safety</td>
-                        <td class="px-4 py-3 border border-gray-200">Thread‑safe, each thread has its own stack.</td>
-                        <td class="px-4 py-3 border border-gray-200">Shared among threads, needs synchronization.</td>
+                    <tr>
+                        <td>🔒 Thread Safety</td>
+                        <td>Thread‑safe, each thread has its own stack.</td>
+                        <td>Shared among threads, needs synchronization.</td>
                     </tr>
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 font-semibold">🧩 Use Cases</td>
-                        <td class="px-4 py-3 border border-gray-200">Local variables, method calls, primitives.</td>
-                        <td class="px-4 py-3 border border-gray-200">Objects, instance variables, dynamic structures.
+                    <tr>
+                        <td>🧩 Use Cases</td>
+                        <td>Local variables, method calls, primitives.</td>
+                        <td>Objects, instance variables, dynamic structures.
                         </td>
                     </tr>
-                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 font-semibold">⚖️ Efficiency</td>
-                        <td class="px-4 py-3 border border-gray-200">Excellent memory locality, predictable.</td>
-                        <td class="px-4 py-3 border border-gray-200">Can suffer fragmentation, less efficient locality.
+                    <tr>
+                        <td>⚖️ Efficiency</td>
+                        <td>Excellent memory locality, predictable.</td>
+                        <td>Can suffer fragmentation, less efficient locality.
                         </td>
                     </tr>
                 </tbody>

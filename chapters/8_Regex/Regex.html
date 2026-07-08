@@ -31,47 +31,8 @@
             }
         }
     </script>
-    <style>
-        body {
-            background-color: #f9fafb;
-            color: #1f2937;
-            margin: 0;
-            display: flex;
-            height: 100vh;
-            overflow: hidden;
-            font-family: 'Inter', sans-serif;
-        }
-
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #0f172a;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #334155;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #475569;
-        }
-
-        .mermaid {
-            background: rgba(255, 255, 255, 0.02);
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid #334155;
-            display: flex;
-            justify-content: center;
-            margin-top: 2rem;
-            margin-bottom: 2rem;
-            overflow: auto;
-        }
-    </style>
+    
+    <link rel="stylesheet" href="../styles.css">
 </head>
 
 <body>
@@ -91,15 +52,15 @@
             </ul>
             <img src="" alt="">
             <pre class="p-3"><code class="language-java"></code></pre>
-            <table>
-                <thead class="bg-blue-100">
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <th class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs"></th>
+            <table class="tabledesign">
+                <thead>
+                    <tr>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm"></td>
+                    <tr>
+                        <td></td>
                     </tr>
                 </tbody>
             </table>
@@ -218,259 +179,230 @@ class CharClassExample {
 
         <div class="p-4 mt-4 rounded-lg border border-gray-200">
             <h3>Regex Table</h3>
-            <table
-                class="min-w-full text-left text-sm whitespace-nowrap border-collapse border border-gray-300 shadow-sm rounded-lg overflow-hidden">
-                <thead class="bg-blue-100">
-                    <tr class="hover:bg-gray-200 transition-colors">
-                        <th
-                            class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
-                            Symbol</th>
-                        <th
-                            class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
-                            Meaning</th>
-                        <th
-                            class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
-                            Example</th>
-                        <th
-                            class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
-                            Matches</th>
+            <table class="tabledesign">
+                <thead>
+                    <tr>
+                        <th>Symbol</th>
+                        <th>Meaning</th>
+                        <th>Example</th>
+                        <th>Matches</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">^</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Start of string
-                        </td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">^Hello</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"Hello world"</td>
+                    <tr>
+                        <td>^</td>
+                        <td>Start of string</td>
+                        <td>^Hello</td>
+                        <td>"Hello world"</td>
                     </tr>
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">$</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">End of string</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">world$</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"Hello world"</td>
+                    <tr>
+                        <td>$</td>
+                        <td>End of string</td>
+                        <td>world$</td>
+                        <td>"Hello world"</td>
                     </tr>
-                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">.</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Any single
-                            character
-                        </td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">h.t</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"hat", "hit"</td>
+                    <tr>
+                        <td>.</td>
+                        <td>Any single character</td>
+                        <td>h.t</td>
+                        <td>"hat", "hit"</td>
                     </tr>
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">*</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Zero or more
-                            repetitions</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">ab*</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"a", "ab", "abb"
-                        </td>
+                    <tr>
+                        <td>*</td>
+                        <td>Zero or more repetitions</td>
+                        <td>ab*</td>
+                        <td>"a", "ab", "abb"</td>
                     </tr>
-                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">+</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">One or more
-                            repetitions
-                        </td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">ab+</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"ab", "abb" (not
-                            "a")
-                        </td>
+                    <tr>
+                        <td>+</td>
+                        <td>One or more repetitions</td>
+                        <td>ab+</td>
+                        <td>"ab", "abb" (not "a")</td>
                     </tr>
-                    <tr class="hover:bg-gray-50 border-t-2 border-t-green-400 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">?</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Zero or one
-                            (optional)
-                        </td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">colou?r</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"color", "colour"
-                        </td>
+                    <tr>
+                        <td>?</td>
+                        <td>Zero or one (optional)</td>
+                        <td>colou?r</td>
+                        <td>"color", "colour"</td>
                     </tr>
-                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">{n}</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Exactly n times
-                        </td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">\d{3}</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"123"</td>
+                    <tr>
+                        <td>{n}</td>
+                        <td>Exactly n times</td>
+                        <td>\d{3}</td>
+                        <td>"123"</td>
                     </tr>
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">{n,m}</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Between n and m
-                            times
-                        </td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">a{2,4}</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"aa", "aaa", "aaaa"
-                        </td>
+                    <tr>
+                        <td>{n,m}</td>
+                        <td>Between n and m times</td>
+                        <td>a{2,4}</td>
+                        <td>"aa", "aaa", "aaaa"</td>
                     </tr>
-                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">[]</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Character class
-                        </td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">[aeiou]</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"a", "e"</td>
+                    <tr>
+                        <td>[]</td>
+                        <td>Character class</td>
+                        <td>[aeiou]</td>
+                        <td>"a", "e"</td>
                     </tr>
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">[^ ]</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Negated class</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">[^0-9]</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"A", "!" (not
-                            digits)✔
-                        </td>
+                    <tr>
+                        <td>[^ ]</td>
+                        <td>Negated class</td>
+                        <td>[^0-9]</td>
+                        <td>"A", "!" (not digits)✔</td>
                     </tr>
-                    <tr class="hover:bg-gray-50 border-t-2 border-t-green-400 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">\d</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Digit (0-9)</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">\d+</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"123"</td>
+                    <tr>
+                        <td>\d</td>
+                        <td>Digit (0-9)</td>
+                        <td>\d+</td>
+                        <td>"123"</td>
                     </tr>
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">\w</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Word char (letters,
-                            digits, underscore)</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">\w+</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"Geek_123"</td>
+                    <tr>
+                        <td>\w</td>
+                        <td>Word char (letters, digits, underscore)</td>
+                        <td>\w+</td>
+                        <td>"Geek_123"</td>
                     </tr>
-                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">\s</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Whitespace</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">\s+</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">" "</td>
+                    <tr>
+                        <td>\s</td>
+                        <td>Whitespace</td>
+                        <td>\s+</td>
+                        <td>" "</td>
                     </tr>
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">\S</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Non-whitespace</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">\S+</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"Hello"</td>
+                    <tr>
+                        <td>\S</td>
+                        <td>Non-whitespace</td>
+                        <td>\S+</td>
+                        <td>"Hello"</td>
                     </tr>
-                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">\W</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Non-word char</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">\W</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"!", " "</td>
+                    <tr>
+                        <td>\W</td>
+                        <td>Non-word char</td>
+                        <td>\W</td>
+                        <td>"!", " "</td>
                     </tr>
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">\b</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Word boundary
+                    <tr>
+                        <td>\b</td>
+                        <td>Word boundary
                             (between
                             word and non‑word)</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">\bcat\b</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"cat", "the cat
+                        <td>\bcat\b</td>
+                        <td>"cat", "the cat
                             sat" ✔, "concatenate"❌</td>
                     </tr>
-                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">\B</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Non-word boundary
+                    <tr>
+                        <td>\B</td>
+                        <td>Non-word boundary
                             (inside words)</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">\Bcat\B</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"concatenate" ✔
+                        <td>\Bcat\B</td>
+                        <td>"concatenate" ✔
                             (matches "cat" inside), ❌ "cat" alone</td>
                     </tr>
-                    <tr class="hover:bg-gray-50 border-t-2 border-t-green-400 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">\.</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Literal dot
+                    <tr>
+                        <td>\.</td>
+                        <td>Literal dot
                             (escaped)
                         </td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">\w+\.\w+</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"file.txt",
+                        <td>\w+\.\w+</td>
+                        <td>"file.txt",
                             "abc.def" ✔
                         </td>
                     </tr>
 
-                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">( )</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Grouping</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">(ab)+</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"ab", "abab"</td>
+                    <tr>
+                        <td>( )</td>
+                        <td>Grouping</td>
+                        <td>(ab)+</td>
+                        <td>"ab", "abab"</td>
                     </tr>
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">|</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">OR operator</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">(cat|dog)</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"cat", "dog"</td>
+                    <tr>
+                        <td>|</td>
+                        <td>OR operator</td>
+                        <td>(cat|dog)</td>
+                        <td>"cat", "dog"</td>
                     </tr>
-                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">\1</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Backreference
+                    <tr>
+                        <td>\1</td>
+                        <td>Backreference
                             (repeat
                             captured group)</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">(ab)\1</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"abab"</td>
+                        <td>(ab)\1</td>
+                        <td>"abab"</td>
                     </tr>
-                    <tr class="hover:bg-gray-50 border-t-2 border-t-green-400 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">(?i)</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Case-insensitive
+                    <tr>
+                        <td>(?i)</td>
+                        <td>Case-insensitive
                             flag
                         </td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">(?i)java</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"java", "Java",
+                        <td>(?i)java</td>
+                        <td>"java", "Java",
                             "JAVA",
                             "JaVa" ✔</td>
                     </tr>
-                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">(?m)</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Multiline mode (^
+                    <tr>
+                        <td>(?m)</td>
+                        <td>Multiline mode (^
                             and $
                             match line boundaries)</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">(?m)^abc$</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Matches "abc" at
+                        <td>(?m)^abc$</td>
+                        <td>Matches "abc" at
                             start/end of each line</td>
                     </tr>
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">(?s)</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Dotall mode (dot
+                    <tr>
+                        <td>(?s)</td>
+                        <td>Dotall mode (dot
                             matches newlines)</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">(?s)a.*b</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Matches "a...b"
+                        <td>(?s)a.*b</td>
+                        <td>Matches "a...b"
                             even
                             across multiple lines</td>
                     </tr>
-                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">(?x)</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Verbose mode
+                    <tr>
+                        <td>(?x)</td>
+                        <td>Verbose mode
                             (allows
                             whitespace and comments)</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">(?x)a \d+ # digits
+                        <td>(?x)a \d+ # digits
                         </td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Matches "a123" with
+                        <td>Matches "a123" with
                             inline comment</td>
                     </tr>
-                    <tr class="hover:bg-gray-50 border-t-2 border-t-green-400 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">(?=.*\d)</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Positive lookahead
+                    <tr>
+                        <td>(?=.*\d)</td>
+                        <td>Positive lookahead
                             for
                             at least one digit</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">^(?=.*\d).+$</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"abc1" ✔, "abc" ✗
+                        <td>^(?=.*\d).+$</td>
+                        <td>"abc1" ✔, "abc" ✗
                         </td>
                     </tr>
-                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">(?=.*[a-z])</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Positive lookahead
+                    <tr>
+                        <td>(?=.*[a-z])</td>
+                        <td>Positive lookahead
                             for
                             at least one lowercase letter</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">(?=.*[a-z]).+$
+                        <td>(?=.*[a-z]).+$
                         </td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"ABCd" ✔, "ABC" ✗
+                        <td>"ABCd" ✔, "ABC" ✗
                         </td>
                     </tr>
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">(?=.*[A-Z])</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Positive lookahead
+                    <tr>
+                        <td>(?=.*[A-Z])</td>
+                        <td>Positive lookahead
                             for
                             at least one uppercase letter</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">(?=.*[A-Z]).+$
+                        <td>(?=.*[A-Z]).+$
                         </td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"abcD" ✔, "abc" ✗
+                        <td>"abcD" ✔, "abc" ✗
                         </td>
                     </tr>
-                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-bold text-md">(?=.*[!@$%^&*()_-])
+                    <tr>
+                        <td>(?=.*[!@$%^&*()_-])
                         </td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Positive lookahead
+                        <td>Positive lookahead
                             for
                             at least one special character</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">(?=.*[!@$%^&*()_-
+                        <td>(?=.*[!@$%^&*()_-
                             ]).+$</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"abc@" ✔, "abc" ✗
+                        <td>"abc@" ✔, "abc" ✗
                         </td>
                     </tr>
                 </tbody>
@@ -497,72 +429,67 @@ class CharClassExample {
 
         <div class="p-4 mt-4 rounded-lg border border-gray-200">
             <h3>Quantifiers Table</h3>
-            <table
-                class="min-w-full text-left text-sm whitespace-nowrap border-collapse border border-gray-300 shadow-sm rounded-lg overflow-hidden">
-                <thead class="bg-blue-100">
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <th
-                            class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
+            <table class="tabledesign">
+                <thead>
+                    <tr>
+                        <th>
                             Quantifier</th>
-                        <th
-                            class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
+                        <th>
                             Meaning</th>
-                        <th
-                            class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
+                        <th>
                             Example</th>
-                        <th
-                            class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
+                        <th>
                             Matches</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">*</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Zero or more</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">ab*</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"a", "ab", "abb",
+                    <tr>
+                        <td>*</td>
+                        <td>Zero or more</td>
+                        <td>ab*</td>
+                        <td>"a", "ab", "abb",
                             "abbbbb"</td>
                     </tr>
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">+</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">One or more</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">ab+</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"ab", "abb",
+                    <tr>
+                        <td>+</td>
+                        <td>One or more</td>
+                        <td>ab+</td>
+                        <td>"ab", "abb",
                             "abbbbb"
                             (not "a")</td>
                     </tr>
-                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">?</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Zero or one
+                    <tr>
+                        <td>?</td>
+                        <td>Zero or one
                             (optional)
                         </td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">colou?r</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"color", "colour"
+                        <td>colou?r</td>
+                        <td>"color", "colour"
                         </td>
                     </tr>
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">{n}</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Exactly n times
+                    <tr>
+                        <td>{n}</td>
+                        <td>Exactly n times
                         </td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">\d{3}</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"123"</td>
+                        <td>\d{3}</td>
+                        <td>"123"</td>
                     </tr>
-                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">{n,}</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">At least n times
+                    <tr>
+                        <td>{n,}</td>
+                        <td>At least n times
                         </td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">a{2,}</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"aa", "aaa",
+                        <td>a{2,}</td>
+                        <td>"aa", "aaa",
                             "aaaa..."
                         </td>
                     </tr>
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">{n,m}</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Between n and m
+                    <tr>
+                        <td>{n,m}</td>
+                        <td>Between n and m
                             times
                         </td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">a{2,4}</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">"aa", "aaa", "aaaa"
+                        <td>a{2,4}</td>
+                        <td>"aa", "aaa", "aaaa"
                         </td>
                     </tr>
                 </tbody>
@@ -636,40 +563,37 @@ Does 'Java' match 'Java'? true</code></pre>
         <div class="p-4 mt-4 rounded-lg border border-gray-200">
             <h3>1. Match Methods</h3>
             <p> Java&OpenCurlyQuote;s Pattern class has three main methods for matching and searching:</p>
-            <table>
-                <thead class="bg-blue-100">
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <th
-                            class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
+            <table class="tabledesign">
+                <thead>
+                    <tr>
+                        <th>
                             Method</th>
-                        <th
-                            class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
+                        <th>
                             Description</th>
-                        <th
-                            class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
+                        <th>
                             Scope</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">boolean matches()
+                    <tr>
+                        <td>boolean matches()
                         </td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Tries to match the
+                        <td>Tries to match the
                             entire input string against the pattern.</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Entire String</td>
+                        <td>Entire String</td>
                     </tr>
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">boolean find()</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Scans the input
+                    <tr>
+                        <td>boolean find()</td>
+                        <td>Scans the input
                             sequence looking for the next subsequence that matches the pattern.</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Any Substring(s)
+                        <td>Any Substring(s)
                         </td>
                     </tr>
-                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">lookingAt()</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Attempts to match
+                    <tr>
+                        <td>lookingAt()</td>
+                        <td>Attempts to match
                             the input sequence, starting at the beginning, against the pattern.</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Prefix Match</td>
+                        <td>Prefix Match</td>
                     </tr>
 
                 </tbody>
@@ -707,38 +631,36 @@ Replaced: Java is fun. Python is powerful. Java is easy.</code></pre>
         <div class="p-4 mt-4 rounded-lg border border-gray-200">
             <h3>2. Index Methods</h3>
             <p>Index methods return positional information about the current match in the input string.</p>
-            <table>
-                <thead class="bg-blue-100">
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <th
-                            class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
+            <table class="tabledesign">
+                <thead>
+                    <tr>
+                        <th>
                             Method Name</th>
-                        <th
-                            class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
+                        <th>
                             Description</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">start()</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">returns the start
+                    <tr>
+                        <td>start()</td>
+                        <td>returns the start
                             index of the previous match.</td>
                     </tr>
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">start(int group)
+                    <tr>
+                        <td>start(int group)
                         </td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm"> returns the start
+                        <td> returns the start
                             index of the subsequence captured by the given group during the previous match operation.
                         </td>
                     </tr>
-                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">end()</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">returns the offset
+                    <tr>
+                        <td>end()</td>
+                        <td>returns the offset
                             after the last character is matched.</td>
                     </tr>
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">end(int group)</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">returns the offset
+                    <tr>
+                        <td>end(int group)</td>
+                        <td>returns the offset
                             after the last character of the subsequence captured by the given group during the previous
                             match operation.</td>
                     </tr>
@@ -812,36 +734,34 @@ Match found: 'TypeScript'
         <div class="p-4 mt-4 rounded-lg border border-gray-200">
             <h3>3. Study Methods</h3>
             <p>Study methods are used to inspect the state and behavior of the matcher during pattern matching.</p>
-            <table>
-                <thead class="bg-blue-100">
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <th
-                            class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
+            <table class="tabledesign">
+                <thead>
+                    <tr>
+                        <th>
                             Method Name</th>
-                        <th
-                            class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
+                        <th>
                             Description</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">groupCount()</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">returns the number
+                    <tr>
+                        <td>groupCount()</td>
+                        <td>returns the number
                             of capturing groups in the pattern.</td>
                     </tr>
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">group()</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Returns the matched
+                    <tr>
+                        <td>group()</td>
+                        <td>Returns the matched
                             substring</td>
                     </tr>
-                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">hitEnd()</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Checks if match
+                    <tr>
+                        <td>hitEnd()</td>
+                        <td>Checks if match
                             reached end of input</td>
                     </tr>
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">requireEnd()</td>
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Checks if more
+                    <tr>
+                        <td>requireEnd()</td>
+                        <td>Checks if more
                             input could change the result</td>
                     </tr>
                 </tbody>
@@ -901,61 +821,58 @@ Match found: 'ababac' (Match 3)
             <div class="p-4 mt-4 rounded-lg border border-gray-200">
                 <h3>4. Replacement Methods</h3>
                 <p>Replacement methods are used to modify the input string based on regex matches.</p>
-                <table>
-                    <thead class="bg-blue-100">
-                        <tr class="hover:bg-gray-50 transition-colors">
-                            <th
-                                class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
+                <table class="tabledesign">
+                    <thead>
+                        <tr>
+                            <th>
                                 Method Name</th>
-                            <th
-                                class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
+                            <th>
                                 Description</th>
-                            <th
-                                class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
+                            <th>
                                 Use Case</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
-                            <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-md">
+                        <tr>
+                            <td>
                                 <code>appendReplacement(StringBuffer sb, String replacement)</code>
                             </td>
-                            <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Appends the
+                            <td>Appends the
                                 subsequence of the input sequence that matches the pattern and Performs a non-terminal
                                 append-and-replace operation. It appends text up to the first match.</td>
-                            <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Used when you
+                            <td>Used when you
                                 want
                                 to process matches one by one and build a new string dynamically.</td>
                         </tr>
-                        <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
-                            <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-md">
+                        <tr>
+                            <td>
                                 <code>appendTail(StringBuffer sb)</code>
                             </td>
-                            <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Appends the
+                            <td>Appends the
                                 remaining subsequence of the input sequence after the last match.</td>
-                            <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Used after all
+                            <td>Used after all
                                 calls to appendReplacement() to append the rest of the string.</td>
                         </tr>
-                        <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
-                            <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-md">
+                        <tr>
+                            <td>
                                 <code>replaceFirst(String replacement)</code>
                             </td>
-                            <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Replaces the
+                            <td>Replaces the
                                 first
                                 subsequence of the input sequence that matches the pattern with the replacement string.
                             </td>
-                            <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Replaces only
+                            <td>Replaces only
                                 the
                                 first occurrence of the pattern in the string with the replacement string.</td>
                         </tr>
-                        <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
-                            <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-md">
+                        <tr>
+                            <td>
                                 <code>replaceAll(String replacement)</code>
                             </td>
-                            <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Replaces every
+                            <td>Replaces every
                                 subsequence of the input sequence that matches the pattern with the replacement string.
                             </td>
-                            <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Replaces all
+                            <td>Replaces all
                                 occurrences of the pattern in the string with the replacement string.</td>
                         </tr>
                     </tbody>
@@ -1174,59 +1091,50 @@ public class GFG {
   </code></pre>
 
                 <!-- Comparison Table -->
-                <table>
-                    <thead class="bg-blue-100">
-                        <tr class="hover:bg-gray-50 transition-colors">
-                            <th
-                                class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
-                                Aspect</th>
-                            <th
-                                class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
-                                Greedy</th>
-                            <th
-                                class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
-                                Reluctant</th>
-                            <th
-                                class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs">
-                                Possessive</th>
+                <table class="tabledesign">
+                    <thead>
+                        <tr>
+                            <th>Aspect</th>
+                            <th>Greedy</th>
+                            <th>Reluctant</th>
+                            <th>Possessive</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
-                            <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Matching
-                                Behaviour</td>
-                            <td class="px-4 py-3 border border-gray-200">Matches as much as possible</td>
-                            <td class="px-4 py-3 border border-gray-200">Matches as little as possible</td>
-                            <td class="px-4 py-3 border border-gray-200">Matches as much as possible, no backtracking
+                        <tr>
+                            <td>Matching Behaviour</td>
+                            <td>Matches as much as possible</td>
+                            <td>Matches as little as possible</td>
+                            <td>Matches as much as possible, no backtracking
                             </td>
                         </tr>
-                        <tr class="hover:bg-gray-50 transition-colors">
-                            <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Backtracking
+                        <tr>
+                            <td>Backtracking
                             </td>
-                            <td class="px-4 py-3 border border-gray-200">Allows backtracking</td>
-                            <td class="px-4 py-3 border border-gray-200">Allows backtracking</td>
-                            <td class="px-4 py-3 border border-gray-200">No backtracking</td>
+                            <td>Allows backtracking</td>
+                            <td>Allows backtracking</td>
+                            <td>No backtracking</td>
                         </tr>
-                        <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
-                            <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Syntax / Usage
+                        <tr>
+                            <td>Syntax / Usage
                             </td>
-                            <td class="px-4 py-3 border border-gray-200">Default (*, +, {m,n})</td>
-                            <td class="px-4 py-3 border border-gray-200">Append ? (*?, +?, {m,n}?)</td>
-                            <td class="px-4 py-3 border border-gray-200">Append + (*+, ++, {m,n}+)</td>
+                            <td>Default (*, +, {m,n})</td>
+                            <td>Append ? (*?, +?, {m,n}?)</td>
+                            <td>Append + (*+, ++, {m,n}+)</td>
                         </tr>
-                        <tr class="hover:bg-gray-50 transition-colors">
-                            <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Performance
+                        <tr>
+                            <td>Performance
                             </td>
-                            <td class="px-4 py-3 border border-gray-200">Can be slower</td>
-                            <td class="px-4 py-3 border border-gray-200">Can be slower (frequent backtracking)</td>
-                            <td class="px-4 py-3 border border-gray-200">Often faster, but may fail</td>
+                            <td>Can be slower</td>
+                            <td>Can be slower (frequent backtracking)</td>
+                            <td>Often faster, but may fail</td>
                         </tr>
-                        <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
-                            <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm">Common Use Case
+                        <tr>
+                            <td>Common Use Case
                             </td>
-                            <td class="px-4 py-3 border border-gray-200">General-purpose matching</td>
-                            <td class="px-4 py-3 border border-gray-200">Precise/minimal matching</td>
-                            <td class="px-4 py-3 border border-gray-200">Performance-critical, avoid backtracking</td>
+                            <td>General-purpose matching</td>
+                            <td>Precise/minimal matching</td>
+                            <td>Performance-critical, avoid backtracking</td>
                         </tr>
                     </tbody>
                 </table>

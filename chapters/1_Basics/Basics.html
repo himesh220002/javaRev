@@ -31,47 +31,8 @@
             }
         }
     </script>
-    <style>
-        body {
-            background-color: #f9fafb;
-            color: #1f2937;
-            margin: 0;
-            display: flex;
-            height: 100vh;
-            overflow: hidden;
-            font-family: 'Inter', sans-serif;
-        }
-
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #0f172a;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #334155;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #475569;
-        }
-
-        .mermaid {
-            background: rgba(255, 255, 255, 0.02);
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid #334155;
-            display: flex;
-            justify-content: center;
-            margin-top: 2rem;
-            margin-bottom: 2rem;
-            overflow: auto;
-        }
-    </style>
+    
+    <link rel="stylesheet" href="../styles.css">
 </head>
 
 <body>
@@ -358,93 +319,93 @@ Entered Float Value: 3.5
 
             <!-- Common Methods Table -->
             <h3 class="text-xl font-bold">Common Methods of Scanner Class</h3>
-            <table class="table-auto w-full text-left border-collapse">
+            <table class="tabledesign">
                 <thead>
-                    <tr class="bg-gray-200 text-gray-900">
-                        <th class="px-4 py-2">Method</th>
-                        <th class="px-4 py-2">Description</th>
+                    <tr>
+                        <th>Method</th>
+                        <th>Description</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="border px-4 py-2">nextBoolean()</td>
-                        <td class="border px-4 py-2">Reads Boolean value</td>
+                        <td>nextBoolean()</td>
+                        <td>Reads Boolean value</td>
                     </tr>
                     <tr>
-                        <td class="border px-4 py-2">nextByte()</td>
-                        <td class="border px-4 py-2">Reads Byte value</td>
+                        <td>nextByte()</td>
+                        <td>Reads Byte value</td>
                     </tr>
                     <tr>
-                        <td class="border px-4 py-2">nextDouble()</td>
-                        <td class="border px-4 py-2">Reads Double value</td>
+                        <td>nextDouble()</td>
+                        <td>Reads Double value</td>
                     </tr>
                     <tr>
-                        <td class="border px-4 py-2">nextFloat()</td>
-                        <td class="border px-4 py-2">Reads Float value</td>
+                        <td>nextFloat()</td>
+                        <td>Reads Float value</td>
                     </tr>
                     <tr>
-                        <td class="border px-4 py-2">nextInt()</td>
-                        <td class="border px-4 py-2">Reads Int value</td>
+                        <td>nextInt()</td>
+                        <td>Reads Int value</td>
                     </tr>
                     <tr>
-                        <td class="border px-4 py-2">nextLine()</td>
-                        <td class="border px-4 py-2">Reads Line value</td>
+                        <td>nextLine()</td>
+                        <td>Reads Line value</td>
                     </tr>
                     <tr>
-                        <td class="border px-4 py-2">nextLong()</td>
-                        <td class="border px-4 py-2">Reads Long value</td>
+                        <td>nextLong()</td>
+                        <td>Reads Long value</td>
                     </tr>
                     <tr>
-                        <td class="border px-4 py-2">nextShort()</td>
-                        <td class="border px-4 py-2">Reads Short value</td>
+                        <td>nextShort()</td>
+                        <td>Reads Short value</td>
                     </tr>
                     <tr>
-                        <td class="border px-4 py-2">next()</td>
-                        <td class="border px-4 py-2">Reads single word</td>
+                        <td>next()</td>
+                        <td>Reads single word</td>
                     </tr>
                 </tbody>
             </table>
 
             <!-- BufferedReader vs Scanner -->
             <h3 class="text-xl font-bold mt-6">BufferedReader vs Scanner Class</h3>
-            <table class="table-auto w-full text-left border-collapse">
+            <table class="tabledesign">
                 <thead>
-                    <tr class="bg-gray-200 text-gray-900">
-                        <th class="px-4 py-2">Aspects</th>
-                        <th class="px-4 py-2">BufferedReader</th>
-                        <th class="px-4 py-2">Scanner</th>
+                    <tr>
+                        <th>Aspects</th>
+                        <th>BufferedReader</th>
+                        <th>Scanner</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="border px-4 py-2">Primary Use</td>
-                        <td class="border px-4 py-2">Efficient reading of character streams</td>
-                        <td class="border px-4 py-2">Reading formatted input</td>
+                        <td>Primary Use</td>
+                        <td>Efficient reading of character streams</td>
+                        <td>Reading formatted input</td>
                     </tr>
                     <tr>
-                        <td class="border px-4 py-2">Speed</td>
-                        <td class="border px-4 py-2">Faster for large input</td>
-                        <td class="border px-4 py-2">Slower due to parsing</td>
+                        <td>Speed</td>
+                        <td>Faster for large input</td>
+                        <td>Slower due to parsing</td>
                     </tr>
                     <tr>
-                        <td class="border px-4 py-2">Exception Handling</td>
-                        <td class="border px-4 py-2">Throws checked exceptions</td>
-                        <td class="border px-4 py-2">No checked exceptions</td>
+                        <td>Exception Handling</td>
+                        <td>Throws checked exceptions</td>
+                        <td>No checked exceptions</td>
                     </tr>
                     <tr>
-                        <td class="border px-4 py-2">Flexibility</td>
-                        <td class="border px-4 py-2">Efficient for large input</td>
-                        <td class="border px-4 py-2">Best for simple data types</td>
+                        <td>Flexibility</td>
+                        <td>Efficient for large input</td>
+                        <td>Best for simple data types</td>
                     </tr>
                     <tr>
-                        <td class="border px-4 py-2">Thread Safety</td>
-                        <td class="border px-4 py-2">Synchronized</td>
-                        <td class="border px-4 py-2">Not thread-safe</td>
+                        <td>Thread Safety</td>
+                        <td>Synchronized</td>
+                        <td>Not thread-safe</td>
                     </tr>
                     <tr>
-                        <td class="border px-4 py-2">Common Use</td>
-                        <td class="border px-4 py-2">Large input streams</td>
-                        <td class="border px-4 py-2">Smaller, formatted input</td>
+                        <td>Common Use</td>
+                        <td>Large input streams</td>
+                        <td>Smaller, formatted input</td>
                     </tr>
                 </tbody>
             </table>
@@ -478,81 +439,81 @@ Entered Float Value: 3.5
 
             <!-- Primitive Data Types Table -->
             <h3 class="text-xl font-bold">1. Primitive Data Types</h3>
-            <table class="table-auto w-full text-left border-collapse">
+            <table class="tabledesign">
                 <thead>
-                    <tr class="bg-gray-200 text-gray-900">
-                        <th class="px-4 py-2">Type</th>
-                        <th class="px-4 py-2">Description</th>
-                        <th class="px-4 py-2">Default</th>
-                        <th class="px-4 py-2">Size</th>
-                        <th class="px-4 py-2">Example</th>
-                        <th class="px-4 py-2">Range</th>
+                    <tr>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                        <th>Size</th>
+                        <th>Example</th>
+                        <th>Range</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="border px-4 py-2">boolean</td>
-                        <td class="border px-4 py-2">Logical values</td>
-                        <td class="border px-4 py-2">false</td>
-                        <td class="border px-4 py-2">JVM-defined</td>
-                        <td class="border px-4 py-2">true, false</td>
-                        <td class="border px-4 py-2">true/false</td>
+                        <td>boolean</td>
+                        <td>Logical values</td>
+                        <td>false</td>
+                        <td>JVM-defined</td>
+                        <td>true, false</td>
+                        <td>true/false</td>
                     </tr>
                     <tr>
-                        <td class="border px-4 py-2">byte</td>
-                        <td class="border px-4 py-2">8-bit signed integer</td>
-                        <td class="border px-4 py-2">0</td>
-                        <td class="border px-4 py-2">1 byte</td>
-                        <td class="border px-4 py-2">10</td>
-                        <td class="border px-4 py-2">-128 to 127</td>
+                        <td>byte</td>
+                        <td>8-bit signed integer</td>
+                        <td>0</td>
+                        <td>1 byte</td>
+                        <td>10</td>
+                        <td>-128 to 127</td>
                     </tr>
                     <tr>
-                        <td class="border px-4 py-2">char</td>
-                        <td class="border px-4 py-2">16-bit Unicode character</td>
-                        <td class="border px-4 py-2">\u0000</td>
-                        <td class="border px-4 py-2">2 bytes</td>
-                        <td class="border px-4 py-2">'A'</td>
-                        <td class="border px-4 py-2">0 to 65,535</td>
+                        <td>char</td>
+                        <td>16-bit Unicode character</td>
+                        <td>\u0000</td>
+                        <td>2 bytes</td>
+                        <td>'A'</td>
+                        <td>0 to 65,535</td>
                     </tr>
                     <tr>
-                        <td class="border px-4 py-2">short</td>
-                        <td class="border px-4 py-2">16-bit signed integer</td>
-                        <td class="border px-4 py-2">0</td>
-                        <td class="border px-4 py-2">2 bytes</td>
-                        <td class="border px-4 py-2">2000</td>
-                        <td class="border px-4 py-2">-32,768 to 32,767</td>
+                        <td>short</td>
+                        <td>16-bit signed integer</td>
+                        <td>0</td>
+                        <td>2 bytes</td>
+                        <td>2000</td>
+                        <td>-32,768 to 32,767</td>
                     </tr>
                     <tr>
-                        <td class="border px-4 py-2">int</td>
-                        <td class="border px-4 py-2">32-bit signed integer</td>
-                        <td class="border px-4 py-2">0</td>
-                        <td class="border px-4 py-2">4 bytes</td>
-                        <td class="border px-4 py-2">1000</td>
-                        <td class="border px-4 py-2">-2,147,483,648 to 2,147,483,647</td>
+                        <td>int</td>
+                        <td>32-bit signed integer</td>
+                        <td>0</td>
+                        <td>4 bytes</td>
+                        <td>1000</td>
+                        <td>-2,147,483,648 to 2,147,483,647</td>
                     </tr>
                     <tr>
-                        <td class="border px-4 py-2">long</td>
-                        <td class="border px-4 py-2">64-bit signed integer</td>
-                        <td class="border px-4 py-2">0L</td>
-                        <td class="border px-4 py-2">8 bytes</td>
-                        <td class="border px-4 py-2">123456789L</td>
-                        <td class="border px-4 py-2">±9.22e18</td>
+                        <td>long</td>
+                        <td>64-bit signed integer</td>
+                        <td>0L</td>
+                        <td>8 bytes</td>
+                        <td>123456789L</td>
+                        <td>±9.22e18</td>
                     </tr>
                     <tr>
-                        <td class="border px-4 py-2">float</td>
-                        <td class="border px-4 py-2">32-bit floating point</td>
-                        <td class="border px-4 py-2">0.0f</td>
-                        <td class="border px-4 py-2">4 bytes</td>
-                        <td class="border px-4 py-2">3.14f</td>
-                        <td class="border px-4 py-2">~6–7 digits precision</td>
+                        <td>float</td>
+                        <td>32-bit floating point</td>
+                        <td>0.0f</td>
+                        <td>4 bytes</td>
+                        <td>3.14f</td>
+                        <td>~6–7 digits precision</td>
                     </tr>
                     <tr>
-                        <td class="border px-4 py-2">double</td>
-                        <td class="border px-4 py-2">64-bit floating point</td>
-                        <td class="border px-4 py-2">0.0d</td>
-                        <td class="border px-4 py-2">8 bytes</td>
-                        <td class="border px-4 py-2">3.14159d</td>
-                        <td class="border px-4 py-2">~15–16 digits precision</td>
+                        <td>double</td>
+                        <td>64-bit floating point</td>
+                        <td>0.0d</td>
+                        <td>8 bytes</td>
+                        <td>3.14159d</td>
+                        <td>~15–16 digits precision</td>
                     </tr>
                 </tbody>
             </table>
@@ -603,39 +564,39 @@ System.out.println(numbers[2]); // Output: 3
 
             <!-- Comparison Table -->
             <h3 class="text-xl font-bold">Quick Comparison</h3>
-            <table class="table-auto w-full text-left border-collapse">
+            <table class="tabledesign">
                 <thead>
-                    <tr class="bg-gray-200 text-gray-900">
-                        <th class="px-4 py-2">Aspect</th>
-                        <th class="px-4 py-2">Primitive</th>
-                        <th class="px-4 py-2">Non-Primitive</th>
+                    <tr>
+                        <th>Aspect</th>
+                        <th>Primitive</th>
+                        <th>Non-Primitive</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="border px-4 py-2">Stored Value</td>
-                        <td class="border px-4 py-2">Actual value</td>
-                        <td class="border px-4 py-2">Reference (address)</td>
+                        <td>Stored Value</td>
+                        <td>Actual value</td>
+                        <td>Reference (address)</td>
                     </tr>
                     <tr>
-                        <td class="border px-4 py-2">Size</td>
-                        <td class="border px-4 py-2">Fixed</td>
-                        <td class="border px-4 py-2">Variable</td>
+                        <td>Size</td>
+                        <td>Fixed</td>
+                        <td>Variable</td>
                     </tr>
                     <tr>
-                        <td class="border px-4 py-2">Examples</td>
-                        <td class="border px-4 py-2">int, char, boolean</td>
-                        <td class="border px-4 py-2">String, Array, Class</td>
+                        <td>Examples</td>
+                        <td>int, char, boolean</td>
+                        <td>String, Array, Class</td>
                     </tr>
                     <tr>
-                        <td class="border px-4 py-2">Default Values</td>
-                        <td class="border px-4 py-2">Predefined (0, false)</td>
-                        <td class="border px-4 py-2">null</td>
+                        <td>Default Values</td>
+                        <td>Predefined (0, false)</td>
+                        <td>null</td>
                     </tr>
                     <tr>
-                        <td class="border px-4 py-2">Flexibility</td>
-                        <td class="border px-4 py-2">Limited</td>
-                        <td class="border px-4 py-2">Highly flexible</td>
+                        <td>Flexibility</td>
+                        <td>Limited</td>
+                        <td>Highly flexible</td>
                     </tr>
                 </tbody>
             </table>
@@ -791,163 +752,259 @@ class Geeks {
             </div>
 
             <h3 class="text-xl font-bold mt-8">Primitive Data Types & Wrapper Classes</h3>
-            <table class="table-auto w-full text-left border-collapse mt-4">
+            <table class="tabledesign">
                 <thead>
-                    <tr class="bg-gray-200 text-gray-900">
-                        <th class="px-4 py-2 border border-gray-300">Primitive Data Type</th>
-                        <th class="px-4 py-2 border border-gray-300">Wrapper Class</th>
+                    <tr>
+                        <th>Primitive Data Type</th>
+                        <th>Wrapper Class</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="border border-gray-300 px-4 py-2">byte</td>
-                        <td class="border border-gray-300 px-4 py-2">Byte</td>
+                        <td>byte</td>
+                        <td>Byte</td>
                     </tr>
                     <tr>
-                        <td class="border border-gray-300 px-4 py-2">short</td>
-                        <td class="border border-gray-300 px-4 py-2">Short</td>
+                        <td>short</td>
+                        <td>Short</td>
                     </tr>
                     <tr>
-                        <td class="border border-gray-300 px-4 py-2">int</td>
-                        <td class="border border-gray-300 px-4 py-2">Integer</td>
+                        <td>int</td>
+                        <td>Integer</td>
                     </tr>
                     <tr>
-                        <td class="border border-gray-300 px-4 py-2">long</td>
-                        <td class="border border-gray-300 px-4 py-2">Long</td>
+                        <td>long</td>
+                        <td>Long</td>
                     </tr>
                     <tr>
-                        <td class="border border-gray-300 px-4 py-2">float</td>
-                        <td class="border border-gray-300 px-4 py-2">Float</td>
+                        <td>float</td>
+                        <td>Float</td>
                     </tr>
                     <tr>
-                        <td class="border border-gray-300 px-4 py-2">double</td>
-                        <td class="border border-gray-300 px-4 py-2">Double</td>
+                        <td>double</td>
+                        <td>Double</td>
                     </tr>
                     <tr>
-                        <td class="border border-gray-300 px-4 py-2">char</td>
-                        <td class="border border-gray-300 px-4 py-2">Character</td>
+                        <td>char</td>
+                        <td>Character</td>
                     </tr>
                     <tr>
-                        <td class="border border-gray-300 px-4 py-2">boolean</td>
-                        <td class="border border-gray-300 px-4 py-2">Boolean</td>
+                        <td>boolean</td>
+                        <td>Boolean</td>
                     </tr>
                 </tbody>
             </table>
 
             <h3 class="text-xl font-bold mt-8">Common Methods of Wrapper Classes</h3>
             <div class="overflow-x-auto">
-                <table class="table-auto w-full text-left border-collapse mt-4 text-sm whitespace-nowrap">
+                <table class="tabledesign">
                     <thead>
-                        <tr class="bg-gray-200 text-gray-900">
-                            <th class="px-4 py-2 border border-gray-300">Method</th>
-                            <th class="px-4 py-2 border border-gray-300">Description</th>
-                            <th class="px-4 py-2 border border-gray-300">Example</th>
+                        <tr>
+                            <th>Method</th>
+                            <th>Description</th>
+                            <th>Example</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="border border-gray-300 px-4 py-2"><code>parseXxx(String s)</code></td>
-                            <td class="border border-gray-300 px-4 py-2">Converts a String into its corresponding
+                            <td><code>parseXxx(String s)</code></td>
+                            <td>Converts a String into its corresponding
                                 primitive type</td>
-                            <td class="border border-gray-300 px-4 py-2"><code
+                            <td><code
                                     class="text-green-700">int a = Integer.parseInt("100");</code></td>
                         </tr>
                         <tr>
-                            <td class="border border-gray-300 px-4 py-2"><code>valueOf(String s)</code></td>
-                            <td class="border border-gray-300 px-4 py-2">Converts a String into a wrapper object</td>
-                            <td class="border border-gray-300 px-4 py-2"><code
+                            <td><code>valueOf(String s)</code></td>
+                            <td>Converts a String into a wrapper object</td>
+                            <td><code
                                     class="text-green-700">Integer a = Integer.valueOf("100");</code></td>
                         </tr>
                         <tr>
-                            <td class="border border-gray-300 px-4 py-2"><code>valueOf(primitive)</code></td>
-                            <td class="border border-gray-300 px-4 py-2">Converts a primitive value into a wrapper
+                            <td><code>valueOf(primitive)</code></td>
+                            <td>Converts a primitive value into a wrapper
                                 object</td>
-                            <td class="border border-gray-300 px-4 py-2"><code
+                            <td><code
                                     class="text-green-700">Integer a = Integer.valueOf(10);</code></td>
                         </tr>
                         <tr>
-                            <td class="border border-gray-300 px-4 py-2"><code>xxxValue()</code></td>
-                            <td class="border border-gray-300 px-4 py-2">Converts a wrapper object into its primitive
+                            <td><code>xxxValue()</code></td>
+                            <td>Converts a wrapper object into its primitive
                                 type</td>
-                            <td class="border border-gray-300 px-4 py-2"><code
+                            <td><code
                                     class="text-green-700">int a = obj.intValue();</code></td>
                         </tr>
                         <tr>
-                            <td class="border border-gray-300 px-4 py-2"><code>toString()</code></td>
-                            <td class="border border-gray-300 px-4 py-2">Converts wrapper object into a String</td>
-                            <td class="border border-gray-300 px-4 py-2"><code
+                            <td><code>toString()</code></td>
+                            <td>Converts wrapper object into a String</td>
+                            <td><code
                                     class="text-green-700">String s = Integer.toString(10);</code></td>
                         </tr>
                         <tr>
-                            <td class="border border-gray-300 px-4 py-2"><code>compareTo(Xxx obj)</code></td>
-                            <td class="border border-gray-300 px-4 py-2">Compares two wrapper objects</td>
-                            <td class="border border-gray-300 px-4 py-2"><code
+                            <td><code>compareTo(Xxx obj)</code></td>
+                            <td>Compares two wrapper objects</td>
+                            <td><code
                                     class="text-green-700">a.compareTo(b);</code></td>
                         </tr>
                         <tr>
-                            <td class="border border-gray-300 px-4 py-2"><code>equals(Object obj)</code></td>
-                            <td class="border border-gray-300 px-4 py-2">Compares values, not references</td>
-                            <td class="border border-gray-300 px-4 py-2"><code
+                            <td><code>equals(Object obj)</code></td>
+                            <td>Compares values, not references</td>
+                            <td><code
                                     class="text-green-700">a.equals(b);</code></td>
                         </tr>
                         <tr>
-                            <td class="border border-gray-300 px-4 py-2"><code>hashCode()</code></td>
-                            <td class="border border-gray-300 px-4 py-2">Returns hash code of the object</td>
-                            <td class="border border-gray-300 px-4 py-2"><code
+                            <td><code>hashCode()</code></td>
+                            <td>Returns hash code of the object</td>
+                            <td><code
                                     class="text-green-700">obj.hashCode();</code></td>
                         </tr>
                         <tr>
-                            <td class="border border-gray-300 px-4 py-2"><code>min(x, y)</code></td>
-                            <td class="border border-gray-300 px-4 py-2">Returns minimum of two values</td>
-                            <td class="border border-gray-300 px-4 py-2"><code
+                            <td><code>min(x, y)</code></td>
+                            <td>Returns minimum of two values</td>
+                            <td><code
                                     class="text-green-700">Integer.min(10, 20);</code></td>
                         </tr>
                         <tr>
-                            <td class="border border-gray-300 px-4 py-2"><code>max(x, y)</code></td>
-                            <td class="border border-gray-300 px-4 py-2">Returns maximum of two values</td>
-                            <td class="border border-gray-300 px-4 py-2"><code
+                            <td><code>max(x, y)</code></td>
+                            <td>Returns maximum of two values</td>
+                            <td><code
                                     class="text-green-700">Integer.max(10, 20);</code></td>
                         </tr>
                         <tr>
-                            <td class="border border-gray-300 px-4 py-2"><code>sum(x, y)</code></td>
-                            <td class="border border-gray-300 px-4 py-2">Returns sum of two values</td>
-                            <td class="border border-gray-300 px-4 py-2"><code
+                            <td><code>sum(x, y)</code></td>
+                            <td>Returns sum of two values</td>
+                            <td><code
                                     class="text-green-700">Integer.sum(10, 20);</code></td>
                         </tr>
                         <tr>
-                            <td class="border border-gray-300 px-4 py-2"><code>compare(x, y)</code></td>
-                            <td class="border border-gray-300 px-4 py-2">Compares two primitive values</td>
-                            <td class="border border-gray-300 px-4 py-2"><code
+                            <td><code>compare(x, y)</code></td>
+                            <td>Compares two primitive values</td>
+                            <td><code
                                     class="text-green-700">Integer.compare(10, 20);</code></td>
                         </tr>
                         <tr>
-                            <td class="border border-gray-300 px-4 py-2"><code>isNaN()</code></td>
-                            <td class="border border-gray-300 px-4 py-2">Checks if value is Not a Number (Float/Double
+                            <td><code>isNaN()</code></td>
+                            <td>Checks if value is Not a Number (Float/Double
                                 only)</td>
-                            <td class="border border-gray-300 px-4 py-2"><code
+                            <td><code
                                     class="text-green-700">Double.isNaN(val);</code></td>
                         </tr>
                         <tr>
-                            <td class="border border-gray-300 px-4 py-2"><code>isInfinite()</code></td>
-                            <td class="border border-gray-300 px-4 py-2">Checks infinite value (Float/Double only)</td>
-                            <td class="border border-gray-300 px-4 py-2"><code
+                            <td><code>isInfinite()</code></td>
+                            <td>Checks infinite value (Float/Double only)</td>
+                            <td><code
                                     class="text-green-700">Double.isInfinite(val);</code></td>
                         </tr>
                         <tr>
-                            <td class="border border-gray-300 px-4 py-2"><code>decode(String s)</code></td>
-                            <td class="border border-gray-300 px-4 py-2">Decodes decimal, hex, or octal string</td>
-                            <td class="border border-gray-300 px-4 py-2"><code
+                            <td><code>decode(String s)</code></td>
+                            <td>Decodes decimal, hex, or octal string</td>
+                            <td><code
                                     class="text-green-700">Integer.decode("0xA");</code></td>
                         </tr>
                         <tr>
-                            <td class="border border-gray-300 px-4 py-2"><code>parseBoolean(String s)</code></td>
-                            <td class="border border-gray-300 px-4 py-2">Converts string to boolean</td>
-                            <td class="border border-gray-300 px-4 py-2"><code
+                            <td><code>parseBoolean(String s)</code></td>
+                            <td>Converts string to boolean</td>
+                            <td><code
                                     class="text-green-700">Boolean.parseBoolean("true");</code></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+        </div>
+
+        <div class="p-4 rounded-lg mt-4 border border-blue-500">
+            <h2>Projects</h2>
+            <h4>Project: Calculator</h4>
+            <pre class="p-3"><code class="language-java">
+import java.util.Scanner;
+
+public class Calculator {
+
+    public static void main(String[] args) {
+        try (Scanner sc = new Scanner(System.in)) {
+
+            System.out.println("--- Simple Java Calculator ---");
+            System.out.print("Enter first number: ");
+            double num1 = sc.nextDouble();
+
+            System.out.print("Enter an operator (+, -, *, /): ");
+            char operator = sc.next().charAt(0);
+
+            System.out.print("Enter second number: ");
+            double num2 = sc.nextDouble();
+
+            double result;
+            switch (operator) {
+                case '+' ->
+                    result = num1 + num2;
+                case '-' ->
+                    result = num1 - num2;
+                case '*' ->
+                    result = num1 * num2;
+                case '/' ->
+                    result = num1 / num2;
+                default -> {
+                    System.out.println("Invalid operator");
+                    return;
+                }
+            }
+
+            System.out.println("Result: " + num1 + " " + operator + " " + num2 + " = " + result);
+            sc.close();
+        }
+    }
+}
+</code></pre>
+
+            <h4>Project: Number Guessing Game</h4>
+            <pre class="p-3"><code class="language-java">
+import java.util.Scanner;
+
+// The program generates a random number between a predefined range (e.g., 1 to 100).
+// The user has limited attempts (K tries) to guess the number.
+// At each guess, the program provides a hint: If the guessed number is higher, it tells the user to guess lower. If the guessed number is lower, it tells the user to guess higher.
+// If the user guesses correctly, they win.
+// If all attempts are exhausted, the game reveals the correct number.
+public class NumberGussingGame {
+
+    public static void main(String[] args) {
+
+        System.out.println("welcome to the Number Guessing Game\n between 1 and 100 ");
+        try (Scanner sc = new Scanner(System.in)) {
+            int SystemSelectedNumber = (int) (Math.random() * 100 + 1);
+            // System.out.println(SystemSelectedNumber);
+
+            int attempts = 5;
+
+            while (attempts > 0) {
+                System.out.print("You have " + attempts + " attempts left.\n Guess the number: ");
+                int typedNumber = sc.nextInt();
+
+                if (typedNumber < 1 || typedNumber > 100) {
+                    System.out.println("Invalid number! Please enter between 1 and 100.");
+                    // ⚠️ Do NOT decrement attempts here
+                    continue;
+                }
+
+                if (typedNumber == SystemSelectedNumber) {
+                    System.out.println("You Win!");
+                    sc.close();
+                    return;
+                } else if (typedNumber > SystemSelectedNumber) {
+                    System.out.println("You guessed higher");
+                } else {
+                    System.out.println("You guessed lower");
+                }
+                attempts--;
+            }
+            System.out.println("The correct number was: " + SystemSelectedNumber);
+        }
+        // System.out.println(SystemSelectedNumber);
+    }
+}
+
+
+</code></pre>
+
         </div>
 
     </div>

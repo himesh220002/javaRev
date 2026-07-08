@@ -33,8 +33,19 @@ export function initSidebar() {
 
         let subtopicsHtml = '';
         const grandchildren = modules_dict[mod].grandchildren;
-        for (const grand in grandchildren) {
-            subtopicsHtml += `<div class="relative pl-4 py-1.5 text-sm text-slate-400 hover:text-slate-200 transition-colors before:content-['•'] before:absolute before:left-0 before:text-slate-600">${grand}</div>\n`;
+        const allGrandTopics = Object.keys(grandchildren);
+        
+        // Create an escaped JSON string of the topics array for the onclick handler
+        const allTopicsJson = JSON.stringify(allGrandTopics).replace(/"/g, '&quot;');
+
+        for (const grand of allGrandTopics) {
+            if (isActive) {
+                // Escape single quotes for the inline onclick handler
+                const safeGrand = grand.replace(/'/g, "\\'");
+                subtopicsHtml += `<div onclick="scrollToSubtopic('${safeGrand}', ${allTopicsJson})" class="cursor-pointer relative pl-4 py-1.5 text-sm text-slate-400 hover:text-slate-200 transition-colors before:content-['•'] before:absolute before:left-0 before:text-slate-600">${grand}</div>\n`;
+            } else {
+                subtopicsHtml += `<div class="relative pl-4 py-1.5 text-sm text-slate-400 hover:text-slate-200 transition-colors before:content-['•'] before:absolute before:left-0 before:text-slate-600">${grand}</div>\n`;
+            }
         }
 
         sidebarHtml += `
@@ -73,6 +84,69 @@ export function initSidebar() {
                 el.classList.add('hidden');
                 if (icon) icon.classList.remove('rotate-180');
             }
+        }
+    };
+
+    // Implement scroll logic with intelligent fallback
+    window.scrollToSubtopic = function (targetTopic, allTopics) {
+        const scrollContainer = document.querySelector('.flex-1.overflow-y-auto');
+        if (!scrollContainer) return;
+        
+        // Find all headings in the page
+        const headings = Array.from(scrollContainer.querySelectorAll('h1, h2, h3, h4, h5, h6'));
+        if (headings.length === 0) return; // Do nothing if page is totally empty
+
+        // Helper to normalize strings for comparison (removes punctuation, extra spaces, lowercase)
+        const normalize = (str) => {
+            return str.toLowerCase().replace(/[^\w\s]/g, '').replace(/\s+/g, ' ').trim();
+        };
+
+        // Helper to find a heading that matches a topic string
+        const findHeadingForTopic = (topicString) => {
+            const norm = normalize(topicString);
+            return headings.find(h => {
+                const hNorm = normalize(h.textContent);
+                return hNorm === norm || hNorm.includes(norm) || norm.includes(hNorm);
+            });
+        };
+
+        // 1. Try to find the exact target topic first
+        let foundHeading = findHeadingForTopic(targetTopic);
+
+        // 2. Fallback logic: check adjacent topics by expanding outwards
+        if (!foundHeading && allTopics && allTopics.length > 0) {
+            const index = allTopics.indexOf(targetTopic);
+            if (index !== -1) {
+                const maxDist = Math.max(index, allTopics.length - 1 - index);
+                // Search 1 step away, then 2 steps away, etc.
+                for (let dist = 1; dist <= maxDist; dist++) {
+                    // Check previous sibling
+                    if (index - dist >= 0) {
+                        foundHeading = findHeadingForTopic(allTopics[index - dist]);
+                        if (foundHeading) break;
+                    }
+                    // Check next sibling
+                    if (index + dist < allTopics.length) {
+                        foundHeading = findHeadingForTopic(allTopics[index + dist]);
+                        if (foundHeading) break;
+                    }
+                }
+            }
+        }
+
+        // 3. Scroll to the found heading
+        if (foundHeading) {
+            // Calculate offset to leave 40px margin at the top
+            const containerRect = scrollContainer.getBoundingClientRect();
+            const headingRect = foundHeading.getBoundingClientRect();
+            const offset = 40;
+            
+            const targetScrollTop = scrollContainer.scrollTop + (headingRect.top - containerRect.top) - offset;
+            
+            scrollContainer.scrollTo({
+                top: targetScrollTop,
+                behavior: 'smooth'
+            });
         }
     };
 

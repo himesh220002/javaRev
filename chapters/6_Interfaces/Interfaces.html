@@ -31,47 +31,8 @@
             }
         }
     </script>
-    <style>
-        body {
-            background-color: #f9fafb;
-            color: #1f2937;
-            margin: 0;
-            display: flex;
-            height: 100vh;
-            overflow: hidden;
-            font-family: 'Inter', sans-serif;
-        }
-
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #0f172a;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #334155;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #475569;
-        }
-
-        .mermaid {
-            background: rgba(255, 255, 255, 0.02);
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid #334155;
-            display: flex;
-            justify-content: center;
-            margin-top: 2rem;
-            margin-bottom: 2rem;
-            overflow: auto;
-        }
-    </style>
+    
+    <link rel="stylesheet" href="../styles.css">
 </head>
 
 <body>
@@ -281,73 +242,73 @@ Bike present state : speed: 1 gear: 1</code></pre>
 
         <div class="p-4 rounded-lg mt-4 border border-gray-200">
 
-            <table class="w-full border-collapse border border-gray-400">
+            <table class="tabledesign">
                 <caption class="text-xl font-bold mb-4">Class vs Interface in Java</caption>
-                <thead class="text-white">
-                    <tr class="bg-blue-100 text-white">
-                        <th class="border border-gray-400 p-3 text-left">Features</th>
-                        <th class="border border-gray-400 p-3 text-left">Class</th>
-                        <th class="border border-gray-400 p-3 text-left">Interface</th>
+                <thead>
+                    <tr>
+                        <th>Features</th>
+                        <th>Class</th>
+                        <th>Interface</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="bg-white">
-                        <td class="border border-gray-400 p-3">Keyword</td>
-                        <td class="border border-gray-400 p-3">The keyword used to create a class is <b>class</b>.</td>
-                        <td class="border border-gray-400 p-3">The keyword used to create an interface is
+                    <tr>
+                        <td>Keyword</td>
+                        <td>The keyword used to create a class is <b>class</b>.</td>
+                        <td>The keyword used to create an interface is
                             <b>interface</b>.
                         </td>
                     </tr>
-                    <tr class="bg-gray-100">
-                        <td class="border border-gray-400 p-3">Instantiation</td>
-                        <td class="border border-gray-400 p-3">A class can be instantiated, i.e., objects of a class can
+                    <tr>
+                        <td>Instantiation</td>
+                        <td>A class can be instantiated, i.e., objects of a class can
                             be created.</td>
-                        <td class="border border-gray-400 p-3">An interface cannot be instantiated directly, instead, it
+                        <td>An interface cannot be instantiated directly, instead, it
                             is implemented by a class or a struct.</td>
                     </tr>
-                    <tr class="bg-white">
-                        <td class="border border-gray-400 p-3">Inheritance</td>
-                        <td class="border border-gray-400 p-3">Classes do not support multiple inheritance.</td>
-                        <td class="border border-gray-400 p-3">Interface supports multiple inheritance.</td>
+                    <tr>
+                        <td>Inheritance</td>
+                        <td>Classes do not support multiple inheritance.</td>
+                        <td>Interface supports multiple inheritance.</td>
                     </tr>
-                    <tr class="bg-gray-100">
-                        <td class="border border-gray-400 p-3">Inheritance Mechanism</td>
-                        <td class="border border-gray-400 p-3">A class can inherit another class using the keyword
+                    <tr>
+                        <td>Inheritance Mechanism</td>
+                        <td>A class can inherit another class using the keyword
                             <b>extends</b>.
                         </td>
-                        <td class="border border-gray-400 p-3">A class uses <b>implements</b> to adopt an interface,
+                        <td>A class uses <b>implements</b> to adopt an interface,
                             while an interface uses <b>extends</b> to inherit another interface.</td>
                     </tr>
-                    <tr class="bg-white">
-                        <td class="border border-gray-400 p-3">Constructors</td>
-                        <td class="border border-gray-400 p-3">It can contain constructors.</td>
-                        <td class="border border-gray-400 p-3">It cannot contain constructors.</td>
+                    <tr>
+                        <td>Constructors</td>
+                        <td>It can contain constructors.</td>
+                        <td>It cannot contain constructors.</td>
                     </tr>
-                    <tr class="bg-gray-100">
-                        <td class="border border-gray-400 p-3">Methods</td>
-                        <td class="border border-gray-400 p-3">Methods in a class can be abstract, concrete, or both.
+                    <tr>
+                        <td>Methods</td>
+                        <td>Methods in a class can be abstract, concrete, or both.
                         </td>
-                        <td class="border border-gray-400 p-3">An interface contains abstract methods by default (before
+                        <td>An interface contains abstract methods by default (before
                             Java 8) or default/static methods (from Java 8 onward).</td>
                     </tr>
-                    <tr class="bg-white">
-                        <td class="border border-gray-400 p-3">Access Specifiers</td>
-                        <td class="border border-gray-400 p-3">Variables and methods in a class can be declared using
+                    <tr>
+                        <td>Access Specifiers</td>
+                        <td>Variables and methods in a class can be declared using
                             any access specifier (public, private, default, protected).</td>
-                        <td class="border border-gray-400 p-3">Interface variables are public static final, and methods
+                        <td>Interface variables are public static final, and methods
                             are public by default.</td>
                     </tr>
-                    <tr class="bg-gray-100">
-                        <td class="border border-gray-400 p-3">Variables</td>
-                        <td class="border border-gray-400 p-3">Variables in a class can be static, final, or neither.
+                    <tr>
+                        <td>Variables</td>
+                        <td>Variables in a class can be static, final, or neither.
                         </td>
-                        <td class="border border-gray-400 p-3">All variables are static and final.</td>
+                        <td>All variables are static and final.</td>
                     </tr>
-                    <tr class="bg-white">
-                        <td class="border border-gray-400 p-3">Purpose</td>
-                        <td class="border border-gray-400 p-3">A class is a blueprint for creating objects and
+                    <tr>
+                        <td>Purpose</td>
+                        <td>A class is a blueprint for creating objects and
                             encapsulates data and behaviour.</td>
-                        <td class="border border-gray-400 p-3">An interface specifies a contract for classes to
+                        <td>An interface specifies a contract for classes to
                             implement by focusing on capabilities rather than implementation.</td>
                     </tr>
                 </tbody>
@@ -513,84 +474,84 @@ Geek2
 
         <div class="p-6 bg-gray-100 rounded-lg shadow-md">
             <h2 class="text-2xl font-bold mb-4">Functional Interfaces Table</h2>
-            <table class="w-full border-collapse border border-gray-400">
+            <table class="tabledesign">
                 <thead>
-                    <tr class="bg-blue-200 text-white">
-                        <th class="border border-gray-400 p-3 text-left">Functional Interface</th>
-                        <th class="border border-gray-400 p-3 text-left">Description</th>
-                        <th class="border border-gray-400 p-3 text-left">Method</th>
+                    <tr>
+                        <th>Functional Interface</th>
+                        <th>Description</th>
+                        <th>Method</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="bg-white">
-                        <td class="border border-gray-400 p-3">Runnable</td>
-                        <td class="border border-gray-400 p-3">Represents a task that can be executed by a thread.</td>
-                        <td class="border border-gray-400 p-3"><code>void run()</code></td>
+                    <tr>
+                        <td>Runnable</td>
+                        <td>Represents a task that can be executed by a thread.</td>
+                        <td><code>void run()</code></td>
                     </tr>
-                    <tr class="bg-gray-100">
-                        <td class="border border-gray-400 p-3">Comparable</td>
-                        <td class="border border-gray-400 p-3">Compares two objects for ordering.</td>
-                        <td class="border border-gray-400 p-3"><code>int compareTo(T o)</code></td>
+                    <tr>
+                        <td>Comparable</td>
+                        <td>Compares two objects for ordering.</td>
+                        <td><code>int compareTo(T o)</code></td>
                     </tr>
-                    <tr class="bg-white">
-                        <td class="border border-gray-400 p-3">ActionListener</td>
-                        <td class="border border-gray-400 p-3">Handles an action event in event-driven programming.</td>
-                        <td class="border border-gray-400 p-3"><code>void actionPerformed(ActionEvent e)</code></td>
+                    <tr>
+                        <td>ActionListener</td>
+                        <td>Handles an action event in event-driven programming.</td>
+                        <td><code>void actionPerformed(ActionEvent e)</code></td>
                     </tr>
-                    <tr class="bg-gray-100">
-                        <td class="border border-gray-400 p-3">Callable</td>
-                        <td class="border border-gray-400 p-3">Represents a task that can return a result or throw an
+                    <tr>
+                        <td>Callable</td>
+                        <td>Represents a task that can return a result or throw an
                             exception.</td>
-                        <td class="border border-gray-400 p-3"><code>V call() throws Exception</code></td>
+                        <td><code>V call() throws Exception</code></td>
                     </tr>
-                    <tr class="bg-white">
-                        <td class="border border-gray-400 p-3">Consumer</td>
-                        <td class="border border-gray-400 p-3">Accepts a single input argument and returns no result.
+                    <tr>
+                        <td>Consumer</td>
+                        <td>Accepts a single input argument and returns no result.
                         </td>
-                        <td class="border border-gray-400 p-3"><code>void accept(T t)</code></td>
+                        <td><code>void accept(T t)</code></td>
                     </tr>
-                    <tr class="bg-gray-100">
-                        <td class="border border-gray-400 p-3">Predicate</td>
-                        <td class="border border-gray-400 p-3">Accepts a single argument and returns a boolean result.
+                    <tr>
+                        <td>Predicate</td>
+                        <td>Accepts a single argument and returns a boolean result.
                         </td>
-                        <td class="border border-gray-400 p-3"><code>boolean test(T t)</code></td>
+                        <td><code>boolean test(T t)</code></td>
                     </tr>
-                    <tr class="bg-white">
-                        <td class="border border-gray-400 p-3">Function</td>
-                        <td class="border border-gray-400 p-3">Accepts a single argument and returns a result.</td>
-                        <td class="border border-gray-400 p-3"><code>R apply(T t)</code></td>
+                    <tr>
+                        <td>Function</td>
+                        <td>Accepts a single argument and returns a result.</td>
+                        <td><code>R apply(T t)</code></td>
                     </tr>
-                    <tr class="bg-gray-100">
-                        <td class="border border-gray-400 p-3">Supplier</td>
-                        <td class="border border-gray-400 p-3">Provides a result without taking any arguments.</td>
-                        <td class="border border-gray-400 p-3"><code>T get()</code></td>
+                    <tr>
+                        <td>Supplier</td>
+                        <td>Provides a result without taking any arguments.</td>
+                        <td><code>T get()</code></td>
                     </tr>
-                    <tr class="bg-white">
-                        <td class="border border-gray-400 p-3">BiConsumer</td>
-                        <td class="border border-gray-400 p-3">Accepts two arguments and returns no result.</td>
-                        <td class="border border-gray-400 p-3"><code>void accept(T t, U u)</code></td>
+                    <tr>
+                        <td>BiConsumer</td>
+                        <td>Accepts two arguments and returns no result.</td>
+                        <td><code>void accept(T t, U u)</code></td>
                     </tr>
-                    <tr class="bg-gray-100">
-                        <td class="border border-gray-400 p-3">BiPredicate</td>
-                        <td class="border border-gray-400 p-3">Accepts two arguments and returns a boolean result.</td>
-                        <td class="border border-gray-400 p-3"><code>boolean test(T t, U u)</code></td>
+                    <tr>
+                        <td>BiPredicate</td>
+                        <td>Accepts two arguments and returns a boolean result.</td>
+                        <td><code>boolean test(T t, U u)</code></td>
                     </tr>
-                    <tr class="bg-white">
-                        <td class="border border-gray-400 p-3">BiFunction</td>
-                        <td class="border border-gray-400 p-3">Accepts two arguments and returns a result.</td>
-                        <td class="border border-gray-400 p-3"><code>R apply(T t, U u)</code></td>
+                    <tr>
+                        <td>BiFunction</td>
+                        <td>Accepts two arguments and returns a result.</td>
+                        <td><code>R apply(T t, U u)</code></td>
                     </tr>
-                    <tr class="bg-gray-100">
-                        <td class="border border-gray-400 p-3">UnaryOperator</td>
-                        <td class="border border-gray-400 p-3">Special case of Function, input and output types are the
+                    <tr>
+                        <td>UnaryOperator</td>
+                        <td>Special case of Function, input and output types are the
                             same.</td>
-                        <td class="border border-gray-400 p-3"><code>T apply(T t)</code></td>
+                        <td><code>T apply(T t)</code></td>
                     </tr>
-                    <tr class="bg-white">
-                        <td class="border border-gray-400 p-3">BinaryOperator</td>
-                        <td class="border border-gray-400 p-3">Special case of BiFunction, input and output types are
+                    <tr>
+                        <td>BinaryOperator</td>
+                        <td>Special case of BiFunction, input and output types are
                             the same.</td>
-                        <td class="border border-gray-400 p-3"><code>T apply(T t1, T t2)</code></td>
+                        <td><code>T apply(T t1, T t2)</code></td>
                     </tr>
                 </tbody>
             </table>
@@ -931,7 +892,264 @@ public interface Hello extends Remote{
 
         </div>
 
+        <div class="p-4 rounded-lg mt-4 border border-blue-500">
+            <h4>Project: Employee Management System</h4>
+            <pre class="p-3"><code class="language-java">
+import java.util.*;
 
+class EmployeeManagement {
+
+// class eemployee
+    static class employee {
+
+        String name;
+        long code;
+        String designation;
+        int exp;
+        int age;
+
+    }
+
+    static int num;
+    static final int MAX = 20;
+
+    static Scanner sc = new Scanner(System.in);
+
+    static employee emp[] = new employee[MAX];
+
+    static boolean isCodeExists(long code, int currentIndex) {
+        for (int j = 0; j < currentIndex; j++) {
+            if (emp[j] != null && emp[j].code == code) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    static void build() {
+        System.out.println("Build the table");
+        System.out.println("Max number of etries can be- " + MAX);
+        System.out.print("Enter the number of entries required: ");
+
+        num = sc.nextInt();
+        if (num > MAX) {
+            System.out.println("Maximum number of entries are " + MAX);
+            num = 20;
+        }
+
+        for (int i = 0; i < num; i++) {
+            emp[i] = new employee();
+            System.out.print("Enter Name: ");
+            emp[i].name = sc.next();
+
+            System.out.print("Enter Emopoyee ID: ");
+            long inputCode = sc.nextLong();
+            while (isCodeExists(inputCode, i)) {
+                System.out.println("Employee ID already exists! Please enter a unique ID.");
+                System.out.print("Enter Emopoyee ID: ");
+                inputCode = sc.nextLong();
+            }
+            emp[i].code = inputCode;
+
+            System.out.print("Enter Designation: ");
+            emp[i].designation = sc.next();
+
+            System.out.print("Enter Experience: ");
+            emp[i].exp = sc.nextInt();
+
+            System.out.print("Enter Age: ");
+            emp[i].age = sc.nextInt();
+
+            if (i <= num - 1) {
+                System.out.println("Record Inserted successfully at index " + i);
+            }
+        }
+        System.out.println("");
+        showMenu();
+    }
+
+    //insert
+    static void insert() {
+        if (num < MAX) {
+            int i = num;
+
+            num++;
+
+            System.out.println("Insert new Employee record in the table");
+            if (emp[i] == null) {
+                emp[i] = new employee();
+            }
+            System.out.print("Enter Name: ");
+            emp[i].name = sc.next();
+
+            System.out.print("Enter Emopoyee ID: ");
+            long inputCode = sc.nextLong();
+            while (isCodeExists(inputCode, i)) {
+                System.out.println("Employee ID already exists! Please enter a unique ID.");
+                System.out.print("Enter Emopoyee ID: ");
+                inputCode = sc.nextLong();
+            }
+            emp[i].code = inputCode;
+
+            System.out.print("Enter Designation: ");
+            emp[i].designation = sc.next();
+
+            System.out.print("Enter Experience: ");
+            emp[i].exp = sc.nextInt();
+
+            System.out.print("Enter Age: ");
+            emp[i].age = sc.nextInt();
+
+            System.out.println("Record Inserted successfully at index " + i);
+        } else {
+            System.out.println("System is full can't add anymore entries in the table !");
+        }
+        System.out.println("");
+        showMenu();
+    }
+
+    //delete
+    static void deleteIndex(int i) {
+        for (int j = i; j < num - 1; j++) {
+            emp[j].name = emp[j + 1].name;
+            emp[j].code = emp[j + 1].code;
+            emp[j].designation = emp[j + 1].designation;
+            emp[j].exp = emp[j + 1].exp;
+            emp[j].age = emp[j + 1].age;
+        }
+    }
+
+    static void deleteRecord() {
+        if (num == 0) {
+            System.out.println("The table is empty. Please build the table or insert records first.");
+            showMenu();
+            return;
+        }
+        System.out.println("Delete an existing record from the table, Enter Employee ID to delete: ");
+        long code = sc.nextLong();
+
+        boolean found = false;
+        for (int i = 0; i < num; i++) {
+            if (emp[i].code == code) {
+                deleteIndex(i);
+                num--;
+                System.out.println("Record deleted successfully");
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            System.out.println("No such employee code exists in the table");
+        }
+        System.out.println("");
+        showMenu();
+    }
+
+    //search
+    static void searchRecord() {
+        if (num == 0) {
+            System.out.println("The table is empty. Please build the table or insert records first.");
+            showMenu();
+            return;
+        }
+        System.out.println("Search an existing record in the table, Enter Employee ID to search: ");
+        long code = sc.nextLong();
+
+        boolean found = false;
+        for (int i = 0; i < num; i++) {
+            if (emp[i].code == code) {
+                System.out.println("Name: " + emp[i].name);
+                System.out.println("Employee ID: " + emp[i].code);
+                System.out.println("Designation: " + emp[i].designation);
+                System.out.println("Experience: " + emp[i].exp);
+                System.out.println("Age: " + emp[i].age);
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            System.out.println("No such employee code exists in the table");
+        }
+        System.out.println("");
+        showMenu();
+    }
+
+    //showMenu()
+    static void showMenu() {
+
+        System.out.println("++++=====EMS=====++++");
+
+        System.err.println("Options:");
+        System.err.println("Build Table-> 1");
+        System.err.println("Insert new record-> 2");
+        System.err.println("Delete entry-> 3");
+        System.err.println("search a record-> 4");
+        System.out.println("show table -> 5");
+        System.err.println("Exit-> 6");
+
+        int option = sc.nextInt();
+
+        switch (option) {
+            case 1 ->
+                build();
+            case 2 ->
+                insert();
+            case 3 ->
+                deleteRecord();
+            case 4 ->
+                searchRecord();
+            case 5 ->
+                showTable();
+            case 6 -> {
+                sc.close();
+                System.exit(0);
+            }
+            default -> {
+                System.out.println("Expected Options" + " are 1/2/3/4/5/6");
+                showMenu();
+            }
+        }
+
+    }
+
+    static void showTable() {
+        if (num == 0) {
+            System.out.println("The table is empty. Please build the table or insert records first.");
+            System.out.println("");
+            showMenu();
+            return;
+        }
+
+        System.out.println("---------------------------------------------------------------------------------");
+        System.out.printf("%-20s | %-15s | %-20s | %-10s | %-5s%n", "Name", "Employee ID", "Designation", "Experience", "Age");
+        System.out.println("---------------------------------------------------------------------------------");
+
+        for (int i = 0; i < num; i++) {
+            System.out.printf("%-20s | %-15d | %-20s | %-10d | %-5d%n",
+                    emp[i].name,
+                    emp[i].code,
+                    emp[i].designation,
+                    emp[i].exp,
+                    emp[i].age);
+        }
+        System.out.println("---------------------------------------------------------------------------------");
+        System.out.println("");
+        showMenu();
+    }
+
+    public static void main(String[] args) {
+        // Handle Ctrl+C or unexpected termination
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            sc.close();
+            System.out.println("\nScanner closed during program termination.");
+        }));
+        
+        showMenu();
+    }
+}
+</code></pre>
+
+        </div>
 
     </div>
 

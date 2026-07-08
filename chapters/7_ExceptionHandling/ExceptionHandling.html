@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exception Handling</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
     <script type="module">
         import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
         mermaid.initialize({ startOnLoad: true, theme: 'dark', fontFamily: 'Inter, sans-serif' });
@@ -27,47 +31,8 @@
             }
         }
     </script>
-    <style>
-        body {
-            background-color: #f9fafb;
-            color: #1f2937;
-            margin: 0;
-            display: flex;
-            height: 100vh;
-            overflow: hidden;
-            font-family: 'Inter', sans-serif;
-        }
 
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #0f172a;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #334155;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #475569;
-        }
-
-        .mermaid {
-            background: rgba(255, 255, 255, 0.02);
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid #334155;
-            display: flex;
-            justify-content: center;
-            margin-top: 2rem;
-            margin-bottom: 2rem;
-            overflow: auto;
-        }
-    </style>
+    <link rel="stylesheet" href="../styles.css">
 </head>
 
 <body>
@@ -75,21 +40,248 @@
     <div
         class="flex-1 p-8 md:p-14 overflow-y-auto bg-gray-50 text-gray-800 prose prose-indigo prose-headings:text-gray-900 max-w-none prose-a:text-blue-600 prose-pre:bg-gray-100 prose-pre:text-gray-900 prose-pre:border prose-pre:border-gray-200">
         <h1>Exception Handling</h1>
-        <p>Content for Exception Handling will go here.</p>
-        <a href="https://www.geeksforgeeks.org/java/exceptions-in-java/">Exceptions</a><br>
-        <div class="grid grid-cols-2 gap-4">
-            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20251008124212466472/object.webp" alt="">
-            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20240730174225/Exceptions-in-Java-1-768.webp"
-                alt="">
+
+        <div class="p-4 mt-4 rounded-lg border border-gray-200">
+            <h3>Exceptions</h3>
+            <p>An Exception in Java is an unwanted or unexpected event occurring during the execution of a program
+                (i.e., at runtime) that disrupts the normal flow of instructions. Exception handling is a mechanism to
+                handle these runtime errors so that the normal flow of the application can be maintained.</p>
+            <ul>
+                <li><strong>Checked Exceptions:</strong> Exceptions checked at compile-time (e.g., IOException,
+                    SQLException).</li>
+                <li><strong>Unchecked Exceptions:</strong> Exceptions checked at runtime (e.g., NullPointerException,
+                    ArithmeticException).</li>
+                <li><strong>Errors:</strong> Irrecoverable conditions (e.g., OutOfMemoryError, StackOverflowError).</li>
+            </ul>
+            <div class="grid grid-cols-2 gap-4 my-4">
+                <img src="https://media.geeksforgeeks.org/wp-content/uploads/20251008124212466472/object.webp"
+                    alt="Exception Hierarchy Object" class="rounded-md">
+                <img src="https://media.geeksforgeeks.org/wp-content/uploads/20240730174225/Exceptions-in-Java-1-768.webp"
+                    alt="Exception Hierarchy Detail" class="rounded-md">
+            </div>
+            <pre class="p-3"><code class="language-java">public class Main {
+    public static void main(String[] args) {
+        int a = 5 / 0; // Throws ArithmeticException
+    }
+}</code></pre>
+            <table class="tabledesign">
+                <caption>Error vs Exception</caption>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Error</th>
+                        <th>Exception</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Recoverability</td>
+                        <td>Impossible to recover (e.g., system crash).</td>
+                        <td>Can be caught and handled to recover gracefully.</td>
+                    </tr>
+                    <tr>
+                        <td>Type</td>
+                        <td>Classified as Unchecked.</td>
+                        <td>Can be Checked or Unchecked.</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <a href="https://www.geeksforgeeks.org/java/java-try-catch-block/">try catch</a><br>
-        <a href="https://www.geeksforgeeks.org/java/java-final-finally-and-finalize/">final finally finalize</a><br>
-        <a href="https://www.geeksforgeeks.org/java/throw-throws-java/">throw throws</a><br>
-        <a href="https://www.geeksforgeeks.org/java/user-defined-custom-exception-in-java/">custom exception</a><br>
-        <a href="https://www.geeksforgeeks.org/java/chained-exceptions-in-java/">chained exceptions</a><br>
-        <a href="https://www.geeksforgeeks.org/java/null-pointer-exception-in-java/">null pointer exception</a><br>
-        <a href="https://www.geeksforgeeks.org/java/exception-handling-with-method-overriding-in-java/">exception
-            handling with method overriding</a><br>
+
+        <div class="p-4 mt-4 rounded-lg border border-gray-200">
+            <h3>try catch</h3>
+            <p>The <code>try</code> block encloses code that might throw an exception, while the <code>catch</code>
+                block is used to handle that specific exception. A single <code>try</code> block can be followed by
+                multiple <code>catch</code> blocks.</p>
+            <ul>
+                <li>The JVM executes the try block, and if an exception occurs, it jumps to the matching catch block.
+                </li>
+                <li>Catch blocks must be ordered from most specific subclass to the most general superclass (e.g.,
+                    ArithmeticException before Exception).</li>
+            </ul>
+            <pre class="p-3"><code class="language-java">try {
+    int[] arr = new int[5];
+    arr[5] = 10; // Throws ArrayIndexOutOfBoundsException
+} catch (ArrayIndexOutOfBoundsException e) {
+    System.out.println("Array index is out of bounds!");
+} catch (Exception e) {
+    System.out.println("Some other exception occurred.");
+}</code></pre>
+        </div>
+
+        <div class="p-4 mt-4 rounded-lg border border-gray-200">
+            <h3>final finally finalize</h3>
+            <p>These three keywords in Java are used in completely different contexts but are often confused due to
+                their similar names.</p>
+            <ul>
+                <li><strong>final:</strong> A keyword used to restrict modification (constant variables, un-overridable
+                    methods, non-inheritable classes).</li>
+                <li><strong>finally:</strong> A block used along with try-catch to execute crucial code (like closing
+                    resources), regardless of whether an exception is thrown or not.</li>
+                <li><strong>finalize:</strong> A method from the Object class called by the Garbage Collector before an
+                    object is destroyed.</li>
+            </ul>
+            <pre class="p-3"><code class="language-java">try {
+    System.out.println("Inside try");
+} catch(Exception e) {
+    System.out.println("Inside catch");
+} finally {
+    System.out.println("This will always execute");
+}</code></pre>
+            <table class="tabledesign">
+                <caption>Differences between final, finally, and finalize</caption>
+                <thead>
+                    <tr>
+                        <th>Keyword</th>
+                        <th>Type</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>final</code></td>
+                        <td>Modifier / Keyword</td>
+                        <td>Applies to classes, methods, and variables to restrict modification.</td>
+                    </tr>
+                    <tr>
+                        <td><code>finally</code></td>
+                        <td>Block</td>
+                        <td>Used in try-catch to ensure important code always runs.</td>
+                    </tr>
+                    <tr>
+                        <td><code>finalize</code></td>
+                        <td>Method</td>
+                        <td>Called by GC to perform cleanup activities before object deletion.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="p-4 mt-4 rounded-lg border border-gray-200">
+            <h3>throw throws</h3>
+            <p>Java provides the <code>throw</code> and <code>throws</code> keywords to handle custom exception throwing
+                and method-level exception declaration.</p>
+            <ul>
+                <li><strong>throw:</strong> Used inside a method to explicitly throw an exception object.</li>
+                <li><strong>throws:</strong> Used in the method signature to declare that this method might throw
+                    specific checked exceptions, passing the responsibility to the caller.</li>
+            </ul>
+            <pre class="p-3"><code class="language-java">public class Test {
+    // Declaring exception using 'throws'
+    static void checkAge(int age) throws ArithmeticException {
+        if (age < 18) {
+            // Explicitly throwing an exception using 'throw'
+            throw new ArithmeticException("Access denied!");
+        }
+    }
+}</code></pre>
+            <table class="tabledesign">
+                <caption>throw vs throws</caption>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>throw</th>
+                        <th>throws</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Usage Location</td>
+                        <td>Inside the method body.</td>
+                        <td>In the method signature.</td>
+                    </tr>
+                    <tr>
+                        <td>Action</td>
+                        <td>Used to explicitly throw a single exception.</td>
+                        <td>Used to declare one or more exceptions a method can throw.</td>
+                    </tr>
+                    <tr>
+                        <td>Instance vs Class</td>
+                        <td>Followed by an instance of an exception (<code>new Exception()</code>).</td>
+                        <td>Followed by exception class names separated by commas.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="p-4 mt-4 rounded-lg border border-gray-200">
+            <h3>custom exception</h3>
+            <p>Java allows you to define your own exception classes by extending the <code>Exception</code> class (for
+                checked exceptions) or the <code>RuntimeException</code> class (for unchecked exceptions).</p>
+            <ul>
+                <li>Provides meaningful, domain-specific error messages.</li>
+                <li>Improves code readability and debugging.</li>
+            </ul>
+            <pre class="p-3"><code class="language-java">// Custom Checked Exception
+class InvalidAgeException extends Exception {
+    public InvalidAgeException(String message) {
+        super(message);
+    }
+}
+
+public class Main {
+    public static void validate(int age) throws InvalidAgeException {
+        if (age < 18) throw new InvalidAgeException("Not eligible to vote");
+    }
+}</code></pre>
+        </div>
+
+        <div class="p-4 mt-4 rounded-lg border border-gray-200">
+            <h3>chained exceptions</h3>
+            <p>Chained Exceptions allow you to relate one exception to another. This is highly useful when one exception
+                causes another, allowing you to trace back to the original root cause.</p>
+            <ul>
+                <li>The <code>getCause()</code> method returns the actual underlying exception.</li>
+                <li>The <code>initCause()</code> method sets the cause of an exception.</li>
+            </ul>
+            <pre class="p-3"><code class="language-java">try {
+    int result = 10 / 0; // Throws ArithmeticException
+} catch (ArithmeticException e) {
+    // Wrapping the original exception in a new exception
+    throw new RuntimeException("Calculation failed", e);
+}</code></pre>
+        </div>
+
+        <div class="p-4 mt-4 rounded-lg border border-gray-200">
+            <h3>null pointer exception</h3>
+            <p><code>NullPointerException</code> (NPE) is a common unchecked exception in Java that occurs when an
+                application attempts to use <code>null</code> where an object instance is required.</p>
+            <ul>
+                <li>Calling the instance method of a null object.</li>
+                <li>Accessing or modifying the field of a null object.</li>
+                <li>Taking the length of a null array.</li>
+            </ul>
+            <pre class="p-3"><code class="language-java">String str = null;
+// This line throws a NullPointerException
+System.out.println(str.length());</code></pre>
+        </div>
+
+        <div class="p-4 mt-4 rounded-lg border border-gray-200">
+            <h3>exception handling with method overriding</h3>
+            <p>When overriding a method in a subclass, Java imposes specific rules regarding the checked exceptions the
+                overriding method can throw.</p>
+            <ul>
+                <li><strong>If superclass method does not declare an exception:</strong> The subclass overridden method
+                    cannot declare any new checked exception, but can declare unchecked exceptions.</li>
+                <li><strong>If superclass method declares an exception:</strong> The subclass overridden method can
+                    declare the same exception, its subclasses, or no exception at all, but it cannot declare parent
+                    exceptions or new, broader checked exceptions.</li>
+            </ul>
+            <pre class="p-3"><code class="language-java">class Parent {
+    void display() throws IOException {
+        System.out.println("Parent display");
+    }
+}
+
+class Child extends Parent {
+    // Valid: Throwing subclass of IOException (FileNotFoundException)
+    // Invalid: Throwing Exception (broader than IOException)
+    @Override
+    void display() throws FileNotFoundException {
+        System.out.println("Child display");
+    }
+}</code></pre>
+        </div>
 
 
     </div>

@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Collections</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
     <script type="module">
         import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
         mermaid.initialize({ startOnLoad: true, theme: 'dark', fontFamily: 'Inter, sans-serif' });
@@ -27,47 +31,8 @@
             }
         }
     </script>
-    <style>
-        body {
-            background-color: #f9fafb;
-            color: #1f2937;
-            margin: 0;
-            display: flex;
-            height: 100vh;
-            overflow: hidden;
-            font-family: 'Inter', sans-serif;
-        }
-
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #0f172a;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #334155;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #475569;
-        }
-
-        .mermaid {
-            background: rgba(255, 255, 255, 0.02);
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid #334155;
-            display: flex;
-            justify-content: center;
-            margin-top: 2rem;
-            margin-bottom: 2rem;
-            overflow: auto;
-        }
-    </style>
+    
+    <link rel="stylesheet" href="../styles.css">
 </head>
 
 <body>
@@ -75,32 +40,170 @@
     <div
         class="flex-1 p-8 md:p-14 overflow-y-auto bg-gray-50 text-gray-800 prose prose-indigo prose-headings:text-gray-900 max-w-none prose-a:text-blue-600 prose-pre:bg-gray-100 prose-pre:text-gray-900 prose-pre:border prose-pre:border-gray-200">
         <h1>Collections</h1>
-        <p>Content for Collections will go here.</p>
-        <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script> -->
-        <!-- <div class="p-4 mt-4 rounded-lg border border-gray-200">
-            <h3></h3>
-            <p></p>
+        <div class="p-4 mt-4 rounded-lg border border-gray-200">
+            <h3>Collections Class in Java</h3>
+            <p>The Collections class in Java is a utility class provided by the Java Collections Framework that contains
+                static methods for performing common operations on collections. It simplifies tasks like sorting,
+                searching, and modifying collection elements efficiently.</p>
             <ul>
-                <li></li>
+                <li>Provides methods such as sort(), reverse(), shuffle(), and binarySearch()</li>
+                <li>Helps improve code readability and performance without manual implementation</li>
             </ul>
-            <img src="" alt="">
-            <pre class="p-3"><code class="language-java"></code></pre>
-            <table>
-                <thead class="bg-blue-100">
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <th class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs"></th>
+            <pre class="p-3"><code class="language-java">import java.util.ArrayList;
+import java.util.Collections;
+
+public class Geeks {
+    public static void main(String[] args) {
+
+        ArrayList<String> al = new ArrayList<>();
+
+        al.add("Apple");
+        al.add("Banana");
+        al.add("Apple");
+
+        Collections.sort(al); // Using Collections class
+
+        System.out.println(al);
+    }
+}
+// [Apple, Banana, Apple]</code></pre>
+
+            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20260410143913538977/4.webp" alt="collections">
+
+            <table class="tabledesign">
+                <thead>
+                    <tr>
+                        <th colspan="2">Java Collections Framework: Core Implemented Classes</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm"></td>
+                    <!-- 1. List Implemented Classes -->
+                    <tr class="subheader-row">
+                        <td colspan="2"><strong>1. List Implemented Classes</strong> (Ordered collections, allow
+                            duplicates)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ArrayList</strong></td>
+                        <td>A resizable array that maintains insertion order. Allows duplicates and provides fast random
+                            access.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>LinkedList</strong></td>
+                        <td>Implements a doubly-linked list. Can be used as List, Stack, or Queue.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vector</strong></td>
+                        <td>Synchronized resizable array. Slower than ArrayList but thread-safe.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Stack</strong></td>
+                        <td>Extends Vector. Follows LIFO (Last-In-First-Out) principle for storing elements.</td>
+                    </tr>
+
+                    <!-- 2. Set Implemented Classes -->
+                    <tr class="subheader-row">
+                        <td colspan="2"><strong>2. Set Implemented Classes</strong> (Unordered collections, do not allow
+                            duplicates)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>HashSet</strong></td>
+                        <td>Stores elements in a hash table. Offers fast insertion, deletion, and search.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>LinkedHashSet</strong></td>
+                        <td>Maintains insertion order using a doubly-linked list internally.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>TreeSet</strong></td>
+                        <td>Stores elements in sorted order. Implements SortedSet and ensures natural or custom
+                            ordering.</td>
+                    </tr>
+
+                    <!-- 3. Queue Implemented Classes -->
+                    <tr class="subheader-row">
+                        <td colspan="2"><strong>3. Queue Implemented Classes</strong> (Hold elements prior to
+                            processing)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PriorityQueue</strong></td>
+                        <td>Orders elements based on priority or a custom comparator.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ArrayDeque</strong></td>
+                        <td>Double-ended queue using a resizable array. Can function as a stack or queue.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>LinkedList</strong></td>
+                        <td>Can also be used as a Queue. Maintains insertion order and allows duplicates.</td>
+                    </tr>
+
+                    <!-- 4. Map Implemented Classes -->
+                    <tr class="subheader-row">
+                        <td colspan="2"><strong>4. Map Implemented Classes</strong> (Key-value pairs with unique keys)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>HashMap</strong></td>
+                        <td>Stores key-value pairs with fast access. Allows one null key and multiple null values.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>LinkedHashMap</strong></td>
+                        <td>Maintains insertion order of keys.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>TreeMap</strong></td>
+                        <td>Keys are sorted either naturally or with a custom comparator.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hashtable</strong></td>
+                        <td>Synchronized map. Does not allow null keys or null values.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>EnumMap</strong></td>
+                        <td>Specialized map for enum keys. Efficient storage and fast access.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>WeakHashMap</strong></td>
+                        <td>Uses weak references for keys. Unreferenced keys can be garbage collected.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>IdentityHashMap</strong></td>
+                        <td>Uses reference equality (==) instead of equals() for key comparison.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ConcurrentHashMap</strong></td>
+                        <td>Thread-safe map optimized for concurrent access by multiple threads.</td>
+                    </tr>
+
+                    <!-- 5. Abstract Base Classes -->
+                    <tr class="subheader-row">
+                        <td colspan="2"><strong>5. Abstract Base Classes</strong> (Provide common functionalities)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>AbstractCollection</strong></td>
+                        <td>Base class for implementing custom collections.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>AbstractList</strong></td>
+                        <td>Base class for List implementations. Provides default methods for lists.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>AbstractSet</strong></td>
+                        <td>Base class for Set implementations. Provides default methods for sets.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>AbstractMap</strong></td>
+                        <td>Base class for Map implementations. Simplifies map creation.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>AbstractQueue</strong></td>
+                        <td>Base class for Queue implementations. Provides basic queue operations.</td>
                     </tr>
                 </tbody>
             </table>
-        </div> -->
+
+
+        </div>
     </div>
 
     <script>

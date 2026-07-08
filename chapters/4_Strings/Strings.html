@@ -31,47 +31,8 @@
             }
         }
     </script>
-    <style>
-        body {
-            background-color: #f9fafb;
-            color: #1f2937;
-            margin: 0;
-            display: flex;
-            height: 100vh;
-            overflow: hidden;
-            font-family: 'Inter', sans-serif;
-        }
-
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #0f172a;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #334155;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #475569;
-        }
-
-        .mermaid {
-            background: rgba(255, 255, 255, 0.02);
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid #334155;
-            display: flex;
-            justify-content: center;
-            margin-top: 2rem;
-            margin-bottom: 2rem;
-            overflow: auto;
-        }
-    </style>
+    
+    <link rel="stylesheet" href="../styles.css">
 </head>
 
 <body>
@@ -187,81 +148,81 @@
             <!-- Common String Methods -->
             <div class="bg-gray-50 p-3 rounded">
                 <strong>Common String Methods:</strong>
-                <table class="table-auto border-collapse border border-gray-500 w-full text-sm">
+                <table class="tabledesign">
                     <thead>
-                        <tr class="bg-gray-50">
-                            <th class="border border-gray-500 p-2">Method</th>
-                            <th class="border border-gray-500 p-2">Description</th>
+                        <tr>
+                            <th>Method</th>
+                            <th>Description</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="border p-2"><code>int length()</code></td>
-                            <td class="border p-2">Returns number of characters</td>
+                            <td><code>int length()</code></td>
+                            <td>Returns number of characters</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>char charAt(int i)</code></td>
-                            <td class="border p-2">Character at index i</td>
+                            <td><code>char charAt(int i)</code></td>
+                            <td>Character at index i</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>String substring(int i)</code></td>
-                            <td class="border p-2">Substring from i to end</td>
+                            <td><code>String substring(int i)</code></td>
+                            <td>Substring from i to end</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>String substring(int i, int j)</code></td>
-                            <td class="border p-2">Substring from i to j-1</td>
+                            <td><code>String substring(int i, int j)</code></td>
+                            <td>Substring from i to j-1</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>String concat(String str)</code></td>
-                            <td class="border p-2">Concatenates str</td>
+                            <td><code>String concat(String str)</code></td>
+                            <td>Concatenates str</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>int indexOf(String s)</code></td>
-                            <td class="border p-2">First occurrence index</td>
+                            <td><code>int indexOf(String s)</code></td>
+                            <td>First occurrence index</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>int lastIndexOf(String s)</code></td>
-                            <td class="border p-2">Last occurrence index</td>
+                            <td><code>int lastIndexOf(String s)</code></td>
+                            <td>Last occurrence index</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>boolean equals(Object o)</code></td>
-                            <td class="border p-2">Compares strings</td>
+                            <td><code>boolean equals(Object o)</code></td>
+                            <td>Compares strings</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>boolean equalsIgnoreCase(String s)</code></td>
-                            <td class="border p-2">Compares ignoring case</td>
+                            <td><code>boolean equalsIgnoreCase(String s)</code></td>
+                            <td>Compares ignoring case</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>int compareTo(String s)</code></td>
-                            <td class="border p-2">Lexicographic comparison</td>
+                            <td><code>int compareTo(String s)</code></td>
+                            <td>Lexicographic comparison</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>String toLowerCase()</code></td>
-                            <td class="border p-2">Convert to lowercase</td>
+                            <td><code>String toLowerCase()</code></td>
+                            <td>Convert to lowercase</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>String toUpperCase()</code></td>
-                            <td class="border p-2">Convert to uppercase</td>
+                            <td><code>String toUpperCase()</code></td>
+                            <td>Convert to uppercase</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>String trim()</code></td>
-                            <td class="border p-2">Remove leading/trailing spaces</td>
+                            <td><code>String trim()</code></td>
+                            <td>Remove leading/trailing spaces</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>String replace(char old, char new)</code></td>
-                            <td class="border p-2">Replace characters</td>
+                            <td><code>String replace(char old, char new)</code></td>
+                            <td>Replace characters</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>boolean contains(CharSequence s)</code></td>
-                            <td class="border p-2">Check substring presence</td>
+                            <td><code>boolean contains(CharSequence s)</code></td>
+                            <td>Check substring presence</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>char[] toCharArray()</code></td>
-                            <td class="border p-2">Convert to char array</td>
+                            <td><code>char[] toCharArray()</code></td>
+                            <td>Convert to char array</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>boolean startsWith(String prefix)</code></td>
-                            <td class="border p-2">Check prefix</td>
+                            <td><code>boolean startsWith(String prefix)</code></td>
+                            <td>Check prefix</td>
                         </tr>
                     </tbody>
                 </table>
@@ -270,144 +231,144 @@
             <!-- StringBuffer Methods -->
             <div class="bg-gray-50 p-3 rounded">
                 <strong>StringBuffer Methods:</strong>
-                <table class="table-auto border-collapse border border-gray-500 w-full text-sm">
+                <table class="tabledesign">
                     <thead>
-                        <tr class="bg-gray-50">
-                            <th class="border border-gray-500 p-2">Method</th>
-                            <th class="border border-gray-500 p-2">Description</th>
-                            <th class="border border-gray-500 p-2">Syntax</th>
+                        <tr>
+                            <th>Method</th>
+                            <th>Description</th>
+                            <th>Syntax</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="border p-2"><code>append()</code></td>
-                            <td class="border p-2">Add text at end</td>
-                            <td class="border p-2">sb.append("str");</td>
+                            <td><code>append()</code></td>
+                            <td>Add text at end</td>
+                            <td>sb.append("str");</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>appendCodePoint()</code></td>
-                            <td class="border p-2">Append Unicode code point</td>
-                            <td class="border p-2">sb.appendCodePoint(int cp);</td>
+                            <td><code>appendCodePoint()</code></td>
+                            <td>Append Unicode code point</td>
+                            <td>sb.appendCodePoint(int cp);</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>length()</code></td>
-                            <td class="border p-2">Length of buffer</td>
-                            <td class="border p-2">sb.length();</td>
+                            <td><code>length()</code></td>
+                            <td>Length of buffer</td>
+                            <td>sb.length();</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>capacity()</code></td>
-                            <td class="border p-2">Allocated capacity</td>
-                            <td class="border p-2">sb.capacity();</td>
+                            <td><code>capacity()</code></td>
+                            <td>Allocated capacity</td>
+                            <td>sb.capacity();</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>ensureCapacity()</code></td>
-                            <td class="border p-2">Ensure minimum capacity</td>
-                            <td class="border p-2">sb.ensureCapacity(n);</td>
+                            <td><code>ensureCapacity()</code></td>
+                            <td>Ensure minimum capacity</td>
+                            <td>sb.ensureCapacity(n);</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>trimToSize()</code></td>
-                            <td class="border p-2">Minimize storage</td>
-                            <td class="border p-2">sb.trimToSize();</td>
+                            <td><code>trimToSize()</code></td>
+                            <td>Minimize storage</td>
+                            <td>sb.trimToSize();</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>charAt()</code></td>
-                            <td class="border p-2">Char at index</td>
-                            <td class="border p-2">sb.charAt(i);</td>
+                            <td><code>charAt()</code></td>
+                            <td>Char at index</td>
+                            <td>sb.charAt(i);</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>codePointAt()</code></td>
-                            <td class="border p-2">Unicode code point at index</td>
-                            <td class="border p-2">sb.codePointAt(i);</td>
+                            <td><code>codePointAt()</code></td>
+                            <td>Unicode code point at index</td>
+                            <td>sb.codePointAt(i);</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>codePointBefore()</code></td>
-                            <td class="border p-2">Code point before index</td>
-                            <td class="border p-2">sb.codePointBefore(i);</td>
+                            <td><code>codePointBefore()</code></td>
+                            <td>Code point before index</td>
+                            <td>sb.codePointBefore(i);</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>codePointCount()</code></td>
-                            <td class="border p-2">Count code points in range</td>
-                            <td class="border p-2">sb.codePointCount(start,end);</td>
+                            <td><code>codePointCount()</code></td>
+                            <td>Count code points in range</td>
+                            <td>sb.codePointCount(start,end);</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>delete()</code></td>
-                            <td class="border p-2">Delete range</td>
-                            <td class="border p-2">sb.delete(start,end);</td>
+                            <td><code>delete()</code></td>
+                            <td>Delete range</td>
+                            <td>sb.delete(start,end);</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>deleteCharAt()</code></td>
-                            <td class="border p-2">Delete char at index</td>
-                            <td class="border p-2">sb.deleteCharAt(i);</td>
+                            <td><code>deleteCharAt()</code></td>
+                            <td>Delete char at index</td>
+                            <td>sb.deleteCharAt(i);</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>insert()</code></td>
-                            <td class="border p-2">Insert text</td>
-                            <td class="border p-2">sb.insert(pos,"str");</td>
+                            <td><code>insert()</code></td>
+                            <td>Insert text</td>
+                            <td>sb.insert(pos,"str");</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>replace()</code></td>
-                            <td class="border p-2">Replace range</td>
-                            <td class="border p-2">sb.replace(start,end,"str");</td>
+                            <td><code>replace()</code></td>
+                            <td>Replace range</td>
+                            <td>sb.replace(start,end,"str");</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>reverse()</code></td>
-                            <td class="border p-2">Reverse buffer</td>
-                            <td class="border p-2">sb.reverse();</td>
+                            <td><code>reverse()</code></td>
+                            <td>Reverse buffer</td>
+                            <td>sb.reverse();</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>setCharAt()</code></td>
-                            <td class="border p-2">Set char at index</td>
-                            <td class="border p-2">sb.setCharAt(i,'c');</td>
+                            <td><code>setCharAt()</code></td>
+                            <td>Set char at index</td>
+                            <td>sb.setCharAt(i,'c');</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>setLength()</code></td>
-                            <td class="border p-2">Set buffer length</td>
-                            <td class="border p-2">sb.setLength(n);</td>
+                            <td><code>setLength()</code></td>
+                            <td>Set buffer length</td>
+                            <td>sb.setLength(n);</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>substring()</code></td>
-                            <td class="border p-2">Return substring</td>
-                            <td class="border p-2">sb.substring(start,end);</td>
+                            <td><code>substring()</code></td>
+                            <td>Return substring</td>
+                            <td>sb.substring(start,end);</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>subSequence()</code></td>
-                            <td class="border p-2">Return subsequence</td>
-                            <td class="border p-2">sb.subSequence(start,end);</td>
+                            <td><code>subSequence()</code></td>
+                            <td>Return subsequence</td>
+                            <td>sb.subSequence(start,end);</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>toString()</code></td>
-                            <td class="border p-2">Convert to String</td>
-                            <td class="border p-2">sb.toString();</td>
+                            <td><code>toString()</code></td>
+                            <td>Convert to String</td>
+                            <td>sb.toString();</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>indexOf()</code></td>
-                            <td class="border p-2">First occurrence index</td>
-                            <td class="border p-2">sb.indexOf("str");</td>
+                            <td><code>indexOf()</code></td>
+                            <td>First occurrence index</td>
+                            <td>sb.indexOf("str");</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>lastIndexOf()</code></td>
-                            <td class="border p-2">Last occurrence index</td>
-                            <td class="border p-2">sb.lastIndexOf("str");</td>
+                            <td><code>lastIndexOf()</code></td>
+                            <td>Last occurrence index</td>
+                            <td>sb.lastIndexOf("str");</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>getChars()</code></td>
-                            <td class="border p-2">Copy chars to array</td>
-                            <td class="border p-2">sb.getChars(srcStart,srcEnd,dst,dstStart);</td>
+                            <td><code>getChars()</code></td>
+                            <td>Copy chars to array</td>
+                            <td>sb.getChars(srcStart,srcEnd,dst,dstStart);</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>offsetByCodePoints()</code></td>
-                            <td class="border p-2">Index offset by code points</td>
-                            <td class="border p-2">sb.offsetByCodePoints(i,offset);</td>
+                            <td><code>offsetByCodePoints()</code></td>
+                            <td>Index offset by code points</td>
+                            <td>sb.offsetByCodePoints(i,offset);</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>chars()</code></td>
-                            <td class="border p-2">Stream of chars</td>
-                            <td class="border p-2">sb.chars();</td>
+                            <td><code>chars()</code></td>
+                            <td>Stream of chars</td>
+                            <td>sb.chars();</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>codePoints()</code></td>
-                            <td class="border p-2">Stream of code points</td>
-                            <td class="border p-2">sb.codePoints();</td>
+                            <td><code>codePoints()</code></td>
+                            <td>Stream of code points</td>
+                            <td>sb.codePoints();</td>
                         </tr>
 
                     </tbody>
@@ -444,104 +405,104 @@
             <!-- Important Methods -->
             <div class="bg-gray-50 p-3 rounded">
                 <strong>Important Methods:</strong>
-                <table class="table-auto border-collapse border border-gray-500 w-full text-sm">
+                <table class="tabledesign">
                     <thead>
-                        <tr class="bg-gray-50">
-                            <th class="border border-gray-500 p-2">Method</th>
-                            <th class="border border-gray-500 p-2">Description</th>
-                            <th class="border border-gray-500 p-2">Syntax</th>
+                        <tr>
+                            <th>Method</th>
+                            <th>Description</th>
+                            <th>Syntax</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="border p-2"><code>append()</code></td>
-                            <td class="border p-2">Add text at end</td>
-                            <td class="border p-2">sb.append("str");</td>
+                            <td><code>append()</code></td>
+                            <td>Add text at end</td>
+                            <td>sb.append("str");</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>insert()</code></td>
-                            <td class="border p-2">Insert text</td>
-                            <td class="border p-2">sb.insert(pos,"str");</td>
+                            <td><code>insert()</code></td>
+                            <td>Insert text</td>
+                            <td>sb.insert(pos,"str");</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>delete()</code></td>
-                            <td class="border p-2">Delete range</td>
-                            <td class="border p-2">sb.delete(start,end);</td>
+                            <td><code>delete()</code></td>
+                            <td>Delete range</td>
+                            <td>sb.delete(start,end);</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>deleteCharAt()</code></td>
-                            <td class="border p-2">Delete char at index</td>
-                            <td class="border p-2">sb.deleteCharAt(i);</td>
+                            <td><code>deleteCharAt()</code></td>
+                            <td>Delete char at index</td>
+                            <td>sb.deleteCharAt(i);</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>replace()</code></td>
-                            <td class="border p-2">Replace range</td>
-                            <td class="border p-2">sb.replace(start,end,"str");</td>
+                            <td><code>replace()</code></td>
+                            <td>Replace range</td>
+                            <td>sb.replace(start,end,"str");</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>reverse()</code></td>
-                            <td class="border p-2">Reverse buffer</td>
-                            <td class="border p-2">sb.reverse();</td>
+                            <td><code>reverse()</code></td>
+                            <td>Reverse buffer</td>
+                            <td>sb.reverse();</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>length()</code></td>
-                            <td class="border p-2">Length of buffer</td>
-                            <td class="border p-2">sb.length();</td>
+                            <td><code>length()</code></td>
+                            <td>Length of buffer</td>
+                            <td>sb.length();</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>capacity()</code></td>
-                            <td class="border p-2">Allocated capacity</td>
-                            <td class="border p-2">sb.capacity();</td>
+                            <td><code>capacity()</code></td>
+                            <td>Allocated capacity</td>
+                            <td>sb.capacity();</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>ensureCapacity()</code></td>
-                            <td class="border p-2">Ensure minimum capacity</td>
-                            <td class="border p-2">sb.ensureCapacity(n);</td>
+                            <td><code>ensureCapacity()</code></td>
+                            <td>Ensure minimum capacity</td>
+                            <td>sb.ensureCapacity(n);</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>trimToSize()</code></td>
-                            <td class="border p-2">Minimize storage</td>
-                            <td class="border p-2">sb.trimToSize();</td>
+                            <td><code>trimToSize()</code></td>
+                            <td>Minimize storage</td>
+                            <td>sb.trimToSize();</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>charAt()</code></td>
-                            <td class="border p-2">Char at index</td>
-                            <td class="border p-2">sb.charAt(i);</td>
+                            <td><code>charAt()</code></td>
+                            <td>Char at index</td>
+                            <td>sb.charAt(i);</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>setCharAt()</code></td>
-                            <td class="border p-2">Set char at index</td>
-                            <td class="border p-2">sb.setCharAt(i,'c');</td>
+                            <td><code>setCharAt()</code></td>
+                            <td>Set char at index</td>
+                            <td>sb.setCharAt(i,'c');</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>setLength()</code></td>
-                            <td class="border p-2">Set buffer length</td>
-                            <td class="border p-2">sb.setLength(n);</td>
+                            <td><code>setLength()</code></td>
+                            <td>Set buffer length</td>
+                            <td>sb.setLength(n);</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>substring()</code></td>
-                            <td class="border p-2">Return substring</td>
-                            <td class="border p-2">sb.substring(start,end);</td>
+                            <td><code>substring()</code></td>
+                            <td>Return substring</td>
+                            <td>sb.substring(start,end);</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>subSequence()</code></td>
-                            <td class="border p-2">Return subsequence</td>
-                            <td class="border p-2">sb.subSequence(start,end);</td>
+                            <td><code>subSequence()</code></td>
+                            <td>Return subsequence</td>
+                            <td>sb.subSequence(start,end);</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>toString()</code></td>
-                            <td class="border p-2">Convert to String</td>
-                            <td class="border p-2">sb.toString();</td>
+                            <td><code>toString()</code></td>
+                            <td>Convert to String</td>
+                            <td>sb.toString();</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>indexOf()</code></td>
-                            <td class="border p-2">First occurrence index</td>
-                            <td class="border p-2">sb.indexOf("str");</td>
+                            <td><code>indexOf()</code></td>
+                            <td>First occurrence index</td>
+                            <td>sb.indexOf("str");</td>
                         </tr>
                         <tr>
-                            <td class="border p-2"><code>lastIndexOf()</code></td>
-                            <td class="border p-2">Last occurrence index</td>
-                            <td class="border p-2">sb.lastIndexOf("str");</td>
+                            <td><code>lastIndexOf()</code></td>
+                            <td>Last occurrence index</td>
+                            <td>sb.lastIndexOf("str");</td>
                         </tr>
                     </tbody>
                 </table>
@@ -550,39 +511,39 @@
             <!-- Comparison Table -->
             <div class="bg-gray-50 p-3 rounded">
                 <strong>String vs StringBuilder vs StringBuffer:</strong>
-                <table class="table-auto border-collapse border border-gray-500 w-full text-sm">
+                <table class="tabledesign">
                     <thead>
-                        <tr class="bg-gray-50">
-                            <th class="border border-gray-500 p-2">Features</th>
-                            <th class="border border-gray-500 p-2">String</th>
-                            <th class="border border-gray-500 p-2">StringBuilder</th>
-                            <th class="border border-gray-500 p-2">StringBuffer</th>
+                        <tr>
+                            <th>Features</th>
+                            <th>String</th>
+                            <th>StringBuilder</th>
+                            <th>StringBuffer</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="border p-2">Mutability</td>
-                            <td class="border p-2">Immutable</td>
-                            <td class="border p-2">Mutable</td>
-                            <td class="border p-2">Mutable</td>
+                            <td>Mutability</td>
+                            <td>Immutable</td>
+                            <td>Mutable</td>
+                            <td>Mutable</td>
                         </tr>
                         <tr>
-                            <td class="border p-2">Thread-Safe</td>
-                            <td class="border p-2">Yes</td>
-                            <td class="border p-2">No</td>
-                            <td class="border p-2">Yes</td>
+                            <td>Thread-Safe</td>
+                            <td>Yes</td>
+                            <td>No</td>
+                            <td>Yes</td>
                         </tr>
                         <tr>
-                            <td class="border p-2">Performance</td>
-                            <td class="border p-2">Slow (new object each time)</td>
-                            <td class="border p-2">Fast (no sync overhead)</td>
-                            <td class="border p-2">Slower (synchronized)</td>
+                            <td>Performance</td>
+                            <td>Slow (new object each time)</td>
+                            <td>Fast (no sync overhead)</td>
+                            <td>Slower (synchronized)</td>
                         </tr>
                         <tr>
-                            <td class="border p-2">Use Case</td>
-                            <td class="border p-2">Fixed strings</td>
-                            <td class="border p-2">Single-threaded manipulation</td>
-                            <td class="border p-2">Multi-threaded manipulation</td>
+                            <td>Use Case</td>
+                            <td>Fixed strings</td>
+                            <td>Single-threaded manipulation</td>
+                            <td>Multi-threaded manipulation</td>
                         </tr>
                     </tbody>
                 </table>

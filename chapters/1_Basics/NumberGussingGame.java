@@ -11,35 +11,35 @@ public class NumberGussingGame {
     public static void main(String[] args) {
 
         System.out.println("welcome to the Number Guessing Game\n between 1 and 100 ");
-        Scanner sc = new Scanner(System.in);
+        try (Scanner sc = new Scanner(System.in)) {
+            int SystemSelectedNumber = (int) (Math.random() * 100 + 1);
+            // System.out.println(SystemSelectedNumber);
 
-        int SystemSelectedNumber = (int) (Math.random() * 100 + 1);
-        // System.out.println(SystemSelectedNumber);
+            int attempts = 5;
 
-        int attempts = 5;
+            while (attempts > 0) {
+                System.out.print("You have " + attempts + " attempts left.\n Guess the number: ");
+                int typedNumber = sc.nextInt();
 
-        while (attempts > 0) {
-            System.out.print("You have " + attempts + " attempts left.\n Guess the number: ");
-            int typedNumber = sc.nextInt();
+                if (typedNumber < 1 || typedNumber > 100) {
+                    System.out.println("Invalid number! Please enter between 1 and 100.");
+                    // ⚠️ Do NOT decrement attempts here
+                    continue;
+                }
 
-            if (typedNumber < 1 || typedNumber > 100) {
-                System.out.println("Invalid number! Please enter between 1 and 100.");
-                // ⚠️ Do NOT decrement attempts here
-                continue;
+                if (typedNumber == SystemSelectedNumber) {
+                    System.out.println("You Win!");
+                    sc.close();
+                    return;
+                } else if (typedNumber > SystemSelectedNumber) {
+                    System.out.println("You guessed higher");
+                } else {
+                    System.out.println("You guessed lower");
+                }
+                attempts--;
             }
-
-            if (typedNumber == SystemSelectedNumber) {
-                System.out.println("You Win!");
-                sc.close();
-                return;
-            } else if (typedNumber > SystemSelectedNumber) {
-                System.out.println("You guessed higher");
-            } else {
-                System.out.println("You guessed lower");
-            }
-            attempts--;
+            System.out.println("The correct number was: " + SystemSelectedNumber);
         }
-        System.out.println("The correct number was: " + SystemSelectedNumber);
-        sc.close();
+        // System.out.println(SystemSelectedNumber);
     }
 }

@@ -1,0 +1,77 @@
+.tabledesign {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    border: 1px solid #9ca3af !important;
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.tabledesign th {
+    background-color: #bfdbfe !important;
+    color: #1f2937 !important;
+    border: 1px solid #9ca3af !important;
+    padding: 0.75rem !important;
+    text-align: left !important;
+}
+
+.tabledesign td {
+    border: 1px solid #9ca3af !important;
+    padding: 0.75rem !important;
+}
+
+.tabledesign tbody tr:nth-child(odd) {
+    background-color: #ffffff !important;
+}
+
+.tabledesign tbody tr:nth-child(even) {
+    background-color: #f3f4f6 !important;
+}
+
+/*customised for list like table */
+.tabledesign .subheader-row td {
+    background-color: #caf1d8 !important;
+    /* Elegant light gray background */
+    color: #0f172a !important;
+    /* Darker text for readability */
+    font-size: 0.95rem !important;
+}
+
+body {
+    background-color: #f9fafb;
+    color: #1f2937;
+    margin: 0;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+}
+
+.mermaid {
+    background: rgba(255, 255, 255, 0.02);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #334155;
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    overflow: auto;
+}

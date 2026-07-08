@@ -4,7 +4,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script> -->
 
     
-        <!-- <div class="p-4 mt-4 rounded-lg border border-gray-200">
+        <div class="p-4 mt-4 rounded-lg border border-gray-200">
             <h3></h3>
             <p></p>
             <ul>
@@ -12,16 +12,104 @@
             </ul>
             <img src="" alt="">
             <pre class="p-3"><code class="language-java"></code></pre>
-            <table>
+            <table class="tabledesign">
+                <caption></caption>
                 <thead class="bg-blue-100">
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <th class="px-4 py-3 font-semibold text-gray-700 border border-gray-300 uppercase tracking-wide text-xs"></th>
+                    <tr>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="hover:bg-gray-50 bg-gray-100 transition-colors">
-                        <td class="px-4 py-3 border border-gray-200 text-gray-700 font-mono text-sm"></td>
+                    <tr>
+                        <td></td>
                     </tr>
                 </tbody>
-            </table>
-        </div> -->
+        </table>
+
+
+        .tabledesign {
+            width: 100% !important;
+            border-collapse: collapse !important;
+            border: 1px solid #9ca3af !important;
+            margin-top: 1rem !important;
+            margin-bottom: 1rem !important;
+        }
+
+        .tabledesign th {
+            background-color: #bfdbfe !important;
+            color: #1f2937 !important;
+            border: 1px solid #9ca3af !important;
+            padding: 0.75rem !important;
+            text-align: left !important;
+        }
+
+        .tabledesign td {
+            border: 1px solid #9ca3af !important;
+            padding: 0.75rem !important;
+        }
+
+        .tabledesign tbody tr:nth-child(odd) {
+            background-color: #ffffff !important;
+        }
+
+        .tabledesign tbody tr:nth-child(even) {
+            background-color: #f3f4f6 !important;
+        }
+
+        .tabledesign .subheader-row td {
+            background-color: #e2e8f0 !important; /* Elegant light gray background */
+            color: #0f172a !important;            /* Darker text for readability */
+            font-size: 0.95rem !important;
+        }
+_____________________________________________________________________
+
+        list style table --
+        
+
+        
+         <table class="tabledesign">
+    <thead>
+        <tr>
+            <th colspan="2"></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <!-- CATEGORY 1 -->
+        <tr class="subheader-row">
+            <td colspan="2"><strong></strong></td>
+        </tr>
+        <tr>
+            <td><strong></strong></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><strong></strong></td>
+            <td></td>
+        </tr>
+
+        <!-- CATEGORY 2 -->
+        <tr class="subheader-row">
+            <td colspan="2"><strong></strong></td>
+        </tr>
+        <tr>
+            <td><strong></strong></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><strong></strong></td>
+            <td></td>
+        </tr>
+
+    </tbody>
+</table>
+
+__________________________________________________
+        
+
+        <div class="p-4 rounded-lg mt-4 border border-blue-500">
+            <h2>Projects</h2>
+            <h4></h4>
+            <pre class="p-3"><code class="language-java"></code></pre>
+
+        </div>

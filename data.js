@@ -63,6 +63,10 @@ export const defaultState = {
                         "completed": true,
                         "notes": ""
                     },
+                    "Project: Calculator": {
+                        "completed": true,
+                        "notes": "made a simple calculator"
+                    },
                     "Project: Number Guessing Game": {
                         "completed": true,
                         "notes": "made a simple number guessing game"
@@ -115,8 +119,8 @@ export const defaultState = {
                         "completed": true,
                         "notes": ""
                     },
-                    "Projects: Tic-Tac-Toe Game": {
-                        "completed": true,
+                    "Project: TicTacToe": {
+                        "completed": false,
                         "notes": ""
                     }
                 }

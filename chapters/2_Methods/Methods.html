@@ -31,47 +31,8 @@
             }
         }
     </script>
-    <style>
-        body {
-            background-color: #f9fafb;
-            color: #1f2937;
-            margin: 0;
-            display: flex;
-            height: 100vh;
-            overflow: hidden;
-            font-family: 'Inter', sans-serif;
-        }
-
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #0f172a;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #334155;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #475569;
-        }
-
-        .mermaid {
-            background: rgba(255, 255, 255, 0.02);
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid #334155;
-            display: flex;
-            justify-content: center;
-            margin-top: 2rem;
-            margin-bottom: 2rem;
-            overflow: auto;
-        }
-    </style>
+    
+    <link rel="stylesheet" href="../styles.css">
 </head>
 
 <body>
@@ -173,39 +134,39 @@ public class Demo {
             <p>In Java, methods can be <b>Static</b> or <b>Instance</b>. Both serve different purposes:</p>
 
             <!-- Comparison Table -->
-            <table class="table-auto w-full text-left border-collapse">
+            <table class="tabledesign">
                 <thead>
-                    <tr class="bg-gray-200 text-gray-900">
-                        <th class="px-4 py-2">Aspect</th>
-                        <th class="px-4 py-2">Static Method</th>
-                        <th class="px-4 py-2">Instance Method</th>
+                    <tr>
+                        <th>Aspect</th>
+                        <th>Static Method</th>
+                        <th>Instance Method</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="border px-4 py-2">Belongs To</td>
-                        <td class="border px-4 py-2">Class itself</td>
-                        <td class="border px-4 py-2">Object of the class</td>
+                        <td>Belongs To</td>
+                        <td>Class itself</td>
+                        <td>Object of the class</td>
                     </tr>
                     <tr>
-                        <td class="border px-4 py-2">Declaration</td>
-                        <td class="border px-4 py-2">Use <code>static</code> keyword</td>
-                        <td class="border px-4 py-2">No <code>static</code> keyword</td>
+                        <td>Declaration</td>
+                        <td>Use <code>static</code> keyword</td>
+                        <td>No <code>static</code> keyword</td>
                     </tr>
                     <tr>
-                        <td class="border px-4 py-2">Access</td>
-                        <td class="border px-4 py-2">Called using <code>ClassName.method()</code></td>
-                        <td class="border px-4 py-2">Called using <code>object.method()</code></td>
+                        <td>Access</td>
+                        <td>Called using <code>ClassName.method()</code></td>
+                        <td>Called using <code>object.method()</code></td>
                     </tr>
                     <tr>
-                        <td class="border px-4 py-2">Data Access</td>
-                        <td class="border px-4 py-2">Can access only static data</td>
-                        <td class="border px-4 py-2">Can access both static and instance data</td>
+                        <td>Data Access</td>
+                        <td>Can access only static data</td>
+                        <td>Can access both static and instance data</td>
                     </tr>
                     <tr>
-                        <td class="border px-4 py-2">Use Case</td>
-                        <td class="border px-4 py-2">Utility/helper methods</td>
-                        <td class="border px-4 py-2">Object-specific behavior</td>
+                        <td>Use Case</td>
+                        <td>Utility/helper methods</td>
+                        <td>Object-specific behavior</td>
                     </tr>
                 </tbody>
             </table>
@@ -243,39 +204,39 @@ class Demo {
                 control how code can be accessed across packages and classes.</p>
 
             <!-- Table -->
-            <table class="table-auto w-full text-left border-collapse">
+            <table class="tabledesign">
                 <thead>
-                    <tr class="bg-gray-200 text-gray-900">
-                        <th class="px-4 py-2">Modifier</th>
-                        <th class="px-4 py-2">Scope</th>
-                        <th class="px-4 py-2">Usage</th>
-                        <th class="px-4 py-2">Example</th>
+                    <tr>
+                        <th>Modifier</th>
+                        <th>Scope</th>
+                        <th>Usage</th>
+                        <th>Example</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="border px-4 py-2">public</td>
-                        <td class="border px-4 py-2">Accessible everywhere</td>
-                        <td class="border px-4 py-2">Use for APIs or widely shared methods</td>
-                        <td class="border px-4 py-2"><code>public int x;</code></td>
+                        <td>public</td>
+                        <td>Accessible everywhere</td>
+                        <td>Use for APIs or widely shared methods</td>
+                        <td><code>public int x;</code></td>
                     </tr>
                     <tr>
-                        <td class="border px-4 py-2">protected</td>
-                        <td class="border px-4 py-2">Accessible within package + subclasses</td>
-                        <td class="border px-4 py-2">Use for inheritance</td>
-                        <td class="border px-4 py-2"><code>protected void show();</code></td>
+                        <td>protected</td>
+                        <td>Accessible within package + subclasses</td>
+                        <td>Use for inheritance</td>
+                        <td><code>protected void show();</code></td>
                     </tr>
                     <tr>
-                        <td class="border px-4 py-2">default (no keyword)</td>
-                        <td class="border px-4 py-2">Accessible only within package</td>
-                        <td class="border px-4 py-2">Use for internal package logic</td>
-                        <td class="border px-4 py-2"><code>int count;</code></td>
+                        <td>default (no keyword)</td>
+                        <td>Accessible only within package</td>
+                        <td>Use for internal package logic</td>
+                        <td><code>int count;</code></td>
                     </tr>
                     <tr>
-                        <td class="border px-4 py-2">private</td>
-                        <td class="border px-4 py-2">Accessible only within class</td>
-                        <td class="border px-4 py-2">Use for encapsulation</td>
-                        <td class="border px-4 py-2"><code>private String name;</code></td>
+                        <td>private</td>
+                        <td>Accessible only within class</td>
+                        <td>Use for encapsulation</td>
+                        <td><code>private String name;</code></td>
                     </tr>
                 </tbody>
             </table>

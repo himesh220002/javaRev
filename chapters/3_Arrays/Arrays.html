@@ -31,47 +31,8 @@
             }
         }
     </script>
-    <style>
-        body {
-            background-color: #f9fafb;
-            color: #1f2937;
-            margin: 0;
-            display: flex;
-            height: 100vh;
-            overflow: hidden;
-            font-family: 'Inter', sans-serif;
-        }
-
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #0f172a;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #334155;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #475569;
-        }
-
-        .mermaid {
-            background: rgba(255, 255, 255, 0.02);
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid #334155;
-            display: flex;
-            justify-content: center;
-            margin-top: 2rem;
-            margin-bottom: 2rem;
-            overflow: auto;
-        }
-    </style>
+    
+    <link rel="stylesheet" href="../styles.css">
 </head>
 
 <body>
@@ -361,7 +322,135 @@ System.out.println(Arrays.toString(nums)); // [1,99,3]</code></pre>
 
         </div>
 
+        <div class="p-4 rounded-lg mt-4 border border-blue-500">
 
+            <h4>Project: TicTacToe</h4>
+            <pre class="p-3"><code class="language-java">
+import java.util.Scanner;
+
+public class TicTacToe {
+
+    private static final int SIZE = 3;
+
+    public static void main(String[] args) {
+        String[][] board = initBoard();
+        printBoard(board);
+        playGame(board);
+    }
+
+    // Setup board with numbers 1–9
+    static String[][] initBoard() {
+        String[][] board = new String[SIZE][SIZE];
+        int count = 1;
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE; j++) {
+                board[i][j] = String.valueOf(count++);
+            }
+        }
+        return board;
+    }
+
+    // Main game loop
+    static void playGame(String[][] board) {
+        boolean isFirstTurn = true;
+        int totalAttempts = SIZE * SIZE;
+
+        try (Scanner sc = new Scanner(System.in)) {
+            while (totalAttempts > 0) {
+                boolean validMove = false;
+                String symbol = isFirstTurn ? "X" : "O";
+                String player = isFirstTurn ? "Player One" : "Player Two";
+
+                while (!validMove) {
+                    System.out.print(player + "'s turn (" + symbol + "): ");
+                    int move = sc.nextInt();
+                    validMove = makeMove(board, move, symbol);
+                    if (!validMove) {
+                        System.out.println("Invalid move. Try again.");
+                    }
+                }
+
+                printBoard(board);
+                totalAttempts--;
+                isFirstTurn = !isFirstTurn;
+
+                String winner = checkWinner(board);
+                if (winner != null) {
+                    if (winner.equals("Tie")) {
+                        System.out.println("Game ended in a tie!");
+                    } else {
+                        System.out.println("Player " + winner + " wins!");
+                    }
+                    break;
+                }
+            }
+        }
+    }
+
+    // Validate and update move
+    static boolean makeMove(String[][] board, int move, String symbol) {
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE; j++) {
+                if (board[i][j].equals(String.valueOf(move))) {
+                    board[i][j] = symbol;
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    // Check winner or tie
+    static String checkWinner(String[][] board) {
+        String[][] wins = {
+            {board[0][0], board[0][1], board[0][2]},
+            {board[1][0], board[1][1], board[1][2]},
+            {board[2][0], board[2][1], board[2][2]},
+            {board[0][0], board[1][0], board[2][0]},
+            {board[0][1], board[1][1], board[2][1]},
+            {board[0][2], board[1][2], board[2][2]},
+            {board[0][0], board[1][1], board[2][2]},
+            {board[0][2], board[1][1], board[2][0]}
+        };
+
+        for (String[] w : wins) {
+            if (w[0].equals(w[1]) && w[1].equals(w[2])) {
+                return w[0];
+            }
+        }
+
+        boolean full = true;
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE; j++) {
+                if (!board[i][j].equals("X") && !board[i][j].equals("O")) {
+                    full = false;
+                }
+            }
+        }
+        return full ? "Tie" : null;
+    }
+
+    // Display board
+    static void printBoard(String[][] board) {
+        for (int i = 0; i < SIZE; i++) {
+            StringBuilder row = new StringBuilder();
+            for (int j = 0; j < SIZE; j++) {
+                if (j == 0) {
+                    row.append(" ").append(board[i][j]);
+                } else {
+                    row.append(" | ").append(board[i][j]);
+                }
+            }
+            System.out.println(row);
+            if (i < SIZE - 1) {
+                System.out.println("---+---+---");
+            }
+        }
+    }
+}
+</code></pre>
+
+        </div>
 
 
     </div>
