@@ -24,7 +24,8 @@
                         <td></td>
                     </tr>
                 </tbody>
-        </table>
+            </table>
+        </div>   
 
 
         .tabledesign {
@@ -67,7 +68,7 @@ _____________________________________________________________________
         
 
         
-         <table class="tabledesign">
+<table class="tabledesign">
     <thead>
         <tr>
             <th colspan="2"></th>

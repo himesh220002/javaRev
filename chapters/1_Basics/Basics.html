@@ -12,7 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
     <script type="module">
         import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-        mermaid.initialize({ startOnLoad: true, theme: 'dark', fontFamily: 'Inter, sans-serif' });
+        mermaid.initialize({ startOnLoad: true, theme: 'light', fontFamily: 'Inter, sans-serif' });
     </script>
     <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
     <script>
@@ -31,7 +31,7 @@
             }
         }
     </script>
-    
+
     <link rel="stylesheet" href="../styles.css">
 </head>
 
@@ -810,101 +810,85 @@ class Geeks {
                             <td><code>parseXxx(String s)</code></td>
                             <td>Converts a String into its corresponding
                                 primitive type</td>
-                            <td><code
-                                    class="text-green-700">int a = Integer.parseInt("100");</code></td>
+                            <td><code class="text-green-700">int a = Integer.parseInt("100");</code></td>
                         </tr>
                         <tr>
                             <td><code>valueOf(String s)</code></td>
                             <td>Converts a String into a wrapper object</td>
-                            <td><code
-                                    class="text-green-700">Integer a = Integer.valueOf("100");</code></td>
+                            <td><code class="text-green-700">Integer a = Integer.valueOf("100");</code></td>
                         </tr>
                         <tr>
                             <td><code>valueOf(primitive)</code></td>
                             <td>Converts a primitive value into a wrapper
                                 object</td>
-                            <td><code
-                                    class="text-green-700">Integer a = Integer.valueOf(10);</code></td>
+                            <td><code class="text-green-700">Integer a = Integer.valueOf(10);</code></td>
                         </tr>
                         <tr>
                             <td><code>xxxValue()</code></td>
                             <td>Converts a wrapper object into its primitive
                                 type</td>
-                            <td><code
-                                    class="text-green-700">int a = obj.intValue();</code></td>
+                            <td><code class="text-green-700">int a = obj.intValue();</code></td>
                         </tr>
                         <tr>
                             <td><code>toString()</code></td>
                             <td>Converts wrapper object into a String</td>
-                            <td><code
-                                    class="text-green-700">String s = Integer.toString(10);</code></td>
+                            <td><code class="text-green-700">String s = Integer.toString(10);</code></td>
                         </tr>
                         <tr>
                             <td><code>compareTo(Xxx obj)</code></td>
                             <td>Compares two wrapper objects</td>
-                            <td><code
-                                    class="text-green-700">a.compareTo(b);</code></td>
+                            <td><code class="text-green-700">a.compareTo(b);</code></td>
                         </tr>
                         <tr>
                             <td><code>equals(Object obj)</code></td>
                             <td>Compares values, not references</td>
-                            <td><code
-                                    class="text-green-700">a.equals(b);</code></td>
+                            <td><code class="text-green-700">a.equals(b);</code></td>
                         </tr>
                         <tr>
                             <td><code>hashCode()</code></td>
                             <td>Returns hash code of the object</td>
-                            <td><code
-                                    class="text-green-700">obj.hashCode();</code></td>
+                            <td><code class="text-green-700">obj.hashCode();</code></td>
                         </tr>
                         <tr>
                             <td><code>min(x, y)</code></td>
                             <td>Returns minimum of two values</td>
-                            <td><code
-                                    class="text-green-700">Integer.min(10, 20);</code></td>
+                            <td><code class="text-green-700">Integer.min(10, 20);</code></td>
                         </tr>
                         <tr>
                             <td><code>max(x, y)</code></td>
                             <td>Returns maximum of two values</td>
-                            <td><code
-                                    class="text-green-700">Integer.max(10, 20);</code></td>
+                            <td><code class="text-green-700">Integer.max(10, 20);</code></td>
                         </tr>
                         <tr>
                             <td><code>sum(x, y)</code></td>
                             <td>Returns sum of two values</td>
-                            <td><code
-                                    class="text-green-700">Integer.sum(10, 20);</code></td>
+                            <td><code class="text-green-700">Integer.sum(10, 20);</code></td>
                         </tr>
                         <tr>
                             <td><code>compare(x, y)</code></td>
                             <td>Compares two primitive values</td>
-                            <td><code
-                                    class="text-green-700">Integer.compare(10, 20);</code></td>
+                            <td><code class="text-green-700">Integer.compare(10, 20);</code></td>
                         </tr>
                         <tr>
                             <td><code>isNaN()</code></td>
                             <td>Checks if value is Not a Number (Float/Double
                                 only)</td>
-                            <td><code
-                                    class="text-green-700">Double.isNaN(val);</code></td>
+                            <td><code class="text-green-700">Double.isNaN(val);</code></td>
                         </tr>
                         <tr>
                             <td><code>isInfinite()</code></td>
                             <td>Checks infinite value (Float/Double only)</td>
-                            <td><code
-                                    class="text-green-700">Double.isInfinite(val);</code></td>
+                            <td><code class="text-green-700">Double.isInfinite(val);</code></td>
                         </tr>
                         <tr>
                             <td><code>decode(String s)</code></td>
                             <td>Decodes decimal, hex, or octal string</td>
-                            <td><code
-                                    class="text-green-700">Integer.decode("0xA");</code></td>
+                            <td><code class="text-green-700">Integer.decode("0xA");</code></td>
                         </tr>
                         <tr>
                             <td><code>parseBoolean(String s)</code></td>
                             <td>Converts string to boolean</td>
-                            <td><code
-                                    class="text-green-700">Boolean.parseBoolean("true");</code></td>
+                            <td><code class="text-green-700">Boolean.parseBoolean("true");</code></td>
                         </tr>
                     </tbody>
                 </table>

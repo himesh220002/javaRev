@@ -10,9 +10,36 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
     <script type="module">
         import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-        mermaid.initialize({ startOnLoad: true, theme: 'dark', fontFamily: 'Inter, sans-serif' });
+        mermaid.initialize({ startOnLoad: false, theme: 'light', fontFamily: 'Inter, sans-serif' });
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                await mermaid.run({
+                    nodes: document.querySelectorAll('.mermaid')
+                });
+
+                // Add zoom and pan controls to each generated SVG
+                document.querySelectorAll('.mermaid svg').forEach(svg => {
+                    svg.style.width = '100%';
+                    svg.style.height = '100%';
+                    svg.style.minHeight = '700px'; // Ensure there's space to pan around
+
+                    svgPanZoom(svg, {
+                        zoomEnabled: true,
+                        controlIconsEnabled: true,
+                        fit: true,
+                        center: true,
+                        minZoom: 0.5,
+                        maxZoom: 5
+                    });
+                });
+            } catch (err) {
+                console.error("Mermaid failed to render", err);
+            }
+        });
     </script>
     <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
     <script>
@@ -31,7 +58,7 @@
             }
         }
     </script>
-    
+
     <link rel="stylesheet" href="../styles.css">
 </head>
 
@@ -202,51 +229,878 @@ public class Geeks {
                 </tbody>
             </table>
 
+            <div class="p-4 mt-4 rounded-lg border border-gray-200">
+                <h3 id="collection-flowchart">Collection Selection Flowchart</h3>
+                <p>Use the following flow diagram to easily decide which Java Collection implementation is needed for
+                    your specific use case:</p>
+                <div class="flex gap-2 my-4">
+                    <div class="border border-blue-500 p-2 rounded-md">🔑 - Key-Value Pair</div>
+                    <div class="border border-blue-500 p-2 rounded-md">📋 - Orderd collections</div>
+                    <div class="border border-blue-500 p-2 rounded-md">📶 - Sorted collections</div>
+                    <div class="border border-blue-500 p-2 rounded-md">👥 - Allows Duplicates</div>
+                    <div class="border border-blue-500 p-2 rounded-md">🔀 - Fast Random Access</div>
+                    <div class="border border-blue-500 p-2 rounded-md">⚡ - Fast Insert/Delete</div>
+                </div>
 
-        </div>
-    </div>
+                <div class="mermaid">
+                    graph TD
+                    Start([Start]) --> KV{Need Key-Value Pair?<br /><span class="text-3xl">🔑</span>}
 
-    <script>
-        function toggleSubtopics(id) {
-            const el = document.getElementById(id);
-            if (el) el.classList.toggle('open');
+                    %% Map Branch
+                    KV -- Yes --> OrderMap{Order Needed?<br /><span class="text-3xl">📋</span>}
+                    OrderMap -- No --> HashMap["HashMap<br />🔑 [O(1) Lookup/Insert]"]
+                    OrderMap -- Yes, Insertion Order --> LinkedHashMap["LinkedHashMap<br />🔑 📋 [Preserves History]"]
+                    OrderMap -- Yes, Sorted Keys --> TreeMap["TreeMap<br />🔑 📋 📶 [O(log n) Range Queries]"]
+
+                    %% Non-Map Branch
+                    KV -- No --> Dup{Allow Duplicates?<br /><span class="text-3xl">👥</span>}
+
+                    %% Set Branch (No Duplicates)
+                    Dup -- No --> OrderSet{Order Needed?<br /><span class="text-3xl">📋</span>}
+                    OrderSet -- No --> HashSet["HashSet<br />[O(1) Instant Lookup]"]
+                    OrderSet -- Yes, Insertion Order --> LinkedHashSet["LinkedHashSet<br />📋 [Unique + Ordered]"]
+                    OrderSet -- Yes, Sorted Values --> TreeSet["TreeSet<br />📋 📶 [O(log n) Higher/Lower]"]
+
+                    %% List/Queue Branch (Duplicates Allowed)
+                    Dup -- Yes --> Strategy{How to Process Elements?<br /><span class="text-3xl">🎯</span>}
+
+                    %% Priority Queue Route
+                    Strategy -- By Value / Priority --> PQ["PriorityQueue<br />📶 [O(log n) Min/Max Heap]"]
+
+                    %% Sequential Sequence Route
+                    Strategy -- Sequential Order --> RA{Need Random Access by Index?<br /><span
+                        class="text-3xl">🔀</span>}
+
+                    RA -- Yes --> ArrayList["ArrayList<br />🔀 [O(1) Get/Set by Index]"]
+                    RA -- No --> Restrict{Access Mode?<br /><span class="text-3xl">⚡</span>}
+
+                    Restrict -- Tight Ends Only LIFO/FIFO --> AD["ArrayDeque<br />⚡ [Fastest Stack/Queue - O(1) Ends]"]
+                    Restrict -- Manual Pointer Manipulation --> LL["LinkedList<br />🔗 [Only for Custom Node Linkages]"]
+
+
+
+                </div>
+
+                <div class="p-3 mt-4 grid grid-cols-2 gap-4">
+                    <!-- ArrayList Card -->
+                    <div class="flex flex-col items-center border border-gray-200 rounded p-2 bg-white shadow-sm">
+                        <img src="https://miro.medium.com/0*5w9-ibvGwT1EpeH9.png" alt="Arraylist"
+                            class="max-h-60 object-contain">
+                        <span class="mt-2 text-sm font-semibold text-gray-700">Arraylist</span>
+                    </div>
+
+                    <!-- LinkedList Card -->
+                    <div class="flex flex-col items-center border border-gray-200 rounded p-2 bg-white shadow-sm">
+                        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20250619155958124670/Linked-list.webp"
+                            alt="linkedList" class="max-h-60 object-contain">
+                        <span class="mt-2 text-sm font-semibold text-gray-700">linkedList</span>
+                    </div>
+
+                    <!-- Vector Card -->
+                    <div class="flex flex-col items-center border border-gray-200 rounded p-2 bg-white shadow-sm">
+                        <img src="https://www.scientecheasy.com/wp-content/uploads/2018/11/vector-hierarchy.png"
+                            alt="vectors" class="max-h-60 object-contain">
+                        <span class="mt-2 text-sm font-semibold text-gray-700">vectors</span>
+                    </div>
+
+                    <!-- Stack Card -->
+                    <div class="flex flex-col items-center border border-gray-200 rounded p-2 bg-white shadow-sm">
+                        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20250826120607519143/push232.jpg"
+                            alt="stack" class="max-h-60 object-contain">
+                        <span class="mt-2 text-sm font-semibold text-gray-700">stack</span>
+                    </div>
+
+                    <!-- PriorityQueue Card -->
+                    <div class="flex flex-col items-center border border-gray-200 rounded p-2 bg-white shadow-sm">
+                        <img src="https://miro.medium.com/v2/resize:fit:1400/1*pz4FBpXc0ImLLFF6xSG-Ow.jpeg"
+                            alt="priorityQueue" class="max-h-60 object-contain">
+                        <span class="mt-2 text-sm font-semibold text-gray-700">priorityQueue</span>
+                    </div>
+
+                    <!-- ArrayDeque Card -->
+                    <div class="flex flex-col items-center border border-gray-200 rounded p-2 bg-white shadow-sm">
+                        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20250311105122942873/Deque-using-Array.webp"
+                            alt="arrayDeque" class="max-h-60 object-contain">
+                        <span class="mt-2 text-sm font-semibold text-gray-700">arrayDeque</span>
+                    </div>
+
+                    <!-- HashSet Card -->
+                    <div class="flex flex-col items-center border border-gray-200 rounded p-2 bg-white shadow-sm">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh-gL0t-YqToGVcJ3g9lpvybq-zeZ6g3B15Tn_BHzbCN8SMUtBr-8xlf-H0iJQpCDs9dKmfXLtB7jqZsewv_KRQaD47rYaAGuQofIka-9u6tk2wsAAUrJj6XNzxZxlImFjL89RjE4wMri8pnyxv2Kjxse-HbKIE3m2EEf-SF8hLwqR_sZ1jUj7DgqO7/w1200-h630-p-k-no-nu/How%20HashSet%20internally%20works%20in%20Java.png"
+                            alt="HashSet" class="max-h-60 object-contain">
+                        <span class="mt-2 text-sm font-semibold text-gray-700">HashSet</span>
+                    </div>
+
+                    <!-- LinkedHashSet Card -->
+                    <div class="flex flex-col items-center border border-gray-200 rounded p-2 bg-white shadow-sm">
+                        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20251024182802737834/2.webp"
+                            alt="LinkedHashSet" class="max-h-60 object-contain">
+                        <span class="mt-2 text-sm font-semibold text-gray-700">LinkedHashSet</span>
+                    </div>
+
+                    <!-- TreeSet Card -->
+                    <div class="flex flex-col items-center border border-gray-200 rounded p-2 bg-white shadow-sm">
+                        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20250808115503364073/TreeSet.webp"
+                            alt="TreeSet" class="max-h-60 object-contain">
+                        <span class="mt-2 text-sm font-semibold text-gray-700">TreeSet</span>
+                    </div>
+
+                    <!-- HashMap Card -->
+                    <div class="flex flex-col items-center border border-gray-200 rounded p-2 bg-white shadow-sm">
+                        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20251025124952963087/hashmap.webp"
+                            alt="HashMap" class="max-h-60 object-contain">
+                        <span class="mt-2 text-sm font-semibold text-gray-700">HashMap</span>
+                    </div>
+
+                    <!-- HashMapInternal Card -->
+                    <div class="flex flex-col items-center border border-gray-200 rounded p-2 bg-white shadow-sm">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgWl9bWu6pmjwPe1qWNxTsZ0gCEfGvdJMWO_vBaxfJfMr1vw0gEbOStzEeWzBDPLDea7hVnGauc1IbseX942SetgkeqRJHpnBbQfJ3rYDIqh-k_68RKYZJk8cUF1dFRfAlgsXsQeIrVP8s/s1600/How+HashMap+Works+Internally+in+Java.png"
+                            alt="HashMapInternal" class="max-h-60 object-contain">
+                        <span class="mt-2 text-sm font-semibold text-gray-700">HashMapInternal</span>
+                    </div>
+
+                    <!-- TreeMap Card -->
+                    <div class="flex flex-col items-center border border-gray-200 rounded p-2 bg-white shadow-sm">
+                        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20210112023659/redblacktree.png"
+                            alt="TreeMap" class="max-h-60 object-contain">
+                        <span class="mt-2 text-sm font-semibold text-gray-700">TreeMap</span>
+                    </div>
+
+                    <!-- TreeMapInternal Card -->
+                    <div class="flex flex-col items-center border border-gray-200 rounded p-2 bg-white shadow-sm">
+                        <img src="https://i0.wp.com/www.dineshonjava.com/wp-content/uploads/2018/10/FourthObjecctInserted.png?resize=728%2C365&ssl=1"
+                            alt="treeMapInternal" class="max-h-60 object-contain">
+                        <span class="mt-2 text-sm font-semibold text-gray-700">treeMapInternal</span>
+                    </div>
+                </div>
+
+                <div class="mermaid">
+
+                    graph TD
+                    Start([Start]) --> Scope{What level of method access /<br /> flexibility do you need?<br /><span
+                        class="text-3xl">🎛️</span>}
+
+                    %% Top Level - Pure Generic Flexibility
+                    Scope -- "Maximum generic flexibility (No index access needed)" -->
+                    CollectionRef["Collection&lt;T&gt;<br />👑 [The Grand Blueprint]"]
+                    CollectionRef --> CollInfo["Allows only bulk actions: .add(), .remove(), .contains(), .size()"]
+
+                    %% Branch 1: List (Ordered Sequence)
+                    Scope -- "Need tracking by index (0, 1, 2...)" --> ListBranch{Do you need<br> specialized array
+                    tuning?}
+                    ListBranch -- "No (95% of DSA cases)" --> ListRef["List&lt;T&gt;<br />🔀 [The Index Specialist]"]
+                    ListRef --> ListInfo["Unlocks: .get(i), .set(i, val), .indexOf(x)<br />Accepts: ArrayList,
+                    LinkedList, Vector"]
+
+                    ListBranch -- "Yes (Need to manage memory directly)" --> ArrayListRef["ArrayList&lt;T&gt;<br />🔩
+                    [Concrete Array Lens]"]
+                    ArrayListRef --> ALInfo["Unlocks: .ensureCapacity(), .trimToSize()"]
+
+                    %% Branch 2: Queue / Deque (Staging Lines)
+                    Scope -- "Need processing order (FIFO, LIFO, Heap)" --> QueueBranch{Do you need <br> two-way end
+                    access?}
+                    QueueBranch -- "No, just standard line (FIFO or Min/Max Heap)" --> QueueRef["Queue&lt;T&gt;<br />⏳
+                    [The Staging Line]"]
+                    QueueRef --> QInfo["Unlocks: .peek(), .poll(), .offer()<br />Accepts: PriorityQueue, LinkedList"]
+
+                    QueueBranch -- "Yes, need entry/exit at BOTH ends (Stack/Double-Queue)" -->
+                    DequeRef["Deque&lt;T&gt;<br />🔄 [Double-Ended Line]"]
+                    DequeRef --> DQInfo["Unlocks LIFO/FIFO: .peekFirst(), .pollLast(), .push(), .pop()<br />Accepts:
+                    ArrayDeque, LinkedList"]
+
+                    %% Branch 3: Set (Unique Containers)
+                    Scope -- "Need mathematical uniqueness (No duplicates)" --> SetBranch{Do you need<br> to run sorted
+                    range searches?}
+                    SetBranch -- "No, just check if something exists" --> SetRef["Set&lt;T&gt;<br />🚫 [The Duplicate
+                    Blocker]"]
+                    SetRef --> SInfo["Enforces uniqueness. Accepts: HashSet, LinkedHashSet"]
+
+                    SetBranch -- "Yes, find closest higher/lower values" --> NavSetRef["NavigableSet&lt;T&gt; /
+                    SortedSet&lt;T&gt;<br />📶 [The Sorted Boundary Finder]"]
+                    NavSetRef --> NSInfo["Unlocks: .higher(x), .lower(x), .first(), .last()<br />Accepts: TreeSet"]
+
+                </div>
+            </div>
+
+            <div class="p-4 mt-4 rounded-lg border border-gray-200">
+                <h3>Collection operations</h3>
+                <h4>1. Adding Elements</h4>
+                <pre class="p-3"><code class="language-java">import java.util.ArrayList;
+import java.util.Collections;
+
+public class AddExample {
+    public static void main(String[] args) {
+        ArrayList<String> list = new ArrayList<>();
+        list.add("Apple");
+        list.add("Banana");
+        Collections.addAll(list, "Mango", "Grapes");
+        System.out.println("After Adding: " + list);
+    }
+}</code></pre>
+                <pre><code>Output: After Adding: [Apple, Banana, Mango, Grapes]</code></pre>
+
+
+                Creates an ArrayList to store String elements dynamically.
+                Adds elements using add() and multiple elements at once using Collections.addAll().
+                Maintains insertion order and allows duplicates.
+
+                <h4>2. Deleting Elements</h4>
+                <pre class="p-3"><code class="language-java">import java.util.ArrayList;
+
+public class GFG {
+    public static void main(String[] args) {
+        
+        ArrayList<String> list = new ArrayList<>();
+        
+        // Adding elements
+        list.add("Apple");
+        list.add("Banana");
+        list.add("Mango");
+        list.add("Grapes");
+
+        // Remove element by value
+        list.remove("Banana");
+
+        // Remove element by index
+        list.remove(0);
+
+        // Print final list
+        System.out.println("After Removing: " + list);
+    }
+}</code></pre>
+                <pre><code>Output: After Removing: [Mango, Grapes]</code></pre>
+
+                Creates an ArrayList to store string elements dynamically.
+                remove("Banana") deletes an element by value, while remove(0) deletes by index.
+                Elements automatically shift after removal.
+                Prints the updated list.
+
+                <h4>3. Searching Elements</h4>
+                <pre class="p-3"><code class="language-java">import java.util.ArrayList;
+
+public class GFG {
+    public static void main(String[] args) {
+
+        ArrayList<String> list = new ArrayList<>();
+
+        // Adding elements
+        list.add("Apple");
+        list.add("Banana");
+        list.add("Mango");
+
+        // Searching for an element
+        if (list.contains("Mango")) {
+            System.out.println("Mango is present in the list");
+        }
+    }
+}</code></pre>
+                <pre><code>Output: Mango is present in the list</code></pre>
+
+                Creates an ArrayList to store String elements.
+                Adds elements using the add() method.
+                contains("Mango") checks whether "Mango" exists in the list.
+                Prints a message if the element is found.
+
+                <h4>4. Updating Elements</h4>
+                <pre class="p-3"><code class="language-java">import java.util.ArrayList;
+
+public class UpdateExample {
+    public static void main(String[] args) {
+
+        ArrayList<String> list = new ArrayList<>();
+
+        // Adding elements
+        list.add("Apple");
+        list.add("Banana");
+        list.add("Mango");
+
+        // Updating element at index 0
+        list.set(0, "Orange");
+
+        // Print updated list
+        System.out.println("After Updating: " + list);
+    }
+}</code></pre>
+                <pre><code>Output: After Updating: [Orange, Banana, Mango]</code></pre>
+
+
+                Creates an ArrayList to store String elements.
+                Adds elements using add() method.
+                set(0, "Orange") replaces the element at index 0.
+
+                <h4>5. Sorting a Collection</h4>
+                <pre class="p-3"><code class="language-java">import java.util.ArrayList;
+import java.util.Collections;
+
+public class SortExample {
+    public static void main(String[] args) {
+
+        ArrayList<String> fruits = new ArrayList<>();
+
+        // Adding elements
+        fruits.add("Banana");
+        fruits.add("Apple");
+        fruits.add("Mango");
+        fruits.add("Grapes");
+
+        // Sorting the list in ascending order
+        Collections.sort(fruits);
+
+        // Print sorted list
+        System.out.println("After Sorting: " + fruits);
+    }
+}</code></pre>
+                <pre><code>After Sorting: [Apple, Banana, Grapes, Mango]</code></pre>
+
+                Creates an ArrayList named fruits.
+                Adds multiple fruit names to the list.
+                Collections.sort(fruits) sorts elements in ascending (natural) order.
+
+
+                <table class="tabledesign">
+                    <caption>Java Collections Framework Operations</caption>
+                    <thead class="bg-blue-100">
+                        <tr>
+                            <th>Type</th>
+                            <th>Sub-Type / Class</th>
+                            <th>Add</th>
+                            <th>Remove</th>
+                            <th>Search</th>
+                            <th>Sort</th>
+                            <th>Update</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Iterable</td>
+                            <td>Root interface</td>
+                            <td>N/A</td>
+                            <td>N/A</td>
+                            <td>Iteration only</td>
+                            <td>N/A</td>
+                            <td>N/A</td>
+                        </tr>
+                        <tr>
+                            <td>Collection</td>
+                            <td>Base interface</td>
+                            <td>add()</td>
+                            <td>remove()</td>
+                            <td>contains()</td>
+                            <td>Collections.sort() if List</td>
+                            <td>set() if List</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="3">Set</td>
+                            <td>HashSet</td>
+                            <td>O(1) avg</td>
+                            <td>O(1) avg</td>
+                            <td>contains() O(1)</td>
+                            <td>Not applicable</td>
+                            <td>remove+add</td>
+                        </tr>
+                        <tr>
+                            <td>LinkedHashSet</td>
+                            <td>O(1) avg</td>
+                            <td>O(1) avg</td>
+                            <td>contains() O(1)</td>
+                            <td>Not applicable</td>
+                            <td>remove+add</td>
+                        </tr>
+                        <tr>
+                            <td>TreeSet</td>
+                            <td>O(log n)</td>
+                            <td>O(log n)</td>
+                            <td>contains() O(log n)</td>
+                            <td>Maintains sorted order</td>
+                            <td>remove+add</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="4">List</td>
+                            <td>ArrayList</td>
+                            <td>O(1) amortized</td>
+                            <td>O(n)</td>
+                            <td>contains() O(n)</td>
+                            <td>Collections.sort()</td>
+                            <td>set(index,val) O(1)</td>
+                        </tr>
+                        <tr>
+                            <td>LinkedList</td>
+                            <td>O(1) ends</td>
+                            <td>O(n)</td>
+                            <td>contains() O(n)</td>
+                            <td>Collections.sort()</td>
+                            <td>set(index,val) O(n)</td>
+                        </tr>
+                        <tr>
+                            <td>Vector</td>
+                            <td>O(1) amortized</td>
+                            <td>O(n)</td>
+                            <td>contains() O(n)</td>
+                            <td>Collections.sort()</td>
+                            <td>set(index,val) O(1)</td>
+                        </tr>
+                        <tr>
+                            <td>Stack</td>
+                            <td>push() O(1)</td>
+                            <td>pop() O(1)</td>
+                            <td>search() O(n)</td>
+                            <td>Collections.sort()</td>
+                            <td>set(index,val) O(1)</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="3">Queue</td>
+                            <td>PriorityQueue</td>
+                            <td>O(log n)</td>
+                            <td>O(log n)</td>
+                            <td>contains() O(n)</td>
+                            <td>Heap order maintained</td>
+                            <td>remove+add</td>
+                        </tr>
+                        <tr>
+                            <td>ArrayDeque</td>
+                            <td>O(1) ends</td>
+                            <td>O(1) ends</td>
+                            <td>contains() O(n)</td>
+                            <td>Not applicable</td>
+                            <td>No direct update</td>
+                        </tr>
+                        <tr>
+                            <td>LinkedList (Queue)</td>
+                            <td>O(1) ends</td>
+                            <td>O(1) ends</td>
+                            <td>contains() O(n)</td>
+                            <td>Collections.sort()</td>
+                            <td>set(index,val) O(n)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+            </div>
+
+            <div class="p-4 mt-4 rounded-lg border border-gray-200">
+                <h3>Collection Interface</h3>
+                <p>The Collection interface is the root of the Java Collections Framework, defined in the java.util
+                    package. It represents a group of individual objects as a single unit and provides basic operations
+                    for working with them.</p>
+                <ul>
+                    <li>Represents a group of objects as a single unit</li>
+                    <li>Dynamic in size (can grow or shrink)</li>
+                    <li>Provide simple methods like add(), remove(), and clear().</li>
+                    <li>Stores elements of a specific type using generics</li>
+                </ul>
+                <h4>Declaration</h4>
+                <pre><code>public interface Collection&lt;E&gt; extends Iterable&lt;E&gt;</code></pre>
+
+                <pre class="p-3"><code class="language-java">import java.util.*;
+
+public class GFG {
+
+    public static void main(String[] args) {
+
+        // Creating a Collection of String type using ArrayList implementation
+        Collection<String> fruits = new ArrayList<>();
+
+        // Adding elements to the collection
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Mango");
+
+        // Removing an element from the collection
+        fruits.remove("Banana");
+
+        // Displaying the collection after removal
+        System.out.println("After Removal: " + fruits);
+    }
+}</code></pre>
+                <pre><code>Output: After Removal: [Apple, Mango]</code></pre>
+
+                <img src="https://media.geeksforgeeks.org/wp-content/uploads/20260408173155695467/2.webp"
+                    alt="Collection Interface">
+
+                <table class="tabledesign">
+                    <thead>
+                        <tr>
+                            <th colspan="2">Sub-Interfaces of Collection Interface</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <!-- CATEGORY 1 -->
+                        <tr class="subheader-row">
+                            <td colspan="2"><strong>List</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Description</strong></td>
+                            <td>Represents an ordered collection that allows duplicates. Elements can be accessed by
+                                index.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Implementing Classes</strong></td>
+                            <td>ArrayList, LinkedList, Vector, Stack</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Declaration</strong></td>
+                            <td><code>public interface List&lt;E&gt; extends Collection&lt;E&gt;</code></td>
+                        </tr>
+
+                        <!-- CATEGORY 2 -->
+                        <tr class="subheader-row">
+                            <td colspan="2"><strong>Set</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Description</strong></td>
+                            <td>Represents an unordered collection with no duplicate elements.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Implementing Classes</strong></td>
+                            <td>HashSet, TreeSet, LinkedHashSet, EnumSet, CopyOnWriteArraySet</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Declaration</strong></td>
+                            <td><code>public interface Set&lt;E&gt; extends Collection&lt;E&gt;</code></td>
+                        </tr>
+
+                        <!-- CATEGORY 3 -->
+                        <tr class="subheader-row">
+                            <td colspan="2"><strong>SortedSet</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Description</strong></td>
+                            <td>Extends Set and maintains elements in a sorted order. Provides methods for range-based
+                                operations.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Implementing Class</strong></td>
+                            <td>TreeSet</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Declaration</strong></td>
+                            <td><code>public interface SortedSet&lt;E&gt; extends Set&lt;E&gt;</code></td>
+                        </tr>
+
+                        <!-- CATEGORY 4 -->
+                        <tr class="subheader-row">
+                            <td colspan="2"><strong>NavigableSet</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Description</strong></td>
+                            <td>Extends SortedSet and provides navigation methods like lower(), floor(), ceiling(), and
+                                higher().</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Implementing Class</strong></td>
+                            <td>TreeSet</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Declaration</strong></td>
+                            <td><code>public interface NavigableSet&lt;E&gt; extends SortedSet&lt;E&gt;</code></td>
+                        </tr>
+
+                        <!-- CATEGORY 5 -->
+                        <tr class="subheader-row">
+                            <td colspan="2"><strong>Queue</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Description</strong></td>
+                            <td>Represents a collection following FIFO (First-In-First-Out) order.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Implementing Classes</strong></td>
+                            <td>PriorityQueue, ArrayDeque, LinkedList</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Declaration</strong></td>
+                            <td><code>public interface Queue&lt;E&gt; extends Collection&lt;E&gt;</code></td>
+                        </tr>
+
+                        <!-- CATEGORY 6 -->
+                        <tr class="subheader-row">
+                            <td colspan="2"><strong>Deque</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Description</strong></td>
+                            <td>Extends Queue and allows elements to be added/removed from both ends.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Implementing Classes</strong></td>
+                            <td>ArrayDeque, LinkedList</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Declaration</strong></td>
+                            <td><code>public interface Deque&lt;E&gt; extends Queue&lt;E&gt;</code></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+
+
+            </div>
+
+            <div class="p-4 mt-4 rounded-lg border border-gray-200">
+                <h3>Operations on Collection Objects</h3>
+                <p>The Collection interface provides several operations to manipulate data efficiently. Let’s see the
+                    most common operations using the ArrayList implementation class.</p>
+                <ol>
+                    <li>Adding Elements</li>
+                    <li>Removing Elements</li>
+                    <li>Accessing Elements</li>
+                    <li>Iterating Elements</li>
+                </ol>
+
+                <h4>1. Adding Elements</h4>
+                <!-- <img src="" alt=""> -->
+                <pre class="p-3"><code class="language-java">
+import java.util.*;
+
+public class Geeks{
+    
+    public static void main(String[] args){
+        
+        // Creating a collection using ArrayList implementation
+        Collection<Integer> numbers = new ArrayList<>();
+
+        // Adding individual elements
+        numbers.add(10);
+        numbers.add(20);
+        numbers.add(30);
+
+        // Adding another collection
+        Collection<Integer> moreNumbers = new ArrayList<>();
+        moreNumbers.add(40);
+        moreNumbers.add(50);
+
+        numbers.addAll(moreNumbers);
+
+        System.out.println("After adding elements: " + numbers);
+    }
+}
+                </code></pre>
+                <pre><code>Output : <br>After adding elements: [10, 20, 30, 40, 50]</code></pre>
+
+                <p>In this example:</p>
+                <ul>
+                    <li>We created an <code>ArrayList</code> named <code>numbers</code>.</li>
+                    <li>We added individual elements using the <code>add()</code> method.</li>
+                    <li>We added multiple elements from another collection using the <code>addAll()</code> method.</li>
+                </ul>
+
+
+                <h4>2. Removing Elements</h4>
+                <pre class="p-3"><code class="language-java">
+import java.util.*;
+
+public class Geeks{
+    
+    public static void main(String[] args){
+        
+        // Creating a collection using ArrayList implementation
+        Collection<String> names = new ArrayList<>();
+        names.add("Alice");
+        names.add("Bob");
+        names.add("Charlie");
+        names.add("David");
+
+        System.out.println("Original collection: " + names);
+
+        // Removing a specific element
+        names.remove("Bob");
+
+        // Removing another element
+        names.remove("David");
+
+        System.out.println("After removing elements: " + names);
+
+        // Remove all elements present in another collection
+        Collection<String> toRemove = new ArrayList<>();
+        toRemove.add("Alice");
+        toRemove.add("Charlie");
+
+        names.removeAll(toRemove);
+
+        System.out.println("After removing all elements: " + names);
+
+        
+    }
+}
+                </code></pre>
+                <pre><code>Output : <br>Original collection: [Alice, Bob, Charlie, David]<br>After removing elements: [Alice, Charlie]<br>After removing all elements: []</code></pre>
+
+                <p>In this example:</p>
+                <ul>
+                    <li>We created an <code>ArrayList</code> named <code>names</code>.</li>
+                    <li>We removed individual elements using the <code>remove()</code> method.</li>
+                    <li>We removed multiple elements from another collection using the <code>removeAll()</code> method.
+                    </li>
+                </ul>
+
+
+                <h4>3. Accessing Elements</h4>
+                <pre class="p-3"><code class="language-java">
+import java.util.*;
+
+public class Geeks{
+    
+    public static void main(String[] args){
+        
+        // Creating a collection using ArrayList implementation
+        // Using List reference for index-based access
+        List<String> names = new ArrayList<>();
+        names.add("Alice");
+        names.add("Bob");
+        names.add("Charlie");
+        names.add("David");
+
+        // Accessing elements by index
+        System.out.println("Element at index 0: " + names.get(0)); //first element
+        System.out.println("Element at index 1: " + names.get(1));
+        System.out.println("Element at index 2: " + names.get(2));
+        System.out.println("Element at index 3: " + names.get(3));
+
+        System.out.println("Last element: " + names.get(names.size() - 1)); //last element using -1 index
+
+        System.out.println("Original collection: " + names);
+
+        // Checking if an element exists
+        System.out.println("Contains Alice: " + names.contains("Alice"));
+
+        // Getting the size of the collection
+        System.out.println("Size of collection: " + names.size());
+
+        // Checking if the collection is empty
+        System.out.println("Is collection empty: " + names.isEmpty());
+
+        // Getting an element at a specific index
+        System.out.println("Element at index 1: " + names.toArray()[1]);
+
+        // Getting all elements
+        System.out.println("All elements: " + Arrays.toString(names.toArray()));
+
+        
+    }
+}
+                </code></pre>
+                <pre><code>Output : <br>Original collection: [Alice, Bob, Charlie, David]<br>Element at index 0: Alice<br>Element at index 1: Bob<br>Element at index 2: Charlie<br>Element at index 3: David<br>Last element: David<br>Contains Alice: true<br>Size of collection: 4<br>Is collection empty: false<br>Element at index 1: Bob<br>All elements: [Alice, Bob, Charlie, David]</code></pre>
+
+                <p>In this example:</p>
+                <ul>
+                    <li>We created an <code>ArrayList</code> named <code>names</code>.</li>
+                    <li>We accessed elements by index using the <code>get()</code> method.</li>
+                    <li>We found the last element using the <code>size()</code> and <code>get()</code> methods.</li>
+                    <li>We checked if the collection contains a specific element using the <code>contains()</code>
+                        method.</li>
+                    <li>We got the size of the collection using the <code>size()</code> method.</li>
+                    <li>We checked if the collection is empty using the <code>isEmpty()</code> method.</li>
+                    <li>We got an element at a specific index using the <code>toArray()</code> method.</li>
+                    <li>We got all elements using the <code>toArray()</code> method.</li>
+                </ul>
+
+                <h4>4. Iterating over a Collection</h4>
+
+                <h5>1. Iterator</h5>
+                <p>The <code>Iterator</code> interface allows safe removal of elements during traversal without throwing
+                    a <code>ConcurrentModificationException</code>.</p>
+                <pre class="p-3"><code class="language-java">import java.util.*;
+
+public class IteratorExample {
+    public static void main(String[] args) {
+        Collection&lt;String&gt; fruits = new ArrayList&lt;&gt;(Arrays.asList("Apple", "Banana", "Mango"));
+        
+        Iterator&lt;String&gt; it = fruits.iterator();
+        while (it.hasNext()) {
+            String fruit = it.next();
+            if (fruit.equals("Banana")) {
+                it.remove(); // safely removes "Banana" from collection
+            }
+        }
+        System.out.println(fruits);
+    }
+}</code></pre>
+                <pre><code>Output: [Apple, Mango]</code></pre>
+
+                <h5 class="mt-4">2. ListIterator</h5>
+                <p>The <code>ListIterator</code> interface is specifically for Lists and allows bidirectional traversal
+                    (both forward and backward).</p>
+                <pre class="p-3"><code class="language-java">import java.util.*;
+
+public class ListIteratorExample {
+    public static void main(String[] args) {
+        List&lt;String&gt; colors = new ArrayList&lt;&gt;(Arrays.asList("Red", "Green", "Blue"));
+
+        ListIterator&lt;String&gt; listIt = colors.listIterator();
+
+        // Forward traversal
+        System.out.print("Forward: ");
+        while (listIt.hasNext()) {
+            System.out.print(listIt.next() + " ");
         }
 
-        const sidebar = document.getElementById('sidebar');
-        const resizer = document.getElementById('dragMe');
-        let isResizing = false;
+        // Backward traversal
+        System.out.print("\nBackward: ");
+        while (listIt.hasPrevious()) {
+            System.out.print(listIt.previous() + " ");
+        }
+    }
+}</code></pre>
+                <pre><code>Output: 
+Forward: Red Green Blue 
+Backward: Blue Green Red</code></pre>
 
-        resizer.addEventListener('mousedown', (e) => {
-            isResizing = true;
-            resizer.classList.add('resizing');
-            document.body.style.cursor = 'col-resize';
-            // Prevent text selection during drag
-            e.preventDefault();
-        });
 
-        document.addEventListener('mousemove', (e) => {
-            if (!isResizing) return;
-            let newWidth = e.clientX;
-            const minWidth = window.innerWidth * 0.05;
-            const maxWidth = window.innerWidth * 0.50;
-            if (newWidth < minWidth) newWidth = minWidth;
-            if (newWidth > maxWidth) newWidth = maxWidth;
-            sidebar.style.width = newWidth + 'px';
-        });
+            </div>
 
-        document.addEventListener('mouseup', () => {
-            if (isResizing) {
-                isResizing = false;
-                resizer.classList.remove('resizing');
-                document.body.style.cursor = 'default';
+
+
+            <div class="p-4 rounded-lg mt-4 border border-blue-500">
+
+                <h2>Projects</h2>
+                <h4></h4>
+                <pre class="p-3"><code class="language-java"></code></pre>
+            </div>
+        </div>
+
+        <script>
+            function toggleSubtopics(id) {
+                const el = document.getElementById(id);
+                if (el) el.classList.toggle('open');
             }
-        });
-    </script>
 
-    <script type="module">
-        import { initSidebar } from '../../sidebar.js';
-        initSidebar();
-    </script>
+            const sidebar = document.getElementById('sidebar');
+            const resizer = document.getElementById('dragMe');
+            let isResizing = false;
+
+            resizer.addEventListener('mousedown', (e) => {
+                isResizing = true;
+                resizer.classList.add('resizing');
+                document.body.style.cursor = 'col-resize';
+                // Prevent text selection during drag
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isResizing) return;
+                let newWidth = e.clientX;
+                const minWidth = window.innerWidth * 0.05;
+                const maxWidth = window.innerWidth * 0.50;
+                if (newWidth < minWidth) newWidth = minWidth;
+                if (newWidth > maxWidth) newWidth = maxWidth;
+                sidebar.style.width = newWidth + 'px';
+            });
+
+            document.addEventListener('mouseup', () => {
+                if (isResizing) {
+                    isResizing = false;
+                    resizer.classList.remove('resizing');
+                    document.body.style.cursor = 'default';
+                }
+            });
+        </script>
+
+        <script type="module">
+            import { initSidebar } from '../../sidebar.js';
+            initSidebar();
+        </script>
 </body>
 
 </html>

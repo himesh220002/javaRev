@@ -636,7 +636,7 @@ export const defaultState = {
             "Data Structures": {
                 "grandchildren": {
                     "Arrays (1D & 2D)": {
-                        "completed": true,
+                        "completed": false,
                         "notes": "1.TicTacToe.java done"
                     },
                     "Strings & StringBuilders": {
