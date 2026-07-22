@@ -324,7 +324,7 @@ export const defaultState = {
             "Collections": {
                 "grandchildren": {
                     "Collections Class": {
-                        "completed": false,
+                        "completed": true,
                         "notes": ""
                     },
                     "Collection Interface": {
